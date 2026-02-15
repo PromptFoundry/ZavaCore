@@ -11,7 +11,7 @@ export default function LeftNav() {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
-    <nav className={`flex flex-col h-full bg-[#f5f5f5] transition-all duration-300 relative z-20 ${isCollapsed ? 'w-[60px]' : 'w-[320px]'}`}>
+    <nav className={`flex flex-col h-full bg-[#f5f5f5] transition-all duration-300 relative z-20 ${isCollapsed ? 'w-[60px]' : 'w-[320px]'} [&_*]:outline-none`}>
       {isCollapsed ? (
         /* Collapsed state - only show toggle button */
         <div className="flex items-center justify-center px-3 py-3 shrink-0">
@@ -50,7 +50,7 @@ export default function LeftNav() {
                 {selectedItem === 'newchat' && (
                   <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
                 )}
-                <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+                <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors outline-none ${
                   selectedItem === 'newchat'
                     ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
                     : 'hover:bg-[#e6e6e6] pl-5'
