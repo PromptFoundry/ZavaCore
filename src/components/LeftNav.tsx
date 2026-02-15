@@ -27,67 +27,112 @@ export default function LeftNav() {
         <div className="flex flex-col gap-1 px-3">
         {/* New chat */}
         <div
-          className={`flex items-center h-9 px-3 rounded-[12px] transition-colors cursor-pointer ${
-            selectedItem === 'newchat'
-              ? 'bg-[#fafafa] border border-[#F2F2F2]'
-              : 'hover:bg-[#e6e6e6]'
-          }`}
+          className="flex items-center gap-0 cursor-pointer"
           onClick={() => setSelectedItem('newchat')}
         >
-          <img src="/src/assets/icons/Chat icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
-          <span className="text-sm text-[#242424]">New chat</span>
+          {selectedItem === 'newchat' && (
+            <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+          )}
+          <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+            selectedItem === 'newchat'
+              ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+              : 'hover:bg-[#e6e6e6] pl-5'
+          } pr-3`}>
+            <img
+              src={selectedItem === 'newchat' ? "/src/assets/icons/Chat icon color.svg" : "/src/assets/icons/Chat icon.svg"}
+              alt=""
+              className="w-5 h-5 mr-[9px]"
+            />
+            <span className="text-sm text-[#242424]">New chat</span>
+          </div>
         </div>
 
         {/* Search */}
         <div
-          className={`flex items-center h-9 px-3 rounded-[12px] transition-colors cursor-pointer ${
-            selectedItem === 'search'
-              ? 'bg-[#fafafa] border border-[#F2F2F2]'
-              : 'hover:bg-[#e6e6e6]'
-          }`}
+          className="flex items-center gap-0 cursor-pointer"
           onClick={() => setSelectedItem('search')}
         >
-          <img src="/src/assets/icons/Search icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
-          <span className="text-sm text-[#242424]">Search</span>
+          {selectedItem === 'search' && (
+            <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+          )}
+          <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+            selectedItem === 'search'
+              ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+              : 'hover:bg-[#e6e6e6] pl-5'
+          } pr-3`}>
+            <img
+              src={selectedItem === 'search' ? "/src/assets/icons/Search icon color.svg" : "/src/assets/icons/Search icon.svg"}
+              alt=""
+              className="w-5 h-5 mr-[9px]"
+            />
+            <span className="text-sm text-[#242424]">Search</span>
+          </div>
         </div>
 
         {/* Library */}
         <div
-          className={`flex items-center h-9 px-3 rounded-[12px] transition-colors cursor-pointer ${
-            selectedItem === 'library'
-              ? 'bg-[#fafafa] border border-[#F2F2F2]'
-              : 'hover:bg-[#e6e6e6]'
-          }`}
+          className="flex items-center gap-0 cursor-pointer"
           onClick={() => setSelectedItem('library')}
         >
-          <img src="/src/assets/icons/Library icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
-          <span className="text-sm text-[#242424]">Library</span>
+          {selectedItem === 'library' && (
+            <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+          )}
+          <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+            selectedItem === 'library'
+              ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+              : 'hover:bg-[#e6e6e6] pl-5'
+          } pr-3`}>
+            <img
+              src={selectedItem === 'library' ? "/src/assets/icons/Library icon color.svg" : "/src/assets/icons/Library icon.svg"}
+              alt=""
+              className="w-5 h-5 mr-[9px]"
+            />
+            <span className="text-sm text-[#242424]">Library</span>
+          </div>
         </div>
 
         {/* Create */}
         <div
-          className={`flex items-center h-9 px-3 rounded-[12px] transition-colors cursor-pointer ${
-            selectedItem === 'create'
-              ? 'bg-[#fafafa] border border-[#F2F2F2]'
-              : 'hover:bg-[#e6e6e6]'
-          }`}
+          className="flex items-center gap-0 cursor-pointer"
           onClick={() => setSelectedItem('create')}
         >
-          <img src="/src/assets/icons/Create icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
-          <span className="text-sm text-[#242424]">Create</span>
+          {selectedItem === 'create' && (
+            <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+          )}
+          <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+            selectedItem === 'create'
+              ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+              : 'hover:bg-[#e6e6e6] pl-5'
+          } pr-3`}>
+            <img
+              src={selectedItem === 'create' ? "/src/assets/icons/Create icon color.svg" : "/src/assets/icons/Create icon.svg"}
+              alt=""
+              className="w-5 h-5 mr-[9px]"
+            />
+            <span className="text-sm text-[#242424]">Create</span>
+          </div>
         </div>
 
         {/* Frontier */}
         <div
-          className={`flex items-center h-9 px-3 rounded-[12px] transition-colors cursor-pointer ${
-            selectedItem === 'frontier'
-              ? 'bg-[#fafafa] border border-[#F2F2F2]'
-              : 'hover:bg-[#e6e6e6]'
-          }`}
+          className="flex items-center gap-0 cursor-pointer"
           onClick={() => setSelectedItem('frontier')}
         >
-          <img src="/src/assets/icons/Frontier icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
-          <span className="text-sm text-[#242424]">Frontier</span>
+          {selectedItem === 'frontier' && (
+            <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+          )}
+          <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+            selectedItem === 'frontier'
+              ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+              : 'hover:bg-[#e6e6e6] pl-5'
+          } pr-3`}>
+            <img
+              src={selectedItem === 'frontier' ? "/src/assets/icons/Frontier icon color.svg" : "/src/assets/icons/Frontier icon.svg"}
+              alt=""
+              className="w-5 h-5 mr-[9px]"
+            />
+            <span className="text-sm text-[#242424]">Frontier</span>
+          </div>
         </div>
       </div>
 
@@ -226,7 +271,7 @@ export default function LeftNav() {
 
       {/* Notebooks */}
       <div className="flex flex-col gap-1 px-3">
-        <div className="px-3 py-2">
+        <div className="pl-5 py-2">
           <span className="text-xs text-[#616161]">Notebooks</span>
         </div>
 
@@ -251,32 +296,42 @@ export default function LeftNav() {
 
         {/* Chats */}
         <div className="flex flex-col gap-1 px-3">
-          <div className="px-3 py-2">
+          <div className="pl-5 py-2">
             <span className="text-xs text-[#616161]">Chats</span>
           </div>
 
           {/* Chat item 1 */}
           <div
-            className={`flex items-center h-9 pl-3 pr-3 rounded-[12px] transition-colors cursor-pointer ${
-              selectedItem === 'chat1'
-                ? 'bg-[#fafafa] border border-[#F2F2F2]'
-                : 'hover:bg-[#e6e6e6]'
-            }`}
+            className="flex items-center gap-0 cursor-pointer"
             onClick={() => setSelectedItem('chat1')}
           >
-            <span className="text-sm text-[#242424] truncate">How to find relevant con...</span>
+            {selectedItem === 'chat1' && (
+              <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+            )}
+            <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+              selectedItem === 'chat1'
+                ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+                : 'hover:bg-[#e6e6e6] pl-5'
+            } pr-3`}>
+              <span className="text-sm text-[#242424] truncate">How to find relevant con...</span>
+            </div>
           </div>
 
           {/* Chat item 2 */}
           <div
-            className={`flex items-center h-9 pl-3 pr-3 rounded-[12px] transition-colors cursor-pointer ${
-              selectedItem === 'chat2'
-                ? 'bg-[#fafafa] border border-[#F2F2F2]'
-                : 'hover:bg-[#e6e6e6]'
-            }`}
+            className="flex items-center gap-0 cursor-pointer"
             onClick={() => setSelectedItem('chat2')}
           >
-            <span className="text-sm text-[#242424] truncate">How to find relevant con...</span>
+            {selectedItem === 'chat2' && (
+              <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+            )}
+            <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+              selectedItem === 'chat2'
+                ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+                : 'hover:bg-[#e6e6e6] pl-5'
+            } pr-3`}>
+              <span className="text-sm text-[#242424] truncate">How to find relevant con...</span>
+            </div>
           </div>
         </div>
       </div>
@@ -285,15 +340,20 @@ export default function LeftNav() {
       <div className="flex flex-col gap-3 px-3 pb-3 shrink-0 border-t border-[#e0e0e0] pt-3">
         {/* Apps */}
         <div
-          className={`flex items-center h-9 px-3 rounded-[12px] transition-colors cursor-pointer ${
-            selectedItem === 'apps'
-              ? 'bg-[#fafafa] border border-[#F2F2F2]'
-              : 'hover:bg-[#e6e6e6]'
-          }`}
+          className="flex items-center gap-0 cursor-pointer"
           onClick={() => setSelectedItem('apps')}
         >
-          <Apps20Regular className="w-5 h-5 text-[#424242] mr-[9px]" />
-          <span className="text-sm text-[#242424]">Apps</span>
+          {selectedItem === 'apps' && (
+            <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+          )}
+          <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+            selectedItem === 'apps'
+              ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+              : 'hover:bg-[#e6e6e6] pl-5'
+          } pr-3`}>
+            <Apps20Regular className="w-5 h-5 text-[#424242] mr-[9px]" />
+            <span className="text-sm text-[#242424]">Apps</span>
+          </div>
         </div>
 
         {/* Bottom bar */}
