@@ -11,9 +11,9 @@ import {
 
 export default function LeftNav() {
   return (
-    <nav className="flex flex-col h-full bg-[#f5f5f5] gap-3">
+    <nav className="flex flex-col h-full bg-[#f5f5f5]">
       {/* Top bar */}
-      <div className="flex items-center justify-between px-3 py-3">
+      <div className="flex items-center justify-between px-3 py-3 shrink-0">
         <div className="flex items-center gap-2">
           <div className="w-5 h-5 bg-gradient-to-br from-[#00a4ef] to-[#0078d4] rounded-sm" />
           <span className="text-sm font-semibold text-[#242424]">M365 Copilot</span>
@@ -23,8 +23,10 @@ export default function LeftNav() {
         </button>
       </div>
 
-      {/* Navigation */}
-      <div className="flex flex-col gap-1 px-3">
+      {/* Scrollable content */}
+      <div className="flex-1 overflow-auto flex flex-col gap-3 py-3">
+        {/* Navigation */}
+        <div className="flex flex-col gap-1 px-3">
         {/* New chat */}
         <div className="flex items-center h-9 px-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
           <ChatAdd20Regular className="w-5 h-5 text-[#424242] mr-3" />
@@ -133,20 +135,21 @@ export default function LeftNav() {
         </div>
       </div>
 
-      {/* Chats */}
-      <div className="flex flex-col gap-1 px-3 flex-1">
-        <div className="px-3 py-2">
-          <span className="text-xs text-[#616161]">Chats</span>
-        </div>
+        {/* Chats */}
+        <div className="flex flex-col gap-1 px-3">
+          <div className="px-3 py-2">
+            <span className="text-xs text-[#616161]">Chats</span>
+          </div>
 
-        {/* Chat item */}
-        <div className="flex items-center h-9 pl-3 pr-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
-          <span className="text-sm text-[#242424] truncate">How to find relevant con...</span>
-        </div>
+          {/* Chat item */}
+          <div className="flex items-center h-9 pl-3 pr-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+            <span className="text-sm text-[#242424] truncate">How to find relevant con...</span>
+          </div>
 
-        {/* Chat item */}
-        <div className="flex items-center h-9 pl-3 pr-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
-          <span className="text-sm text-[#242424] truncate">How to find relevant con...</span>
+          {/* Chat item */}
+          <div className="flex items-center h-9 pl-3 pr-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+            <span className="text-sm text-[#242424] truncate">How to find relevant con...</span>
+          </div>
         </div>
       </div>
 
