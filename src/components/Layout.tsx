@@ -125,7 +125,6 @@ export default function Layout() {
                 data-name="title-plate"
                 className="absolute left-1/2 -translate-x-1/2 bottom-14 w-full max-w-[575px] rounded-2xl overflow-hidden"
                 style={{
-                  position: 'relative',
                   boxShadow: '0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1)'
                 }}
               >
