@@ -130,9 +130,9 @@ export default function Layout() {
                     Zava highlights, personalized for you
                   </p>
                 </div>
-                <button className="flex items-center gap-1 px-3 py-2 bg-[#515151] text-white rounded-lg hover:bg-[#404040] transition-colors shrink-0">
+                <button className="flex items-center justify-center gap-1 px-3 py-2 bg-[#515151] text-white rounded-lg hover:bg-[#404040] transition-colors shrink-0">
                   <Play16Filled className="w-4 h-4" />
-                  <span className="text-[13px] font-semibold">Play highlights</span>
+                  <span className="text-[13px] font-semibold leading-5">Play highlights</span>
                 </button>
               </div>
 
