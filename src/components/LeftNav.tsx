@@ -2,7 +2,7 @@ import {
   ChatAdd20Regular,
   Search20Regular,
   Library20Regular,
-  DrawerArrowDownload20Regular,
+  Designer20Regular,
   Rocket20Regular,
   PanelLeftText20Regular,
   MoreHorizontal20Regular,
@@ -45,7 +45,7 @@ export default function LeftNav() {
 
         {/* Create */}
         <div className="flex items-center h-9 px-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
-          <DrawerArrowDownload20Regular className="w-5 h-5 text-[#424242] mr-3" />
+          <Designer20Regular className="w-5 h-5 text-[#424242] mr-3" />
           <span className="text-sm text-[#242424]">Create</span>
         </div>
 
@@ -151,15 +151,17 @@ export default function LeftNav() {
       </div>
 
       {/* Footer */}
-      <div className="flex flex-col gap-1 px-3 pb-3">
+      <div className="flex flex-col px-3 pb-3">
         {/* Apps */}
-        <div className="flex items-center h-9 px-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
-          <Apps20Regular className="w-5 h-5 text-[#424242] mr-3" />
-          <span className="text-sm text-[#242424]">Apps</span>
+        <div className="flex flex-col gap-1 mb-3">
+          <div className="flex items-center h-9 px-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+            <Apps20Regular className="w-5 h-5 text-[#424242] mr-3" />
+            <span className="text-sm text-[#242424]">Apps</span>
+          </div>
         </div>
 
-        {/* User profile */}
-        <div className="flex items-center justify-between px-3 py-2">
+        {/* Bottom bar - User profile */}
+        <div className="flex items-center justify-between px-3 py-2 border-t border-[#e0e0e0] pt-3">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-gradient-to-br from-[#6264a7] to-[#4b4d99] rounded-full flex items-center justify-center text-white text-xs font-semibold">
               EF
