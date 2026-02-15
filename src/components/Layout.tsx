@@ -4,6 +4,11 @@ import {
   CheckBadgeIcon,
   Bars3Icon,
 } from '@heroicons/react/24/outline';
+import {
+  Share16Regular,
+  MoreHorizontal16Regular,
+  Play16Filled,
+} from '@fluentui/react-icons';
 import ChatInput from './ChatInput';
 import LeftNav from './LeftNav';
 import Header from './Header';
@@ -112,9 +117,48 @@ export default function Layout() {
             {/* Hero Container */}
             <div
               data-name="hero card"
-              className="w-full h-[200px] md:h-[280px] lg:h-[368px] bg-white border border-[#818181] rounded-xl md:rounded-2xl bg-cover bg-center bg-no-repeat"
+              className="relative w-full h-[200px] md:h-[280px] lg:h-[368px] bg-white border border-[#818181] rounded-xl md:rounded-2xl bg-cover bg-center bg-no-repeat overflow-hidden"
               style={{ backgroundImage: 'url(/src/assets/images/hero-card-background.png)' }}
-            />
+            >
+              {/* Title Plate */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2.5 px-5 py-4 w-full max-w-[575px]">
+                <div className="flex-1">
+                  <h2 className="text-white text-2xl font-semibold leading-8 mb-0" style={{ textShadow: '0px 0px 8px rgba(0,0,0,0.2), 0px 14px 28px rgba(0,0,0,0.24), 0px 0px 4px rgba(0,0,0,0.9)' }}>
+                    Carole, here's your daily update
+                  </h2>
+                  <p className="text-white text-xl leading-8" style={{ textShadow: '0px 0px 8px rgba(0,0,0,0.2), 0px 14px 28px rgba(0,0,0,0.24), 0px 0px 4px rgba(0,0,0,0.9)' }}>
+                    Zava highlights, personalized for you
+                  </p>
+                </div>
+                <button className="flex items-center gap-1 px-3 py-2 bg-[#515151] text-white rounded-lg hover:bg-[#404040] transition-colors shrink-0">
+                  <Play16Filled className="w-4 h-4" />
+                  <span className="text-[13px] font-semibold">Play highlights</span>
+                </button>
+              </div>
+
+              {/* Pagination Indicators */}
+              <div className="absolute left-1/2 -translate-x-1/2 bottom-7 flex items-center gap-[3px] w-[138px]">
+                {/* Progress bar 1 - partially filled */}
+                <div className="flex-1 h-1 bg-white/30 rounded-[2px] overflow-hidden relative">
+                  <div className="absolute left-0 top-0 h-full w-3/4 bg-gradient-to-r from-[#f2bd3e] to-[#f96c28]" />
+                </div>
+                {/* Progress bar 2-5 - empty */}
+                <div className="flex-1 h-1 bg-white/30 rounded-[2px]" />
+                <div className="flex-1 h-1 bg-white/30 rounded-[2px]" />
+                <div className="flex-1 h-1 bg-white/30 rounded-[2px]" />
+                <div className="flex-1 h-1 bg-white/30 rounded-[2px]" />
+              </div>
+
+              {/* Action Buttons */}
+              <div className="absolute top-5 right-5 flex items-center gap-1.5">
+                <button className="flex items-center justify-center w-7 h-7 bg-[#f5f5f5] border border-[#ebebeb] rounded-lg hover:bg-[#e6e6e6] transition-colors">
+                  <Share16Regular className="w-4 h-4 text-[#424242]" />
+                </button>
+                <button className="flex items-center justify-center w-7 h-7 bg-[#f5f5f5] border border-[#ebebeb] rounded-lg hover:bg-[#e6e6e6] transition-colors">
+                  <MoreHorizontal16Regular className="w-4 h-4 text-[#424242]" />
+                </button>
+              </div>
+            </div>
 
             {/* Widget Section 1 - Stack on mobile/tablet, side-by-side on lg+ */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-[18px]">
