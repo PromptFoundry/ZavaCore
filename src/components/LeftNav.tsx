@@ -23,31 +23,31 @@ export default function LeftNav() {
         {/* Navigation */}
         <div className="flex flex-col gap-1 px-3">
         {/* New chat */}
-        <div className="flex items-center h-9 px-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div className="flex items-center h-9 px-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
           <img src="/src/assets/icons/Chat icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
           <span className="text-sm text-[#242424]">New chat</span>
         </div>
 
         {/* Search */}
-        <div className="flex items-center h-9 px-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div className="flex items-center h-9 px-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
           <img src="/src/assets/icons/Search icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
           <span className="text-sm text-[#242424]">Search</span>
         </div>
 
         {/* Library */}
-        <div className="flex items-center h-9 px-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div className="flex items-center h-9 px-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
           <img src="/src/assets/icons/Library icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
           <span className="text-sm text-[#242424]">Library</span>
         </div>
 
         {/* Create */}
-        <div className="flex items-center h-9 px-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div className="flex items-center h-9 px-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
           <img src="/src/assets/icons/Create icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
           <span className="text-sm text-[#242424]">Create</span>
         </div>
 
         {/* Frontier */}
-        <div className="flex items-center h-9 px-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div className="flex items-center h-9 px-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
           <img src="/src/assets/icons/Frontier icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
           <span className="text-sm text-[#242424]">Frontier</span>
         </div>
@@ -69,37 +69,37 @@ export default function LeftNav() {
         </div>
 
         {/* Researcher */}
-        <div className="flex items-center h-9 pl-5 pr-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div className="flex items-center h-9 pl-5 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
           <img src="/src/assets/icons/Researcher icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
           <span className="text-sm text-[#242424]">Researcher</span>
         </div>
 
         {/* Agent */}
-        <div className="flex items-center h-9 pl-5 pr-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div className="flex items-center h-9 pl-5 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
           <img src="/src/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
           <span className="text-sm text-[#242424]">Agent</span>
         </div>
 
         {/* Agent */}
-        <div className="flex items-center h-9 pl-5 pr-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div className="flex items-center h-9 pl-5 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
           <img src="/src/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
           <span className="text-sm text-[#242424]">Agent</span>
         </div>
 
         {/* Agent */}
-        <div className="flex items-center h-9 pl-5 pr-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div className="flex items-center h-9 pl-5 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
           <img src="/src/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
           <span className="text-sm text-[#242424]">Agent</span>
         </div>
 
         {/* New agent */}
-        <div className="flex items-center h-9 pl-5 pr-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div className="flex items-center h-9 pl-5 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
           <img src="/src/assets/icons/Add new agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
           <span className="text-sm text-[#242424]">New agent</span>
         </div>
 
         {/* All agents */}
-        <div className="flex items-center h-9 pl-5 pr-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div className="flex items-center h-9 pl-5 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
           <MoreHorizontal20Regular className="w-5 h-5 text-[#424242] mr-[9px]" />
           <span className="text-sm text-[#242424]">All agents</span>
         </div>
@@ -112,7 +112,7 @@ export default function LeftNav() {
         </div>
 
         {/* All notebooks */}
-        <div className="flex items-center h-9 pl-5 pr-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div className="flex items-center h-9 pl-5 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
           <MoreHorizontal20Regular className="w-5 h-5 text-[#424242] mr-[9px]" />
           <span className="text-sm text-[#242424]">All notebooks</span>
         </div>
@@ -125,12 +125,12 @@ export default function LeftNav() {
           </div>
 
           {/* Chat item */}
-          <div className="flex items-center h-9 pl-3 pr-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+          <div className="flex items-center h-9 pl-3 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
             <span className="text-sm text-[#242424] truncate">How to find relevant con...</span>
           </div>
 
           {/* Chat item */}
-          <div className="flex items-center h-9 pl-3 pr-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+          <div className="flex items-center h-9 pl-3 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
             <span className="text-sm text-[#242424] truncate">How to find relevant con...</span>
           </div>
         </div>
@@ -139,7 +139,7 @@ export default function LeftNav() {
       {/* Footer */}
       <div className="flex flex-col gap-3 px-3 pb-3 shrink-0 border-t border-[#e0e0e0] pt-3">
         {/* Apps */}
-        <div className="flex items-center h-9 px-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div className="flex items-center h-9 px-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
           <Apps20Regular className="w-5 h-5 text-[#424242] mr-[9px]" />
           <span className="text-sm text-[#242424]">Apps</span>
         </div>
