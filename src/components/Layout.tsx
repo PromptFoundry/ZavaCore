@@ -6,6 +6,7 @@ import {
 } from '@heroicons/react/24/outline';
 import ChatInput from './ChatInput';
 import LeftNav from './LeftNav';
+import Header from './Header';
 
 export default function Layout() {
   return (
@@ -17,13 +18,7 @@ export default function Layout() {
 
       {/* Right side with Header and Content */}
       <div className="flex-1 flex flex-col h-screen">
-        {/* Header */}
-        <header className="h-[52px] bg-white border-b border-[#818181] shrink-0 px-4 lg:px-0 flex items-center z-10">
-          {/* Mobile menu button */}
-          <button className="lg:hidden p-2 hover:bg-gray-50 rounded-lg transition-colors">
-            <Bars3Icon className="w-6 h-6 text-[#424242]" />
-          </button>
-        </header>
+        <Header />
 
         {/* Main Content */}
         <main className="flex-1 overflow-auto py-8 md:py-16 lg:py-[126px] px-4 md:px-6 lg:px-8">
