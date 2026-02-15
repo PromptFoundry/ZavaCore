@@ -121,7 +121,17 @@ export default function Layout() {
               style={{ backgroundImage: 'url(/src/assets/images/hero-card-background.png)' }}
             >
               {/* Title Plate */}
-              <div data-name="title-plate" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2.5 px-5 py-4 w-full max-w-[575px]">
+              <div
+                data-name="title-plate"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2.5 px-5 py-4 w-full max-w-[575px] rounded-2xl"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
+                }}
+              >
                 <div className="flex-1">
                   <h2 className="text-white text-2xl font-semibold leading-8 mb-0" style={{ textShadow: '0px 0px 8px rgba(0,0,0,0.2), 0px 14px 28px rgba(0,0,0,0.24), 0px 0px 4px rgba(0,0,0,0.9)' }}>
                     Carole, here's your daily update
