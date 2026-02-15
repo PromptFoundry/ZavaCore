@@ -110,7 +110,7 @@ export default function Layout() {
             </div>
 
             {/* Hero Container */}
-            <div className="w-full h-[200px] md:h-[250px] lg:h-[302px] bg-white border border-[#818181] rounded-xl md:rounded-2xl" />
+            <div data-name="hero card" className="w-full h-[200px] md:h-[250px] lg:h-[302px] bg-white border border-[#818181] rounded-xl md:rounded-2xl" />
 
             {/* Widget Section 1 - Stack on mobile/tablet, side-by-side on lg+ */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-[18px]">
