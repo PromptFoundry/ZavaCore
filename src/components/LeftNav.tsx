@@ -154,7 +154,7 @@ export default function LeftNav() {
       </div>
 
       {/* Footer */}
-      <div className="flex flex-col gap-3 px-3 pb-3">
+      <div className="flex flex-col gap-3 px-3 pb-3 shrink-0 border-t border-[#e0e0e0] pt-3">
         {/* Apps */}
         <div className="flex items-center h-9 px-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
           <Apps20Regular className="w-5 h-5 text-[#424242] mr-3" />
