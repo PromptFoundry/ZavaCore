@@ -3,8 +3,11 @@ import {
   MoreHorizontal20Regular,
   Apps20Regular,
 } from '@fluentui/react-icons';
+import { useState } from 'react';
 
 export default function LeftNav() {
+  const [selectedItem, setSelectedItem] = useState('zavacore');
+
   return (
     <nav className="flex flex-col h-full bg-[#f5f5f5]">
       {/* Top bar */}
@@ -59,49 +62,130 @@ export default function LeftNav() {
           <span className="text-xs text-[#616161]">Agents</span>
         </div>
 
-        {/* ZavaCore - Selected */}
-        <div className="flex items-center gap-0">
-          <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
-          <div className="flex items-center flex-1 h-9 bg-[#fafafa] rounded-[12px] pl-4 pr-3 border border-[#F2F2F2]">
+        {/* ZavaCore */}
+        <div
+          className="flex items-center gap-0 cursor-pointer"
+          onClick={() => setSelectedItem('zavacore')}
+        >
+          {selectedItem === 'zavacore' && (
+            <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+          )}
+          <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+            selectedItem === 'zavacore'
+              ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+              : 'hover:bg-[#e6e6e6] pl-5'
+          } pr-3`}>
             <img src="/src/assets/icons/Data icon.svg" alt="ZavaCore" className="w-5 h-5 mr-[9px] shrink-0" />
             <span className="text-sm text-[#242424]">ZavaCore</span>
           </div>
         </div>
 
         {/* Researcher */}
-        <div className="flex items-center h-9 pl-5 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
-          <img src="/src/assets/icons/Researcher icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
-          <span className="text-sm text-[#242424]">Researcher</span>
+        <div
+          className="flex items-center gap-0 cursor-pointer"
+          onClick={() => setSelectedItem('researcher')}
+        >
+          {selectedItem === 'researcher' && (
+            <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+          )}
+          <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+            selectedItem === 'researcher'
+              ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+              : 'hover:bg-[#e6e6e6] pl-5'
+          } pr-3`}>
+            <img src="/src/assets/icons/Researcher icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
+            <span className="text-sm text-[#242424]">Researcher</span>
+          </div>
         </div>
 
-        {/* Agent */}
-        <div className="flex items-center h-9 pl-5 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
-          <img src="/src/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
-          <span className="text-sm text-[#242424]">Agent</span>
+        {/* Agent 1 */}
+        <div
+          className="flex items-center gap-0 cursor-pointer"
+          onClick={() => setSelectedItem('agent1')}
+        >
+          {selectedItem === 'agent1' && (
+            <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+          )}
+          <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+            selectedItem === 'agent1'
+              ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+              : 'hover:bg-[#e6e6e6] pl-5'
+          } pr-3`}>
+            <img src="/src/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
+            <span className="text-sm text-[#242424]">Agent</span>
+          </div>
         </div>
 
-        {/* Agent */}
-        <div className="flex items-center h-9 pl-5 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
-          <img src="/src/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
-          <span className="text-sm text-[#242424]">Agent</span>
+        {/* Agent 2 */}
+        <div
+          className="flex items-center gap-0 cursor-pointer"
+          onClick={() => setSelectedItem('agent2')}
+        >
+          {selectedItem === 'agent2' && (
+            <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+          )}
+          <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+            selectedItem === 'agent2'
+              ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+              : 'hover:bg-[#e6e6e6] pl-5'
+          } pr-3`}>
+            <img src="/src/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
+            <span className="text-sm text-[#242424]">Agent</span>
+          </div>
         </div>
 
-        {/* Agent */}
-        <div className="flex items-center h-9 pl-5 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
-          <img src="/src/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
-          <span className="text-sm text-[#242424]">Agent</span>
+        {/* Agent 3 */}
+        <div
+          className="flex items-center gap-0 cursor-pointer"
+          onClick={() => setSelectedItem('agent3')}
+        >
+          {selectedItem === 'agent3' && (
+            <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+          )}
+          <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+            selectedItem === 'agent3'
+              ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+              : 'hover:bg-[#e6e6e6] pl-5'
+          } pr-3`}>
+            <img src="/src/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
+            <span className="text-sm text-[#242424]">Agent</span>
+          </div>
         </div>
 
         {/* New agent */}
-        <div className="flex items-center h-9 pl-5 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
-          <img src="/src/assets/icons/Add new agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
-          <span className="text-sm text-[#242424]">New agent</span>
+        <div
+          className="flex items-center gap-0 cursor-pointer"
+          onClick={() => setSelectedItem('newagent')}
+        >
+          {selectedItem === 'newagent' && (
+            <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+          )}
+          <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+            selectedItem === 'newagent'
+              ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+              : 'hover:bg-[#e6e6e6] pl-5'
+          } pr-3`}>
+            <img src="/src/assets/icons/Add new agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
+            <span className="text-sm text-[#242424]">New agent</span>
+          </div>
         </div>
 
         {/* All agents */}
-        <div className="flex items-center h-9 pl-5 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
-          <MoreHorizontal20Regular className="w-5 h-5 text-[#424242] mr-[9px]" />
-          <span className="text-sm text-[#242424]">All agents</span>
+        <div
+          className="flex items-center gap-0 cursor-pointer"
+          onClick={() => setSelectedItem('allagents')}
+        >
+          {selectedItem === 'allagents' && (
+            <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+          )}
+          <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+            selectedItem === 'allagents'
+              ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+              : 'hover:bg-[#e6e6e6] pl-5'
+          } pr-3`}>
+            <MoreHorizontal20Regular className="w-5 h-5 text-[#424242] mr-[9px]" />
+            <span className="text-sm text-[#242424]">All agents</span>
+          </div>
         </div>
       </div>
 
