@@ -151,17 +151,15 @@ export default function LeftNav() {
       </div>
 
       {/* Footer */}
-      <div className="flex flex-col px-3 pb-3">
+      <div className="flex flex-col gap-3 px-3 pb-3">
         {/* Apps */}
-        <div className="flex flex-col gap-1 mb-3">
-          <div className="flex items-center h-9 px-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
-            <Apps20Regular className="w-5 h-5 text-[#424242] mr-3" />
-            <span className="text-sm text-[#242424]">Apps</span>
-          </div>
+        <div className="flex items-center h-9 px-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+          <Apps20Regular className="w-5 h-5 text-[#424242] mr-3" />
+          <span className="text-sm text-[#242424]">Apps</span>
         </div>
 
-        {/* Bottom bar - User profile */}
-        <div className="flex items-center justify-between px-3 py-2 border-t border-[#e0e0e0] pt-3">
+        {/* Bottom bar */}
+        <div className="flex items-center justify-between h-9 px-1">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-gradient-to-br from-[#6264a7] to-[#4b4d99] rounded-full flex items-center justify-center text-white text-xs font-semibold">
               EF
