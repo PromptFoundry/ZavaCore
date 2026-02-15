@@ -150,12 +150,18 @@ export default function Layout() {
               </div>
 
               {/* Action Buttons */}
-              <div className="absolute top-5 right-5 flex items-center gap-1.5 z-10">
-                <button className="flex items-center justify-center w-7 h-7 bg-[#f5f5f5] border border-[#ebebeb] rounded-lg hover:bg-[#e6e6e6] transition-colors outline-none">
-                  <Share16Regular />
+              <div className="absolute top-5 right-5 flex gap-1.5">
+                <button
+                  type="button"
+                  className="w-7 h-7 flex items-center justify-center bg-[#f5f5f5] border border-[#ebebeb] rounded-lg hover:bg-[#e6e6e6] transition-colors"
+                >
+                  <Share16Regular className="text-[#424242]" />
                 </button>
-                <button className="flex items-center justify-center w-7 h-7 bg-[#f5f5f5] border border-[#ebebeb] rounded-lg hover:bg-[#e6e6e6] transition-colors outline-none">
-                  <MoreHorizontal16Regular />
+                <button
+                  type="button"
+                  className="w-7 h-7 flex items-center justify-center bg-[#f5f5f5] border border-[#ebebeb] rounded-lg hover:bg-[#e6e6e6] transition-colors"
+                >
+                  <MoreHorizontal16Regular className="text-[#424242]" />
                 </button>
               </div>
             </div>
