@@ -50,9 +50,9 @@ export default function LeftNav() {
                 {selectedItem === 'newchat' && (
                   <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
                 )}
-                <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors outline-none ${
+                <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors outline-none border border-transparent ${
                   selectedItem === 'newchat'
-                    ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+                    ? 'bg-[#fafafa] !border-[#F2F2F2] pl-4'
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
                   <img
