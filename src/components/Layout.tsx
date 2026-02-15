@@ -123,7 +123,7 @@ export default function Layout() {
               {/* Title Plate */}
               <div
                 data-name="title-plate"
-                className="absolute left-1/2 -translate-x-1/2 bottom-16 w-full max-w-[575px] rounded-2xl overflow-hidden"
+                className="absolute left-1/2 -translate-x-1/2 bottom-14 w-full max-w-[575px] rounded-2xl overflow-hidden"
                 style={{
                   position: 'relative',
                   boxShadow: '0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1)'
@@ -173,7 +173,7 @@ export default function Layout() {
               </div>
 
               {/* Pagination Indicators */}
-              <div className="absolute left-1/2 -translate-x-1/2 bottom-7 flex items-center gap-[3px] w-[138px]">
+              <div data-name="pagination" className="absolute left-1/2 -translate-x-1/2 bottom-7 flex items-center gap-[3px] w-[138px]">
                 {/* Progress bar 1 - partially filled */}
                 <div className="flex-1 h-1 bg-white/30 rounded-[2px] overflow-hidden relative">
                   <div className="absolute left-0 top-0 h-full w-3/4 bg-gradient-to-r from-[#f2bd3e] to-[#f96c28]" />
