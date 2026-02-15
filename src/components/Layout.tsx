@@ -5,7 +5,7 @@ import {
   Bars3Icon,
 } from '@heroicons/react/24/outline';
 import {
-  Play16Filled,
+  Replay16Regular,
   Share16Regular,
   MoreHorizontal16Regular,
 } from '@fluentui/react-icons';
@@ -131,7 +131,7 @@ export default function Layout() {
                   </p>
                 </div>
                 <button className="flex items-center justify-center gap-1 px-3 py-2 bg-white text-black border border-[#D1D1D1] rounded-lg hover:bg-[#f5f5f5] transition-colors shrink-0">
-                  <Play16Filled className="w-4 h-4 text-black" />
+                  <Replay16Regular className="w-4 h-4 text-black" />
                   <span className="text-[13px] font-semibold leading-5">Play highlights</span>
                 </button>
               </div>
