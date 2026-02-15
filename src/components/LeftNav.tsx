@@ -11,7 +11,7 @@ export default function LeftNav() {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
-    <nav className={`flex flex-col h-full bg-[#f5f5f5] transition-all duration-300 ${isCollapsed ? 'w-[60px]' : 'w-[320px]'}`}>
+    <nav className={`flex flex-col h-full bg-[#f5f5f5] transition-all duration-300 relative z-20 ${isCollapsed ? 'w-[60px]' : 'w-[320px]'}`}>
       {isCollapsed ? (
         /* Collapsed state - only show toggle button */
         <div className="flex items-center justify-center px-3 py-3 shrink-0">
