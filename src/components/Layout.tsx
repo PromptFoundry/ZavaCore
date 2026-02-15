@@ -125,7 +125,11 @@ export default function Layout() {
                 data-name="title-plate"
                 className="absolute left-1/2 -translate-x-1/2 bottom-14 w-full max-w-[575px] flex items-center gap-2.5 px-5 py-4 rounded-2xl"
                 style={{
-                  background: 'rgba(0, 0, 0, 0)'
+                  background: 'rgba(255, 255, 255, 0.15)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.18)',
+                  boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)'
                 }}
               >
                 <div className="flex-1">
