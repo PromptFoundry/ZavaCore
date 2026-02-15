@@ -18,8 +18,23 @@ body {
 
 *:focus {
   outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
 }
 
 *:focus-visible {
   outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+*:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+button, div[role="button"], [onclick] {
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important;
+  user-select: none;
 }
