@@ -26,31 +26,66 @@ export default function LeftNav() {
         {/* Navigation */}
         <div className="flex flex-col gap-1 px-3">
         {/* New chat */}
-        <div className="flex items-center h-9 px-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div
+          className={`flex items-center h-9 px-3 rounded-[12px] transition-colors cursor-pointer ${
+            selectedItem === 'newchat'
+              ? 'bg-[#fafafa] border border-[#F2F2F2]'
+              : 'hover:bg-[#e6e6e6]'
+          }`}
+          onClick={() => setSelectedItem('newchat')}
+        >
           <img src="/src/assets/icons/Chat icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
           <span className="text-sm text-[#242424]">New chat</span>
         </div>
 
         {/* Search */}
-        <div className="flex items-center h-9 px-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div
+          className={`flex items-center h-9 px-3 rounded-[12px] transition-colors cursor-pointer ${
+            selectedItem === 'search'
+              ? 'bg-[#fafafa] border border-[#F2F2F2]'
+              : 'hover:bg-[#e6e6e6]'
+          }`}
+          onClick={() => setSelectedItem('search')}
+        >
           <img src="/src/assets/icons/Search icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
           <span className="text-sm text-[#242424]">Search</span>
         </div>
 
         {/* Library */}
-        <div className="flex items-center h-9 px-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div
+          className={`flex items-center h-9 px-3 rounded-[12px] transition-colors cursor-pointer ${
+            selectedItem === 'library'
+              ? 'bg-[#fafafa] border border-[#F2F2F2]'
+              : 'hover:bg-[#e6e6e6]'
+          }`}
+          onClick={() => setSelectedItem('library')}
+        >
           <img src="/src/assets/icons/Library icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
           <span className="text-sm text-[#242424]">Library</span>
         </div>
 
         {/* Create */}
-        <div className="flex items-center h-9 px-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div
+          className={`flex items-center h-9 px-3 rounded-[12px] transition-colors cursor-pointer ${
+            selectedItem === 'create'
+              ? 'bg-[#fafafa] border border-[#F2F2F2]'
+              : 'hover:bg-[#e6e6e6]'
+          }`}
+          onClick={() => setSelectedItem('create')}
+        >
           <img src="/src/assets/icons/Create icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
           <span className="text-sm text-[#242424]">Create</span>
         </div>
 
         {/* Frontier */}
-        <div className="flex items-center h-9 px-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div
+          className={`flex items-center h-9 px-3 rounded-[12px] transition-colors cursor-pointer ${
+            selectedItem === 'frontier'
+              ? 'bg-[#fafafa] border border-[#F2F2F2]'
+              : 'hover:bg-[#e6e6e6]'
+          }`}
+          onClick={() => setSelectedItem('frontier')}
+        >
           <img src="/src/assets/icons/Frontier icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
           <span className="text-sm text-[#242424]">Frontier</span>
         </div>
@@ -196,9 +231,21 @@ export default function LeftNav() {
         </div>
 
         {/* All notebooks */}
-        <div className="flex items-center h-9 pl-5 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
-          <MoreHorizontal20Regular className="w-5 h-5 text-[#424242] mr-[9px]" />
-          <span className="text-sm text-[#242424]">All notebooks</span>
+        <div
+          className="flex items-center gap-0 cursor-pointer"
+          onClick={() => setSelectedItem('allnotebooks')}
+        >
+          {selectedItem === 'allnotebooks' && (
+            <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+          )}
+          <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+            selectedItem === 'allnotebooks'
+              ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+              : 'hover:bg-[#e6e6e6] pl-5'
+          } pr-3`}>
+            <MoreHorizontal20Regular className="w-5 h-5 text-[#424242] mr-[9px]" />
+            <span className="text-sm text-[#242424]">All notebooks</span>
+          </div>
         </div>
       </div>
 
@@ -208,13 +255,27 @@ export default function LeftNav() {
             <span className="text-xs text-[#616161]">Chats</span>
           </div>
 
-          {/* Chat item */}
-          <div className="flex items-center h-9 pl-3 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+          {/* Chat item 1 */}
+          <div
+            className={`flex items-center h-9 pl-3 pr-3 rounded-[12px] transition-colors cursor-pointer ${
+              selectedItem === 'chat1'
+                ? 'bg-[#fafafa] border border-[#F2F2F2]'
+                : 'hover:bg-[#e6e6e6]'
+            }`}
+            onClick={() => setSelectedItem('chat1')}
+          >
             <span className="text-sm text-[#242424] truncate">How to find relevant con...</span>
           </div>
 
-          {/* Chat item */}
-          <div className="flex items-center h-9 pl-3 pr-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+          {/* Chat item 2 */}
+          <div
+            className={`flex items-center h-9 pl-3 pr-3 rounded-[12px] transition-colors cursor-pointer ${
+              selectedItem === 'chat2'
+                ? 'bg-[#fafafa] border border-[#F2F2F2]'
+                : 'hover:bg-[#e6e6e6]'
+            }`}
+            onClick={() => setSelectedItem('chat2')}
+          >
             <span className="text-sm text-[#242424] truncate">How to find relevant con...</span>
           </div>
         </div>
@@ -223,7 +284,14 @@ export default function LeftNav() {
       {/* Footer */}
       <div className="flex flex-col gap-3 px-3 pb-3 shrink-0 border-t border-[#e0e0e0] pt-3">
         {/* Apps */}
-        <div className="flex items-center h-9 px-3 rounded-[12px] hover:bg-[#e6e6e6] transition-colors cursor-pointer">
+        <div
+          className={`flex items-center h-9 px-3 rounded-[12px] transition-colors cursor-pointer ${
+            selectedItem === 'apps'
+              ? 'bg-[#fafafa] border border-[#F2F2F2]'
+              : 'hover:bg-[#e6e6e6]'
+          }`}
+          onClick={() => setSelectedItem('apps')}
+        >
           <Apps20Regular className="w-5 h-5 text-[#424242] mr-[9px]" />
           <span className="text-sm text-[#242424]">Apps</span>
         </div>
