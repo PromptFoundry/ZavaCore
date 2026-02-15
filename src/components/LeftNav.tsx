@@ -65,13 +65,15 @@ export default function LeftNav() {
         </div>
 
         {/* ZavaCore - Selected */}
-        <div className="relative flex items-center h-9 rounded-3xl overflow-hidden bg-white shadow-sm">
+        <div className="relative flex items-center h-9 rounded-[20px] overflow-hidden bg-[#fafafa]">
           <div className="absolute left-0 w-[3px] h-full bg-[#0078d4]" />
-          <div className="flex items-center w-full pl-[19px] pr-3">
-            <div className="w-5 h-5 bg-gradient-to-br from-[#00b7c3] to-[#00a3b5] rounded-sm flex items-center justify-center text-white text-[10px] font-bold mr-[9px]">
-              Z
+          <div className="flex items-center w-full pl-4 pr-3">
+            <div className="w-8 h-8 bg-gradient-to-br from-[#5dd9e5] to-[#4dc7d3] rounded-[8px] flex items-center justify-center mr-3 shrink-0">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 6L14 6L4 14L14 14" stroke="#1a5f6a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </div>
-            <span className="text-sm font-semibold text-[#242424]">ZavaCore</span>
+            <span className="text-sm text-[#242424]">ZavaCore</span>
           </div>
         </div>
 
