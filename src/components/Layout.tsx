@@ -123,39 +123,11 @@ export default function Layout() {
               {/* Title Plate */}
               <div
                 data-name="title-plate"
-                className="absolute left-1/2 -translate-x-1/2 bottom-14 w-full max-w-[575px] rounded-2xl overflow-hidden"
+                className="absolute left-1/2 -translate-x-1/2 bottom-14 w-full max-w-[575px] flex items-center gap-2.5 px-5 py-4 rounded-2xl"
                 style={{
-                  boxShadow: '0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1)'
+                  background: 'rgba(0, 0, 0, 0)'
                 }}
               >
-                {/* Glass Effect Layer */}
-                <div
-                  className="absolute inset-0 z-0"
-                  style={{
-                    backdropFilter: 'blur(3px)',
-                    WebkitBackdropFilter: 'blur(3px)',
-                    isolation: 'isolate'
-                  }}
-                />
-
-                {/* Tint Layer */}
-                <div
-                  className="absolute inset-0 z-[1]"
-                  style={{
-                    background: 'rgba(255, 255, 255, 0.25)'
-                  }}
-                />
-
-                {/* Shine Layer */}
-                <div
-                  className="absolute inset-0 z-[2]"
-                  style={{
-                    boxShadow: 'inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5), inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5)'
-                  }}
-                />
-
-                {/* Content */}
-                <div className="relative z-[3] flex items-center gap-2.5 px-5 py-4">
                 <div className="flex-1">
                   <h2 className="text-white text-2xl font-semibold leading-8 mb-0" style={{ textShadow: '0px 0px 8px rgba(0,0,0,0.2), 0px 14px 28px rgba(0,0,0,0.24), 0px 0px 4px rgba(0,0,0,0.9)' }}>
                     Carole, here's your daily update
@@ -168,7 +140,6 @@ export default function Layout() {
                   <Replay16Regular className="w-4 h-4 text-black" />
                   <span className="text-[13px] font-semibold leading-5">Play highlights</span>
                 </button>
-                </div>
               </div>
 
               {/* Pagination Indicators */}
