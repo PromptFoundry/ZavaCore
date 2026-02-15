@@ -376,7 +376,9 @@ export default function LeftNav() {
             {/* Bottom bar */}
             <div className="flex items-center justify-between h-9 px-1">
               <div className="flex items-center gap-2">
-                <img src="/src/assets/icons/avatar.svg" alt="User avatar" className="w-8 h-8 rounded-full" />
+                <div className="relative w-8 h-8 shrink-0">
+                  <img src="/src/assets/icons/avatar.svg" alt="User avatar" className="w-full h-full object-contain" />
+                </div>
                 <span className="text-sm text-[#424242]">Erika Fuller</span>
               </div>
               <button className="p-1 hover:bg-[#e6e6e6] rounded transition-colors">
