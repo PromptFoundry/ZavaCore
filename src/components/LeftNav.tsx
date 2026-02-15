@@ -62,7 +62,7 @@ export default function LeftNav() {
         {/* ZavaCore - Selected */}
         <div className="flex items-center gap-0">
           <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
-          <div className="flex items-center flex-1 h-9 bg-[#fafafa] rounded-[20px] pl-4 pr-3">
+          <div className="flex items-center flex-1 h-9 bg-[#fafafa] rounded-[20px] pl-4 pr-3 border border-[#F2F2F2]">
             <img src="/src/assets/icons/Data icon.svg" alt="ZavaCore" className="w-5 h-5 mr-[9px] shrink-0" />
             <span className="text-sm text-[#242424]">ZavaCore</span>
           </div>
