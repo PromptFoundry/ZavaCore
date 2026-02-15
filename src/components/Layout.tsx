@@ -11,7 +11,7 @@ export default function Layout() {
   return (
     <div className="min-h-screen bg-[#fcfcfc] flex">
       {/* Left Navigation - Hidden on mobile, visible on lg+ */}
-      <aside className="hidden lg:block w-[320px] xl:w-[320px] min-h-screen shrink-0">
+      <aside className="hidden lg:block w-[320px] xl:w-[320px] h-screen shrink-0">
         <LeftNav />
       </aside>
 
