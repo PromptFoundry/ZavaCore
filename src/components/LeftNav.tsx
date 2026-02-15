@@ -376,9 +376,7 @@ export default function LeftNav() {
             {/* Bottom bar */}
             <div className="flex items-center justify-between h-9 px-1">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-[#6264a7] to-[#4b4d99] rounded-full flex items-center justify-center text-white text-xs font-semibold">
-                  EF
-                </div>
+                <img src="/src/assets/icons/avatar.svg" alt="User avatar" className="w-8 h-8 rounded-full" />
                 <span className="text-sm text-[#424242]">Erika Fuller</span>
               </div>
               <button className="p-1 hover:bg-[#e6e6e6] rounded transition-colors">
