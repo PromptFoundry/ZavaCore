@@ -5,8 +5,6 @@ import {
   Bars3Icon,
 } from '@heroicons/react/24/outline';
 import {
-  Share16Regular,
-  MoreHorizontal16Regular,
   Play16Filled,
 } from '@fluentui/react-icons';
 import ChatInput from './ChatInput';
@@ -147,22 +145,6 @@ export default function Layout() {
                 <div className="flex-1 h-1 bg-white/30 rounded-[2px]" />
                 <div className="flex-1 h-1 bg-white/30 rounded-[2px]" />
                 <div className="flex-1 h-1 bg-white/30 rounded-[2px]" />
-              </div>
-
-              {/* Action Buttons */}
-              <div className="absolute top-5 right-5 flex gap-1.5">
-                <button
-                  type="button"
-                  className="w-7 h-7 flex items-center justify-center bg-[#f5f5f5] border border-[#ebebeb] rounded-lg hover:bg-[#e6e6e6] transition-colors"
-                >
-                  <Share16Regular className="text-[#424242]" />
-                </button>
-                <button
-                  type="button"
-                  className="w-7 h-7 flex items-center justify-center bg-[#f5f5f5] border border-[#ebebeb] rounded-lg hover:bg-[#e6e6e6] transition-colors"
-                >
-                  <MoreHorizontal16Regular className="text-[#424242]" />
-                </button>
               </div>
             </div>
 
