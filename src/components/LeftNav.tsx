@@ -44,7 +44,7 @@ export default function LeftNav() {
             <div className="flex flex-col gap-1 px-3">
               {/* New chat */}
               <div
-                className="flex items-center gap-0 cursor-pointer"
+                className="flex items-center gap-0 cursor-pointer focus:outline-none"
                 onClick={() => setSelectedItem('newchat')}
               >
                 {selectedItem === 'newchat' && (
@@ -66,7 +66,7 @@ export default function LeftNav() {
 
               {/* Search */}
               <div
-                className="flex items-center gap-0 cursor-pointer"
+                className="flex items-center gap-0 cursor-pointer focus:outline-none"
                 onClick={() => setSelectedItem('search')}
               >
                 {selectedItem === 'search' && (
@@ -88,7 +88,7 @@ export default function LeftNav() {
 
               {/* Library */}
               <div
-                className="flex items-center gap-0 cursor-pointer"
+                className="flex items-center gap-0 cursor-pointer focus:outline-none"
                 onClick={() => setSelectedItem('library')}
               >
                 {selectedItem === 'library' && (
@@ -110,7 +110,7 @@ export default function LeftNav() {
 
               {/* Create */}
               <div
-                className="flex items-center gap-0 cursor-pointer"
+                className="flex items-center gap-0 cursor-pointer focus:outline-none"
                 onClick={() => setSelectedItem('create')}
               >
                 {selectedItem === 'create' && (
@@ -132,7 +132,7 @@ export default function LeftNav() {
 
               {/* Frontier */}
               <div
-                className="flex items-center gap-0 cursor-pointer"
+                className="flex items-center gap-0 cursor-pointer focus:outline-none"
                 onClick={() => setSelectedItem('frontier')}
               >
                 {selectedItem === 'frontier' && (
@@ -161,7 +161,7 @@ export default function LeftNav() {
 
               {/* ZavaCore */}
               <div
-                className="flex items-center gap-0 cursor-pointer"
+                className="flex items-center gap-0 cursor-pointer focus:outline-none"
                 onClick={() => setSelectedItem('zavacore')}
               >
                 {selectedItem === 'zavacore' && (
@@ -179,7 +179,7 @@ export default function LeftNav() {
 
               {/* Researcher */}
               <div
-                className="flex items-center gap-0 cursor-pointer"
+                className="flex items-center gap-0 cursor-pointer focus:outline-none"
                 onClick={() => setSelectedItem('researcher')}
               >
                 {selectedItem === 'researcher' && (
@@ -197,7 +197,7 @@ export default function LeftNav() {
 
               {/* Agent 1 */}
               <div
-                className="flex items-center gap-0 cursor-pointer"
+                className="flex items-center gap-0 cursor-pointer focus:outline-none"
                 onClick={() => setSelectedItem('agent1')}
               >
                 {selectedItem === 'agent1' && (
@@ -215,7 +215,7 @@ export default function LeftNav() {
 
               {/* Agent 2 */}
               <div
-                className="flex items-center gap-0 cursor-pointer"
+                className="flex items-center gap-0 cursor-pointer focus:outline-none"
                 onClick={() => setSelectedItem('agent2')}
               >
                 {selectedItem === 'agent2' && (
@@ -233,7 +233,7 @@ export default function LeftNav() {
 
               {/* Agent 3 */}
               <div
-                className="flex items-center gap-0 cursor-pointer"
+                className="flex items-center gap-0 cursor-pointer focus:outline-none"
                 onClick={() => setSelectedItem('agent3')}
               >
                 {selectedItem === 'agent3' && (
@@ -251,7 +251,7 @@ export default function LeftNav() {
 
               {/* New agent */}
               <div
-                className="flex items-center gap-0 cursor-pointer"
+                className="flex items-center gap-0 cursor-pointer focus:outline-none"
                 onClick={() => setSelectedItem('newagent')}
               >
                 {selectedItem === 'newagent' && (
@@ -269,7 +269,7 @@ export default function LeftNav() {
 
               {/* All agents */}
               <div
-                className="flex items-center gap-0 cursor-pointer"
+                className="flex items-center gap-0 cursor-pointer focus:outline-none"
                 onClick={() => setSelectedItem('allagents')}
               >
                 {selectedItem === 'allagents' && (
@@ -294,7 +294,7 @@ export default function LeftNav() {
 
               {/* All notebooks */}
               <div
-                className="flex items-center gap-0 cursor-pointer"
+                className="flex items-center gap-0 cursor-pointer focus:outline-none"
                 onClick={() => setSelectedItem('allnotebooks')}
               >
                 {selectedItem === 'allnotebooks' && (
@@ -319,7 +319,7 @@ export default function LeftNav() {
 
               {/* Chat item 1 */}
               <div
-                className="flex items-center gap-0 cursor-pointer"
+                className="flex items-center gap-0 cursor-pointer focus:outline-none"
                 onClick={() => setSelectedItem('chat1')}
               >
                 {selectedItem === 'chat1' && (
@@ -336,7 +336,7 @@ export default function LeftNav() {
 
               {/* Chat item 2 */}
               <div
-                className="flex items-center gap-0 cursor-pointer"
+                className="flex items-center gap-0 cursor-pointer focus:outline-none"
                 onClick={() => setSelectedItem('chat2')}
               >
                 {selectedItem === 'chat2' && (
@@ -357,7 +357,7 @@ export default function LeftNav() {
           <div className="flex flex-col gap-3 px-3 pb-3 shrink-0 border-t border-[#e0e0e0] pt-3">
             {/* Apps */}
             <div
-              className="flex items-center gap-0 cursor-pointer"
+              className="flex items-center gap-0 cursor-pointer focus:outline-none"
               onClick={() => setSelectedItem('apps')}
             >
               {selectedItem === 'apps' && (
