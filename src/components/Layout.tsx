@@ -16,9 +16,9 @@ export default function Layout() {
       </aside>
 
       {/* Right side with Header and Content */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col h-screen">
         {/* Header */}
-        <header className="h-[52px] bg-white border-b border-[#818181] shrink-0 px-4 lg:px-0 flex items-center">
+        <header className="h-[52px] bg-white border-b border-[#818181] shrink-0 px-4 lg:px-0 flex items-center z-10">
           {/* Mobile menu button */}
           <button className="lg:hidden p-2 hover:bg-gray-50 rounded-lg transition-colors">
             <Bars3Icon className="w-6 h-6 text-[#424242]" />
