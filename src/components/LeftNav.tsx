@@ -2,7 +2,7 @@ import {
   ChatAdd20Regular,
   Search20Regular,
   Library20Regular,
-  Designer20Regular,
+  PenSparkle20Regular,
   Rocket20Regular,
   PanelLeftText20Regular,
   MoreHorizontal20Regular,
@@ -45,7 +45,7 @@ export default function LeftNav() {
 
         {/* Create */}
         <div className="flex items-center h-9 px-3 rounded-3xl hover:bg-[#e6e6e6] transition-colors cursor-pointer">
-          <Designer20Regular className="w-5 h-5 text-[#424242] mr-3" />
+          <PenSparkle20Regular className="w-5 h-5 text-[#424242] mr-3" />
           <span className="text-sm text-[#242424]">Create</span>
         </div>
 
