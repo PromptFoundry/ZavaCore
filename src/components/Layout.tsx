@@ -112,7 +112,7 @@ export default function Layout() {
             {/* Hero Container */}
             <div
               data-name="hero card"
-              className="w-full h-[200px] md:h-[250px] lg:h-[302px] bg-white border border-[#818181] rounded-xl md:rounded-2xl bg-cover bg-center bg-no-repeat"
+              className="w-full h-[200px] md:h-[280px] lg:h-[368px] bg-white border border-[#818181] rounded-xl md:rounded-2xl bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: 'url(/src/assets/images/hero-card-background.png)' }}
             />
 
