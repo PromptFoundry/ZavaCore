@@ -28,12 +28,12 @@ export default function Header() {
           {/* New Chat Split Button */}
           <div className="flex items-center h-8 rounded">
             {/* Primary action */}
-            <button className="flex items-center justify-center h-8 px-1.5 bg-[#0f6cbd] rounded-l border-r border-white hover:bg-[#115ea3] transition-colors">
+            <button className="flex items-center justify-center h-8 px-1.5 bg-[#464FEB] rounded-l border-r border-white hover:bg-[#3d42c7] transition-colors">
               <img src="/src/assets/icons/Compose.svg" alt="New chat" className="w-5 h-5" />
             </button>
 
             {/* Secondary action (dropdown) */}
-            <button className="flex items-center justify-center h-8 w-6 bg-[#0f6cbd] rounded-r hover:bg-[#115ea3] transition-colors">
+            <button className="flex items-center justify-center h-8 w-6 bg-[#464FEB] rounded-r hover:bg-[#3d42c7] transition-colors">
               <ChevronDown20Regular className="w-3 h-3 text-white" />
             </button>
           </div>
