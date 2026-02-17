@@ -303,7 +303,7 @@ export default function ComponentGallery() {
                     }
                   ]}
                   selectedItemId="home"
-                  user={{ avatar: '/avatar.jpg', name: 'John Doe' }}
+                  user={{ avatar: '/src/assets/icons/avatar.svg', name: 'John Doe' }}
                 />
               </div>
               <pre className="mt-4 bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
