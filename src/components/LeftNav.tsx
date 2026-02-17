@@ -4,17 +4,42 @@ import {
   MoreHorizontal20Regular,
   Apps20Regular,
 } from '@fluentui/react-icons';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 
-export default function LeftNav() {
+interface LeftNavProps {
+  onMobileItemClick?: () => void;
+  onMobileClose?: () => void;
+}
+
+export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavProps) {
   const [selectedItem, setSelectedItem] = useState('zavacore');
   const [isCollapsed, setIsCollapsed] = useState(false);
 
+  const handleItemClick = (itemId: string) => {
+    setSelectedItem(itemId);
+    // Close mobile nav when item is clicked
+    if (onMobileItemClick) {
+      onMobileItemClick();
+    }
+  };
+
   return (
     <nav className={`flex flex-col h-full bg-[#f5f5f5] transition-all duration-300 relative z-20 ${isCollapsed ? 'w-[60px]' : 'w-[320px]'} [&_*]:!outline-none`}>
+      {/* Close button for mobile - positioned absolutely */}
+      {onMobileClose && (
+        <button
+          className="lg:hidden absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded hover:bg-[#e6e6e6] transition-colors z-10"
+          onClick={onMobileClose}
+          aria-label="Close menu"
+        >
+          <XMarkIcon className="w-6 h-6 text-[#424242]" />
+        </button>
+      )}
+
       {isCollapsed ? (
-        /* Collapsed state - only show toggle button */
-        <div className="flex items-center justify-center px-3 py-3 shrink-0">
+        /* Collapsed state - only show toggle button (hidden on mobile) */
+        <div className="hidden lg:flex items-center justify-center px-3 py-3 shrink-0">
           <button
             className="p-1.5 hover:bg-[#e6e6e6] rounded transition-colors"
             onClick={() => setIsCollapsed(false)}
@@ -30,8 +55,9 @@ export default function LeftNav() {
               <img src="/src/assets/icons/Copilot.svg" alt="Copilot" className="w-5 h-5 shrink-0" />
               <span className="text-sm font-semibold text-[#242424]">M365 Copilot</span>
             </div>
+            {/* Collapse button - hidden on mobile */}
             <button
-              className="p-1.5 hover:bg-[#e6e6e6] rounded transition-colors"
+              className="hidden lg:block p-1.5 hover:bg-[#e6e6e6] rounded transition-colors"
               onClick={() => setIsCollapsed(true)}
             >
               <PanelLeftText20Regular className="w-5 h-5 text-[#424242]" />
@@ -45,7 +71,7 @@ export default function LeftNav() {
               {/* New chat */}
               <div
                 className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => setSelectedItem('newchat')}
+                onClick={() => handleItemClick('newchat')}
               >
                 {selectedItem === 'newchat' && (
                   <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
@@ -67,7 +93,7 @@ export default function LeftNav() {
               {/* Search */}
               <div
                 className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => setSelectedItem('search')}
+                onClick={() => handleItemClick('search')}
               >
                 {selectedItem === 'search' && (
                   <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
@@ -89,7 +115,7 @@ export default function LeftNav() {
               {/* Library */}
               <div
                 className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => setSelectedItem('library')}
+                onClick={() => handleItemClick('library')}
               >
                 {selectedItem === 'library' && (
                   <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
@@ -111,7 +137,7 @@ export default function LeftNav() {
               {/* Create */}
               <div
                 className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => setSelectedItem('create')}
+                onClick={() => handleItemClick('create')}
               >
                 {selectedItem === 'create' && (
                   <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
@@ -133,7 +159,7 @@ export default function LeftNav() {
               {/* Frontier */}
               <div
                 className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => setSelectedItem('frontier')}
+                onClick={() => handleItemClick('frontier')}
               >
                 {selectedItem === 'frontier' && (
                   <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
@@ -162,7 +188,7 @@ export default function LeftNav() {
               {/* ZavaCore */}
               <div
                 className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => setSelectedItem('zavacore')}
+                onClick={() => handleItemClick('zavacore')}
               >
                 {selectedItem === 'zavacore' && (
                   <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
@@ -172,7 +198,7 @@ export default function LeftNav() {
                     ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
-                  <img src="/src/assets/icons/Data icon.svg" alt="ZavaCore" className="w-5 h-5 mr-[9px] shrink-0" />
+                  <img src="/src/assets/images/ZavaCore_logo.svg" alt="ZavaCore" className="w-5 h-5 mr-[9px] shrink-0" />
                   <span className="text-sm text-[#242424]">ZavaCore</span>
                 </div>
               </div>
@@ -180,7 +206,7 @@ export default function LeftNav() {
               {/* Researcher */}
               <div
                 className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => setSelectedItem('researcher')}
+                onClick={() => handleItemClick('researcher')}
               >
                 {selectedItem === 'researcher' && (
                   <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
@@ -198,7 +224,7 @@ export default function LeftNav() {
               {/* Agent 1 */}
               <div
                 className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => setSelectedItem('agent1')}
+                onClick={() => handleItemClick('agent1')}
               >
                 {selectedItem === 'agent1' && (
                   <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
@@ -216,7 +242,7 @@ export default function LeftNav() {
               {/* Agent 2 */}
               <div
                 className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => setSelectedItem('agent2')}
+                onClick={() => handleItemClick('agent2')}
               >
                 {selectedItem === 'agent2' && (
                   <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
@@ -234,7 +260,7 @@ export default function LeftNav() {
               {/* Agent 3 */}
               <div
                 className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => setSelectedItem('agent3')}
+                onClick={() => handleItemClick('agent3')}
               >
                 {selectedItem === 'agent3' && (
                   <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
@@ -252,7 +278,7 @@ export default function LeftNav() {
               {/* New agent */}
               <div
                 className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => setSelectedItem('newagent')}
+                onClick={() => handleItemClick('newagent')}
               >
                 {selectedItem === 'newagent' && (
                   <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
@@ -270,7 +296,7 @@ export default function LeftNav() {
               {/* All agents */}
               <div
                 className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => setSelectedItem('allagents')}
+                onClick={() => handleItemClick('allagents')}
               >
                 {selectedItem === 'allagents' && (
                   <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
@@ -295,7 +321,7 @@ export default function LeftNav() {
               {/* All notebooks */}
               <div
                 className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => setSelectedItem('allnotebooks')}
+                onClick={() => handleItemClick('allnotebooks')}
               >
                 {selectedItem === 'allnotebooks' && (
                   <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
@@ -320,7 +346,7 @@ export default function LeftNav() {
               {/* Chat item 1 */}
               <div
                 className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => setSelectedItem('chat1')}
+                onClick={() => handleItemClick('chat1')}
               >
                 {selectedItem === 'chat1' && (
                   <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
@@ -337,7 +363,7 @@ export default function LeftNav() {
               {/* Chat item 2 */}
               <div
                 className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => setSelectedItem('chat2')}
+                onClick={() => handleItemClick('chat2')}
               >
                 {selectedItem === 'chat2' && (
                   <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />

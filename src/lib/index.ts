@@ -1,0 +1,43 @@
+// Main library export - Import everything from one place
+
+// Primitives - Low-level building blocks
+export {
+  AppShell,
+  Navigation,
+  AppHeader,
+  AppRail,
+  SharePointHeader,
+  CatalystPanel,
+} from './primitives';
+
+export type {
+  AppShellProps,
+  NavigationProps,
+  NavItem,
+  NavSection,
+  AppHeaderProps,
+  HeaderAction,
+  BreadcrumbItem,
+  AppRailProps,
+  AppRailItem,
+  SharePointHeaderProps,
+  SharePointHeaderAction,
+  CatalystPanelProps,
+  PromptStarter,
+  WidgetCard,
+} from './primitives';
+
+// Shells - Pre-configured compositions
+export {
+  StandardShell,
+  MinimalShell,
+  CatalystShell,
+} from './shells';
+
+export type {
+  StandardShellProps,
+  StandardShellConfig,
+  MinimalShellProps,
+  MinimalShellConfig,
+  CatalystShellProps,
+} from './shells';

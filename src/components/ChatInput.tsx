@@ -5,8 +5,29 @@ import {
   Mic20Regular,
   DeviceEq20Regular,
 } from '@fluentui/react-icons';
+import { useState, KeyboardEvent } from 'react';
 
-export default function ChatInput() {
+interface ChatInputProps {
+  onSubmit?: (message: string) => void;
+}
+
+export default function ChatInput({ onSubmit }: ChatInputProps) {
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = () => {
+    if (message.trim() && onSubmit) {
+      onSubmit(message.trim());
+      setMessage('');
+    }
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit();
+    }
+  };
+
   return (
     <div className="chat-input flex flex-col gap-0 items-center rounded-[32px] w-full h-full">
       {/* Container with gradient border */}
@@ -19,6 +40,9 @@ export default function ChatInput() {
               placeholder="Ask me anything"
               className="w-full font-['Segoe_UI',sans-serif] text-base leading-6 text-[#707070] resize-none outline-none border-none bg-transparent"
               rows={1}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={handleKeyDown}
             />
           </div>
 
