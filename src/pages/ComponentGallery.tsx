@@ -118,7 +118,7 @@ export default function ComponentGallery() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     activeTab === tab.id
-                      ? 'bg-purple-600 text-white'
+                      ? 'bg-[#464FEB] text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -141,7 +141,7 @@ export default function ComponentGallery() {
                   onClick={() => setSelectedShell('standard')}
                   className={`px-4 py-2 rounded ${
                     selectedShell === 'standard'
-                      ? 'bg-purple-600 text-white'
+                      ? 'bg-[#464FEB] text-white'
                       : 'bg-gray-200'
                   }`}
                 >
@@ -151,7 +151,7 @@ export default function ComponentGallery() {
                   onClick={() => setSelectedShell('minimal')}
                   className={`px-4 py-2 rounded ${
                     selectedShell === 'minimal'
-                      ? 'bg-purple-600 text-white'
+                      ? 'bg-[#464FEB] text-white'
                       : 'bg-gray-200'
                   }`}
                 >
@@ -161,7 +161,7 @@ export default function ComponentGallery() {
                   onClick={() => setSelectedShell('sharepoint')}
                   className={`px-4 py-2 rounded ${
                     selectedShell === 'sharepoint'
-                      ? 'bg-purple-600 text-white'
+                      ? 'bg-[#464FEB] text-white'
                       : 'bg-gray-200'
                   }`}
                 >
@@ -171,7 +171,7 @@ export default function ComponentGallery() {
                   onClick={() => setSelectedShell('zavacore')}
                   className={`px-4 py-2 rounded ${
                     selectedShell === 'zavacore'
-                      ? 'bg-purple-600 text-white'
+                      ? 'bg-[#464FEB] text-white'
                       : 'bg-gray-200'
                   }`}
                 >
