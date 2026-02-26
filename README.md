@@ -1,67 +1,103 @@
-# Component Library
+# ZavaCore Component Library
 
-A modern React component library built with TypeScript, Tailwind CSS, and Fluent UI icons.
+A React component library and application template built with TypeScript, Tailwind CSS, and Fluent UI icons.
 
-## 🚀 Getting Started
+**Live site:** https://promptfoundry.github.io/ZavaCore/
 
-### Installation
+---
+
+## Pages
+
+| Route | Description |
+|---|---|
+| `/` | ZavaCore Agent — full app with nav, header, chat, and widgets |
+| `/sharepoint` | SharePoint-style intranet demo |
+| `/gallery` | Component gallery with live previews |
+
+---
+
+## Getting Started
 
 ```bash
 npm install
-```
-
-### Development
-
-```bash
 npm run dev
 ```
 
-Visit `http://localhost:5173` to see the main app, and `/gallery` to explore all components.
-
-### Build
+Local dev runs at `http://localhost:5173/`.
 
 ```bash
-npm run build
+npm run build   # production build
 ```
 
-## 📁 Project Structure
+---
+
+## Project Structure
 
 ```
 src/
-├── lib/                      # Core reusable library
-│   ├── shells/              # Complete layout compositions
-│   │   ├── StandardShell/   # Full-featured shell with nav + header
-│   │   ├── MinimalShell/    # Simple shell with header only
-│   │   └── CatalystShell/   # Modern shell with SharePoint header + AppRail + Catalyst panel
-│   └── primitives/          # Low-level building blocks
-│       ├── AppShell.tsx     # Base shell layout
-│       ├── AppHeader.tsx    # Application header with actions
-│       ├── AppRail/         # Vertical icon navigation
-│       ├── Navigation/      # Sidebar navigation
-│       ├── SharePointHeader/ # SharePoint-style header
-│       └── CatalystPanel/   # AI assistant panel
-├── components/              # UI components
-│   ├── WidgetContainer.tsx  # Reusable widget wrapper
-│   ├── EngageWidget.tsx     # Engagement widget
-│   ├── LearningWidget.tsx   # Learning widget
-│   ├── BenefitsWidget.tsx   # Benefits widget
-│   ├── EntityCard.tsx       # Entity display card
-│   ├── QuickActions.tsx     # Quick actions component
-│   ├── PromptStarter.tsx    # AI prompt starter
-│   ├── AnimatedLoader.tsx   # Loading animation
-│   └── ChatInput.tsx        # Chat input component
+├── lib/                          # Reusable component library
+│   ├── shells/                   # Full-page layout templates
+│   │   ├── ZavaCore_Start/       # Full ZavaCore app template
+│   │   ├── StandardShell/        # Nav + header shell
+│   │   ├── MinimalShell/         # Header-only shell
+│   │   └── SharePointShell/      # SharePoint-style shell
+│   └── primitives/               # Low-level building blocks
+│       ├── AppShell.tsx          # Base layout (nav + header + content)
+│       ├── AppHeader.tsx         # Header with breadcrumbs and actions
+│       ├── AppRail/              # Vertical icon navigation bar
+│       ├── Navigation.tsx        # Sidebar navigation with sections
+│       ├── SharePointHeader/     # SharePoint-style header with search
+│       └── CatalystPanel/        # AI assistant side panel
+├── components/                   # App-specific components
+│   ├── Layout.tsx                # Root ZavaCore app layout
+│   ├── Header.tsx                # ZavaCore app header
+│   ├── LeftNav.tsx               # ZavaCore left navigation
+│   ├── ChatInput.tsx             # Chat input with tools/sources
+│   ├── SiteHeader.tsx            # SharePoint-style site header
+│   ├── HeroSection.tsx           # Hero carousel section
+│   ├── CarouselSection.tsx       # Carousel component
+│   ├── EngageSection.tsx         # Engage / community section
+│   ├── NewsSection.tsx           # News cards section
+│   ├── EventsSection.tsx         # Events section
+│   ├── QuickLinksSection.tsx     # Quick links grid
+│   ├── EngageWidget.tsx          # Engagement widget
+│   ├── LearningWidget.tsx        # Learning courses widget
+│   ├── BenefitsWidget.tsx        # Employee benefits widget
+│   ├── WidgetContainer.tsx       # Reusable widget wrapper
+│   ├── EntityCard.tsx            # File/document entity card
+│   ├── CoworkerCard.tsx          # Coworker activity card
+│   ├── ActivityCard.tsx          # Work activity card
+│   ├── QuickActions.tsx          # Quick actions bar
+│   ├── PromptStarter.tsx         # AI prompt suggestion card
+│   ├── AnimatedLoader.tsx        # Copilot loading animation
+│   ├── LoadingDots.tsx           # Animated loading dots
+│   └── RightPanel.tsx            # Slide-in right panel
 └── pages/
-    └── ComponentGallery.tsx # Component showcase
+    ├── ComponentGallery.tsx      # Live component gallery
+    └── SharePointDemo.tsx        # SharePoint intranet demo
 ```
 
-## 🎨 Component Library Architecture
+---
 
-### Shells (Complete Layouts)
+## Shells
 
-Pre-configured compositions that combine multiple primitives into full-page layouts.
+Pre-configured layout templates — drop in and go.
 
-#### StandardShell
-Full-featured shell with navigation sidebar and header.
+### ZavaCore_Start
+
+The full ZavaCore application: left nav, header, hero card, agent chat interface, and all widgets.
+
+```tsx
+import { ZavaCore_Start } from './lib';
+
+export default function App() {
+  return <ZavaCore_Start />;
+}
+```
+
+### StandardShell
+
+Full layout with collapsible sidebar navigation and header.
 
 ```tsx
 import { StandardShell } from './lib';
@@ -69,17 +105,18 @@ import { StandardShell } from './lib';
 <StandardShell
   config={{
     branding: { logo: '/logo.svg', name: 'My App' },
-    navigation: [{ items: [...] }],
-    headerActions: [...],
-    user: { avatar: '/avatar.jpg', name: 'John Doe' }
+    navigation: [{ items: [{ id: 'home', label: 'Home', icon: <HomeIcon /> }] }],
+    headerActions: [{ id: 'new', label: 'New', variant: 'primary' }],
+    user: { avatar: '/avatar.jpg', name: 'Jane Doe' },
   }}
 >
   <YourContent />
 </StandardShell>
 ```
 
-#### MinimalShell
-Simple shell with header only - perfect for landing pages.
+### MinimalShell
+
+Header-only shell, ideal for landing pages or simple apps.
 
 ```tsx
 import { MinimalShell } from './lib';
@@ -87,156 +124,99 @@ import { MinimalShell } from './lib';
 <MinimalShell
   config={{
     branding: { logo: '/logo.svg', name: 'My App' },
-    headerActions: [...]
+    headerActions: [{ id: 'login', label: 'Log In', variant: 'ghost' }],
   }}
 >
   <YourContent />
 </MinimalShell>
 ```
 
-#### CatalystShell
-Modern shell combining SharePointHeader, AppRail, and CatalystPanel.
+### SharePointShell
+
+SharePoint-style layout with full-width header, AppRail, and optional Catalyst AI panel.
 
 ```tsx
-import { CatalystShell } from './lib';
+import { SharePointShell } from './lib';
 
-<CatalystShell
-  header={{
-    logo: '/logo.svg',
-    siteName: 'SharePoint',
-    actions: [...]
-  }}
-  appRail={{
-    items: [...]
-  }}
+<SharePointShell
+  header={{ logo: '/logo.svg', siteName: 'SharePoint', actions: [...] }}
+  appRail={{ items: [...], defaultSelectedId: 'home' }}
 >
   <YourContent />
-</CatalystShell>
+</SharePointShell>
 ```
 
-### Primitives (Building Blocks)
+---
 
-Low-level reusable components that can be composed together.
+## Primitives
 
-#### AppShell
-Base shell layout with header, optional navigation, and right panel support.
+Low-level building blocks to compose custom layouts.
 
-#### AppHeader
-Application header with breadcrumbs, actions, and mobile toggle.
+| Component | Description |
+|---|---|
+| `AppShell` | Base layout: wraps nav, header, content, right panel |
+| `AppHeader` | Header with logo, breadcrumbs, and action buttons |
+| `AppRail` | Vertical icon nav bar (VS Code-style activity bar) |
+| `Navigation` | Sidebar nav with sections, badges, and user profile |
+| `SharePointHeader` | SharePoint header with grid icon, search, and actions |
+| `CatalystPanel` | AI assistant side panel with chat and prompt starters |
 
-#### AppRail
-Vertical icon-based navigation bar (like VS Code activity bar).
+---
 
-#### Navigation
-Sidebar navigation with sections, items, and user profile.
+## Widgets
 
-#### SharePointHeader
-SharePoint-style header with grid menu, logo, search, and actions.
-
-#### CatalystPanel
-AI assistant panel with chat interface and prompt starters.
-
-## 🎯 Widgets
+| Component | Description |
+|---|---|
+| `WidgetContainer` | Card wrapper with header, body, and footer action slots |
+| `EngageWidget` | Community posts and engagement feed |
+| `LearningWidget` | Learning courses and training progress |
+| `BenefitsWidget` | Employee benefits information |
 
 ### WidgetContainer
-Extensible container for creating custom widgets with header, body, and footer sections.
 
 ```tsx
+import WidgetContainer from './components/WidgetContainer';
+
 <WidgetContainer
-  title="Widget Title"
+  title="My Widget"
   headerActions={<SettingsIcon />}
-  footerActions={[
-    { id: 'action1', label: 'Button', icon: <Icon /> }
-  ]}
+  footerActions={[{ id: 'view', label: 'View All' }]}
 >
-  <YourContent />
+  <div>Your content</div>
 </WidgetContainer>
 ```
 
-### Pre-built Widgets
-- **EngageWidget** - Community engagement and activity
-- **LearningWidget** - Learning courses and training
-- **BenefitsWidget** - Employee benefits information
+---
 
-## 🔧 Technology Stack
+## Design Tokens
 
-- **React 19** - UI framework
-- **TypeScript** - Type safety
-- **Vite** - Build tool
-- **Tailwind CSS** - Utility-first CSS
-- **Fluent UI Icons** - Microsoft icon library
-- **Heroicons** - Additional icons
-- **React Router** - Routing
+| Token | Value |
+|---|---|
+| Primary | `#464FEB` |
+| Text | `#242424` |
+| Secondary text | `#616161` |
+| Border | `#e0e0e0` |
+| Background | `#f5f5f5` |
+| Card shadow | `0px 8px 16px rgba(0,0,0,0.14), 0px 0px 2px rgba(0,0,0,0.12)` |
+| Card radius | `24px` |
+| Input radius | `28px` |
+| Font | Segoe UI |
 
-## 📦 Usage Examples
+---
 
-### Using Primitives Directly
+## Tech Stack
 
-```tsx
-import { AppShell, AppHeader, Navigation } from './lib/primitives';
+- **React 19** + **TypeScript**
+- **Vite** — build tool
+- **Tailwind CSS** — styling
+- **Fluent UI Icons** — Microsoft icon set
+- **Heroicons** — supplemental icons
+- **React Router v6** — routing
 
-<AppShell
-  header={<AppHeader logo="/logo.svg" actions={[...]} />}
-  nav={<Navigation sections={[...]} />}
->
-  <MainContent />
-</AppShell>
-```
+---
 
-### Creating Custom Widgets
+## Deployment
 
-```tsx
-import { WidgetContainer } from './components/WidgetContainer';
+Deployed automatically to GitHub Pages on every push to `main` via GitHub Actions.
 
-<WidgetContainer
-  title="Custom Widget"
-  footerActions={[
-    { id: '1', label: 'Action', onClick: () => {} }
-  ]}
->
-  <div>Your custom content</div>
-</WidgetContainer>
-```
-
-## 🎨 Design System
-
-### Colors
-- Primary: `#464FEB` (Fluent Blue)
-- Text: `#242424` (Dark Gray)
-- Secondary Text: `#616161` (Medium Gray)
-- Border: `#e0e0e0` (Light Gray)
-- Background: `#f5f5f5` (Off White)
-
-### Typography
-- Font Family: Segoe UI
-- Header: 16px, 600 weight
-- Body: 14px, 400 weight
-- Small: 12px, 400 weight
-
-### Spacing
-- Border Radius: 24px (cards), 28px (inputs)
-- Padding: 20px (cards), 16px (content)
-- Gap: 8px (elements), 16px (sections)
-
-## 📝 Component Gallery
-
-Visit `/gallery` in the running app to see all components with live examples and code snippets.
-
-## 🤝 Building New Flows
-
-### Key Principles
-1. **Use existing primitives first** - Don't recreate what exists
-2. **Compose shells** - Start with StandardShell, MinimalShell, or CatalystShell
-3. **Build on WidgetContainer** - Use for new card-based components
-4. **Follow design system** - Maintain consistency in colors, spacing, typography
-
-### Recommended Workflow
-1. Browse `/gallery` to see available components
-2. Choose a shell that fits your layout needs
-3. Compose primitives and widgets together
-4. Create custom components only when necessary
-5. Add new components to the gallery for others to use
-
-## 📄 License
-
-Internal use only.
+The workflow: builds with Vite → copies `dist/index.html` to `dist/404.html` (fixes SPA deep-link 404s) → deploys to Pages.
