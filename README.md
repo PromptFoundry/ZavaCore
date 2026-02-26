@@ -31,6 +31,96 @@ npm run build   # production build
 
 ---
 
+## Using ZavaCore_Start in another project
+
+The `ZavaCore_Start` template depends on specific packages, assets, styles, and config. Follow all steps or the UI will be broken.
+
+### 1. Install required dependencies
+
+```bash
+npm install @fluentui/react-icons @heroicons/react react-router-dom
+npm install -D tailwindcss @tailwindcss/postcss postcss autoprefixer
+```
+
+### 2. Copy assets
+
+All icons and images are referenced from `/assets/` and must be in your `public/` folder.
+
+```bash
+git clone https://github.com/PromptFoundry/ZavaCore.git /tmp/ZavaCore
+cp -r /tmp/ZavaCore/public/assets public/assets
+```
+
+### 3. Configure Tailwind
+
+`tailwind.config.js`:
+```js
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: { extend: {} },
+  plugins: [],
+}
+```
+
+`postcss.config.js`:
+```js
+export default {
+  plugins: {
+    '@tailwindcss/postcss': {},
+    autoprefixer: {},
+  },
+}
+```
+
+### 4. Add global styles
+
+In your `src/index.css`:
+```css
+@import "tailwindcss";
+
+:root {
+  font-family: system-ui, 'Segoe UI', Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+* { -webkit-tap-highlight-color: transparent; }
+*:focus { outline: none !important; box-shadow: none !important; }
+button { outline: none !important; user-select: none; }
+```
+
+Make sure `index.css` is imported in `main.tsx`:
+```tsx
+import './index.css'
+```
+
+### 5. Add the template
+
+`src/App.tsx`:
+```tsx
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ZavaCore_Start } from './lib';
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ZavaCore_Start />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+```
+
+---
+
 ## Project Structure
 
 ```
