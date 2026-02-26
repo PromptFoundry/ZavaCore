@@ -3,9 +3,11 @@ import {
   PanelLeft20Regular,
   MoreHorizontal20Regular,
   Apps20Regular,
+  Globe20Regular,
 } from '@fluentui/react-icons';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface LeftNavProps {
   onMobileItemClick?: () => void;
@@ -15,6 +17,7 @@ interface LeftNavProps {
 export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavProps) {
   const [selectedItem, setSelectedItem] = useState('zavacore');
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const navigate = useNavigate();
 
   const handleItemClick = (itemId: string) => {
     setSelectedItem(itemId);
@@ -333,6 +336,34 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                 } pr-3`}>
                   <MoreHorizontal20Regular className="w-5 h-5 text-[#424242] mr-[9px]" />
                   <span className="text-sm text-[#242424]">All notebooks</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div className="flex flex-col gap-1 px-3">
+              <div className="pl-5 py-2">
+                <span className="text-xs text-[#616161]">Quick Links</span>
+              </div>
+
+              {/* SharePoint */}
+              <div
+                className="flex items-center gap-0 cursor-pointer focus:outline-none"
+                onClick={() => {
+                  handleItemClick('sharepoint');
+                  navigate('/sharepoint');
+                }}
+              >
+                {selectedItem === 'sharepoint' && (
+                  <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+                )}
+                <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+                  selectedItem === 'sharepoint'
+                    ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+                    : 'hover:bg-[#e6e6e6] pl-5'
+                } pr-3`}>
+                  <Globe20Regular className="w-5 h-5 text-[#424242] mr-[9px] shrink-0" />
+                  <span className="text-sm text-[#242424]">SharePoint</span>
                 </div>
               </div>
             </div>
