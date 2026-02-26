@@ -1,6 +1,6 @@
 import {
-  LockClosed16Regular,
-  Sparkle20Filled,
+  ShieldLock16Regular,
+  Open20Regular,
   MoreHorizontal20Regular,
 } from '@fluentui/react-icons';
 
@@ -52,12 +52,12 @@ export default function EntityCard({
 
         {/* Text */}
         <div className="flex flex-col flex-1 min-w-0">
-          {/* Title + lock */}
+          {/* Title + ShieldLock */}
           <div className="flex gap-0.5 items-center w-full">
             <p className="font-['Segoe_UI',sans-serif] font-semibold text-base leading-[22px] text-[#242424] truncate">
               {title}
             </p>
-            <LockClosed16Regular className="w-4 h-4 text-[#424242] shrink-0" />
+            <ShieldLock16Regular className="w-4 h-4 text-[#616161] shrink-0" />
           </div>
 
           {/* Metadata */}
@@ -73,13 +73,13 @@ export default function EntityCard({
 
         {/* Quick actions */}
         <div className="flex gap-1 items-center shrink-0">
-          {/* Sparkle / primary action — bordered */}
+          {/* Open — bordered button */}
           <button
-            className="w-8 h-8 flex items-center justify-center rounded-[4px] border border-[#d1d1d1] hover:bg-[#f5f5f5] transition-colors"
+            className="w-8 h-8 flex items-center justify-center rounded-[4px] border border-[#d1d1d1] bg-white hover:bg-[#f5f5f5] transition-colors"
             onClick={onPrimaryAction}
-            aria-label="AI action"
+            aria-label="Open"
           >
-            <Sparkle20Filled className="w-5 h-5" style={{ color: '#464FEB' }} />
+            <Open20Regular className="w-5 h-5 text-[#424242]" />
           </button>
 
           {/* More options — no border */}
