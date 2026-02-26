@@ -3,7 +3,6 @@ import {
   PanelLeft20Regular,
   MoreHorizontal20Regular,
   Apps20Regular,
-  Globe20Regular,
 } from '@fluentui/react-icons';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
@@ -362,7 +361,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                     ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
-                  <Globe20Regular className="w-5 h-5 text-[#424242] mr-[9px] shrink-0" />
+                  <img src="/assets/icons/SharePoint.svg" alt="SharePoint" className="w-5 h-5 mr-[9px] shrink-0" />
                   <span className="text-sm text-[#242424]">SharePoint</span>
                 </div>
               </div>
