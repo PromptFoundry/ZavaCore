@@ -1,8 +1,8 @@
 const coworkers = [
-  { firstName: 'Serena', lastName: 'Davis', image: '/src/assets/images/Coworker-1.png' },
-  { firstName: 'Dalaya', lastName: 'Buxton', image: '/src/assets/images/Coworker-2.png' },
-  { firstName: 'Noih', lastName: 'Atkins', image: '/src/assets/images/Coworker-3.png' },
-  { firstName: 'Kevin', lastName: 'Powers', image: '/src/assets/images/Coworker-4.png' },
+  { firstName: 'Serena', lastName: 'Davis', image: '/assets/images/Coworker-1.png' },
+  { firstName: 'Dalaya', lastName: 'Buxton', image: '/assets/images/Coworker-2.png' },
+  { firstName: 'Noih', lastName: 'Atkins', image: '/assets/images/Coworker-3.png' },
+  { firstName: 'Kevin', lastName: 'Powers', image: '/assets/images/Coworker-4.png' },
 ];
 
 export default function CoworkerCard() {

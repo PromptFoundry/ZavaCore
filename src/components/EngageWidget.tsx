@@ -32,7 +32,7 @@ export default function EngageWidget() {
           {/* Avatar */}
           <div className="w-14 h-14 shrink-0 rounded-[16px] overflow-hidden">
             <img
-              src="/src/assets/images/Avatar.svg"
+              src="/assets/images/Avatar.svg"
               alt="Q&A avatar"
               className="w-full h-full object-cover"
             />
@@ -68,7 +68,7 @@ export default function EngageWidget() {
           {/* Avatar Pie */}
           <div className="w-14 h-14 shrink-0 rounded-[16px] overflow-hidden">
             <img
-              src="/src/assets/images/Avatar pie.png"
+              src="/assets/images/Avatar pie.png"
               alt="Leadership updates avatars"
               className="w-full h-full object-cover"
               key="avatar-pie-updated"

@@ -4,7 +4,7 @@ export default function HeroSection() {
       {/* Background image */}
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
         <img
-          src="/src/assets/images/HeroGradientImage.png"
+          src="/assets/images/HeroGradientImage.png"
           alt=""
           style={{
             position: 'absolute',

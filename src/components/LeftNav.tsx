@@ -52,7 +52,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
           {/* Top bar */}
           <div className="flex items-center justify-between px-3 py-3 shrink-0">
             <div className="flex items-center gap-2">
-              <img src="/src/assets/icons/Copilot.svg" alt="Copilot" className="w-5 h-5 shrink-0" />
+              <img src="/assets/icons/Copilot.svg" alt="Copilot" className="w-5 h-5 shrink-0" />
               <span className="text-sm font-semibold text-[#242424]">M365 Copilot</span>
             </div>
             {/* Collapse button - hidden on mobile */}
@@ -82,7 +82,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
                   <img
-                    src={selectedItem === 'newchat' ? "/src/assets/icons/Chat icon color.svg" : "/src/assets/icons/Chat icon.svg"}
+                    src={selectedItem === 'newchat' ? "/assets/icons/Chat icon color.svg" : "/assets/icons/Chat icon.svg"}
                     alt=""
                     className="w-5 h-5 mr-[9px]"
                   />
@@ -104,7 +104,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
                   <img
-                    src={selectedItem === 'search' ? "/src/assets/icons/Search icon color.svg" : "/src/assets/icons/Search icon.svg"}
+                    src={selectedItem === 'search' ? "/assets/icons/Search icon color.svg" : "/assets/icons/Search icon.svg"}
                     alt=""
                     className="w-5 h-5 mr-[9px]"
                   />
@@ -126,7 +126,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
                   <img
-                    src={selectedItem === 'library' ? "/src/assets/icons/Library icon color.svg" : "/src/assets/icons/Library icon.svg"}
+                    src={selectedItem === 'library' ? "/assets/icons/Library icon color.svg" : "/assets/icons/Library icon.svg"}
                     alt=""
                     className="w-5 h-5 mr-[9px]"
                   />
@@ -148,7 +148,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
                   <img
-                    src={selectedItem === 'create' ? "/src/assets/icons/Create icon color.svg" : "/src/assets/icons/Create icon.svg"}
+                    src={selectedItem === 'create' ? "/assets/icons/Create icon color.svg" : "/assets/icons/Create icon.svg"}
                     alt=""
                     className="w-5 h-5 mr-[9px]"
                   />
@@ -170,7 +170,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
                   <img
-                    src={selectedItem === 'frontier' ? "/src/assets/icons/Frontier icon color.svg" : "/src/assets/icons/Frontier icon.svg"}
+                    src={selectedItem === 'frontier' ? "/assets/icons/Frontier icon color.svg" : "/assets/icons/Frontier icon.svg"}
                     alt=""
                     className="w-5 h-5 mr-[9px]"
                   />
@@ -198,7 +198,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                     ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
-                  <img src="/src/assets/images/ZavaCore_logo.svg" alt="ZavaCore" className="w-5 h-5 mr-[9px] shrink-0" />
+                  <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore" className="w-5 h-5 mr-[9px] shrink-0" />
                   <span className="text-sm text-[#242424]">ZavaCore</span>
                 </div>
               </div>
@@ -216,7 +216,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                     ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
-                  <img src="/src/assets/icons/Researcher icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
+                  <img src="/assets/icons/Researcher icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
                   <span className="text-sm text-[#242424]">Researcher</span>
                 </div>
               </div>
@@ -234,7 +234,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                     ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
-                  <img src="/src/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
+                  <img src="/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
                   <span className="text-sm text-[#242424]">Agent</span>
                 </div>
               </div>
@@ -252,7 +252,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                     ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
-                  <img src="/src/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
+                  <img src="/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
                   <span className="text-sm text-[#242424]">Agent</span>
                 </div>
               </div>
@@ -270,7 +270,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                     ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
-                  <img src="/src/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
+                  <img src="/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
                   <span className="text-sm text-[#242424]">Agent</span>
                 </div>
               </div>
@@ -288,7 +288,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                     ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
-                  <img src="/src/assets/icons/Add new agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
+                  <img src="/assets/icons/Add new agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
                   <span className="text-sm text-[#242424]">New agent</span>
                 </div>
               </div>
@@ -403,7 +403,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
             <div className="flex items-center justify-between h-9 px-1">
               <div className="flex items-center gap-2">
                 <div className="relative w-8 h-8 shrink-0">
-                  <img src="/src/assets/icons/avatar.svg" alt="User avatar" className="w-full h-full object-contain" />
+                  <img src="/assets/icons/avatar.svg" alt="User avatar" className="w-full h-full object-contain" />
                 </div>
                 <span className="text-sm text-[#424242]">Erika Fuller</span>
               </div>

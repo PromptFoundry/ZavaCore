@@ -1,16 +1,16 @@
 const activities = [
   {
-    icon: '/src/assets/images/activity icon - comment.svg',
+    icon: '/assets/images/activity icon - comment.svg',
     count: '12 comments',
     description: 'in Manufacturin...',
   },
   {
-    icon: '/src/assets/images/activity icon - mention.svg',
+    icon: '/assets/images/activity icon - mention.svg',
     count: '3 mentions',
     description: 'across several files',
   },
   {
-    icon: '/src/assets/images/activity icon - task.svg',
+    icon: '/assets/images/activity icon - task.svg',
     count: '8 tasks',
     description: 'action items',
   },

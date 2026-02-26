@@ -2,14 +2,14 @@ import { Settings20Regular } from '@fluentui/react-icons';
 
 const courses = [
   {
-    image: '/src/assets/images/Learning image.png',
+    image: '/assets/images/Learning image.png',
     title: 'Safe manufacturing: Ensuring your safety and the safety of others',
     dueDate: 'Due: 7/23/2026',
     info: 'Course | 30 mins',
     isDue: true,
   },
   {
-    image: '/src/assets/images/Learning image-1.png',
+    image: '/assets/images/Learning image-1.png',
     title: 'Innovating smart materials for tomorrow',
     trending: true,
     info: 'Course | 30 mins',

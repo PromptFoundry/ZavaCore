@@ -25,7 +25,7 @@ export default function SiteHeader({ isPanelOpen = false }: SiteHeaderProps) {
         <div style={{ display: 'flex', flex: 1, gap: '20px', alignItems: 'center' }}>
           {/* Logo */}
           <img
-            src="/src/assets/icons/ZavaLogo_SiteHeader.svg"
+            src="/assets/icons/ZavaLogo_SiteHeader.svg"
             alt="Zava"
             style={{
               width: '48px',
@@ -55,15 +55,15 @@ export default function SiteHeader({ isPanelOpen = false }: SiteHeaderProps) {
               {!isPanelOpen && (
                 <>
                   <div style={{ display: 'flex', gap: '4px', alignItems: 'center', fontSize: '14px', color: 'white', cursor: 'pointer' }}>
-                    <img src="/src/assets/icons/Star.svg" alt="" style={{ width: '14px', height: '14px' }} />
+                    <img src="/assets/icons/Star.svg" alt="" style={{ width: '14px', height: '14px' }} />
                     <span>Not following</span>
                   </div>
                   <div style={{ display: 'flex', gap: '4px', alignItems: 'center', fontSize: '14px', color: 'white', cursor: 'pointer' }}>
-                    <img src="/src/assets/icons/Share.svg" alt="" style={{ width: '14px', height: '14px' }} />
+                    <img src="/assets/icons/Share.svg" alt="" style={{ width: '14px', height: '14px' }} />
                     <span>Share</span>
                   </div>
                   <div style={{ display: 'flex', gap: '4px', alignItems: 'center', fontSize: '14px', color: 'white', cursor: 'pointer' }}>
-                    <img src="/src/assets/icons/Person.svg" alt="" style={{ width: '16px', height: '16px' }} />
+                    <img src="/assets/icons/Person.svg" alt="" style={{ width: '16px', height: '16px' }} />
                     <span>27 members</span>
                   </div>
                 </>

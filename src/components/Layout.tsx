@@ -28,7 +28,7 @@ import PromptStarter from './PromptStarter';
 const slides = [
   {
     id: 1,
-    background: 'url(/src/assets/images/hero-card-background.png)',
+    background: 'url(/assets/images/hero-card-background.png)',
     title: "Carole, here's your daily update",
     subtitle: "Zava highlights, personalized for you"
   },
@@ -173,7 +173,7 @@ export default function Layout() {
         <main
           className="flex-1 overflow-auto py-8 md:py-16 lg:py-[126px] px-4 md:px-6 lg:px-8 relative bg-white"
           style={!hasConversation ? {
-            backgroundImage: 'url("/src/assets/images/Zava agent background - blue.png")',
+            backgroundImage: 'url("/assets/images/Zava agent background - blue.png")',
             backgroundPosition: 'top center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: '100% auto'
@@ -191,7 +191,7 @@ export default function Layout() {
                       {/* Agent Icon */}
                       <div className="w-10 h-10 md:w-12 md:h-12 bg-white border border-[#f0f0f0] rounded-xl md:rounded-2xl flex items-center justify-center">
                         <img
-                          src="/src/assets/images/ZavaCore_logo.svg"
+                          src="/assets/images/ZavaCore_logo.svg"
                           alt="ZavaCore"
                           className="w-5 h-5 md:w-6 md:h-6"
                         />
@@ -239,7 +239,7 @@ export default function Layout() {
                             <div className="flex items-center gap-2">
                               <div className="w-6 h-6">
                                 <img
-                                  src="/src/assets/images/ZavaCore_logo.svg"
+                                  src="/assets/images/ZavaCore_logo.svg"
                                   alt="Copilot"
                                   className="w-full h-full"
                                 />
@@ -264,7 +264,7 @@ export default function Layout() {
                         <div className="flex items-center gap-2">
                           <div className="w-6 h-6">
                             <img
-                              src="/src/assets/images/ZavaCore_logo.svg"
+                              src="/assets/images/ZavaCore_logo.svg"
                               alt="Copilot"
                               className="w-full h-full"
                             />

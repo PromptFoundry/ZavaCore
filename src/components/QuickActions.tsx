@@ -1,31 +1,31 @@
 const actions = [
   {
-    icon: '/src/assets/images/Icon-0.svg',
+    icon: '/assets/images/Icon-0.svg',
     title: 'Order lunch',
     subtitle: 'Cafe',
   },
   {
-    icon: '/src/assets/images/Icon-1.svg',
+    icon: '/assets/images/Icon-1.svg',
     title: 'Submit time off',
     subtitle: 'HR',
   },
   {
-    icon: '/src/assets/images/Icon-2.svg',
+    icon: '/assets/images/Icon-2.svg',
     title: 'Ask a question',
     subtitle: 'Help desk',
   },
   {
-    icon: '/src/assets/images/Icon-3.svg',
+    icon: '/assets/images/Icon-3.svg',
     title: 'Book a shuttle',
     subtitle: 'Transportation',
   },
   {
-    icon: '/src/assets/images/Icon-4.svg',
+    icon: '/assets/images/Icon-4.svg',
     title: 'Paystub',
     subtitle: 'ADP',
   },
   {
-    icon: '/src/assets/images/Icon-5.svg',
+    icon: '/assets/images/Icon-5.svg',
     title: 'Clock in',
     subtitle: 'Time management',
   },

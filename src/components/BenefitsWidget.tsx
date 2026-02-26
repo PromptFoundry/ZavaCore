@@ -2,22 +2,22 @@ import { Settings20Regular } from '@fluentui/react-icons';
 
 const benefits = [
   {
-    icon: '/src/assets/icons/Benefits Icon - Clipboard Text Edit.svg',
+    icon: '/assets/icons/Benefits Icon - Clipboard Text Edit.svg',
     title: 'Update to Benefits form',
     subtitle: 'Opened 7/23/2026',
   },
   {
-    icon: '/src/assets/icons/Benefits Icon -  Search Sparkle.svg',
+    icon: '/assets/icons/Benefits Icon -  Search Sparkle.svg',
     title: 'Update to Perks+ claim',
     subtitle: '7/21/2026',
   },
   {
-    icon: '/src/assets/icons/Benefits Icon - Calendar.svg',
+    icon: '/assets/icons/Benefits Icon - Calendar.svg',
     title: 'Enrollment deadline approaching',
     subtitle: 'Deadline 9/01/2026',
   },
   {
-    icon: '/src/assets/icons/Benefits Icon - Pin.svg',
+    icon: '/assets/icons/Benefits Icon - Pin.svg',
     title: 'Updated to dental plan for all employees',
     subtitle: '7/23/2026',
   },

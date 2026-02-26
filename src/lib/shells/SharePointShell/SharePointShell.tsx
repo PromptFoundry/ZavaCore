@@ -138,7 +138,7 @@ export default function SharePointShell({
         aria-label={isPanelOpen ? 'Close Catalyst Panel' : 'Open Catalyst Panel'}
       >
         <img
-          src="/src/assets/icons/Copilot.svg"
+          src="/assets/icons/Copilot.svg"
           alt="Copilot"
           style={{ width: '32px', height: '32px' }}
         />

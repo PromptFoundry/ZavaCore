@@ -25,7 +25,7 @@ export default function ComponentGallery() {
 
   // Sample configs
   const standardConfig = {
-    branding: { logo: '/src/assets/images/ZavaCore_logo.svg', name: 'StandardShell' },
+    branding: { logo: '/assets/images/ZavaCore_logo.svg', name: 'StandardShell' },
     navigation: [
       {
         items: [
@@ -43,7 +43,7 @@ export default function ComponentGallery() {
   };
 
   const minimalConfig = {
-    branding: { logo: '/src/assets/images/ZavaCore_logo.svg', name: 'MinimalShell' },
+    branding: { logo: '/assets/images/ZavaCore_logo.svg', name: 'MinimalShell' },
     headerActions: [
       { id: 'login', label: 'Log In', variant: 'ghost' as const },
       { id: 'signup', label: 'Sign Up', variant: 'primary' as const }
@@ -52,42 +52,42 @@ export default function ComponentGallery() {
 
   const sharePointConfig = {
     header: {
-      gridIcon: <img src="/src/assets/icons/Grid Dots.svg" alt="Grid" style={{ width: '24px', height: '24px' }} />,
-      logo: '/src/assets/images/Zava-Full.svg',
+      gridIcon: <img src="/assets/icons/Grid Dots.svg" alt="Grid" style={{ width: '24px', height: '24px' }} />,
+      logo: '/assets/images/Zava-Full.svg',
       siteName: 'SharePoint',
       actions: [
         {
           id: 'copilot',
-          icon: <img src="/src/assets/icons/CopilotOutline.svg" alt="Copilot" style={{ width: '24px', height: '24px' }} />
+          icon: <img src="/assets/icons/CopilotOutline.svg" alt="Copilot" style={{ width: '24px', height: '24px' }} />
         },
         {
           id: 'feedback',
-          icon: <img src="/src/assets/icons/Person Feedback.svg" alt="Feedback" style={{ width: '24px', height: '24px' }} />
+          icon: <img src="/assets/icons/Person Feedback.svg" alt="Feedback" style={{ width: '24px', height: '24px' }} />
         },
         {
           id: 'megaphone',
-          icon: <img src="/src/assets/icons/Megaphone.svg" alt="Announcements" style={{ width: '24px', height: '24px' }} />
+          icon: <img src="/assets/icons/Megaphone.svg" alt="Announcements" style={{ width: '24px', height: '24px' }} />
         },
         {
           id: 'settings',
-          icon: <img src="/src/assets/icons/Settings.svg" alt="Settings" style={{ width: '24px', height: '24px' }} />
+          icon: <img src="/assets/icons/Settings.svg" alt="Settings" style={{ width: '24px', height: '24px' }} />
         },
         {
           id: 'help',
-          icon: <img src="/src/assets/icons/Question.svg" alt="Help" style={{ width: '24px', height: '24px' }} />
+          icon: <img src="/assets/icons/Question.svg" alt="Help" style={{ width: '24px', height: '24px' }} />
         }
       ],
       userAvatar: (
-        <img src="/src/assets/images/Avatar (SP).png" alt="User Avatar" style={{ width: '24px', height: '24px', borderRadius: '50%' }} />
+        <img src="/assets/images/Avatar (SP).png" alt="User Avatar" style={{ width: '24px', height: '24px', borderRadius: '50%' }} />
       ),
     },
     appRail: {
       items: [
-        { id: 'zava', label: 'Zava', icon: '/src/assets/images/ZavaCore_logo.svg' },
-        { id: 'discover', label: 'Discover', icon: '/src/assets/icons/Compass Northwest.svg' },
-        { id: 'publish', label: 'Publish', icon: '/src/assets/icons/Pen.svg' },
-        { id: 'build', label: 'Build', icon: '/src/assets/icons/Broad Activity Feed.svg' },
-        { id: 'onedrive', label: 'OneDrive', icon: '/src/assets/icons/OneDrive.svg' },
+        { id: 'zava', label: 'Zava', icon: '/assets/images/ZavaCore_logo.svg' },
+        { id: 'discover', label: 'Discover', icon: '/assets/icons/Compass Northwest.svg' },
+        { id: 'publish', label: 'Publish', icon: '/assets/icons/Pen.svg' },
+        { id: 'build', label: 'Build', icon: '/assets/icons/Broad Activity Feed.svg' },
+        { id: 'onedrive', label: 'OneDrive', icon: '/assets/icons/OneDrive.svg' },
       ],
       defaultSelectedId: 'zava',
     },
@@ -231,7 +231,7 @@ export default function ComponentGallery() {
               <h2 className="text-xl font-bold mb-4">AppHeader</h2>
               <div className="border rounded-lg overflow-hidden">
                 <AppHeader
-                  logo="/src/assets/images/ZavaCore_logo.svg"
+                  logo="/assets/images/ZavaCore_logo.svg"
                   breadcrumbs={[
                     { label: 'Home' },
                     { label: 'Documents' },
@@ -244,7 +244,7 @@ export default function ComponentGallery() {
               </div>
               <pre className="mt-4 bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
 {`<AppHeader
-  logo="/src/assets/images/ZavaCore_logo.svg"
+  logo="/assets/images/ZavaCore_logo.svg"
   breadcrumbs={[...]}
   actions={[...]}
 />`}
@@ -257,11 +257,11 @@ export default function ComponentGallery() {
               <div className="border rounded-lg overflow-hidden flex" style={{ height: '600px' }}>
                 <AppRail
                   items={[
-                    { id: 'zava', label: 'Zava', icon: '/src/assets/images/ZavaCore_logo.svg' },
-                    { id: 'discover', label: 'Discover', icon: '/src/assets/icons/Compass Northwest.svg' },
-                    { id: 'publish', label: 'Publish', icon: '/src/assets/icons/Pen.svg' },
-                    { id: 'build', label: 'Build', icon: '/src/assets/icons/Broad Activity Feed.svg' },
-                    { id: 'onedrive', label: 'OneDrive', icon: '/src/assets/icons/OneDrive.svg' },
+                    { id: 'zava', label: 'Zava', icon: '/assets/images/ZavaCore_logo.svg' },
+                    { id: 'discover', label: 'Discover', icon: '/assets/icons/Compass Northwest.svg' },
+                    { id: 'publish', label: 'Publish', icon: '/assets/icons/Pen.svg' },
+                    { id: 'build', label: 'Build', icon: '/assets/icons/Broad Activity Feed.svg' },
+                    { id: 'onedrive', label: 'OneDrive', icon: '/assets/icons/OneDrive.svg' },
                   ]}
                   defaultSelectedId="zava"
                 />
@@ -273,7 +273,7 @@ export default function ComponentGallery() {
               <pre className="mt-4 bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
 {`<AppRail
   items={[
-    { id: 'zava', label: 'Zava', icon: '/src/assets/images/ZavaCore_logo.svg' },
+    { id: 'zava', label: 'Zava', icon: '/assets/images/ZavaCore_logo.svg' },
     { id: 'discover', label: 'Discover', icon: '/icons/compass.svg' },
     { id: 'publish', label: 'Publish', icon: '/icons/pen.svg' }
   ]}
@@ -287,7 +287,7 @@ export default function ComponentGallery() {
               <h2 className="text-xl font-bold mb-4">Navigation</h2>
               <div className="border rounded-lg overflow-hidden" style={{ height: '500px' }}>
                 <Navigation
-                  branding={{ logo: '/src/assets/images/ZavaCore_logo.svg', name: 'App Name' }}
+                  branding={{ logo: '/assets/images/ZavaCore_logo.svg', name: 'App Name' }}
                   sections={[
                     {
                       items: [
@@ -303,12 +303,12 @@ export default function ComponentGallery() {
                     }
                   ]}
                   selectedItemId="home"
-                  user={{ avatar: '/src/assets/icons/avatar.svg', name: 'John Doe' }}
+                  user={{ avatar: '/assets/icons/avatar.svg', name: 'John Doe' }}
                 />
               </div>
               <pre className="mt-4 bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
 {`<Navigation
-  branding={{ logo: '/src/assets/images/ZavaCore_logo.svg', name: 'App Name' }}
+  branding={{ logo: '/assets/images/ZavaCore_logo.svg', name: 'App Name' }}
   sections={[...]}
   selectedItemId="home"
   user={...}
@@ -323,13 +323,13 @@ export default function ComponentGallery() {
                 <AppShell
                   nav={
                     <Navigation
-                      branding={{ logo: '/src/assets/images/ZavaCore_logo.svg', name: 'App' }}
+                      branding={{ logo: '/assets/images/ZavaCore_logo.svg', name: 'App' }}
                       sections={[
                         { items: [{ id: 'home', label: 'Home', icon: <Home20Regular /> }] }
                       ]}
                     />
                   }
-                  header={<AppHeader logo="/src/assets/images/ZavaCore_logo.svg" />}
+                  header={<AppHeader logo="/assets/images/ZavaCore_logo.svg" />}
                   backgroundColor="#f9fafb"
                 >
                   <div className="p-8">
@@ -353,33 +353,33 @@ export default function ComponentGallery() {
               <h2 className="text-xl font-bold mb-4">SharePointHeader</h2>
               <div className="border rounded-lg overflow-hidden">
                 <SharePointHeader
-                  gridIcon={<img src="/src/assets/icons/Grid Dots.svg" alt="Grid" style={{ width: '24px', height: '24px' }} />}
-                  logo="/src/assets/images/Zava-Full.svg"
+                  gridIcon={<img src="/assets/icons/Grid Dots.svg" alt="Grid" style={{ width: '24px', height: '24px' }} />}
+                  logo="/assets/images/Zava-Full.svg"
                   siteName="SharePoint"
                   actions={[
                     {
                       id: 'copilot',
-                      icon: <img src="/src/assets/icons/CopilotOutline.svg" alt="Copilot" style={{ width: '24px', height: '24px' }} />
+                      icon: <img src="/assets/icons/CopilotOutline.svg" alt="Copilot" style={{ width: '24px', height: '24px' }} />
                     },
                     {
                       id: 'feedback',
-                      icon: <img src="/src/assets/icons/Person Feedback.svg" alt="Feedback" style={{ width: '24px', height: '24px' }} />
+                      icon: <img src="/assets/icons/Person Feedback.svg" alt="Feedback" style={{ width: '24px', height: '24px' }} />
                     },
                     {
                       id: 'megaphone',
-                      icon: <img src="/src/assets/icons/Megaphone.svg" alt="Announcements" style={{ width: '24px', height: '24px' }} />
+                      icon: <img src="/assets/icons/Megaphone.svg" alt="Announcements" style={{ width: '24px', height: '24px' }} />
                     },
                     {
                       id: 'settings',
-                      icon: <img src="/src/assets/icons/Settings.svg" alt="Settings" style={{ width: '24px', height: '24px' }} />
+                      icon: <img src="/assets/icons/Settings.svg" alt="Settings" style={{ width: '24px', height: '24px' }} />
                     },
                     {
                       id: 'help',
-                      icon: <img src="/src/assets/icons/Question.svg" alt="Help" style={{ width: '24px', height: '24px' }} />
+                      icon: <img src="/assets/icons/Question.svg" alt="Help" style={{ width: '24px', height: '24px' }} />
                     }
                   ]}
                   userAvatar={
-                    <img src="/src/assets/images/Avatar (SP).png" alt="User Avatar" style={{ width: '24px', height: '24px', borderRadius: '50%' }} />
+                    <img src="/assets/images/Avatar (SP).png" alt="User Avatar" style={{ width: '24px', height: '24px', borderRadius: '50%' }} />
                   }
                 />
               </div>

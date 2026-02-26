@@ -10,12 +10,12 @@ export interface QuickLinksSectionProps {
 }
 
 const quickLinks: QuickLink[] = [
-  { id: 'travel', icon: '/src/assets/icons/QuickLink.svg', label: 'BOOK TRAVEL' },
-  { id: 'career', icon: '/src/assets/icons/QuickLink-1.svg', label: 'CAREER & DEVELOPMENT' },
-  { id: 'glossary', icon: '/src/assets/icons/QuickLink-2.svg', label: 'GLOSSARY' },
-  { id: 'expenses', icon: '/src/assets/icons/QuickLink-3.svg', label: 'EXPENSES' },
-  { id: 'training', icon: '/src/assets/icons/QuickLink-4.svg', label: 'TRAINING' },
-  { id: 'security', icon: '/src/assets/icons/QuickLink-5.svg', label: 'SECURITY' },
+  { id: 'travel', icon: '/assets/icons/QuickLink.svg', label: 'BOOK TRAVEL' },
+  { id: 'career', icon: '/assets/icons/QuickLink-1.svg', label: 'CAREER & DEVELOPMENT' },
+  { id: 'glossary', icon: '/assets/icons/QuickLink-2.svg', label: 'GLOSSARY' },
+  { id: 'expenses', icon: '/assets/icons/QuickLink-3.svg', label: 'EXPENSES' },
+  { id: 'training', icon: '/assets/icons/QuickLink-4.svg', label: 'TRAINING' },
+  { id: 'security', icon: '/assets/icons/QuickLink-5.svg', label: 'SECURITY' },
 ];
 
 /**

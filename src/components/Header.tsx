@@ -28,7 +28,7 @@ export default function Header({ onToggleNav, isNavOpen, onReset }: HeaderProps)
           {/* Left actions */}
           <div className="flex items-center gap-1 md:gap-2">
             {/* ZavaCore Logo */}
-            <img src="/src/assets/images/ZavaCore_logo.svg" alt="ZavaCore" className="w-5 h-5 md:w-6 md:h-6" />
+            <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore" className="w-5 h-5 md:w-6 md:h-6" />
 
             {/* Breadcrumb Button */}
             <button
@@ -47,7 +47,7 @@ export default function Header({ onToggleNav, isNavOpen, onReset }: HeaderProps)
           <div className="flex items-center h-8 rounded">
             {/* Primary action */}
             <button className="flex items-center justify-center h-8 px-1.5 bg-[#464FEB] rounded-l border-r border-white hover:bg-[#3d42c7] transition-colors">
-              <img src="/src/assets/icons/Compose.svg" alt="New chat" className="w-5 h-5" />
+              <img src="/assets/icons/Compose.svg" alt="New chat" className="w-5 h-5" />
             </button>
 
             {/* Secondary action (dropdown) */}
@@ -58,7 +58,7 @@ export default function Header({ onToggleNav, isNavOpen, onReset }: HeaderProps)
 
           {/* Protection Button */}
           <button className="flex items-center justify-center w-8 h-8 rounded hover:bg-[#e6e6e6] transition-colors">
-            <img src="/src/assets/icons/Shield Task.svg" alt="Protection" className="w-5 h-5" />
+            <img src="/assets/icons/Shield Task.svg" alt="Protection" className="w-5 h-5" />
           </button>
 
           {/* More Options Button */}

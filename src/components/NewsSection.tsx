@@ -53,7 +53,7 @@ export default function NewsSection() {
             }}
           >
             <img
-              src="/src/assets/images/Thumbnail.png"
+              src="/assets/images/Thumbnail.png"
               alt=""
               style={{
                 position: 'absolute',
@@ -145,7 +145,7 @@ export default function NewsSection() {
           {/* News Item 1 */}
           <div style={{ display: 'flex', gap: '16px' }}>
             <img
-              src="/src/assets/images/Thumbnail-1.png"
+              src="/assets/images/Thumbnail-1.png"
               alt=""
               style={{
                 width: '160px',
@@ -195,7 +195,7 @@ export default function NewsSection() {
           {/* News Item 2 */}
           <div style={{ display: 'flex', gap: '16px' }}>
             <img
-              src="/src/assets/images/Thumbnail-2.png"
+              src="/assets/images/Thumbnail-2.png"
               alt=""
               style={{
                 width: '160px',
@@ -245,7 +245,7 @@ export default function NewsSection() {
           {/* News Item 3 */}
           <div style={{ display: 'flex', gap: '16px' }}>
             <img
-              src="/src/assets/images/Thumbnail-3.png"
+              src="/assets/images/Thumbnail-3.png"
               alt=""
               style={{
                 width: '160px',

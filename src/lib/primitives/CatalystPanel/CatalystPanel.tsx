@@ -127,7 +127,7 @@ export default function CatalystPanel({
         }}
       >
         <img
-          src="/src/assets/images/Zava agent background - blue.png"
+          src="/assets/images/Zava agent background - blue.png"
           alt=""
           style={{
             position: 'absolute',
@@ -169,7 +169,7 @@ export default function CatalystPanel({
             }}
           >
             <Navigation
-              branding={{ logo: '/src/assets/images/ZavaCore_logo.svg', name: 'ZavaCore' }}
+              branding={{ logo: '/assets/images/ZavaCore_logo.svg', name: 'ZavaCore' }}
               sections={[
                 {
                   items: [
@@ -197,7 +197,7 @@ export default function CatalystPanel({
               selectedItemId={selectedNavId}
               onMobileClose={() => setIsNavOpen(false)}
               onCollapse={() => setIsNavOpen(false)}
-              collapseIcon="/src/assets/icons/Left Panel.svg"
+              collapseIcon="/assets/icons/Left Panel.svg"
             />
           </div>
 
@@ -256,7 +256,7 @@ export default function CatalystPanel({
               onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
               onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
             >
-              <img src="/src/assets/icons/List.svg" alt="Menu" style={{ width: '20px', height: '20px' }} />
+              <img src="/assets/icons/List.svg" alt="Menu" style={{ width: '20px', height: '20px' }} />
             </button>
 
             {/* Shield Task Button */}
@@ -274,7 +274,7 @@ export default function CatalystPanel({
               onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
               onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
             >
-              <img src="/src/assets/icons/Shield Task.svg" alt="" style={{ width: '20px', height: '20px' }} />
+              <img src="/assets/icons/Shield Task.svg" alt="" style={{ width: '20px', height: '20px' }} />
             </button>
           </div>
         </div>
@@ -302,7 +302,7 @@ export default function CatalystPanel({
               onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
               onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
             >
-              <img src="/src/assets/icons/More Horizontal.svg" alt="More" style={{ width: '20px', height: '20px' }} />
+              <img src="/assets/icons/More Horizontal.svg" alt="More" style={{ width: '20px', height: '20px' }} />
             </button>
 
             {/* Dismiss */}
@@ -321,7 +321,7 @@ export default function CatalystPanel({
               onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
               onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
             >
-              <img src="/src/assets/icons/Dismiss.svg" alt="Close" style={{ width: '20px', height: '20px' }} />
+              <img src="/assets/icons/Dismiss.svg" alt="Close" style={{ width: '20px', height: '20px' }} />
             </button>
           </div>
         </div>
@@ -367,7 +367,7 @@ export default function CatalystPanel({
               }}
             >
               <img
-                src="/src/assets/images/ZavaCore_logo.svg"
+                src="/assets/images/ZavaCore_logo.svg"
                 alt="ZavaCore"
                 style={{ width: '24px', height: '24px' }}
               />

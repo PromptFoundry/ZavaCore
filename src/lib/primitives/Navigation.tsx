@@ -179,7 +179,7 @@ export default function Navigation({
                   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
                   onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
                 >
-                  <img src="/src/assets/icons/List.svg" alt="Close" style={{ width: '20px', height: '20px' }} />
+                  <img src="/assets/icons/List.svg" alt="Close" style={{ width: '20px', height: '20px' }} />
                 </button>
               )}
             </div>

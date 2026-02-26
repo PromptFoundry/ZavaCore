@@ -83,7 +83,7 @@ export default function EngageSection({
             }}
           >
             <img
-              src="/src/assets/engage-assets/Persona.png"
+              src="/assets/engage-assets/Persona.png"
               alt=""
               style={{
                 width: '32px',
@@ -145,7 +145,7 @@ export default function EngageSection({
                 e.currentTarget.style.backgroundColor = '#f2f2f2';
               }}
             >
-              <img src="/src/assets/engage-assets/Discussion.svg" alt="" style={{ width: '24px', height: '23px' }} />
+              <img src="/assets/engage-assets/Discussion.svg" alt="" style={{ width: '24px', height: '23px' }} />
               Discussion
             </button>
             <button
@@ -171,7 +171,7 @@ export default function EngageSection({
                 e.currentTarget.style.backgroundColor = 'transparent';
               }}
             >
-              <img src="/src/assets/engage-assets/Question.svg" alt="" style={{ width: '24px', height: '23px' }} />
+              <img src="/assets/engage-assets/Question.svg" alt="" style={{ width: '24px', height: '23px' }} />
               Question
             </button>
             <button
@@ -197,7 +197,7 @@ export default function EngageSection({
                 e.currentTarget.style.backgroundColor = 'transparent';
               }}
             >
-              <img src="/src/assets/engage-assets/Praise.svg" alt="" style={{ width: '18px', height: '25px' }} />
+              <img src="/assets/engage-assets/Praise.svg" alt="" style={{ width: '18px', height: '25px' }} />
               Praise
             </button>
             <button
@@ -223,7 +223,7 @@ export default function EngageSection({
                 e.currentTarget.style.backgroundColor = 'transparent';
               }}
             >
-              <img src="/src/assets/engage-assets/Poll.svg" alt="" style={{ width: '18px', height: '20px' }} />
+              <img src="/assets/engage-assets/Poll.svg" alt="" style={{ width: '18px', height: '20px' }} />
               Poll
             </button>
             <button
@@ -249,7 +249,7 @@ export default function EngageSection({
                 e.currentTarget.style.backgroundColor = 'transparent';
               }}
             >
-              <img src="/src/assets/engage-assets/Article.svg" alt="" style={{ width: '16px', height: '19px' }} />
+              <img src="/assets/engage-assets/Article.svg" alt="" style={{ width: '16px', height: '19px' }} />
               Article
             </button>
           </div>
@@ -273,7 +273,7 @@ export default function EngageSection({
               gap: '8px',
             }}
           >
-            <img src="/src/assets/engage-assets/Icon.svg" alt="" style={{ width: '16px', height: '16px' }} />
+            <img src="/assets/engage-assets/Icon.svg" alt="" style={{ width: '16px', height: '16px' }} />
             <span
               style={{
                 fontFamily: 'Segoe UI, sans-serif',
@@ -316,7 +316,7 @@ export default function EngageSection({
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <img
-                src="/src/assets/engage-assets/Avatar.png"
+                src="/assets/engage-assets/Avatar.png"
                 alt=""
                 style={{
                   width: '32px',
@@ -379,7 +379,7 @@ export default function EngageSection({
 
           {/* Featured Image */}
           <img
-            src="/src/assets/engage-assets/GettyImages-2233751483 1.png"
+            src="/assets/engage-assets/GettyImages-2233751483 1.png"
             alt=""
             style={{
               width: '100%',
@@ -420,7 +420,7 @@ export default function EngageSection({
                   e.currentTarget.style.backgroundColor = 'transparent';
                 }}
               >
-                <img src="/src/assets/engage-assets/Red heart.svg" alt="" style={{ width: '20px', height: '20px' }} />
+                <img src="/assets/engage-assets/Red heart.svg" alt="" style={{ width: '20px', height: '20px' }} />
                 <span
                   style={{
                     fontFamily: 'Segoe UI, sans-serif',
@@ -453,7 +453,7 @@ export default function EngageSection({
                 }}
               >
                 <img
-                  src="/src/assets/engage-assets/Post/Molecule/TS CTA Row/Atom/Chat.svg"
+                  src="/assets/engage-assets/Post/Molecule/TS CTA Row/Atom/Chat.svg"
                   alt=""
                   style={{ width: '20px', height: '20px' }}
                 />
@@ -489,7 +489,7 @@ export default function EngageSection({
                 }}
               >
                 <img
-                  src="/src/assets/engage-assets/Post/Molecule/TS CTA Row/Atom/Share.svg"
+                  src="/assets/engage-assets/Post/Molecule/TS CTA Row/Atom/Share.svg"
                   alt=""
                   style={{ width: '20px', height: '20px' }}
                 />
@@ -509,14 +509,14 @@ export default function EngageSection({
             {/* Social Proof */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <img src="/src/assets/engage-assets/Thumbs up.svg" alt="" style={{ width: '20px', height: '20px' }} />
+                <img src="/assets/engage-assets/Thumbs up.svg" alt="" style={{ width: '20px', height: '20px' }} />
                 <img
-                  src="/src/assets/engage-assets/Red heart.svg"
+                  src="/assets/engage-assets/Red heart.svg"
                   alt=""
                   style={{ width: '20px', height: '20px', marginLeft: '2px' }}
                 />
                 <img
-                  src="/src/assets/engage-assets/Clapping hands.svg"
+                  src="/assets/engage-assets/Clapping hands.svg"
                   alt=""
                   style={{ width: '20px', height: '20px', marginLeft: '2px' }}
                 />
@@ -544,7 +544,7 @@ export default function EngageSection({
             }}
           >
             <img
-              src="/src/assets/engage-assets/Persona.png"
+              src="/assets/engage-assets/Persona.png"
               alt=""
               style={{
                 width: '32px',
@@ -575,7 +575,7 @@ export default function EngageSection({
                 Add a comment...
               </span>
               <img
-                src="/src/assets/engage-assets/Post/Organism/L1 Reply Publisher/CTA.svg"
+                src="/assets/engage-assets/Post/Organism/L1 Reply Publisher/CTA.svg"
                 alt=""
                 style={{ width: '20px', height: '20px' }}
               />

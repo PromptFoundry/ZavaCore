@@ -5,7 +5,7 @@ import SharePointDemo from './pages/SharePointDemo';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/ZavaCore">
       <Routes>
         <Route path="/" element={<Layout />} />
         <Route path="/copilot" element={<Layout />} />
