@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { SharePointShell } from '../lib';
 import SiteHeader from '../components/SiteHeader';
 import HeroSection from '../components/HeroSection';
@@ -8,11 +9,14 @@ import EventsSection from '../components/EventsSection';
 import EngageSection from '../components/EngageSection';
 
 export default function SharePointDemo() {
+  const navigate = useNavigate();
+
   const sharePointConfig = {
     header: {
       gridIcon: <img src="/assets/icons/Grid Dots.svg" alt="Grid" style={{ width: '24px', height: '24px' }} />,
       logo: '/assets/images/Zava-Full.svg',
       siteName: 'SharePoint',
+      onGridClick: () => navigate('/'),
       actions: [
         {
           id: 'copilot',
