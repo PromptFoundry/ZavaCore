@@ -8,7 +8,7 @@ import {
   Share16Regular,
   MoreHorizontal16Regular,
 } from '@fluentui/react-icons';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ChatInput from './ChatInput';
 import LeftNav from './LeftNav';
@@ -66,8 +66,7 @@ interface Message {
 export default function Layout() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [progress, setProgress] = useState(0);
-  const [startTime, setStartTime] = useState(Date.now());
+  const [progress] = useState(0);
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -107,32 +106,9 @@ export default function Layout() {
 
   const hasConversation = messages.length > 0 || isLoading;
 
-  // Auto-advance slides with progress animation
-  useEffect(() => {
-    const duration = 10000; // 10 seconds per slide
-
-    const interval = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      const newProgress = (elapsed / duration) * 100;
-
-      if (newProgress >= 100) {
-        // Move to next slide and reset
-        setCurrentSlide((current) => (current + 1) % slides.length);
-        setProgress(0);
-        setStartTime(Date.now());
-      } else {
-        setProgress(newProgress);
-      }
-    }, 16); // Update every ~16ms (60fps)
-
-    return () => clearInterval(interval);
-  }, [startTime]);
-
   // Manual slide selection
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
-    setProgress(0);
-    setStartTime(Date.now());
   };
 
   const currentSlideData = slides[currentSlide];
