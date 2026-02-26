@@ -1,4 +1,5 @@
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
+import type { ReactNode } from 'react';
 import {
   Add20Regular,
   Options20Regular,
@@ -12,6 +13,7 @@ import {
 import { CheckBadgeIcon } from '@heroicons/react/24/outline';
 import PromptStarter from '../../../components/PromptStarter';
 import Navigation from '../Navigation';
+import WidgetContainer from '../../../components/WidgetContainer';
 
 export interface PromptStarter {
   id: string;
@@ -68,8 +70,8 @@ export interface CatalystPanelProps {
  * ```
  */
 export default function CatalystPanel({
-  title = 'Chat',
-  onNewChat,
+  title: _title = 'Chat',
+  onNewChat: _onNewChat,
   onDismiss,
   onMoreOptions,
   promptStarters = [
@@ -77,7 +79,7 @@ export default function CatalystPanel({
     { id: '2', text: 'Find marketing documents that need my feedback' },
     { id: '3', text: 'Highlight town hall updates relevant to my work' },
   ],
-  widgets = [],
+  widgets: _widgets = [],
   onChatInputChange,
   onChatSubmit,
   className = '',
@@ -99,7 +101,7 @@ export default function CatalystPanel({
     <div
       className={className}
       style={{
-        width: '537px',
+        width: '720px',
         height: '100%',
         backgroundColor: '#ffffff',
         borderLeft: '1px solid #e0e0e0',
@@ -108,8 +110,35 @@ export default function CatalystPanel({
         fontFamily: '"Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif',
         position: 'relative',
         overflow: 'hidden',
+        boxShadow: '-4px 0 12px rgba(0, 0, 0, 0.1)',
       }}
     >
+      {/* Blue gradient background */}
+      <div
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          top: 0,
+          height: '335px',
+          overflow: 'hidden',
+          pointerEvents: 'none',
+          zIndex: 0,
+        }}
+      >
+        <img
+          src="/src/assets/images/Zava agent background - blue.png"
+          alt=""
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+          }}
+        />
+      </div>
+
       {/* Navigation Overlay */}
       {isNavOpen && (
         <>
@@ -196,13 +225,16 @@ export default function CatalystPanel({
 
       {/* Header */}
       <div
+        className="header"
         style={{
           height: '60px',
           padding: '8px 20px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          backgroundColor: 'white',
+          backgroundColor: 'transparent',
+          position: 'relative',
+          zIndex: 1,
         }}
       >
         {/* Left Nav - Menu and Shield Task */}
@@ -303,7 +335,9 @@ export default function CatalystPanel({
           padding: '24px',
           display: 'flex',
           flexDirection: 'column',
+          justifyContent: 'center',
           gap: '24px',
+          position: 'relative',
         }}
       >
         {/* ZavaCore Agent Branding */}
@@ -313,6 +347,8 @@ export default function CatalystPanel({
             flexDirection: 'column',
             alignItems: 'center',
             gap: '12px',
+            position: 'relative',
+            zIndex: 1,
           }}
         >
           {/* Icon and Name */}
@@ -368,7 +404,7 @@ export default function CatalystPanel({
         </div>
 
         {/* Chat Input - Using same styling as main app composer */}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={{ position: 'relative', zIndex: 1 }}>
           <div className="chat-input flex flex-col gap-0 items-center rounded-[32px] w-full h-full">
             {/* Container with gradient border */}
             <div
@@ -577,6 +613,8 @@ export default function CatalystPanel({
             display: 'flex',
             flexDirection: 'column',
             gap: '12px',
+            position: 'relative',
+            zIndex: 1,
           }}
         >
           {promptStarters.map((prompt) => (
@@ -589,72 +627,83 @@ export default function CatalystPanel({
           ))}
         </div>
 
-        {/* Widget Cards */}
-        {widgets.length > 0 && (
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '16px',
-            }}
-          >
-            {widgets.map((widget) => (
-              <div
-                key={widget.id}
-                style={{
-                  padding: '16px',
-                  backgroundColor: '#ffffff',
-                  border: '1px solid #e0e0e0',
-                  borderRadius: '12px',
-                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.08)',
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: '16px',
-                    fontWeight: 600,
-                    lineHeight: '22px',
-                    color: '#242424',
-                    margin: '0 0 12px 0',
-                  }}
+        {/* Widgets - 1 left (tall), 2 stacked right */}
+        <div
+          style={{
+            display: 'flex',
+            gap: '21px',
+            position: 'relative',
+            zIndex: 1,
+          }}
+        >
+          {/* Left side - 1 tall widget */}
+          <div style={{ flex: 1 }} data-column="left">
+            <WidgetContainer
+              title="Card title"
+              headerActions={
+                <button
+                  className="w-9 h-9 flex items-center justify-center rounded hover:bg-gray-100 transition-colors"
+                  aria-label="Settings"
                 >
-                  {widget.title}
-                </h3>
-                <div
-                  style={{
-                    fontSize: '14px',
-                    fontWeight: 400,
-                    lineHeight: '20px',
-                    color: '#616161',
-                    marginBottom: '16px',
-                  }}
-                >
-                  {widget.content}
-                </div>
-                {widget.buttonLabel && (
-                  <button
-                    onClick={widget.onButtonClick}
-                    style={{
-                      padding: '5px 12px',
-                      backgroundColor: '#464FEB',
-                      border: 'none',
-                      borderRadius: '4px',
-                      fontSize: '14px',
-                      fontWeight: 600,
-                      lineHeight: '20px',
-                      color: '#ffffff',
-                      cursor: 'pointer',
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#3840CC')}
-                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#464FEB')}
-                  >
-                    {widget.buttonLabel}
-                  </button>
-                )}
-              </div>
-            ))}
+                  <Settings20Regular className="w-5 h-5 text-[#424242]" />
+                </button>
+              }
+              footerActions={[
+                {
+                  id: 'action1',
+                  label: 'Button',
+                },
+              ]}
+              className="h-full"
+            />
           </div>
-        )}
+
+          {/* Right side - 2 widgets stacked */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '22px', flex: 1 }} data-column="right">
+            <div style={{ height: '175px' }}>
+              <WidgetContainer
+                title="Card title"
+                headerActions={
+                  <button
+                    className="w-9 h-9 flex items-center justify-center rounded hover:bg-gray-100 transition-colors"
+                    aria-label="Settings"
+                  >
+                    <Settings20Regular className="w-5 h-5 text-[#424242]" />
+                  </button>
+                }
+                footerActions={[
+                  {
+                    id: 'action2',
+                    label: 'Button',
+                  },
+                ]}
+                className="h-full"
+                contentBorderRadius="8px"
+              />
+            </div>
+            <div style={{ height: '175px' }}>
+              <WidgetContainer
+                title="Card title"
+                headerActions={
+                  <button
+                    className="w-9 h-9 flex items-center justify-center rounded hover:bg-gray-100 transition-colors"
+                    aria-label="Settings"
+                  >
+                    <Settings20Regular className="w-5 h-5 text-[#424242]" />
+                  </button>
+                }
+                footerActions={[
+                  {
+                    id: 'action3',
+                    label: 'Button',
+                  },
+                ]}
+                className="h-full"
+                contentBorderRadius="8px"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

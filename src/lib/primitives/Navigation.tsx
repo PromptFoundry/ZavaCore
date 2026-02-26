@@ -1,10 +1,8 @@
 import {
-  PanelLeftText20Regular,
   PanelLeft20Regular,
   MoreHorizontal20Regular,
 } from '@fluentui/react-icons';
-import { XMarkIcon } from '@heroicons/react/24/outline';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 export interface NavItem {
   id: string;
@@ -84,7 +82,7 @@ export default function Navigation({
   onMobileItemClick,
   className = '',
   width = '320px',
-  collapseIcon,
+  collapseIcon: _collapseIcon,
 }: NavigationProps) {
   const handleItemClick = (item: NavItem) => {
     item.onClick?.();

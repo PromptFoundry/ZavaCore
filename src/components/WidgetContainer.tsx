@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 export interface WidgetAction {
   id: string;
@@ -19,6 +19,8 @@ export interface WidgetContainerProps {
   footerActions?: WidgetAction[];
   /** Custom className */
   className?: string;
+  /** Border radius for content area */
+  contentBorderRadius?: string;
 }
 
 /**
@@ -46,6 +48,7 @@ export default function WidgetContainer({
   children,
   footerActions = [],
   className = '',
+  contentBorderRadius = '16px',
 }: WidgetContainerProps) {
   return (
     <div
@@ -71,10 +74,10 @@ export default function WidgetContainer({
       )}
 
       {/* Body */}
-      <div className="flex-1 px-5 pt-4 pb-4">
+      <div className="flex-1 px-5 pt-4 pb-4 min-h-0">
         <div
-          className="flex items-center justify-center border border-[#ebebeb] bg-[#fcfcfc] rounded-2xl"
-          style={{ minHeight: '274px' }}
+          className="flex items-center justify-center border border-[#ebebeb] bg-[#fcfcfc] h-full"
+          style={{ borderRadius: contentBorderRadius }}
         >
           {children || (
             <p

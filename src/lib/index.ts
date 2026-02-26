@@ -31,7 +31,7 @@ export type {
 export {
   StandardShell,
   MinimalShell,
-  CatalystShell,
+  SharePointShell,
 } from './shells';
 
 export type {
@@ -39,5 +39,5 @@ export type {
   StandardShellConfig,
   MinimalShellProps,
   MinimalShellConfig,
-  CatalystShellProps,
+  SharePointShellProps,
 } from './shells';

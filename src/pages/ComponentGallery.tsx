@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { StandardShell, MinimalShell, CatalystShell } from '../lib';
+import { StandardShell, MinimalShell, SharePointShell } from '../lib';
 import { AppShell, Navigation, AppHeader, AppRail, SharePointHeader, CatalystPanel } from '../lib/primitives';
 import EntityCard from '../components/EntityCard';
 import QuickActions from '../components/QuickActions';
@@ -50,7 +50,7 @@ export default function ComponentGallery() {
     ]
   };
 
-  const catalystConfig = {
+  const sharePointConfig = {
     header: {
       gridIcon: <img src="/src/assets/icons/Grid Dots.svg" alt="Grid" style={{ width: '24px', height: '24px' }} />,
       logo: '/src/assets/images/Zava-Full.svg',
@@ -158,14 +158,14 @@ export default function ComponentGallery() {
                   MinimalShell
                 </button>
                 <button
-                  onClick={() => setSelectedShell('catalyst')}
+                  onClick={() => setSelectedShell('sharepoint')}
                   className={`px-4 py-2 rounded ${
-                    selectedShell === 'catalyst'
+                    selectedShell === 'sharepoint'
                       ? 'bg-purple-600 text-white'
                       : 'bg-gray-200'
                   }`}
                 >
-                  CatalystShell
+                  SharePointShell
                 </button>
               </div>
 
@@ -190,9 +190,9 @@ export default function ComponentGallery() {
                     </div>
                   </MinimalShell>
                 ) : (
-                  <CatalystShell {...catalystConfig}>
+                  <SharePointShell {...sharePointConfig}>
                     <div className="p-8">
-                      <h3 className="text-2xl font-bold mb-4">CatalystShell Content Area</h3>
+                      <h3 className="text-2xl font-bold mb-4">SharePointShell Content Area</h3>
                       <p className="text-gray-600 mb-4">
                         This shell includes SharePoint-style header, app rail navigation,
                         and an AI-powered catalyst panel on the right.
@@ -216,7 +216,7 @@ export default function ComponentGallery() {
                         </div>
                       </div>
                     </div>
-                  </CatalystShell>
+                  </SharePointShell>
                 )}
               </div>
             </div>
@@ -233,9 +233,9 @@ export default function ComponentGallery() {
                 <AppHeader
                   logo="/src/assets/images/ZavaCore_logo.svg"
                   breadcrumbs={[
-                    { id: '1', label: 'Home' },
-                    { id: '2', label: 'Documents' },
-                    { id: '3', label: 'Current' }
+                    { label: 'Home' },
+                    { label: 'Documents' },
+                    { label: 'Current' }
                   ]}
                   actions={[
                     { id: 'new', label: 'New', variant: 'primary' }
@@ -323,7 +323,7 @@ export default function ComponentGallery() {
                 <AppShell
                   nav={
                     <Navigation
-                      branding={{ name: 'App' }}
+                      branding={{ logo: '/src/assets/images/ZavaCore_logo.svg', name: 'App' }}
                       sections={[
                         { items: [{ id: 'home', label: 'Home', icon: <Home20Regular /> }] }
                       ]}
@@ -396,7 +396,7 @@ export default function ComponentGallery() {
             {/* CatalystPanel */}
             <div className="bg-white rounded-lg p-6">
               <h2 className="text-xl font-bold mb-4">CatalystPanel</h2>
-              <div className="border rounded-lg overflow-hidden flex justify-end" style={{ height: '800px' }}>
+              <div className="border rounded-lg overflow-auto flex justify-end" style={{ height: '1000px' }}>
                 <CatalystPanel
                   title="Chat"
                   promptStarters={[
@@ -508,8 +508,8 @@ export default function ComponentGallery() {
                   iconBgColor="#E8F5E9"
                   title="Summit Center"
                   metadata="Planning phase • Q2 2025"
-                  primaryButtonLabel="View Details"
-                  secondaryButtonLabel="Share"
+                  onPrimaryAction={() => {}}
+                  onSecondaryAction={() => {}}
                 />
               </div>
               <pre className="mt-4 bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">

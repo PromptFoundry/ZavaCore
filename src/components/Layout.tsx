@@ -2,7 +2,6 @@ import {
   ChatBubbleLeftIcon,
   ChevronDownIcon,
   CheckBadgeIcon,
-  Bars3Icon,
 } from '@heroicons/react/24/outline';
 import {
   Replay16Regular,

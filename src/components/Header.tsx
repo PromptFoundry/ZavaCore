@@ -1,7 +1,6 @@
 import {
   ChevronDown20Regular,
   MoreHorizontal20Regular,
-  ShieldTask20Regular,
   PanelLeft20Regular,
 } from '@fluentui/react-icons';
 

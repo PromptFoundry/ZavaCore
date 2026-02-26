@@ -5,7 +5,8 @@ import {
   Mic20Regular,
   DeviceEq20Regular,
 } from '@fluentui/react-icons';
-import { useState, KeyboardEvent } from 'react';
+import { useState } from 'react';
+import type { KeyboardEvent } from 'react';
 
 interface ChatInputProps {
   onSubmit?: (message: string) => void;

@@ -1,4 +1,5 @@
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
+import type { ReactNode } from 'react';
 import { AppShell, Navigation, AppHeader } from '../../primitives';
 import type { NavSection, HeaderAction, BreadcrumbItem } from '../../primitives';
 

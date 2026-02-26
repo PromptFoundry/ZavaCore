@@ -1,9 +1,8 @@
 import {
   ChevronDown20Regular,
-  MoreHorizontal20Regular,
   PanelLeft20Regular,
 } from '@fluentui/react-icons';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 export interface HeaderAction {
   id: string;
