@@ -32,6 +32,7 @@ export {
   StandardShell,
   MinimalShell,
   SharePointShell,
+  ZavaCore_Start,
 } from './shells';
 
 export type {

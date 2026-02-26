@@ -7,3 +7,5 @@ export type { MinimalShellProps, MinimalShellConfig } from './MinimalShell';
 
 export { default as SharePointShell } from './SharePointShell';
 export type { SharePointShellProps } from './SharePointShell';
+
+export { ZavaCore_Start } from './ZavaCore_Start';
