@@ -87,6 +87,13 @@ Pre-configured layout templates — drop in and go.
 
 The full ZavaCore application: left nav, header, hero card, agent chat interface, and all widgets.
 
+> **Required:** Copy the `public/assets/` folder from this repo into your project's `public/` folder. All icons and images are referenced from `/assets/` and must be present for the template to render correctly.
+>
+> ```bash
+> git clone https://github.com/PromptFoundry/ZavaCore.git /tmp/ZavaCore
+> cp -r /tmp/ZavaCore/public/assets public/assets
+> ```
+
 ```tsx
 import { ZavaCore_Start } from './lib';
 
