@@ -361,7 +361,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                     ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
-                  <img src="/assets/icons/SharePoint.svg" alt="SharePoint" className="w-5 h-5 mr-[9px] shrink-0" />
+                  <img src="/assets/icons/SharePoint.svg" alt="SharePoint" className="w-6 h-6 mr-[9px] shrink-0" />
                   <span className="text-sm text-[#242424]">SharePoint</span>
                 </div>
               </div>
