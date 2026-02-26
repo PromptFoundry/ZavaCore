@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { StandardShell, MinimalShell, SharePointShell } from '../lib';
+import { StandardShell, MinimalShell, SharePointShell, ZavaCore_Start } from '../lib';
 import { AppShell, Navigation, AppHeader, AppRail, SharePointHeader, CatalystPanel } from '../lib/primitives';
 import EntityCard from '../components/EntityCard';
 import QuickActions from '../components/QuickActions';
@@ -167,6 +167,16 @@ export default function ComponentGallery() {
                 >
                   SharePointShell
                 </button>
+                <button
+                  onClick={() => setSelectedShell('zavacore')}
+                  className={`px-4 py-2 rounded ${
+                    selectedShell === 'zavacore'
+                      ? 'bg-purple-600 text-white'
+                      : 'bg-gray-200'
+                  }`}
+                >
+                  ZavaCore_Start
+                </button>
               </div>
 
               <div className="border rounded-lg overflow-hidden" style={{ height: '600px' }}>
@@ -189,6 +199,8 @@ export default function ComponentGallery() {
                       </p>
                     </div>
                   </MinimalShell>
+                ) : selectedShell === 'zavacore' ? (
+                  <ZavaCore_Start />
                 ) : (
                   <SharePointShell {...sharePointConfig}>
                     <div className="p-8">
