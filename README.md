@@ -1,4 +1,4 @@
-# ZavaCore Component Library
+# ZavaCore Prototype
 
 A React component library and application template built with TypeScript, Tailwind CSS, and Fluent UI icons.
 
