@@ -147,7 +147,7 @@ export default function Layout() {
 
         {/* Main Content */}
         <main
-          className={`flex-1 overflow-auto relative bg-white ${hasConversation ? 'py-8 px-4 md:px-6 lg:px-8' : 'py-8 md:py-16 lg:py-[126px] px-4 md:px-6 lg:px-8'}`}
+          className="flex-1 overflow-auto py-8 md:py-16 lg:py-[126px] px-4 md:px-6 lg:px-8 relative bg-white"
           style={!hasConversation ? {
             backgroundImage: 'url("/assets/images/Zava agent background - blue.png")',
             backgroundPosition: 'top center',
@@ -155,7 +155,7 @@ export default function Layout() {
             backgroundSize: '100% auto'
           } : {}}
         >
-          <div className={`w-full ${hasConversation ? '' : 'max-w-[790px]'} mx-auto flex flex-col gap-4 md:gap-6 lg:gap-7`}>
+          <div className="w-full max-w-[790px] mx-auto flex flex-col gap-4 md:gap-6 lg:gap-7">
             {/* Agent Composer */}
             <div className="flex flex-col items-center gap-8 md:gap-12 lg:gap-[53px]">
               {/* Agent Header */}
