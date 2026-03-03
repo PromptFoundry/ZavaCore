@@ -94,6 +94,7 @@ export default function Layout() {
   const handleReset = () => {
     setMessages([]);
     setIsLoading(false);
+    setIsPanelOpen(false);
   };
 
   const handleEntityCardClick = () => {
