@@ -1,4 +1,11 @@
 import { ChartMultiple24Regular, MoreHorizontal20Regular, ArrowTrending12Regular } from '@fluentui/react-icons';
+import avatar1 from '../assets/images/Avatar-1.png';
+import avatar2 from '../assets/images/Avatar-2.png';
+import avatar3 from '../assets/images/Avatar-3.png';
+import avatar4 from '../assets/images/Avatar-4.png';
+import avatar5 from '../assets/images/Avatar-5.png';
+import avatar6 from '../assets/images/Avatar-6.png';
+import avatar7 from '../assets/images/Avatar-7.png';
 
 // Figma asset URLs (valid 7 days)
 const donutBase    = 'https://www.figma.com/api/mcp/asset/ba519adb-9454-464d-96cc-723f1fe99a88';
@@ -262,14 +269,14 @@ function HighlightsByThemeSection() {
 /* ── Section 3: People to follow ──────────────────────── */
 
 const people = [
-  { name: 'Kian',      initials: 'KL', bg: '#5c2e91', fg: '#fff' },
-  { name: 'Hillary',   initials: 'HR', bg: '#c43e1c', fg: '#fff' },
-  { name: 'Cassandra', initials: 'CD', bg: '#038387', fg: '#fff' },
-  { name: 'Robin',     initials: 'RC', bg: '#e65000', fg: '#fff' },
-  { name: 'Edmee',     initials: 'EP', bg: '#d8f5b0', fg: '#537200' },
-  { name: 'Erika',     initials: 'EF', bg: '#0078d4', fg: '#fff' },
-  { name: 'Pasquale',  initials: 'PM', bg: '#ecc6c6', fg: '#943d73' },
-  { name: 'Reta',      initials: 'RT', bg: '#d2d0ce', fg: '#484644' },
+  { name: 'Kian',      avatar: avatar1 },
+  { name: 'Hillary',   avatar: avatar2 },
+  { name: 'Cassandra', avatar: avatar3 },
+  { name: 'Robin',     avatar: avatar4 },
+  { name: 'Edmee',     avatar: avatar5 },
+  { name: 'Erika',     avatar: avatar6 },
+  { name: 'Pasquale',  avatar: avatar7 },
+  { name: 'Reta',      avatar: avatar1 },
 ];
 
 function PeopleToFollowSection() {
@@ -292,8 +299,8 @@ function PeopleToFollowSection() {
           {people.map((p, i) => (
             <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, padding: '8px 2px', width: 88, flexShrink: 0 }}>
               {/* Avatar */}
-              <div style={{ width: 56, height: 56, borderRadius: '50%', background: p.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <span style={{ ...segoe, fontSize: 16, fontWeight: 600, color: p.fg }}>{p.initials}</span>
+              <div style={{ width: 56, height: 56, borderRadius: '50%', overflow: 'hidden', flexShrink: 0 }}>
+                <img src={p.avatar} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               {/* Name */}
               <p style={{ ...segoe, margin: 0, width: 84, fontSize: 14, fontWeight: 400, lineHeight: '20px', color: '#242424', textAlign: 'center' }}>
