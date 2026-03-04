@@ -12,8 +12,8 @@ export default function EngageWidget() {
       {/* Header */}
       <div className="flex items-center justify-between px-5 pt-5 pb-[2px]">
         <h2
-          className="font-semibold text-[#242424]"
-          style={{ fontSize: '16px', lineHeight: '22px', letterSpacing: '0%' }}
+          className="text-[#242424]"
+          style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: '24px', fontWeight: 700, lineHeight: '32px' }}
         >
           Engage
         </h2>
