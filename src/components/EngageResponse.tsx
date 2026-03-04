@@ -1,9 +1,9 @@
 import { ChartMultiple24Regular, MoreHorizontal20Regular, ArrowTrending12Regular } from '@fluentui/react-icons';
 
 // Figma asset URLs (valid 7 days)
-const donutBase    = 'https://www.figma.com/api/mcp/asset/3400bea5-ae43-4614-8f96-4898e604f3ac';
-const donutSeg1    = 'https://www.figma.com/api/mcp/asset/5257f0af-47de-44b7-939f-7847c817aea8';
-const donutSeg2    = 'https://www.figma.com/api/mcp/asset/c41953ca-de6a-4b7c-9f55-bdfe06c9c115';
+const donutBase    = 'https://www.figma.com/api/mcp/asset/ba519adb-9454-464d-96cc-723f1fe99a88';
+const donutSeg2    = 'https://www.figma.com/api/mcp/asset/8363cdb6-502e-4a6f-8390-1fb136db3fc3';
+const donutSeg1    = 'https://www.figma.com/api/mcp/asset/c6a1306d-93b4-455a-b29f-17970aac72d9';
 const questionIcon = 'https://www.figma.com/api/mcp/asset/052492e9-92ff-4423-9d2e-a8c126a5c06e';
 
 const segoe: React.CSSProperties = { fontFamily: '"Segoe UI", sans-serif' };
@@ -128,12 +128,28 @@ function QASummarySection() {
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, flex: '0 0 280px' }}>
             <p style={{ ...segoe, margin: 0, fontSize: 14, fontWeight: 700, lineHeight: '20px', color: '#242424', alignSelf: 'flex-start' }}>Time saved by Answers</p>
             <div style={{ position: 'relative', width: 176, height: 176 }}>
-              <img src={donutBase} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
-              <img src={donutSeg2} alt="" style={{ position: 'absolute', top: '18.43%', left: 0, right: 0, bottom: '-1.14%', width: '100%', height: '100%', objectFit: 'cover' }} />
-              <img src={donutSeg1} alt="" style={{ position: 'absolute', top: '-1.14%', left: '-1.05%', right: '8.68%', bottom: '52.04%', width: '100%', height: '100%', objectFit: 'cover' }} />
-              <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center', ...segoe, fontSize: 22, fontWeight: 600, lineHeight: '28px', color: '#323130', whiteSpace: 'nowrap' }}>
-                10 days<br />5 hours
+              {/* Base */}
+              <div style={{ position: 'absolute', left: 0, top: 0, width: 176, height: 176 }}>
+                <div style={{ position: 'absolute', top: '-1.14%', right: '-1.14%', bottom: '-1.14%', left: '-1.14%' }}>
+                  <img alt="" src={donutBase} style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} />
+                </div>
               </div>
+              {/* Segment 2 */}
+              <div style={{ position: 'absolute', left: 0, top: 0, width: 176, height: 176 }}>
+                <div style={{ position: 'absolute', top: '18.43%', right: '-1.14%', bottom: '-1.14%', left: '-1.14%' }}>
+                  <img alt="" src={donutSeg2} style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} />
+                </div>
+              </div>
+              {/* Segment 1 */}
+              <div style={{ position: 'absolute', left: 0, top: 0, width: 176, height: 176 }}>
+                <div style={{ position: 'absolute', top: '-1.14%', right: '8.68%', bottom: '52.04%', left: '-1.05%' }}>
+                  <img alt="" src={donutSeg1} style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} />
+                </div>
+              </div>
+              {/* Center text */}
+              <p style={{ position: 'absolute', left: 88, top: 55.5, transform: 'translateX(-50%)', width: 107.591, height: 65, margin: 0, ...segoe, fontSize: 28, fontWeight: 600, lineHeight: '28px', color: '#323130', textAlign: 'center' }}>
+                10 days 5 hours
+              </p>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
