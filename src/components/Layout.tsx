@@ -107,10 +107,10 @@ export default function Layout() {
         />
       )}
 
-      {/* Left Navigation */}
+      {/* Left Navigation — always fixed so it never participates in document flow */}
       <aside
         className={`
-          fixed lg:static inset-y-0 left-0 z-50 h-screen shrink-0
+          fixed inset-y-0 left-0 z-50 h-screen shrink-0
           transform transition-transform duration-300 ease-in-out
           ${isMobileNavOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
         `}
@@ -121,8 +121,8 @@ export default function Layout() {
         />
       </aside>
 
-      {/* Right side with Header and Content */}
-      <div className={`flex-1 flex flex-col h-screen transition-all duration-300 ${(isPanelOpen || isArticlePanelOpen) ? 'hidden md:block md:mr-[600px] lg:mr-[800px] xl:mr-[956px]' : 'mr-0'}`}>
+      {/* Right side with Header and Content — offset by nav width; panels overlay via position:fixed */}
+      <div className="flex flex-col h-screen lg:ml-[320px]">
         <Header
           onToggleNav={toggleMobileNav}
           isNavOpen={isMobileNavOpen}
