@@ -54,7 +54,7 @@ const benefitsItems = [
   },
 ];
 
-export default function RecentActivitySection() {
+export default function RecentActivitySection({ onEngageClick }: { onEngageClick?: () => void }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
 
@@ -208,7 +208,7 @@ export default function RecentActivitySection() {
         </div>
 
         {/* ── Engage Card ── */}
-        <div style={cardShell}>
+        <div style={{ ...cardShell, cursor: 'pointer' }} onClick={onEngageClick}>
           {/* Header — 54px (Engage card is 54px vs 52px for others) */}
           <div style={{ ...cardHeaderLabel, height: '54px' }}>Engage</div>
 

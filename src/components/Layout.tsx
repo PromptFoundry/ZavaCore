@@ -60,6 +60,14 @@ export default function Layout() {
     setIsEngageLoading(false);
   };
 
+  const handleEngageSummarize = () => {
+    setIsEngageLoading(true);
+    setTimeout(() => {
+      setIsEngageLoading(false);
+      setShowEngageResponse(true);
+    }, 2000);
+  };
+
   const handleEntityCardClick = () => {
     setIsPanelOpen(true);
   };
@@ -244,7 +252,7 @@ export default function Layout() {
               <div data-name="news-hero"><NewsHero /></div>
               <div data-name="recommended"><RecommendedSection /></div>
               <div data-name="quick-actions"><QuickActions /></div>
-              <div data-name="recent-activity"><RecentActivitySection /></div>
+              <div data-name="recent-activity"><RecentActivitySection onEngageClick={handleEngageSummarize} /></div>
             </div>
           )}
         </main>
