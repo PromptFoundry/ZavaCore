@@ -293,7 +293,7 @@ export default function Layout() {
           {/* Widget Container */}
           {!hasConversation && (
             <div data-name="widget-container" className="w-full max-w-[1200px] mx-auto flex flex-col gap-12">
-              <div data-name="news-hero"><NewsHero onSummarizeNews={handleSummarizeNews} /></div>
+              <div data-name="news-hero"><NewsHero onSummarizeNews={handleSummarizeNews} onEngageClick={handleEngageSummarize} /></div>
               <div data-name="recommended"><RecommendedSection /></div>
               <div data-name="quick-actions"><QuickActions /></div>
               <div data-name="recent-activity"><RecentActivitySection onEngageClick={handleEngageSummarize} /></div>

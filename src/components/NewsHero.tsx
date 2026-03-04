@@ -81,9 +81,10 @@ const rightCards = [
 
 interface NewsHeroProps {
   onSummarizeNews?: () => void;
+  onEngageClick?: () => void;
 }
 
-export default function NewsHero({ onSummarizeNews }: NewsHeroProps = {}) {
+export default function NewsHero({ onSummarizeNews, onEngageClick }: NewsHeroProps = {}) {
   const [current, setCurrent] = useState(0);
 
   const prev = () => setCurrent(i => (i - 1 + slides.length) % slides.length);
@@ -229,6 +230,7 @@ export default function NewsHero({ onSummarizeNews }: NewsHeroProps = {}) {
           {rightCards.map((card, i) => (
             <div
               key={i}
+              onClick={i === 1 ? onEngageClick : undefined}
               style={{
                 flex: 1, position: 'relative', borderRadius: 24, overflow: 'hidden',
                 boxShadow: cardShadow, cursor: 'pointer',
