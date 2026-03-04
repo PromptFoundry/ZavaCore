@@ -3,7 +3,7 @@ import {
   ChevronDownIcon,
   CheckBadgeIcon,
 } from '@heroicons/react/24/outline';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import ChatInput from './ChatInput';
 import LeftNav from './LeftNav';
@@ -31,6 +31,7 @@ export default function Layout() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [showEngageResponse, setShowEngageResponse] = useState(false);
   const [isEngageLoading, setIsEngageLoading] = useState(false);
+  const mainRef = useRef<HTMLElement>(null);
 
   const toggleMobileNav = () => setIsMobileNavOpen(!isMobileNavOpen);
 
@@ -62,6 +63,7 @@ export default function Layout() {
 
   const handleEngageSummarize = () => {
     setIsEngageLoading(true);
+    mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(() => {
       setIsEngageLoading(false);
       setShowEngageResponse(true);
@@ -113,6 +115,7 @@ export default function Layout() {
 
         {/* Main Content */}
         <main
+          ref={mainRef}
           className="flex-1 overflow-auto py-8 md:py-16 lg:py-[126px] px-4 md:px-6 lg:px-8 relative bg-white flex flex-col gap-8"
           style={!hasConversation ? {
             backgroundImage: 'url("/assets/images/Zava agent background - gradient.png")',
