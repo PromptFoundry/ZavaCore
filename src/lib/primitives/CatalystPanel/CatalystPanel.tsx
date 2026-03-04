@@ -179,9 +179,9 @@ export default function CatalystPanel({
           display: 'flex',
           flexDirection: 'column',
           gap: '48px',
-          padding: '0 32px 48px',
+          padding: hasConversation ? '0 32px 28px' : '0 32px 48px',
           ...(!hasConversation ? {
-            backgroundImage: 'url("/assets/images/Zava agent background - gradient.png")',
+            backgroundImage: 'url("/assets/images/Zava agent background - gradient fade.png")',
             backgroundPosition: 'top center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: '100% auto',
@@ -298,6 +298,13 @@ export default function CatalystPanel({
           </div>
         )}
       </div>
+
+      {/* Floating chat input — shown during conversation, sits below scroll area */}
+      {hasConversation && (
+        <div style={{ padding: '0 32px 20px', backgroundColor: '#ffffff' }}>
+          <ChatInput onSubmit={handleSubmitMessage} />
+        </div>
+      )}
     </div>
   );
 }

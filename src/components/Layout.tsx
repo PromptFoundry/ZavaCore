@@ -16,6 +16,7 @@ import NewsHero from './NewsHero';
 import RecommendedSection from './RecommendedSection';
 import RecentActivitySection from './RecentActivitySection';
 import EngageResponse from './EngageResponse';
+import NewsResponseMessage from './NewsResponseMessage';
 
 
 interface Message {
@@ -30,6 +31,8 @@ export default function Layout() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [showEngageResponse, setShowEngageResponse] = useState(false);
   const [isEngageLoading, setIsEngageLoading] = useState(false);
+  const [showNewsResponse, setShowNewsResponse] = useState(false);
+  const [isNewsLoading, setIsNewsLoading] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
 
   const toggleMobileNav = () => setIsMobileNavOpen(!isMobileNavOpen);
@@ -58,6 +61,17 @@ export default function Layout() {
     setIsPanelOpen(false);
     setShowEngageResponse(false);
     setIsEngageLoading(false);
+    setShowNewsResponse(false);
+    setIsNewsLoading(false);
+  };
+
+  const handleSummarizeNews = () => {
+    setIsNewsLoading(true);
+    mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      setIsNewsLoading(false);
+      setShowNewsResponse(true);
+    }, 2000);
   };
 
   const handleEngageSummarize = () => {
@@ -77,7 +91,7 @@ export default function Layout() {
     setIsPanelOpen(false);
   };
 
-  const hasConversation = messages.length > 0 || isLoading || isEngageLoading || showEngageResponse;
+  const hasConversation = messages.length > 0 || isLoading || isEngageLoading || showEngageResponse || isNewsLoading || showNewsResponse;
 
 
   return (
@@ -115,9 +129,9 @@ export default function Layout() {
         {/* Main Content */}
         <main
           ref={mainRef}
-          className="flex-1 overflow-auto py-8 md:py-16 lg:py-[126px] px-4 md:px-6 lg:px-8 relative bg-white flex flex-col gap-8"
+          className={`flex-1 overflow-auto py-8 md:py-16 lg:py-[126px] px-4 md:px-6 lg:px-8 relative bg-white flex flex-col gap-8 ${hasConversation ? 'pb-28' : ''}`}
           style={!hasConversation ? {
-            backgroundImage: 'url("/assets/images/Zava agent background - gradient.png")',
+            backgroundImage: 'url("/assets/images/Zava agent background - gradient fade.png")',
             backgroundPosition: 'top center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: '100% auto'
@@ -164,6 +178,31 @@ export default function Layout() {
                     <span className="text-xs text-[#707070]">Today</span>
                     <div className="flex-1 h-px bg-[#e0e0e0]" />
                   </div>
+
+                  {/* News summary response flow */}
+                  {(isNewsLoading || showNewsResponse) && (
+                    <div className="flex flex-col gap-4">
+                      <div className="flex justify-end">
+                        <div className="bg-[#f5f5f5] rounded-2xl px-4 py-3 max-w-[590px]">
+                          <p className="text-base leading-6 text-[#424242]">Create a summary of what's trending across my organization in SharePoint. Include this week's top news posts, trending topics based on engagement, key leadership updates, and upcoming events. Present the summary as a highlights video.</p>
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-4">
+                        {isNewsLoading ? (
+                          <>
+                            <div className="flex items-center gap-2">
+                              <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" className="w-6 h-6" />
+                              <span className="font-semibold text-base text-[#616161]">Copilot</span>
+                            </div>
+                            <p className="text-base leading-6 text-[#808080]">Summarizing your news…</p>
+                            <AnimatedLoader />
+                          </>
+                        ) : (
+                          <NewsResponseMessage />
+                        )}
+                      </div>
+                    </div>
+                  )}
 
                   {/* Engage response flow */}
                   {(isEngageLoading || showEngageResponse) && (
@@ -251,13 +290,22 @@ export default function Layout() {
           {/* Widget Container */}
           {!hasConversation && (
             <div data-name="widget-container" className="w-full max-w-[1200px] mx-auto flex flex-col gap-12">
-              <div data-name="news-hero"><NewsHero /></div>
+              <div data-name="news-hero"><NewsHero onSummarizeNews={handleSummarizeNews} /></div>
               <div data-name="recommended"><RecommendedSection /></div>
               <div data-name="quick-actions"><QuickActions /></div>
               <div data-name="recent-activity"><RecentActivitySection onEngageClick={handleEngageSummarize} /></div>
             </div>
           )}
         </main>
+
+        {/* Floating chat input — shown during conversation, sits below scroll area */}
+        {hasConversation && (
+          <div className="px-4 md:px-6 lg:px-8 pb-5 pt-0 bg-white">
+            <div className="max-w-[790px] mx-auto">
+              <ChatInput onSubmit={handleSubmitMessage} />
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Mobile backdrop for panel */}

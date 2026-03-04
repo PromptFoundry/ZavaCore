@@ -79,7 +79,11 @@ const rightCards = [
   },
 ];
 
-export default function NewsHero() {
+interface NewsHeroProps {
+  onSummarizeNews?: () => void;
+}
+
+export default function NewsHero({ onSummarizeNews }: NewsHeroProps = {}) {
   const [current, setCurrent] = useState(0);
 
   const prev = () => setCurrent(i => (i - 1 + slides.length) % slides.length);
@@ -182,6 +186,7 @@ export default function NewsHero() {
 
               {/* Action button */}
               <button
+                onClick={slide.buttonLabel === 'Summarize my news' ? onSummarizeNews : undefined}
                 style={{
                   ...segoe, flexShrink: 0,
                   padding: '10px 16px', backgroundColor: 'rgba(0,0,0,0.55)',
