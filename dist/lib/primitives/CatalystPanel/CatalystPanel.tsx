@@ -289,11 +289,11 @@ export default function CatalystPanel({
             <div className="catalyst-news-hero">
               <NewsHero />
             </div>
-            <div className="catalyst-recommended">
-              <RecommendedSection />
-            </div>
             <div className="catalyst-quick-actions">
               <QuickActions />
+            </div>
+            <div className="catalyst-recommended">
+              <RecommendedSection />
             </div>
           </div>
         )}
