@@ -212,7 +212,7 @@ export default function Layout() {
                     <div className="flex flex-col gap-4">
                       <div className="flex justify-end">
                         <div className="bg-[#f5f5f5] rounded-2xl px-4 py-3 max-w-[590px]">
-                          <p className="text-base leading-6 text-[#424242]">Summarize all activity</p>
+                          <p className="text-base leading-6 text-[#424242]">Summarize my recent Engage updates and activity</p>
                         </div>
                       </div>
                       <div className="flex flex-col gap-4">
