@@ -259,6 +259,58 @@ function HighlightsByThemeSection() {
   );
 }
 
+/* ── Section 3: People to follow ──────────────────────── */
+
+const people = [
+  { name: 'Kian',      initials: 'KL', bg: '#5c2e91', fg: '#fff' },
+  { name: 'Hillary',   initials: 'HR', bg: '#c43e1c', fg: '#fff' },
+  { name: 'Cassandra', initials: 'CD', bg: '#038387', fg: '#fff' },
+  { name: 'Robin',     initials: 'RC', bg: '#e65000', fg: '#fff' },
+  { name: 'Edmee',     initials: 'EP', bg: '#d8f5b0', fg: '#537200' },
+  { name: 'Erika',     initials: 'EF', bg: '#0078d4', fg: '#fff' },
+  { name: 'Pasquale',  initials: 'PM', bg: '#ecc6c6', fg: '#943d73' },
+  { name: 'Reta',      initials: 'RT', bg: '#d2d0ce', fg: '#484644' },
+];
+
+function PeopleToFollowSection() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <PageHeader>People to follow</PageHeader>
+      <div style={{ background: '#ebf3fc', borderRadius: 16, padding: '16px 4px 24px' }}>
+        {/* Title + subtitle */}
+        <div style={{ padding: '0 0 10px', display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <p style={{ ...segoe, margin: 0, fontSize: 16, fontWeight: 600, lineHeight: '22px', color: '#424242' }}>
+            People to follow
+          </p>
+          <p style={{ ...segoe, margin: 0, fontSize: 14, fontWeight: 400, lineHeight: '20px', color: '#616161' }}>
+            Stay connected by following people to see their activity in your feed.
+          </p>
+        </div>
+
+        {/* Avatar carousel */}
+        <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+          {people.map((p, i) => (
+            <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, padding: '8px 2px', width: 88, flexShrink: 0 }}>
+              {/* Avatar */}
+              <div style={{ width: 56, height: 56, borderRadius: '50%', background: p.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <span style={{ ...segoe, fontSize: 16, fontWeight: 600, color: p.fg }}>{p.initials}</span>
+              </div>
+              {/* Name */}
+              <p style={{ ...segoe, margin: 0, width: 84, fontSize: 14, fontWeight: 400, lineHeight: '20px', color: '#242424', textAlign: 'center' }}>
+                {p.name}
+              </p>
+              {/* Follow button */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 28, padding: '0 10px 0 8px', background: '#fff', border: '1px solid #ebebeb', borderRadius: 8, cursor: 'pointer' }}>
+                <span style={{ ...segoe, fontSize: 12, fontWeight: 600, lineHeight: 'normal', color: '#616161' }}>Follow</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ── Main export ───────────────────────────────────────── */
 
 export default function EngageResponse() {
@@ -289,6 +341,7 @@ export default function EngageResponse() {
 
       <QASummarySection />
       <HighlightsByThemeSection />
+      <PeopleToFollowSection />
     </div>
   );
 }
