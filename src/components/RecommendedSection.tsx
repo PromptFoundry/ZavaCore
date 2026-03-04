@@ -1,3 +1,9 @@
+import gameChangerImg from '../assets/images/game changer.png';
+import avatar1 from '../assets/images/Avatar/People Card-Avatar/Avatar.png';
+import avatar2 from '../assets/images/Avatar/People Card-Avatar/Avatar-1.png';
+import avatar3 from '../assets/images/Avatar/People Card-Avatar/Avatar-2.png';
+import avatar4 from '../assets/images/Avatar/People Card-Avatar/Avatar-3.png';
+
 // Background images
 const imgEventBg   = '/assets/icons/figma/e776d7414b99a26f2356a45d9e181619111ef9c6.png';
 const imgVideoBg1  = '/assets/icons/figma/662c3703497ecb0cbabd9bdb61b81b30b02d66f1.png';
@@ -25,13 +31,8 @@ const iconVideoClip = '/assets/icons/figma/2214b597637ab0d899b58040545efa0647269
 const iconPlayCircle = '/assets/icons/figma/73f1e30c6c4edfba1a7ba1cf72014347a8fae915.svg';
 const iconPlayArrow = '/assets/icons/figma/b355400a76e91767768126c8b2eabf46bede511b.svg';
 
-// Avatars (Figma person photos)
-const avatars = [
-  '/assets/icons/figma/1ca2b212726726ee9cfb52a97adb35738397e634.png',
-  '/assets/icons/figma/343fa032d9a3c604a23b0186da5895e097602f89.png',
-  '/assets/icons/figma/61161ca4df31c39140dc14b64d7891f90053e5ea.png',
-  '/assets/icons/figma/93c8a0b0691dc024d0e81a3b6c5cad049659621a.png',
-];
+// Avatars
+const avatars = [avatar1, avatar2, avatar3, avatar4];
 
 const shadow = '0px 2px 4px 0px rgba(0,0,0,0.14), 0px 0px 2px 0px rgba(0,0,0,0.12)';
 const statGradient = 'linear-gradient(222.481deg, rgb(49,215,241) 12.925%, rgb(138,97,210) 94.343%)';
@@ -126,15 +127,11 @@ export default function RecommendedSection() {
       </h2>
 
       {/* 3-col grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', alignItems: 'stretch', height: '278px' }}>
+      <div className="widget-grid-3col recommended-grid">
 
         {/* ── Left: Event Card ── */}
         <div style={{ borderRadius: '24px', overflow: 'hidden', position: 'relative', boxShadow: shadow, cursor: 'pointer' }}>
-          <img
-            alt=""
-            src={imgEventBg}
-            style={{ position: 'absolute', height: '156.04%', width: '115.32%', top: '-15.03%', left: '-7.66%', objectFit: 'cover', maxWidth: 'none' }}
-          />
+          <div style={{ position: 'absolute', inset: -32, backgroundImage: `url("${imgEventBg}")`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(225.832deg, rgba(255,0,135,0.2) 1.7136%, rgba(68,38,127,0.9) 92.1%)' }} />
           <CalendarBadge />
           <div style={{ position: 'absolute', bottom: 25, left: 28, width: 218, display: 'flex', flexDirection: 'column', gap: 8, color: '#fff' }}>
@@ -148,22 +145,22 @@ export default function RecommendedSection() {
         </div>
 
         {/* ── Middle: 2 Prompt Cards ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12, height: '100%', justifyContent: 'center' }}>
+        <div className="recommended-middle" style={{ display: 'flex', flexDirection: 'column', gap: 12, height: '100%', justifyContent: 'center' }}>
 
           {/* Card 1 – Summarize: wrapper is relative/full-width, inner card is absolute inset-0 */}
           <div style={{ position: 'relative', height: 133, borderRadius: 24, flexShrink: 0 }}>
             <div style={{ position: 'absolute', inset: 0, backgroundColor: '#fff', border: '0.5px solid #f0f0f0', boxShadow: shadow, borderRadius: 24, padding: '12px 16px', display: 'flex', flexDirection: 'column', gap: 13, cursor: 'pointer' }}>
-              <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: 16, fontWeight: 600, lineHeight: '22px', color: 'rgba(0,0,0,0.86)' }}>
-                Summarize what people in my org are working on...
+              <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: 16, fontWeight: 600, lineHeight: '22px', color: 'rgba(0,0,0,0.86)', whiteSpace: 'pre-wrap' }}>
+                {'Summarize what people in my \norg are working on...'}
               </p>
               {/* Avatar group — pr:6, overlap -8px */}
               <div style={{ display: 'flex', alignItems: 'center', paddingRight: 6 }}>
                 {avatars.map((src, i) => (
-                  <div key={i} style={{ width: 32, height: 32, borderRadius: '50%', overflow: 'hidden', border: '2px solid #fff', marginLeft: i > 0 ? -8 : 0, flexShrink: 0 }}>
+                  <div key={i} style={{ width: 48, height: 48, borderRadius: '50%', overflow: 'hidden', border: '2px solid #fff', marginLeft: i > 0 ? -12 : 0, flexShrink: 0 }}>
                     <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
                 ))}
-                <div style={{ width: 32, height: 32, borderRadius: '50%', backgroundColor: '#e0e0e0', border: '2px solid #fff', marginLeft: -8, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: '"Segoe UI", sans-serif', fontSize: 11, fontWeight: 600, color: '#424242' }}>
+                <div style={{ width: 48, height: 48, borderRadius: '50%', backgroundColor: '#e0e0e0', border: '2px solid #fff', marginLeft: -12, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: '"Segoe UI", sans-serif', fontSize: 13, fontWeight: 600, color: '#424242' }}>
                   +5
                 </div>
               </div>
@@ -173,8 +170,8 @@ export default function RecommendedSection() {
           {/* Card 2 – Attention */}
           <div style={{ position: 'relative', height: 133, borderRadius: 24, flexShrink: 0 }}>
             <div style={{ position: 'absolute', inset: 0, backgroundColor: '#fff', border: '0.5px solid #f0f0f0', boxShadow: shadow, borderRadius: 24, padding: '12px 16px', display: 'flex', flexDirection: 'column', gap: 13, cursor: 'pointer' }}>
-              <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: 16, fontWeight: 600, lineHeight: '22px', color: 'rgba(0,0,0,0.86)' }}>
-                Highlight what needs my attention today
+              <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: 16, fontWeight: 600, lineHeight: '22px', color: 'rgba(0,0,0,0.86)', whiteSpace: 'pre-wrap' }}>
+                {'Highlight what needs \nmy attention today'}
               </p>
               <div style={{ display: 'flex', gap: 8 }}>
                 <StatPill icon={iconComment}   count="12" label="Comments" iconOffsetY="calc(50% + 0.5px)" />
@@ -188,11 +185,7 @@ export default function RecommendedSection() {
 
         {/* ── Right: Video Card ── */}
         <div style={{ borderRadius: '24px', overflow: 'hidden', position: 'relative', boxShadow: shadow, cursor: 'pointer' }}>
-          <img alt="" src={imgVideoBg1} style={{ position: 'absolute', height: '282px', left: '-96px', top: 0, width: '532px', objectFit: 'cover', maxWidth: 'none' }} />
-          <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
-            <img alt="" src={imgVideoBg2} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', maxWidth: 'none' }} />
-            <img alt="" src={imgVideoBg3} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', maxWidth: 'none' }} />
-          </div>
+          <div style={{ position: 'absolute', inset: -32, backgroundImage: `url("${gameChangerImg}")`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
           <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, top: '105px', background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%)' }} />
 
           <VideoBadge />
