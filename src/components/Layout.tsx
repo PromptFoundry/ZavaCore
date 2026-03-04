@@ -77,7 +77,7 @@ export default function Layout() {
     setIsPanelOpen(false);
   };
 
-  const hasConversation = messages.length > 0 || isLoading;
+  const hasConversation = messages.length > 0 || isLoading || isEngageLoading || showEngageResponse;
 
 
   return (
@@ -163,6 +163,34 @@ export default function Layout() {
                     <span className="text-xs text-[#707070]">Today</span>
                     <div className="flex-1 h-px bg-[#e0e0e0]" />
                   </div>
+
+                  {/* Engage response flow */}
+                  {(isEngageLoading || showEngageResponse) && (
+                    <div className="flex flex-col gap-4">
+                      <div className="flex justify-end">
+                        <div className="bg-[#f5f5f5] rounded-2xl px-4 py-3 max-w-[590px]">
+                          <p className="text-base leading-6 text-[#424242]">Summarize all activity</p>
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-4">
+                        <div className="flex items-center gap-2">
+                          <div className="w-6 h-6">
+                            <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" className="w-full h-full" />
+                          </div>
+                          <span className="font-semibold text-base text-[#616161]">Copilot</span>
+                        </div>
+                        {isEngageLoading ? (
+                          <>
+                            <p className="text-base leading-6 text-[#808080]">Summarizing Engage activity…</p>
+                            <AnimatedLoader />
+                          </>
+                        ) : (
+                          <EngageResponse />
+                        )}
+                      </div>
+                    </div>
+                  )}
+
                   {messages.map((msg, index) => (
                     <div key={index} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
                       {msg.type === 'user' ? (
@@ -229,26 +257,6 @@ export default function Layout() {
               <div data-name="engage-widget">
                 <EngageWidget onSummarize={handleEngageSummarize} />
               </div>
-
-              {/* Engage Response */}
-              {(isEngageLoading || showEngageResponse) && (
-                <div data-name="engage-response" className="w-full max-w-[790px] mx-auto flex flex-col gap-4">
-                  {isEngageLoading ? (
-                    <div className="flex flex-col gap-2">
-                      <div className="flex items-center gap-2">
-                        <div className="w-6 h-6">
-                          <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" className="w-full h-full" />
-                        </div>
-                        <span className="font-semibold text-base text-[#616161]">Copilot</span>
-                      </div>
-                      <p className="text-base leading-6 text-[#808080]">Summarizing Engage activity…</p>
-                      <AnimatedLoader />
-                    </div>
-                  ) : (
-                    <EngageResponse />
-                  )}
-                </div>
-              )}
             </div>
           )}
         </main>
