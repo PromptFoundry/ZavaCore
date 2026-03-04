@@ -16,7 +16,6 @@ import PromptStarter from './PromptStarter';
 import NewsHero from './NewsHero';
 import RecommendedSection from './RecommendedSection';
 import RecentActivitySection from './RecentActivitySection';
-import EngageWidget from './EngageWidget';
 import EngageResponse from './EngageResponse';
 
 
@@ -59,14 +58,6 @@ export default function Layout() {
     setIsPanelOpen(false);
     setShowEngageResponse(false);
     setIsEngageLoading(false);
-  };
-
-  const handleEngageSummarize = () => {
-    setIsEngageLoading(true);
-    setTimeout(() => {
-      setIsEngageLoading(false);
-      setShowEngageResponse(true);
-    }, 2000);
   };
 
   const handleEntityCardClick = () => {
@@ -254,9 +245,6 @@ export default function Layout() {
               <div data-name="recommended"><RecommendedSection /></div>
               <div data-name="quick-actions"><QuickActions /></div>
               <div data-name="recent-activity"><RecentActivitySection /></div>
-              <div data-name="engage-widget">
-                <EngageWidget onSummarize={handleEngageSummarize} />
-              </div>
             </div>
           )}
         </main>
