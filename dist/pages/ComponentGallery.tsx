@@ -410,22 +410,7 @@ export default function ComponentGallery() {
             <div className="bg-white rounded-lg p-6">
               <h2 className="text-xl font-bold mb-4">CatalystPanel</h2>
               <div className="border rounded-lg overflow-auto flex justify-end" style={{ height: '1000px' }}>
-                <CatalystPanel
-                  title="Chat"
-                  promptStarters={[
-                    { id: '1', text: 'What should I prioritize based on my schedule?' },
-                    { id: '2', text: 'Find marketing documents that need my feedback' },
-                    { id: '3', text: 'Highlight town hall updates relevant to my work' }
-                  ]}
-                  widgets={[
-                    {
-                      id: '1',
-                      title: 'Card title',
-                      content: 'Content area',
-                      buttonLabel: 'Button'
-                    }
-                  ]}
-                />
+                <CatalystPanel />
               </div>
               <pre className="mt-4 bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
 {`<CatalystPanel

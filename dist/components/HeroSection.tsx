@@ -1,10 +1,12 @@
+import heroBg from '../assets/images/Zava agent background - gradient.png';
+
 export default function HeroSection() {
   return (
     <div style={{ position: 'relative', width: '100%', padding: '114px 41px' }}>
       {/* Background image */}
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
         <img
-          src="/assets/images/HeroGradientImage.png"
+          src={heroBg}
           alt=""
           style={{
             position: 'absolute',

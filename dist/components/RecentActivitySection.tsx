@@ -1,8 +1,7 @@
-import {
-  ChevronLeft16Regular,
-  ChevronRight16Regular,
-  MoreHorizontal16Regular,
-} from '@fluentui/react-icons';
+import { AlertFilled, ArrowTrending16Filled } from '@fluentui/react-icons';
+import learning1 from '../assets/images/learning 1.png';
+import learning2 from '../assets/images/learning 2.png';
+import zcOrange from '../assets/icons/zc_orange.svg';
 
 const shadow = '0px 2px 4px 0px rgba(0,0,0,0.14), 0px 0px 2px 0px rgba(0,0,0,0.12)';
 
@@ -11,7 +10,6 @@ const cardShell: React.CSSProperties = {
   borderRadius: '24px',
   border: '1px solid #e0e0e0',
   boxShadow: shadow,
-  height: '338px',
   display: 'flex',
   flexDirection: 'column',
   overflow: 'hidden',
@@ -29,6 +27,48 @@ const cardHeaderLabel: React.CSSProperties = {
   display: 'flex',
   alignItems: 'flex-start',
 };
+
+const footerStyle: React.CSSProperties = {
+  height: '64px',
+  padding: '12px 20px 0',
+  display: 'flex',
+  alignItems: 'flex-start',
+  gap: '8px',
+  flexShrink: 0,
+};
+
+const outlineBtn: React.CSSProperties = {
+  padding: '5px 11px',
+  backgroundColor: '#fff',
+  border: '1px solid #d1d1d1',
+  borderRadius: '4px',
+  fontFamily: '"Segoe UI", sans-serif',
+  fontSize: '14px',
+  fontWeight: 600,
+  lineHeight: '20px',
+  color: '#242424',
+  cursor: 'pointer',
+  height: '32px',
+};
+
+const learningArticles = [
+  {
+    img: learning1,
+    badge: 'Due in 3 days',
+    badgeColor: '#fff',
+    badgeBg: '#c50f1f',
+    BadgeIcon: AlertFilled,
+    title: 'Safe manufacturing: Ensuring your safety and the safety of others',
+  },
+  {
+    img: learning2,
+    badge: 'Trending',
+    badgeColor: '#fff',
+    badgeBg: '#0f6cbd',
+    BadgeIcon: ArrowTrending16Filled,
+    title: 'Innovating smart materials for tomorrow',
+  },
+];
 
 const benefitsItems = [
   {
@@ -71,92 +111,97 @@ export default function RecentActivitySection({ onEngageClick }: { onEngageClick
         Based on your recent activity
       </h2>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', alignItems: 'start' }}>
+      <div className="widget-grid-3col activity-grid">
 
         {/* ── Learning Card ── */}
-        <div style={cardShell}>
-          {/* Header */}
+        <div className="activity-card" style={cardShell}>
           <div style={cardHeaderLabel}>Learning</div>
 
-          {/* Body — relatively positioned for precise pixel layout */}
-          <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
-
-            {/* Stacked images: x=0 y=23 within content area (offset 9px body pad = y+14 from body top) */}
-            <div style={{ position: 'absolute', left: '20px', top: '32px', width: '141px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              <div style={{ width: '141px', height: '101px', borderRadius: '12px', overflow: 'hidden', flexShrink: 0 }}>
-                <img src="/assets/images/Learning image.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          {/* Articles */}
+          <div style={{ flex: 1, padding: '9px 20px 0', display: 'flex', flexDirection: 'column', gap: '16px', overflowY: 'auto' }}>
+            {learningArticles.map((article, i) => (
+              <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'center', cursor: 'pointer', height: '96px', flexShrink: 0 }}>
+                {/* Thumbnail */}
+                <div style={{ width: '144px', height: '96px', borderRadius: '20px', overflow: 'hidden', flexShrink: 0 }}>
+                  <img src={article.img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                </div>
+                {/* Content */}
+                <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  {/* Publisher */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <img src={zcOrange} alt="" style={{ width: '14px', height: '14px', flexShrink: 0 }} />
+                    <span style={{ fontFamily: '"Segoe UI", sans-serif', fontSize: '11px', fontWeight: 400, lineHeight: '16px', color: '#616161' }}>
+                      ZavaCore · 1d
+                    </span>
+                  </div>
+                  {/* Badge */}
+                  <div style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '3px',
+                    alignSelf: 'flex-start',
+                    backgroundColor: article.badgeBg,
+                    borderRadius: '999px',
+                    padding: '2px 6px',
+                  }}>
+                    <article.BadgeIcon style={{ width: '10px', height: '10px', color: article.badgeColor, flexShrink: 0 }} />
+                    <span style={{
+                      fontFamily: '"Segoe UI", sans-serif',
+                      fontSize: '10px',
+                      fontWeight: 600,
+                      lineHeight: '14px',
+                      color: article.badgeColor,
+                    }}>
+                      {article.badge}
+                    </span>
+                  </div>
+                  {/* Title */}
+                  <p style={{
+                    margin: 0,
+                    fontFamily: '"Segoe UI", sans-serif',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    lineHeight: '20px',
+                    color: '#242424',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden',
+                  }}>
+                    {article.title}
+                  </p>
+                </div>
               </div>
-              <div style={{ width: '141px', height: '101px', borderRadius: '12px', overflow: 'hidden', flexShrink: 0 }}>
-                <img src="/assets/images/Learning image-1.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-              </div>
-            </div>
+            ))}
+          </div>
 
-            {/* Text column: x=183 (20+163) y=59 (9+50) */}
-            <div style={{ position: 'absolute', left: '183px', top: '59px', width: '196px', display: 'flex', flexDirection: 'column' }}>
-              {/* Title — 56px height, 2 lines × 28px */}
-              <p style={{
-                margin: 0,
-                fontFamily: '"Segoe UI", sans-serif',
-                fontSize: '20px',
-                fontWeight: 600,
-                lineHeight: '28px',
-                color: '#242424',
-                height: '56px',
-                overflow: 'hidden',
-              }}>
-                Quickly catch up on Learning
-              </p>
-              {/* Description — 60px height */}
-              <p style={{
-                margin: '4px 0 0',
-                fontFamily: '"Segoe UI", sans-serif',
-                fontSize: '14px',
-                fontWeight: 400,
-                lineHeight: '20px',
-                color: '#616161',
-                height: '60px',
-                overflow: 'hidden',
-              }}>
-                ZavaCore agent can bring you up to speed on what your most important trainings are
-              </p>
-              {/* Button — 16px gap below description, 32px tall */}
-              <button
-                style={{
-                  marginTop: '16px',
-                  alignSelf: 'flex-start',
-                  padding: '5px 11px',
-                  backgroundColor: '#fff',
-                  border: '1px solid #d1d1d1',
-                  borderRadius: '4px',
-                  fontFamily: '"Segoe UI", sans-serif',
-                  fontSize: '14px',
-                  fontWeight: 600,
-                  lineHeight: '20px',
-                  color: '#242424',
-                  cursor: 'pointer',
-                  height: '32px',
-                }}
-                onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
-                onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#fff')}
-              >
-                Catch up
-              </button>
-            </div>
+          {/* Footer */}
+          <div style={footerStyle}>
+            <button
+              style={outlineBtn}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+              onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#fff')}
+            >
+              Summarize updates
+            </button>
+            <button
+              style={{ ...outlineBtn, width: '36px', padding: '5px 0' }}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+              onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#fff')}
+            >
+              +2
+            </button>
           </div>
         </div>
 
         {/* ── Benefits Card ── */}
-        <div style={cardShell}>
-          {/* Header */}
+        <div className="activity-card" style={cardShell}>
           <div style={cardHeaderLabel}>Benefits</div>
 
-          {/* Body — items start at y=52+8=60 from card top */}
           <div style={{ flex: 1, padding: '8px 20px 0', display: 'flex', flexDirection: 'column', gap: '24.8px', overflowY: 'auto' }}>
             {benefitsItems.map(({ icon, primary, primaryLink, secondary }, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', minHeight: '32px' }}>
-                {/* Icon — 32px wide */}
                 <img src={icon} alt="" style={{ width: '32px', height: '32px', flexShrink: 0 }} />
-                {/* Copy — starts at x=48 */}
                 <div style={{ flex: 1 }}>
                   <p style={{
                     margin: 0,
@@ -188,17 +233,16 @@ export default function RecentActivitySection({ onEngageClick }: { onEngageClick
             ))}
           </div>
 
-          {/* Footer — fixed at bottom, y=274 from card top */}
-          <div style={{ height: '64px', padding: '12px 20px 0', display: 'flex', alignItems: 'flex-start', gap: '8px', flexShrink: 0 }}>
+          <div style={footerStyle}>
             <button
-              style={{ padding: '5px 11px', backgroundColor: '#fff', border: '1px solid #d1d1d1', borderRadius: '4px', fontFamily: '"Segoe UI", sans-serif', fontSize: '14px', fontWeight: 600, lineHeight: '20px', color: '#242424', cursor: 'pointer', height: '32px' }}
+              style={outlineBtn}
               onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
               onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#fff')}
             >
               Summarize updates
             </button>
             <button
-              style={{ width: '36px', height: '32px', padding: '5px 0', backgroundColor: '#fff', border: '1px solid #d1d1d1', borderRadius: '4px', fontFamily: '"Segoe UI", sans-serif', fontSize: '14px', fontWeight: 600, lineHeight: '20px', color: '#242424', cursor: 'pointer' }}
+              style={{ ...outlineBtn, width: '36px', padding: '5px 0' }}
               onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
               onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#fff')}
             >
@@ -208,66 +252,46 @@ export default function RecentActivitySection({ onEngageClick }: { onEngageClick
         </div>
 
         {/* ── Engage Card ── */}
-        <div style={{ ...cardShell, cursor: 'pointer' }} onClick={onEngageClick}>
-          {/* Header — 54px (Engage card is 54px vs 52px for others) */}
-          <div style={{ ...cardHeaderLabel, height: '54px' }}>Engage</div>
+        <div className="activity-card" style={{ ...cardShell, cursor: 'pointer' }} onClick={onEngageClick}>
 
-          {/* Body — 232px, flex column centered */}
-          <div style={{ height: '232px', padding: '0 20px', display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0 }}>
-            {/* Avatar — y=9 from body top, 64×64 */}
-            <div style={{ width: '64px', height: '64px', borderRadius: '50%', overflow: 'hidden', marginTop: '9px', flexShrink: 0 }}>
-              <img src="/assets/images/Avatar pie.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          {/* Header */}
+          <div style={cardHeaderLabel}>Engage</div>
+
+          {/* Body — flex:1 fills space between header and footer */}
+          <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', gap: '16px', padding: '8px 20px 0' }}>
+
+            {/* Avatar + info centered */}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
+              <div style={{ width: '64px', height: '64px', borderRadius: '50%', overflow: 'hidden', flexShrink: 0 }}>
+                <img src="/assets/images/Avatar pie.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: '16px', fontWeight: 600, lineHeight: '22px', color: '#242424' }}>
+                  New updates
+                </p>
+                <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: '14px', fontWeight: 400, lineHeight: '20px', color: '#616161' }}>
+                  from Mona Kane and others
+                </p>
+              </div>
             </div>
-            {/* Information — y=83 from body (gap = 83-9-64 = 10px) */}
-            <div style={{ marginTop: '10px', width: '100%', position: 'relative', textAlign: 'center' }}>
-              <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: '16px', fontWeight: 700, lineHeight: '22px', color: '#242424' }}>
-                New updates
-              </p>
-              <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: '14px', fontWeight: 400, lineHeight: '20px', color: '#616161' }}>
-                from Mona Kane and others
-              </p>
-              <button style={{ position: 'absolute', right: 0, top: '6px', background: 'none', border: 'none', cursor: 'pointer', padding: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <MoreHorizontal16Regular style={{ color: '#616161' }} />
-              </button>
-            </div>
-            {/* AI Insights — y=150 from body (gap from info bottom ≈ 150-83-42=25px) */}
-            <div style={{
-              marginTop: '25px',
-              width: '100%',
-              backgroundColor: '#eaf6ff',
-              borderRadius: '12px',
-              padding: '12px',
-            }}>
-              <p style={{
-                margin: 0,
-                fontFamily: '"Segoe UI", sans-serif',
-                fontSize: '13px',
-                fontWeight: 400,
-                lineHeight: '18px',
-                color: '#242424',
-              }}>
-                Leadership changes were announced, including Mona Kane returning as EVP, Aaron Buxton leading...
+
+            {/* AI Insights — flex:1 fills remaining body space */}
+            <div style={{ flex: 1, minHeight: 0, backgroundColor: '#eaf6ff', borderRadius: '16px', padding: '12px', overflow: 'hidden' }}>
+              <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: '14px', fontWeight: 400, lineHeight: '20px', color: '#242424' }}>
+                Leadership changes were announced, including Mona Kane returning as EVP, Aaron Buxton leading Design
               </p>
             </div>
           </div>
 
-          {/* Footer — y=286, height=52 */}
-          <div style={{ height: '52px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', flexShrink: 0 }}>
-            <button style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px', display: 'flex', alignItems: 'center', color: '#616161' }}>
-              <ChevronLeft16Regular />
-            </button>
-            {[true, false, false, false].map((active, i) => (
-              <div key={i} style={{
-                width: active ? '20px' : '6px',
-                height: '6px',
-                borderRadius: '3px',
-                backgroundColor: active ? '#0078d4' : '#d1d1d1',
-                transition: 'width 0.2s ease',
-                flexShrink: 0,
-              }} />
-            ))}
-            <button style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px', display: 'flex', alignItems: 'center', color: '#616161' }}>
-              <ChevronRight16Regular />
+          {/* Footer — matches other cards */}
+          <div style={footerStyle}>
+            <button
+              style={outlineBtn}
+              onClick={e => { e.stopPropagation(); onEngageClick?.(); }}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+              onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#fff')}
+            >
+              Summarize updates
             </button>
           </div>
         </div>

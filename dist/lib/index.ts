@@ -23,8 +23,6 @@ export type {
   SharePointHeaderProps,
   SharePointHeaderAction,
   CatalystPanelProps,
-  PromptStarter,
-  WidgetCard,
 } from './primitives';
 
 // Shells - Pre-configured compositions

@@ -6,7 +6,7 @@ import {
 } from '@fluentui/react-icons';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 interface LeftNavProps {
   onMobileItemClick?: () => void;
@@ -17,6 +17,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
   const [selectedItem, setSelectedItem] = useState('zavacore');
   const [isCollapsed, setIsCollapsed] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleItemClick = (itemId: string) => {
     setSelectedItem(itemId);
@@ -363,6 +364,29 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                 } pr-3`}>
                   <img src="/assets/icons/SharePoint.svg" alt="SharePoint" className="w-7 h-7 mr-[9px] shrink-0" />
                   <span className="text-sm text-[#242424]">SharePoint</span>
+                </div>
+              </div>
+
+              {/* Gallery */}
+              <div
+                className="flex items-center gap-0 cursor-pointer focus:outline-none"
+                onClick={() => {
+                  handleItemClick('gallery');
+                  navigate('/gallery');
+                }}
+              >
+                {(selectedItem === 'gallery' || location.pathname === '/gallery') && (
+                  <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+                )}
+                <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+                  selectedItem === 'gallery' || location.pathname === '/gallery'
+                    ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+                    : 'hover:bg-[#e6e6e6] pl-5'
+                } pr-3`}>
+                  <svg className="w-5 h-5 mr-[9px] shrink-0 text-[#424242]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                  </svg>
+                  <span className="text-sm text-[#242424]">Gallery</span>
                 </div>
               </div>
             </div>
