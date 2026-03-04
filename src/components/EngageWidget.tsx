@@ -1,6 +1,6 @@
 import { Settings20Regular, MoreHorizontal16Regular } from '@fluentui/react-icons';
 
-export default function EngageWidget() {
+export default function EngageWidget({ onSummarize }: { onSummarize?: () => void }) {
   return (
     <div
       data-name="engage-widget"
@@ -116,8 +116,9 @@ export default function EngageWidget() {
       {/* Footer */}
       <div className="px-5 pb-5 flex items-center justify-start">
         <button
-          className="px-3 py-[5px] bg-white border border-[#d1d1d1] rounded-[4px] text-sm font-semibold text-[#242424] hover:bg-[#f5f5f5] transition-colors "
+          className="px-3 py-[5px] bg-white border border-[#d1d1d1] rounded-[4px] text-sm font-semibold text-[#242424] hover:bg-[#f5f5f5] transition-colors"
           style={{ lineHeight: '20px' }}
+          onClick={onSummarize}
         >
           Summarize all activity
         </button>

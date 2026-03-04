@@ -16,6 +16,8 @@ import PromptStarter from './PromptStarter';
 import NewsHero from './NewsHero';
 import RecommendedSection from './RecommendedSection';
 import RecentActivitySection from './RecentActivitySection';
+import EngageWidget from './EngageWidget';
+import EngageResponse from './EngageResponse';
 
 
 interface Message {
@@ -28,6 +30,8 @@ export default function Layout() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const [showEngageResponse, setShowEngageResponse] = useState(false);
+  const [isEngageLoading, setIsEngageLoading] = useState(false);
 
   const toggleMobileNav = () => setIsMobileNavOpen(!isMobileNavOpen);
 
@@ -53,6 +57,16 @@ export default function Layout() {
     setMessages([]);
     setIsLoading(false);
     setIsPanelOpen(false);
+    setShowEngageResponse(false);
+    setIsEngageLoading(false);
+  };
+
+  const handleEngageSummarize = () => {
+    setIsEngageLoading(true);
+    setTimeout(() => {
+      setIsEngageLoading(false);
+      setShowEngageResponse(true);
+    }, 2000);
   };
 
   const handleEntityCardClick = () => {
@@ -212,6 +226,29 @@ export default function Layout() {
               <div data-name="recommended"><RecommendedSection /></div>
               <div data-name="quick-actions"><QuickActions /></div>
               <div data-name="recent-activity"><RecentActivitySection /></div>
+              <div data-name="engage-widget">
+                <EngageWidget onSummarize={handleEngageSummarize} />
+              </div>
+
+              {/* Engage Response */}
+              {(isEngageLoading || showEngageResponse) && (
+                <div data-name="engage-response" className="w-full max-w-[790px] mx-auto flex flex-col gap-4">
+                  {isEngageLoading ? (
+                    <div className="flex flex-col gap-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-6 h-6">
+                          <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" className="w-full h-full" />
+                        </div>
+                        <span className="font-semibold text-base text-[#616161]">Copilot</span>
+                      </div>
+                      <p className="text-base leading-6 text-[#808080]">Summarizing Engage activity…</p>
+                      <AnimatedLoader />
+                    </div>
+                  ) : (
+                    <EngageResponse />
+                  )}
+                </div>
+              )}
             </div>
           )}
         </main>
