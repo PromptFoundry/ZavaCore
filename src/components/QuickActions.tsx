@@ -11,8 +11,8 @@ const actions = [
 
 export default function QuickActions() {
   return (
-    <div>
-      <h2 style={{ fontFamily: '"Segoe UI", sans-serif', fontSize: '20px', fontWeight: 700, color: '#242424', margin: '0 0 16px 0' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <h2 style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: '24px', fontWeight: 700, lineHeight: '32px', color: '#242424' }}>
         Quick actions
       </h2>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
