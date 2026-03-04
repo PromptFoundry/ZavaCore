@@ -11,6 +11,7 @@ import QuickActions from './QuickActions';
 import AnimatedLoader from './AnimatedLoader';
 import EntityCard from './EntityCard';
 import RightPanel from './RightPanel';
+import ArticlePanel from './ArticlePanel';
 import PromptStarter from './PromptStarter';
 import NewsHero from './NewsHero';
 import RecommendedSection from './RecommendedSection';
@@ -33,6 +34,7 @@ export default function Layout() {
   const [isEngageLoading, setIsEngageLoading] = useState(false);
   const [showNewsResponse, setShowNewsResponse] = useState(false);
   const [isNewsLoading, setIsNewsLoading] = useState(false);
+  const [isArticlePanelOpen, setIsArticlePanelOpen] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
 
   const toggleMobileNav = () => setIsMobileNavOpen(!isMobileNavOpen);
@@ -63,6 +65,7 @@ export default function Layout() {
     setIsEngageLoading(false);
     setShowNewsResponse(false);
     setIsNewsLoading(false);
+    setIsArticlePanelOpen(false);
   };
 
   const handleSummarizeNews = () => {
@@ -119,7 +122,7 @@ export default function Layout() {
       </aside>
 
       {/* Right side with Header and Content */}
-      <div className={`flex-1 flex flex-col h-screen transition-all duration-300 ${isPanelOpen ? 'hidden md:block md:mr-[600px] lg:mr-[800px] xl:mr-[956px]' : 'mr-0'}`}>
+      <div className={`flex-1 flex flex-col h-screen transition-all duration-300 ${(isPanelOpen || isArticlePanelOpen) ? 'hidden md:block md:mr-[600px] lg:mr-[800px] xl:mr-[956px]' : 'mr-0'}`}>
         <Header
           onToggleNav={toggleMobileNav}
           isNavOpen={isMobileNavOpen}
@@ -198,7 +201,7 @@ export default function Layout() {
                             <AnimatedLoader />
                           </>
                         ) : (
-                          <NewsResponseMessage />
+                          <NewsResponseMessage onArticleClick={() => setIsArticlePanelOpen(true)} />
                         )}
                       </div>
                     </div>
@@ -322,6 +325,12 @@ export default function Layout() {
         onClose={handlePanelClose}
         entityTitle="Summit Center Project Plan"
         entityType="Document"
+      />
+
+      {/* Article Panel */}
+      <ArticlePanel
+        isOpen={isArticlePanelOpen}
+        onClose={() => setIsArticlePanelOpen(false)}
       />
 
     </div>

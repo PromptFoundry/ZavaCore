@@ -114,7 +114,11 @@ function EventCard({ month, day, dow, title, location, time, img }: EventCardPro
 }
 
 
-export default function NewsResponseMessage() {
+interface NewsResponseMessageProps {
+  onArticleClick?: () => void;
+}
+
+export default function NewsResponseMessage({ onArticleClick }: NewsResponseMessageProps = {}) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 28, width: '100%', maxWidth: 772 }}>
 
@@ -233,9 +237,10 @@ export default function NewsResponseMessage() {
         <div style={{ display: 'flex', gap: 20, height: 424 }}>
 
         {/* Left card — 442px wide */}
-        <div style={{
+        <div onClick={onArticleClick} style={{
           width: 442, flexShrink: 0, height: 424, border: '1px solid #e6e6e6', borderRadius: 16,
           overflow: 'hidden', display: 'flex', flexDirection: 'column', boxSizing: 'border-box',
+          cursor: onArticleClick ? 'pointer' : 'default',
         }}>
           {/* Image grid */}
           <div style={{ padding: '20px 20px 0', flexShrink: 0 }}>
@@ -283,7 +288,7 @@ export default function NewsResponseMessage() {
           {/* 3 news items — evenly spaced in 344px */}
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: 344, flex: 1, minHeight: 0 }}>
             {newsItems.map((item, i) => (
-              <div key={i} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', cursor: 'pointer' }}>
+              <div key={i} onClick={onArticleClick} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', cursor: 'pointer' }}>
                 {/* Text */}
                 <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
