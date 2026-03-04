@@ -17,7 +17,7 @@ const imgEventAMA = 'https://www.figma.com/api/mcp/asset/76ef549c-b2a4-421b-a1ae
 const imgEventHappyHour = 'https://www.figma.com/api/mcp/asset/6946bbc3-821a-4bbe-bbd9-de31ed4b80f7';
 const imgEventDiscovery = 'https://www.figma.com/api/mcp/asset/db3226ed-4cca-484f-a630-5cc3b1bbe64a';
 const imgEventCloud = 'https://www.figma.com/api/mcp/asset/4a80c4be-4732-4b6f-a2a1-10b523da0818';
-const imgEventGradient = 'https://www.figma.com/api/mcp/asset/3130b452-d2e0-4f21-9af7-01ea6cfb9b75';
+
 // Sources footer favicons
 const imgFavSrc1 = 'https://www.figma.com/api/mcp/asset/297efb03-fe8e-4434-8ad6-4a4e14d08631';
 const imgFavSrc2 = 'https://www.figma.com/api/mcp/asset/c1aebbd2-514d-4a20-be25-372b3ecce574';

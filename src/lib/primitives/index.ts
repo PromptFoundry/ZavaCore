@@ -15,4 +15,4 @@ export { SharePointHeader } from './SharePointHeader';
 export type { SharePointHeaderProps, SharePointHeaderAction } from './SharePointHeader';
 
 export { CatalystPanel } from './CatalystPanel';
-export type { CatalystPanelProps, PromptStarter, WidgetCard } from './CatalystPanel';
+export type { CatalystPanelProps } from './CatalystPanel';

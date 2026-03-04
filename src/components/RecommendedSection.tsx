@@ -6,9 +6,6 @@ import avatar4 from '../assets/images/Avatar/People Card-Avatar/Avatar-3.png';
 
 // Background images
 const imgEventBg   = '/assets/icons/figma/e776d7414b99a26f2356a45d9e181619111ef9c6.png';
-const imgVideoBg1  = '/assets/icons/figma/662c3703497ecb0cbabd9bdb61b81b30b02d66f1.png';
-const imgVideoBg2  = '/assets/icons/figma/e1513b7c8e1d03d16ec83fe6ecbb53118b8ff825.png';
-const imgVideoBg3  = '/assets/icons/figma/b4bb867da8e1eadb1dc92d70a84566996cd165cd.png';
 
 // Calendar badge layers (Color 1–4)
 const calColor4 = '/assets/icons/figma/bbff3dc4db695d3eaf095f248db7693dbc4d7d46.svg';
