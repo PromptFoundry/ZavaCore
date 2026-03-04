@@ -4,10 +4,11 @@ import react from '@vitejs/plugin-react'
 const BASE = '/ZavaCore/';
 
 // https://vite.dev/config/
-export default defineConfig(({ command }) => ({
+export default defineConfig(({ command: _command }) => ({
+  publicDir: 'src',
   plugins: [
     react(),
-    ...(command === 'build' ? [{
+    {
       name: 'transform-asset-paths',
       transform(code: string, id: string) {
         if (!id.includes('node_modules') && /\.(tsx?|jsx?)$/.test(id)) {
@@ -20,7 +21,7 @@ export default defineConfig(({ command }) => ({
         }
         return null;
       }
-    }] : [])
+    }
   ],
   base: BASE,
 }));

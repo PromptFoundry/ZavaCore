@@ -1,91 +1,39 @@
+import { Food24Regular, Clock24Regular, QuestionCircle24Regular, VehicleCar24Regular, DocumentTable24Regular, Diamond24Regular } from '@fluentui/react-icons';
+
 const actions = [
-  {
-    icon: '/assets/images/Icon-0.svg',
-    title: 'Order lunch',
-    subtitle: 'Cafe',
-  },
-  {
-    icon: '/assets/images/Icon-1.svg',
-    title: 'Submit time off',
-    subtitle: 'HR',
-  },
-  {
-    icon: '/assets/images/Icon-2.svg',
-    title: 'Ask a question',
-    subtitle: 'Help desk',
-  },
-  {
-    icon: '/assets/images/Icon-3.svg',
-    title: 'Book a shuttle',
-    subtitle: 'Transportation',
-  },
-  {
-    icon: '/assets/images/Icon-4.svg',
-    title: 'Paystub',
-    subtitle: 'ADP',
-  },
-  {
-    icon: '/assets/images/Icon-5.svg',
-    title: 'Clock in',
-    subtitle: 'Time management',
-  },
+  { Icon: Food24Regular,          title: 'Order Lunch',           description: 'Help me order my favorite dish from the cafe' },
+  { Icon: Clock24Regular,         title: 'Manage time',           description: 'Assist me in scheduling time away. Ensure that my calendar reflects that and all meetings are updated...' },
+  { Icon: QuestionCircle24Regular, title: 'Ask a question',       description: 'Assist me in scheduling time away. Ensure that my calendar reflects that and all meetings are updated...' },
+  { Icon: VehicleCar24Regular,    title: 'Book a shuttle',        description: 'Help me order my favorite dish from the cafe' },
+  { Icon: DocumentTable24Regular, title: 'View recent paystub',   description: 'Assist me in scheduling time away. Ensure that my calendar reflects that and all meetings are updated...' },
+  { Icon: Diamond24Regular,       title: 'Navigate MyBenefits',   description: 'Explain what the Microsoft Benefits SPD includes and how it\'s useful to me.' },
 ];
 
 export default function QuickActions() {
   return (
-    <div data-name="quick actions" className="flex flex-col gap-4 relative z-10">
-      {/* Row 1 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {actions.slice(0, 3).map((action, index) => (
-          <div
-            key={index}
-            className="bg-white border border-[#e6e6e6] rounded-xl px-3 py-4 flex items-center gap-2 hover:bg-[#fafafa] transition-colors cursor-pointer relative"
-            style={{
-              boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.14), 0px 0px 2px 0px rgba(0,0,0,0.12)'
-            }}
-          >
-            {/* Icon Container */}
-            <div className="w-11 h-11 bg-white rounded-lg flex items-center justify-center shrink-0">
-              <img src={action.icon} alt="" className="w-8 h-8" />
-            </div>
-
-            {/* Text */}
-            <div className="flex flex-col min-w-0 flex-1">
-              <p className="font-semibold text-[#0487a7] text-base leading-[22px] truncate">
-                {action.title}
-              </p>
-              <p className="text-[#00bee8] text-xs leading-4 truncate">
-                {action.subtitle}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Row 2 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {actions.slice(3, 6).map((action, index) => (
-          <div
-            key={index}
-            className="bg-white border border-[#e6e6e6] rounded-xl px-3 py-4 flex items-center gap-2 hover:bg-[#fafafa] transition-colors cursor-pointer relative"
-            style={{
-              boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.14), 0px 0px 2px 0px rgba(0,0,0,0.12)'
-            }}
-          >
-            {/* Icon Container */}
-            <div className="w-11 h-11 bg-white rounded-lg flex items-center justify-center shrink-0">
-              <img src={action.icon} alt="" className="w-8 h-8" />
-            </div>
-
-            {/* Text */}
-            <div className="flex flex-col min-w-0 flex-1">
-              <p className="font-semibold text-[#0487a7] text-base leading-[22px] truncate">
-                {action.title}
-              </p>
-              <p className="text-[#00bee8] text-xs leading-4 truncate">
-                {action.subtitle}
-              </p>
-            </div>
+    <div>
+      <h2 style={{ fontFamily: '"Segoe UI", sans-serif', fontSize: '20px', fontWeight: 700, color: '#242424', margin: '0 0 16px 0' }}>
+        Quick actions
+      </h2>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        {[actions.slice(0, 3), actions.slice(3, 6)].map((row, rowIdx) => (
+          <div key={rowIdx} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
+            {row.map(({ Icon, title, description }, i) => (
+              <div
+                key={i}
+                style={{ backgroundColor: '#fff', border: '1px solid #e0e0e0', borderRadius: '12px', padding: '20px', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '10px' }}
+                onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#fafafa')}
+                onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#fff')}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ width: 44, height: 44, borderRadius: '10px', background: 'linear-gradient(135deg, #5b2dc7 0%, #8b5cf6 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Icon style={{ color: '#fff' }} />
+                  </div>
+                  <span style={{ fontFamily: '"Segoe UI", sans-serif', fontSize: '16px', fontWeight: 600, color: '#242424', lineHeight: '22px' }}>{title}</span>
+                </div>
+                <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: '13px', color: '#616161', lineHeight: '18px' }}>{description}</p>
+              </div>
+            ))}
           </div>
         ))}
       </div>

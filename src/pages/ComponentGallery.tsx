@@ -10,6 +10,7 @@ import LearningWidget from '../components/LearningWidget';
 import AnimatedLoader from '../components/AnimatedLoader';
 import PromptStarter from '../components/PromptStarter';
 import WidgetContainer from '../components/WidgetContainer';
+import NewsHero from '../components/NewsHero';
 import { Home20Regular, Settings20Regular, Document20Regular } from '@fluentui/react-icons';
 import { ChatBubbleLeftIcon } from '@heroicons/react/24/outline';
 
@@ -445,6 +446,42 @@ export default function ComponentGallery() {
         {/* Components Tab */}
         {activeTab === 'components' && (
           <div className="space-y-8">
+            {/* NewsHero */}
+            <div className="bg-white rounded-lg p-6">
+              <h2 className="text-xl font-bold mb-1">NewsHero</h2>
+              <p className="text-sm text-gray-500 mb-4">
+                High-visibility media component with a large slider card and two static side cards.
+              </p>
+              <div className="border rounded-lg p-6 bg-gray-50">
+                <NewsHero />
+              </div>
+              <pre className="mt-4 bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+{`<NewsHero
+  slides={[
+    {
+      id: '1',
+      background: 'linear-gradient(...)',
+      icon: '/assets/images/ZavaCore_logo.svg',
+      title: 'Listen to an audio summary',
+      source: 'News summary',
+      timestamp: '6m 31s',
+      buttonLabel: 'Summarize my news',
+    },
+  ]}
+  sideCards={[
+    {
+      id: '1',
+      background: 'linear-gradient(...)',
+      badge: 'News',
+      title: 'Introducing the Falcon Quadcopter',
+      source: 'Skyline news',
+      timestamp: '1hr ago',
+    },
+  ]}
+/>`}
+              </pre>
+            </div>
+
             {/* PromptStarter */}
             <div className="bg-white rounded-lg p-6">
               <h2 className="text-xl font-bold mb-4">PromptStarter</h2>
