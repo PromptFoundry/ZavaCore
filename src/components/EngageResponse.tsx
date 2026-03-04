@@ -1,4 +1,4 @@
-import { ChartMultiple24Regular, MoreHorizontal20Regular, ArrowTrendingUp12Regular } from '@fluentui/react-icons';
+import { ChartMultiple24Regular, MoreHorizontal20Regular, ArrowTrending12Regular } from '@fluentui/react-icons';
 
 // Figma asset URLs (valid 7 days)
 const donutBase    = 'https://www.figma.com/api/mcp/asset/3400bea5-ae43-4614-8f96-4898e604f3ac';
@@ -72,7 +72,7 @@ function StatCard({ title, stats }: { title: string; stats: { value: string; pct
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
               <span style={{ ...segoe, fontSize: 24, fontWeight: 600, lineHeight: '32px', color: '#242424' }}>{s.value}</span>
               <span style={{ display: 'flex', alignItems: 'center', gap: 2, color: '#038387', fontSize: 12, paddingTop: 8 }}>
-                {s.pct} <ArrowTrendingUp12Regular />
+                {s.pct} <ArrowTrending12Regular />
               </span>
             </div>
             <p style={{ ...segoe, margin: 0, fontSize: 12, lineHeight: '16px', color: '#616161' }}>{s.label}</p>
