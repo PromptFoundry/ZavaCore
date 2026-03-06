@@ -543,7 +543,6 @@ export default function ComponentGallery() {
                   title="Summit Center"
                   metadata="Planning phase • Q2 2025"
                   onPrimaryAction={() => {}}
-                  onSecondaryAction={() => {}}
                 />
               </div>
               <pre className="mt-4 bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">

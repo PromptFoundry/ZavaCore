@@ -346,27 +346,6 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                 <span className="text-xs text-[#616161]">Quick Links</span>
               </div>
 
-              {/* SharePoint */}
-              <div
-                className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => {
-                  handleItemClick('sharepoint');
-                  navigate('/sharepoint');
-                }}
-              >
-                {selectedItem === 'sharepoint' && (
-                  <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
-                )}
-                <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
-                  selectedItem === 'sharepoint'
-                    ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
-                    : 'hover:bg-[#e6e6e6] pl-5'
-                } pr-3`}>
-                  <img src="/assets/icons/SharePoint.svg" alt="SharePoint" className="w-7 h-7 mr-[9px] shrink-0" />
-                  <span className="text-sm text-[#242424]">SharePoint</span>
-                </div>
-              </div>
-
               {/* Gallery */}
               <div
                 className="flex items-center gap-0 cursor-pointer focus:outline-none"
@@ -457,7 +436,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
             <div className="flex items-center justify-between h-9 px-1">
               <div className="flex items-center gap-2">
                 <div className="relative w-8 h-8 shrink-0">
-                  <img src="/assets/icons/avatar.svg" alt="User avatar" className="w-full h-full object-contain" />
+                  <img src="/assets/images/Carole Poland.png" alt="User avatar" className="w-full h-full object-cover rounded-full" />
                 </div>
                 <span className="text-sm text-[#424242]">Erika Fuller</span>
               </div>

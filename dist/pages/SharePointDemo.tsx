@@ -40,7 +40,7 @@ export default function SharePointDemo() {
         }
       ],
       userAvatar: (
-        <img src="/assets/images/Avatar (SP).png" alt="User Avatar" style={{ width: '24px', height: '24px', borderRadius: '50%' }} />
+        <img src="/assets/images/Carole Poland.png" alt="User Avatar" style={{ width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover' }} />
       ),
     },
     appRail: {

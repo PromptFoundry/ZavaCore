@@ -1,4 +1,5 @@
 import {
+  ChevronRight20Regular,
   ChevronDown20Regular,
   MoreHorizontal20Regular,
   PanelLeft20Regular,
@@ -8,9 +9,10 @@ interface HeaderProps {
   onToggleNav: () => void;
   isNavOpen: boolean;
   onReset?: () => void;
+  breadcrumbLabel?: string;
 }
 
-export default function Header({ onToggleNav, isNavOpen, onReset }: HeaderProps) {
+export default function Header({ onToggleNav, isNavOpen, onReset, breadcrumbLabel }: HeaderProps) {
   return (
     <header className="h-[60px] bg-[#fafafa] shadow-[0px_8px_16px_0px_rgba(0,0,0,0.14),0px_0px_2px_0px_rgba(0,0,0,0.12)] shrink-0 relative z-10">
       <div className="flex items-center justify-between h-full px-3 md:px-5">
@@ -25,19 +27,26 @@ export default function Header({ onToggleNav, isNavOpen, onReset }: HeaderProps)
             <PanelLeft20Regular className="w-5 h-5 text-[#424242]" />
           </button>
 
-          {/* Left actions */}
-          <div className="flex items-center gap-1 md:gap-2">
-            {/* ZavaCore Logo */}
-            <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore" className="w-5 h-5 md:w-6 md:h-6" />
-
-            {/* Breadcrumb Button */}
+          {/* Breadcrumb */}
+          <div className="flex items-center gap-0">
+            {/* ZavaCore anchor */}
             <button
-              className="flex items-center gap-1 px-1 md:px-2 h-8 rounded hover:bg-[#e6e6e6] transition-colors"
+              className="flex items-center gap-1.5 px-2 h-8 rounded hover:bg-[#e6e6e6] transition-colors shrink-0"
               onClick={onReset}
             >
-              <span className="text-xs md:text-sm font-normal text-[#242424] truncate">ZavaCore</span>
-              <ChevronDown20Regular className="w-3 h-3 text-[#424242] shrink-0" />
+              <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore" className="w-4 h-4 md:w-5 md:h-5 shrink-0" />
+              <span className="text-sm font-semibold text-[#242424]">ZavaCore</span>
             </button>
+
+            {/* Separator + response name */}
+            {breadcrumbLabel && (
+              <>
+                <ChevronRight20Regular className="w-3 h-3 text-[#616161] shrink-0" />
+                <button className="flex items-center px-2 h-8 rounded hover:bg-[#e6e6e6] transition-colors">
+                  <span className="text-sm text-[#424242] truncate">{breadcrumbLabel}</span>
+                </button>
+              </>
+            )}
           </div>
         </div>
 

@@ -1,4 +1,17 @@
-import { Dismiss20Regular, ArrowUpRight20Regular } from '@fluentui/react-icons';
+import { Dismiss20Regular, ChevronLeft20Regular, ChevronRight20Regular } from '@fluentui/react-icons';
+import imgPreview from '../assets/images/PowerPoint image.png';
+
+const seg = { fontFamily: '"Segoe UI", -apple-system, sans-serif' } as React.CSSProperties;
+
+const slides = [
+  { num: 1, src: 'https://www.figma.com/api/mcp/asset/b7d24c6b-1a5f-4786-bfd4-39b0ce6f7713', selected: true },
+  { num: 2, src: 'https://www.figma.com/api/mcp/asset/d519e6be-9246-4942-b963-4bcd08a80e64', badge: true },
+  { num: 3, src: 'https://www.figma.com/api/mcp/asset/a2b28fb0-c1cc-4ccb-bae3-b3c9cc552714', badge: true },
+  { num: 4, src: 'https://www.figma.com/api/mcp/asset/cfbe2002-c63f-47af-b2fc-4d200f54737b' },
+  { num: 5, src: 'https://www.figma.com/api/mcp/asset/9fe7eb08-eec9-4e7e-b0b8-f7a1252b58ad' },
+  { num: 6, src: 'https://www.figma.com/api/mcp/asset/e09f13b8-b4a6-4cef-9700-bdca485d0968' },
+  { num: 7, src: 'https://www.figma.com/api/mcp/asset/7ce24704-1c12-43df-8693-4d4cb971d230' },
+];
 
 interface RightPanelProps {
   isOpen: boolean;
@@ -10,146 +23,146 @@ interface RightPanelProps {
 export default function RightPanel({
   isOpen,
   onClose,
-  entityTitle = 'Summit Center Project Plan',
-  entityType = 'Document',
 }: RightPanelProps) {
   return (
     <div
-      className={`fixed right-0 top-0 h-screen bg-white shadow-[-2px_0_8px_rgba(0,0,0,0.1)] transition-transform duration-300 ease-in-out z-30 w-full md:w-[600px] lg:w-[800px] xl:w-[956px] overflow-y-auto ${
+      className={`fixed right-0 top-0 h-screen bg-white transition-transform duration-300 ease-in-out z-30 w-full md:w-[600px] lg:w-[800px] xl:w-[1200px] flex flex-col overflow-hidden ${
         isOpen ? 'translate-x-0' : 'translate-x-full'
       }`}
+      style={{ boxShadow: '0px 0px 2px rgba(0,0,0,0.12), 0px 4px 8px rgba(0,0,0,0.14)' }}
     >
-      <div className="flex flex-col min-h-full">
-        {/* Header */}
-        <div className="flex items-center justify-between h-[60px] px-3 md:px-6 border-b border-[#e0e0e0] shrink-0">
-          <div className="flex items-center gap-2 md:gap-3 min-w-0">
-            <div className="w-8 h-8 md:w-10 md:h-10 bg-[#f6dbd4] rounded-lg flex items-center justify-center shrink-0">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z"
-                  stroke="#C4521E"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M14 2V8H20"
-                  stroke="#C4521E"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <div className="flex flex-col min-w-0 flex-1">
-              <h2 className="font-['Segoe_UI',sans-serif] font-semibold text-sm md:text-base text-[#242424] truncate">
-                {entityTitle}
-              </h2>
-              <p className="font-['Segoe_UI',sans-serif] text-xs text-[#616161] truncate">
-                {entityType}
-              </p>
-            </div>
+      {/* Header */}
+      <div style={{
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        padding: '16px 20px', backgroundColor: 'white', flexShrink: 0,
+        backdropFilter: 'blur(30px)',
+      }}>
+        {/* Left: icon + title */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0, flex: 1 }}>
+          <div style={{
+            width: 36, height: 36, borderRadius: 8, backgroundColor: '#f5f5f5',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+          }}>
+            <img src="/assets/icons/PowerPoint.svg" alt="PowerPoint" style={{ width: 24, height: 24 }} />
           </div>
-          <div className="flex items-center gap-1 md:gap-2 shrink-0">
-            <button className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-[#464FEB] text-white rounded hover:bg-[#3d42c7] transition-colors">
-              <span className="font-['Segoe_UI',sans-serif] text-sm">Open in SharePoint</span>
-              <ArrowUpRight20Regular className="w-4 h-4" />
-            </button>
-            <button
-              className="w-8 h-8 flex items-center justify-center rounded hover:bg-[#f5f5f5] transition-colors"
-              onClick={onClose}
-              aria-label="Close panel"
+          <div style={{ minWidth: 0 }}>
+            <p style={{ ...seg, fontSize: 16, fontWeight: 600, color: '#242424', margin: 0, lineHeight: '22px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              Summit Center Project Plan
+            </p>
+            <p style={{ ...seg, fontSize: 12, color: '#616161', margin: 0, lineHeight: '16px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              Daichi Fukuda's Files | Aadi modified on Tuesday
+            </p>
+          </div>
+        </div>
+
+        {/* Right: actions */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0, marginLeft: 16 }}>
+          <button style={{
+            ...seg, display: 'flex', alignItems: 'center', gap: 4,
+            padding: '5px 12px', border: '1px solid #d1d1d1', borderRadius: 4,
+            background: 'white', cursor: 'pointer', fontSize: 14, color: '#242424', fontWeight: 600,
+          }}
+            onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+            onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'white')}
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0 }}>
+              <path d="M9 2H13.5C13.7761 2 14 2.22386 14 2.5V13.5C14 13.7761 13.7761 14 13.5 14H2.5C2.22386 14 2 13.7761 2 13.5V9" stroke="#242424" strokeWidth="1.2" strokeLinecap="round"/>
+              <path d="M6 2H2.5C2.22386 2 2 2.22386 2 2.5V6" stroke="#242424" strokeWidth="1.2" strokeLinecap="round"/>
+              <path d="M9 7L14 2" stroke="#242424" strokeWidth="1.2" strokeLinecap="round"/>
+              <path d="M9 2H14V7" stroke="#242424" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            Open in PowerPoint
+          </button>
+          <button
+            onClick={onClose}
+            style={{
+              width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center',
+              border: 'none', borderRadius: 8, background: 'transparent', cursor: 'pointer',
+            }}
+            onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+            onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+            aria-label="Close"
+          >
+            <Dismiss20Regular style={{ width: 20, height: 20, color: '#242424' }} />
+          </button>
+        </div>
+      </div>
+
+      {/* Canvas */}
+      <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', padding: '8px 24px 24px', display: 'flex', flexDirection: 'column', gap: 40, justifyContent: 'center' }}>
+
+        {/* Large slide preview */}
+        <div style={{
+          position: 'relative', borderRadius: 12,
+          border: '1px solid #f2f2f2', overflow: 'hidden',
+          width: '100%', aspectRatio: '16/9',
+          flexShrink: 0,
+        }}>
+          <img src={imgPreview} alt="Slide preview" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+
+          {/* Navigation controls — bottom right */}
+          <div style={{
+            position: 'absolute', bottom: 16, right: 16,
+            backgroundColor: 'white', borderRadius: 8,
+            boxShadow: '0px 0px 2px rgba(0,0,0,0.12), 0px 4px 8px rgba(0,0,0,0.14)',
+            display: 'flex', alignItems: 'center', padding: 2,
+          }}>
+            <button style={{
+              width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center',
+              border: 'none', borderRadius: 8, background: 'transparent', cursor: 'pointer',
+            }}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+              onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
             >
-              <Dismiss20Regular className="w-5 h-5 text-[#424242]" />
+              <ChevronLeft20Regular style={{ width: 16, height: 16, color: '#242424' }} />
+            </button>
+            <span style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#242424', padding: '0 4px', minWidth: 36, textAlign: 'center' }}>
+              1/16
+            </span>
+            <button style={{
+              width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center',
+              border: 'none', borderRadius: 8, background: 'transparent', cursor: 'pointer',
+            }}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+              onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+            >
+              <ChevronRight20Regular style={{ width: 16, height: 16, color: '#242424' }} />
             </button>
           </div>
         </div>
 
-        {/* Content */}
-        <div className="flex-1 px-3 md:px-6 py-4 md:py-8">
-          <div className="max-w-[800px] mx-auto">
-            {/* Section Header */}
-            <div className="mb-6">
-              <p className="font-['Segoe_UI',sans-serif] text-xs text-[#616161] mb-2">
-                ZavaCore Fiber Series
-              </p>
-              <h1 className="font-['Segoe_UI',sans-serif] font-bold text-3xl text-[#242424] mb-4">
-                Performance Trends and Product Impact
-              </h1>
-            </div>
-
-            {/* Content Sections */}
-            <div className="space-y-6">
-              {/* Introduction */}
-              <div className="space-y-4">
-                <p className="font-['Segoe_UI',sans-serif] text-base leading-6 text-[#424242]">
-                  Since the launch of ZavaCore Fiber v2 in mid-May 2028, pilot program feedback has
-                  surged by 52%, signaling strong engagement but also surfacing critical performance
-                  considerations. While adoption momentum remains high, field testing revealed
-                  durability and adaptive response variability in high-exertion environments.
-                </p>
-                <p className="font-['Segoe_UI',sans-serif] text-base leading-6 text-[#424242]">
-                  Quantitative metrics show a 28% increase in high-load stress reports during
-                  endurance simulations compared to baseline fabric models, indicating deeper
-                  performance calibration opportunities under sustained strain.
-                </p>
-              </div>
-
-              {/* Card with Image */}
-              <div className="bg-[#fafafa] rounded-xl p-4 md:p-6 border border-[#e0e0e0]">
-                <div className="flex flex-col md:flex-row gap-4 md:gap-6">
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-['Segoe_UI',sans-serif] font-semibold text-lg text-[#242424] mb-2">
-                      Adaptive Textile Performance Comparison
-                    </h3>
-                    <p className="font-['Segoe_UI',sans-serif] text-sm text-[#616161] mb-4">
-                      Base Model • Updated an hour ago
-                    </p>
-                    <p className="font-['Segoe_UI',sans-serif] text-sm leading-5 text-[#424242]">
-                      Includes lab stress data, environmental simulations, biomechanical mapping, and
-                      partner feedback summaries. Useful for evaluating durability benchmarks and
-                      response consistency across use cases.
-                    </p>
-                  </div>
-                  <div className="w-full md:w-[200px] h-[120px] rounded-lg overflow-hidden shrink-0">
-                    <div className="w-full h-full bg-gradient-to-br from-purple-300 via-pink-200 to-purple-400" />
-                  </div>
+        {/* Slide strip */}
+        <div style={{ overflowX: 'auto', flexShrink: 0, paddingBottom: 4 }}>
+          <div style={{ display: 'flex', gap: 19, alignItems: 'flex-start' }}>
+            {slides.map(slide => (
+              <div key={slide.num} style={{ display: 'flex', flexDirection: 'column', gap: 4, flexShrink: 0, position: 'relative' }}>
+                <span style={{ ...seg, fontSize: 9, color: '#666', lineHeight: '12px' }}>{slide.num}</span>
+                <div style={{
+                  width: 164, height: 92, borderRadius: 2, overflow: 'hidden', position: 'relative',
+                  border: slide.selected ? '1.2px solid #464feb' : 'none',
+                  cursor: 'pointer',
+                }}>
+                  <img src={slide.src} alt={`Slide ${slide.num}`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  {/* Play badge */}
+                  {slide.badge && (
+                    <div style={{
+                      position: 'absolute', top: 2, right: 2,
+                      backgroundColor: '#f5f5f5', border: '0.6px solid #e0e0e0',
+                      borderRadius: 3, width: 18, height: 13,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1,
+                    }}>
+                      <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                        <path d="M2 1.5L6.5 4L2 6.5V1.5Z" fill="#424242" />
+                      </svg>
+                      <span style={{ ...seg, fontSize: 6, fontWeight: 600, color: '#424242' }}>1</span>
+                    </div>
+                  )}
                 </div>
               </div>
-
-              {/* Key Findings */}
-              <div>
-                <p className="font-['Segoe_UI',sans-serif] text-base leading-6 text-[#424242] mb-4">
-                  Three dominant themes have emerged across pilot programs and validation logic:
-                </p>
-                <ul className="space-y-3 ml-4">
-                  <li className="font-['Segoe_UI',sans-serif] text-base leading-6 text-[#424242]">
-                    <span className="font-semibold">Dynamic tension lag</span> was observed in 34%
-                    of high-exertion trials, particularly during rapid directional shifts in field
-                    athletics testing.
-                  </li>
-                  <li className="font-['Segoe_UI',sans-serif] text-base leading-6 text-[#424242]">
-                    <span className="font-semibold">Thermal response variance</span> led to
-                    inconsistent breathability in extended heat exposure scenarios, prompting
-                    recalibration of micro-responsive fibers.
-                  </li>
-                  <li className="font-['Segoe_UI',sans-serif] text-base leading-6 text-[#424242]">
-                    <span className="font-semibold">Load distribution imbalance</span> under
-                    repeated compression cycles was flagged in industrial wear simulations, with
-                    measurable stiffness drift after prolonged use.
-                  </li>
-                </ul>
-              </div>
-
-              {/* Conclusion */}
-              <p className="font-['Segoe_UI',sans-serif] text-base leading-6 text-[#424242]">
-                Customer sentiment reflects both enthusiasm and precision feedback. In the Product
-                Validation Summary, 82% of enterprise partners cited performance consistency as the
-                top priority for full-scale deployment.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
+
       </div>
     </div>
   );

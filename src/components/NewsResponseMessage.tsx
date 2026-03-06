@@ -4,9 +4,8 @@ const segoe: React.CSSProperties = { fontFamily: '"Segoe UI", sans-serif' };
 
 // Figma asset URLs (valid 7 days from generation)
 const imgVideo = 'https://www.figma.com/api/mcp/asset/8fbc9dd8-6ec4-46d7-867c-bcd6defa19cd';
-// News section (refreshed from node 120-18914)
-const imgImageGrid = 'https://www.figma.com/api/mcp/asset/54bb501f-00ff-49ce-91d9-74de8d17d1af';
-const imgFaviconZavaBlog = 'https://www.figma.com/api/mcp/asset/9784e0dd-c37c-4d2d-9449-0c39e48f6853';
+// Article card images (from ArticlePanel)
+const imgTitleRegion = 'https://www.figma.com/api/mcp/asset/4e4b3496-c249-4b7b-9354-fbb2fae486c2';
 const imgFaviconSource = 'https://www.figma.com/api/mcp/asset/7e4d78b3-a51c-4536-8c52-d7a5da8c4f51';
 const imgFaviconZavaNews = 'https://www.figma.com/api/mcp/asset/a9888eee-7916-4d77-bdea-98640cc12f0f';
 const imgNewsThumb1 = 'https://www.figma.com/api/mcp/asset/7e843c74-40c3-4aaa-a45f-8abb37095eb3';
@@ -242,30 +241,30 @@ export default function NewsResponseMessage({ onArticleClick }: NewsResponseMess
           overflow: 'hidden', display: 'flex', flexDirection: 'column', boxSizing: 'border-box',
           cursor: onArticleClick ? 'pointer' : 'default',
         }}>
-          {/* Image grid */}
+          {/* Hero image */}
           <div style={{ padding: '20px 20px 0', flexShrink: 0 }}>
             <div style={{ height: 221, borderRadius: 8, overflow: 'hidden', position: 'relative' }}>
-              <img src={imgImageGrid} alt="" style={{ position: 'absolute', width: '100.9%', height: '127.9%', top: '-13.92%', left: '-0.26%', objectFit: 'cover' }} />
+              <img src={imgTitleRegion} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
           </div>
           {/* Meta */}
           <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 8, flex: 1, minHeight: 0 }}>
             {/* Source row */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <div style={{ width: 16, height: 16, borderRadius: 2, overflow: 'hidden', flexShrink: 0, position: 'relative' }}>
-                <img src={imgFaviconZavaBlog} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div style={{ width: 16, height: 16, borderRadius: 2, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <img src={zavalLogo} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
               </div>
-              <span style={{ ...segoe, fontSize: 12, lineHeight: '16px', color: '#424242' }}>Zava company blog</span>
+              <span style={{ ...segoe, fontSize: 12, lineHeight: '16px', color: '#424242' }}>Zava News</span>
               <span style={{ ...segoe, fontSize: 14, lineHeight: '20px', color: '#424242' }}>·</span>
-              <span style={{ ...segoe, fontSize: 12, lineHeight: '16px', color: '#424242' }}>1d</span>
+              <span style={{ ...segoe, fontSize: 12, lineHeight: '16px', color: '#424242' }}>7h</span>
             </div>
             {/* Headline */}
-            <p style={{ ...segoe, fontSize: 16, fontWeight: 700, lineHeight: '22px', color: '#242424', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis' }}>
-              RTO is the most‑asked topic ahead of the AMA
+            <p style={{ ...segoe, fontSize: 16, fontWeight: 700, lineHeight: '22px', color: '#242424', margin: 0, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
+              ZavaCore unveils adaptive weave breakthrough for extreme endurance environments
             </p>
             {/* Body */}
-            <p style={{ ...segoe, fontSize: 14, fontWeight: 400, lineHeight: '20px', color: '#424242', margin: 0, overflow: 'hidden' }}>
-              CEO Wolf Riechtenstein will answer all of your burning questions at the upcoming company event. Submit your questions ahead of time to make sure they're addressed in next week's AMA.
+            <p style={{ ...segoe, fontSize: 14, fontWeight: 400, lineHeight: '20px', color: '#424242', margin: 0, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}>
+              ZavaCore has introduced HelixWeave™, a next-gen textile architecture that dynamically stiffens under impact and relaxes during recovery, redefining how performance fabrics respond in motion.
             </p>
           </div>
         </div>

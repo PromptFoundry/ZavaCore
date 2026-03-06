@@ -316,7 +316,7 @@ export default function EngageSection({
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <img
-                src="/assets/engage-assets/Avatar.png"
+                src="/assets/images/Carole Poland.png"
                 alt=""
                 style={{
                   width: '32px',

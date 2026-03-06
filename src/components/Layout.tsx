@@ -18,6 +18,7 @@ import RecommendedSection from './RecommendedSection';
 import RecentActivitySection from './RecentActivitySection';
 import EngageResponse from './EngageResponse';
 import NewsResponseMessage from './NewsResponseMessage';
+import PlanMyDayResponse from './PlanMyDayResponse';
 
 
 interface Message {
@@ -35,6 +36,8 @@ export default function Layout() {
   const [showNewsResponse, setShowNewsResponse] = useState(false);
   const [isNewsLoading, setIsNewsLoading] = useState(false);
   const [isArticlePanelOpen, setIsArticlePanelOpen] = useState(false);
+  const [showPlanMyDay, setShowPlanMyDay] = useState(false);
+  const [isPlanMyDayLoading, setIsPlanMyDayLoading] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
 
   const toggleMobileNav = () => setIsMobileNavOpen(!isMobileNavOpen);
@@ -51,10 +54,19 @@ export default function Layout() {
         ...prev,
         {
           type: 'assistant',
-          content: 'Based on the information provided, I can help you understand the key details. The Summit Center project planning starts in Q2 2025, with an estimated timeline of 18 months for completion. Would you like me to provide more specific details about any particular aspect of the project?'
+          content: `🏢 Based on the information available, here's an overview of the Summit Center Project.\n\n🤝 The Summit Center project is a multi-phase initiative focused on developing a centralized hub for collaboration, innovation, and community engagement. Initial planning and stakeholder alignment began in Q2 2025, with the project currently moving through the design and feasibility phase.\n\n📅 The proposed timeline estimates approximately 18 months for completion, with key milestones including site preparation, architectural planning, and phased construction of the primary facility. Once completed, the Summit Center is expected to provide modern meeting spaces, flexible work environments, and shared amenities intended to support cross-team collaboration and large-scale events.\n\n🌱 Early planning discussions also highlight goals around sustainability, accessibility, and future-ready infrastructure, ensuring the facility can adapt to evolving organizational and community needs.\n\nIf helpful, I can also provide more information on:\n• 🗓️ Key project milestones and delivery phases\n• 💰 Budget and funding considerations\n• 🏗️ Planned facilities and amenities\n• 👥 Stakeholder teams involved in the project\n\nJust let me know which area you'd like to explore further.`
         }
       ]);
     }, 3000);
+  };
+
+  const handlePlanMyDay = () => {
+    setIsPlanMyDayLoading(true);
+    mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      setIsPlanMyDayLoading(false);
+      setShowPlanMyDay(true);
+    }, 2000);
   };
 
   const handleReset = () => {
@@ -66,6 +78,8 @@ export default function Layout() {
     setShowNewsResponse(false);
     setIsNewsLoading(false);
     setIsArticlePanelOpen(false);
+    setShowPlanMyDay(false);
+    setIsPlanMyDayLoading(false);
   };
 
   const handleSummarizeNews = () => {
@@ -94,7 +108,7 @@ export default function Layout() {
     setIsPanelOpen(false);
   };
 
-  const hasConversation = messages.length > 0 || isLoading || isEngageLoading || showEngageResponse || isNewsLoading || showNewsResponse;
+  const hasConversation = messages.length > 0 || isLoading || isEngageLoading || showEngageResponse || isNewsLoading || showNewsResponse || isPlanMyDayLoading || showPlanMyDay;
 
 
   return (
@@ -122,11 +136,18 @@ export default function Layout() {
       </aside>
 
       {/* Right side with Header and Content */}
-      <div className={`flex-1 flex flex-col h-screen transition-all duration-300 ${(isPanelOpen || isArticlePanelOpen) ? 'hidden md:block md:mr-[600px] lg:mr-[800px] xl:mr-[956px]' : 'mr-0'}`}>
+      <div className={`flex-1 flex flex-col h-screen transition-all duration-300 ${isPanelOpen ? 'hidden md:flex md:mr-[600px] lg:mr-[800px] xl:mr-[1200px]' : isArticlePanelOpen ? 'hidden md:flex md:mr-[600px] lg:mr-[800px] xl:mr-[956px]' : 'mr-0'}`}>
         <Header
           onToggleNav={toggleMobileNav}
           isNavOpen={isMobileNavOpen}
           onReset={handleReset}
+          breadcrumbLabel={
+            (showPlanMyDay || isPlanMyDayLoading) ? 'Day at a Glance' :
+            (showNewsResponse || isNewsLoading) ? 'News Summary' :
+            (showEngageResponse || isEngageLoading) ? 'Engage Summary' :
+            (messages.length > 0 || isLoading) ? 'Summit Center Project' :
+            undefined
+          }
         />
 
         {/* Main Content */}
@@ -141,7 +162,7 @@ export default function Layout() {
           } : {}}
         >
           {/* Agent Top */}
-          <div data-name="agent-top" className="w-full max-w-[790px] mx-auto flex flex-col items-center gap-8 md:gap-12 lg:gap-[53px]">
+          <div data-name="agent-top" className={`w-full mx-auto flex flex-col items-center gap-8 md:gap-12 lg:gap-[53px] ${(showPlanMyDay || isPlanMyDayLoading) ? 'max-w-[1100px]' : 'max-w-[790px]'}`}>
             {/* Agent Header */}
             {!hasConversation && (
               <div className="w-full flex flex-col items-center gap-4 md:gap-6">
@@ -161,7 +182,7 @@ export default function Layout() {
                     </h1>
                   </div>
                   {/* Authorship */}
-                  <div className="flex items-center gap-1 text-xs md:text-sm text-[#616161]">
+                  <div className="flex items-center gap-1 text-xs md:text-sm text-[#333333]">
                     <span>Created by</span>
                     <span className="font-medium">ZavaCore</span>
                     <CheckBadgeIcon className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
@@ -182,6 +203,31 @@ export default function Layout() {
                     <div className="flex-1 h-px bg-[#e0e0e0]" />
                   </div>
 
+                  {/* Plan my day response flow */}
+                  {(isPlanMyDayLoading || showPlanMyDay) && (
+                    <div className="flex flex-col gap-4">
+                      <div className="flex justify-end">
+                        <div className="bg-[#f5f5f5] rounded-2xl px-4 py-3 max-w-[590px]">
+                          <p className="text-base leading-6 text-[#424242]">Give me a quick snapshot of my day, including upcoming and recent meetings, key emails, mentions, action items, and important activity from people I work with.</p>
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-4">
+                        <div className="flex items-center gap-2">
+                          <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" className="w-6 h-6" />
+                          <span className="font-semibold text-base text-[#333333]">Copilot</span>
+                        </div>
+                        {isPlanMyDayLoading ? (
+                          <>
+                            <p className="text-base leading-6 text-[#333333]">Planning your day…</p>
+                            <AnimatedLoader />
+                          </>
+                        ) : (
+                          <PlanMyDayResponse />
+                        )}
+                      </div>
+                    </div>
+                  )}
+
                   {/* News summary response flow */}
                   {(isNewsLoading || showNewsResponse) && (
                     <div className="flex flex-col gap-4">
@@ -195,9 +241,9 @@ export default function Layout() {
                           <>
                             <div className="flex items-center gap-2">
                               <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" className="w-6 h-6" />
-                              <span className="font-semibold text-base text-[#616161]">Copilot</span>
+                              <span className="font-semibold text-base text-[#333333]">Copilot</span>
                             </div>
-                            <p className="text-base leading-6 text-[#808080]">Summarizing your news…</p>
+                            <p className="text-base leading-6 text-[#333333]">Summarizing your news…</p>
                             <AnimatedLoader />
                           </>
                         ) : (
@@ -220,11 +266,11 @@ export default function Layout() {
                           <div className="w-6 h-6">
                             <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" className="w-full h-full" />
                           </div>
-                          <span className="font-semibold text-base text-[#616161]">Copilot</span>
+                          <span className="font-semibold text-base text-[#333333]">Copilot</span>
                         </div>
                         {isEngageLoading ? (
                           <>
-                            <p className="text-base leading-6 text-[#808080]">Summarizing Engage activity…</p>
+                            <p className="text-base leading-6 text-[#333333]">Summarizing Engage activity…</p>
                             <AnimatedLoader />
                           </>
                         ) : (
@@ -246,11 +292,11 @@ export default function Layout() {
                             <div className="w-6 h-6">
                               <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" className="w-full h-full" />
                             </div>
-                            <span className="font-semibold text-base text-[#616161]">Copilot</span>
+                            <span className="font-semibold text-base text-[#333333]">Copilot</span>
                           </div>
-                          <p className="text-base leading-6 text-[#808080]">{msg.content}</p>
+                          <p className="text-base leading-6 text-[#333333] whitespace-pre-wrap">{msg.content}</p>
                           <div onClick={handleEntityCardClick} className="cursor-pointer">
-                            <EntityCard title="Summit Center Project Plan" metadata="Modified 2 hours ago • Project Document" />
+                            <EntityCard title="Summit Center Project Plan" metadata="PowerPoint" condensed={isPanelOpen} />
                           </div>
                         </div>
                       )}
@@ -262,9 +308,9 @@ export default function Layout() {
                         <div className="w-6 h-6">
                           <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" className="w-full h-full" />
                         </div>
-                        <span className="font-semibold text-base text-[#616161]">Copilot</span>
+                        <span className="font-semibold text-base text-[#333333]">Copilot</span>
                       </div>
-                      <p className="text-base leading-6 text-[#808080]">Creating a day at a glance…</p>
+                      <p className="text-base leading-6 text-[#333333]">Gathering information about the Summit Center project…</p>
                       <AnimatedLoader />
                     </div>
                   )}
@@ -275,7 +321,7 @@ export default function Layout() {
               {!hasConversation && (
                 <div className="flex flex-col gap-4 md:gap-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-                    <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Plan my day" description="What should I prioritize based on my schedule?" />
+                    <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Plan my day" description="What should I prioritize based on my schedule?" onClick={handlePlanMyDay} />
                     <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Take action" description="Find marketing documents that need my feedback" />
                     <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Catch up" description="Highlight town hall updates relevant to my work" />
                   </div>
