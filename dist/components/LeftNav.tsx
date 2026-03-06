@@ -376,39 +376,30 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                 <span className="text-xs text-[#616161]">Chats</span>
               </div>
 
-              {/* Chat item 1 */}
-              <div
-                className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => handleItemClick('chat1')}
-              >
-                {selectedItem === 'chat1' && (
-                  <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
-                )}
-                <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
-                  selectedItem === 'chat1'
-                    ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
-                    : 'hover:bg-[#e6e6e6] pl-5'
-                } pr-3`}>
-                  <span className="text-sm text-[#242424] truncate">How to find relevant con...</span>
+              {[
+                { id: 'chat1', label: 'Summit Center project Q2 plan' },
+                { id: 'chat2', label: 'HelixWeave fiber v2 validation' },
+                { id: 'chat3', label: 'Summarize my news for today' },
+                { id: 'chat4', label: 'Smart-fiber roadmap priorities' },
+                { id: 'chat5', label: 'Team staffing changes update' },
+              ].map(chat => (
+                <div
+                  key={chat.id}
+                  className="flex items-center gap-0 cursor-pointer focus:outline-none"
+                  onClick={() => handleItemClick(chat.id)}
+                >
+                  {selectedItem === chat.id && (
+                    <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
+                  )}
+                  <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
+                    selectedItem === chat.id
+                      ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
+                      : 'hover:bg-[#e6e6e6] pl-5'
+                  } pr-3`}>
+                    <span className="text-sm text-[#242424] truncate">{chat.label}</span>
+                  </div>
                 </div>
-              </div>
-
-              {/* Chat item 2 */}
-              <div
-                className="flex items-center gap-0 cursor-pointer focus:outline-none"
-                onClick={() => handleItemClick('chat2')}
-              >
-                {selectedItem === 'chat2' && (
-                  <div className="w-[3px] h-4 bg-[#464FEB] rounded-full shrink-0" />
-                )}
-                <div className={`flex items-center flex-1 h-9 rounded-[12px] transition-colors ${
-                  selectedItem === 'chat2'
-                    ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
-                    : 'hover:bg-[#e6e6e6] pl-5'
-                } pr-3`}>
-                  <span className="text-sm text-[#242424] truncate">How to find relevant con...</span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
@@ -438,7 +429,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
                 <div className="relative w-8 h-8 shrink-0">
                   <img src="/assets/images/Carole Poland.png" alt="User avatar" className="w-full h-full object-cover rounded-full" />
                 </div>
-                <span className="text-sm text-[#424242]">Erika Fuller</span>
+                <span className="text-sm text-[#424242]">Carole Poland</span>
               </div>
               <button className="p-1 hover:bg-[#e6e6e6] rounded transition-colors">
                 <MoreHorizontal20Regular className="w-5 h-5 text-[#424242]" />
