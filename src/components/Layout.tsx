@@ -19,6 +19,8 @@ import RecentActivitySection from './RecentActivitySection';
 import EngageResponse from './EngageResponse';
 import NewsResponseMessage from './NewsResponseMessage';
 import PlanMyDayResponse from './PlanMyDayResponse';
+import OrderLunchResponse from './OrderLunchResponse';
+import OrderTracker from './OrderTracker';
 
 
 interface Message {
@@ -38,6 +40,9 @@ export default function Layout() {
   const [isArticlePanelOpen, setIsArticlePanelOpen] = useState(false);
   const [showPlanMyDay, setShowPlanMyDay] = useState(false);
   const [isPlanMyDayLoading, setIsPlanMyDayLoading] = useState(false);
+  const [showOrderLunch, setShowOrderLunch] = useState(false);
+  const [isOrderLunchLoading, setIsOrderLunchLoading] = useState(false);
+  const [orderTracker, setOrderTracker] = useState<{ dish: string; emoji: string } | null>(null);
   const mainRef = useRef<HTMLElement>(null);
 
   const toggleMobileNav = () => setIsMobileNavOpen(!isMobileNavOpen);
@@ -60,6 +65,21 @@ export default function Layout() {
     }, 3000);
   };
 
+  const handleOrderComplete = (dish: string, emoji: string) => {
+    handleReset();
+    setOrderTracker({ dish, emoji });
+    mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleOrderLunch = () => {
+    setIsOrderLunchLoading(true);
+    mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      setIsOrderLunchLoading(false);
+      setShowOrderLunch(true);
+    }, 2000);
+  };
+
   const handlePlanMyDay = () => {
     setIsPlanMyDayLoading(true);
     mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
@@ -80,6 +100,9 @@ export default function Layout() {
     setIsArticlePanelOpen(false);
     setShowPlanMyDay(false);
     setIsPlanMyDayLoading(false);
+    setShowOrderLunch(false);
+    setIsOrderLunchLoading(false);
+    setOrderTracker(null);
   };
 
   const handleSummarizeNews = () => {
@@ -108,7 +131,7 @@ export default function Layout() {
     setIsPanelOpen(false);
   };
 
-  const hasConversation = messages.length > 0 || isLoading || isEngageLoading || showEngageResponse || isNewsLoading || showNewsResponse || isPlanMyDayLoading || showPlanMyDay;
+  const hasConversation = messages.length > 0 || isLoading || isEngageLoading || showEngageResponse || isNewsLoading || showNewsResponse || isPlanMyDayLoading || showPlanMyDay || isOrderLunchLoading || showOrderLunch;
 
 
   return (
@@ -145,6 +168,7 @@ export default function Layout() {
             (showPlanMyDay || isPlanMyDayLoading) ? 'Day at a Glance' :
             (showNewsResponse || isNewsLoading) ? 'News Summary' :
             (showEngageResponse || isEngageLoading) ? 'Engage Summary' :
+            (showOrderLunch || isOrderLunchLoading) ? 'Order Lunch' :
             (messages.length > 0 || isLoading) ? 'Summit Center Project' :
             undefined
           }
@@ -202,6 +226,34 @@ export default function Layout() {
                     <span className="text-xs text-[#707070]">Today</span>
                     <div className="flex-1 h-px bg-[#e0e0e0]" />
                   </div>
+
+                  {/* Order lunch response flow */}
+                  {(isOrderLunchLoading || showOrderLunch) && (
+                    <div className="flex flex-col gap-4">
+                      <div className="flex justify-end">
+                        <div className="bg-[#f5f5f5] rounded-2xl px-4 py-3 max-w-[590px]">
+                          <p className="text-base leading-6 text-[#424242]">Order lunch</p>
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-4">
+                        <div className="flex items-center gap-2">
+                          <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" className="w-6 h-6" />
+                          <span className="font-semibold text-base text-[#333333]">Copilot</span>
+                        </div>
+                        {isOrderLunchLoading ? (
+                          <>
+                            <p className="text-base leading-6 text-[#333333]">Looking up your order history…</p>
+                            <AnimatedLoader />
+                          </>
+                        ) : (
+                          <>
+                            <p className="text-base leading-6 text-[#424242]">Here are your most recent orders.</p>
+                            <OrderLunchResponse onOrderComplete={handleOrderComplete} />
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  )}
 
                   {/* Plan my day response flow */}
                   {(isPlanMyDayLoading || showPlanMyDay) && (
@@ -339,9 +391,16 @@ export default function Layout() {
           {/* Widget Container */}
           {!hasConversation && (
             <div data-name="widget-container" className="w-full max-w-[1200px] mx-auto flex flex-col gap-12">
+              {orderTracker && (
+                <OrderTracker
+                  dish={orderTracker.dish}
+                  emoji={orderTracker.emoji}
+                  onDismiss={() => setOrderTracker(null)}
+                />
+              )}
               <div data-name="news-hero"><NewsHero onSummarizeNews={handleSummarizeNews} onEngageClick={handleEngageSummarize} /></div>
               <div data-name="recommended"><RecommendedSection /></div>
-              <div data-name="quick-actions"><QuickActions /></div>
+              <div data-name="quick-actions"><QuickActions onOrderLunch={handleOrderLunch} /></div>
               <div data-name="recent-activity"><RecentActivitySection onEngageClick={handleEngageSummarize} /></div>
             </div>
           )}

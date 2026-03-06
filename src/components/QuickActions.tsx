@@ -1,3 +1,4 @@
+import React from 'react';
 import foodIcon from '../assets/icons/Food.svg';
 import shiftsIcon from '../assets/icons/Shifts Activity.svg';
 import chatQuestionIcon from '../assets/icons/Chat Bubbles Question.svg';
@@ -18,7 +19,11 @@ const actions = [
   { icon: premiumIcon,      title: 'Navigate MyBenefits', description: 'Explore your benefits and understand what\'s available to you.' },
 ];
 
-export default function QuickActions() {
+interface QuickActionsProps {
+  onOrderLunch?: () => void;
+}
+
+export default function QuickActions({ onOrderLunch }: QuickActionsProps) {
   const rows = [actions.slice(0, 3), actions.slice(3, 6)];
 
   return (
@@ -33,6 +38,7 @@ export default function QuickActions() {
             {row.map(({ icon, title, description }, i) => (
               <div
                 key={i}
+                onClick={title === 'Order Lunch' ? onOrderLunch : undefined}
                 style={{
                   background: '#fff',
                   border: '0.5px solid #f0f0f0',
