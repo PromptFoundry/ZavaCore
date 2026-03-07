@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Avatar } from '@fluentui/react-avatar';
 import {
   CalendarFilled, CalendarRegular,
   FolderFilled, FolderRegular,
@@ -7,27 +8,35 @@ import {
   PeopleFilled, PeopleRegular,
   ArrowSyncRegular,
   ChevronDownRegular,
-  ChevronRightRegular,
-  ChevronLeftRegular,
-  ChevronUpRegular,
-  AddSquareRegular,
   CopyRegular,
   ThumbLikeRegular,
   ThumbDislikeRegular,
   MoreHorizontalRegular,
-  ArrowMaximize20Regular,
 } from '@fluentui/react-icons';
 
 import imgProfileAvatar from '../assets/images/Carole Poland.png';
+import DayBriefWidget from './DayBriefWidget';
+import imgAvatarKat    from '../assets/images/Avatar/People Card-Avatar/Avatar.png';
+import imgAvatarAadi   from '../assets/images/Avatar/People Card-Avatar/Avatar-1.png';
+import imgAvatarRobin  from '../assets/images/Avatar/People Card-Avatar/Avatar-2.png';
+import imgAvatarLydia  from '../assets/images/Avatar/People Card-Avatar/Avatar-3.png';
+import imgAvatarHR     from '../assets/images/Avatar-7.png';
+import imgAvatarJordan from '../assets/images/Coworker-2.png';
+import imgAvatarMona   from '../assets/images/Coworker-3.png';
 import iconWeather from '../assets/day-at-a-glance/Weather Icon.svg';
 import iconOutlook from '../assets/day-at-a-glance/Outlook.svg';
 import iconTeams from '../assets/day-at-a-glance/Teams.svg';
 import iconCalendar from '../assets/day-at-a-glance/Calendar.svg';
-import iconSunMug from '../assets/day-at-a-glance/Sun Mug.svg';
-import iconRepeat from '../assets/day-at-a-glance/Repeat.svg';
 import imgThumb1 from '../assets/day-at-a-glance/artifact-human.png';
 import imgThumb2 from '../assets/day-at-a-glance/artifact-chart.png';
 import imgThumb3 from '../assets/day-at-a-glance/Image_single.png';
+import iconDocx from '../assets/icons/docx.svg';
+import iconPptx from '../assets/icons/pptx.svg';
+import iconXls from '../assets/icons/xls.svg';
+
+const imgThumbWord  = 'https://www.figma.com/api/mcp/asset/db969f1e-ba72-4734-a909-0dff163dfc2d';
+const imgThumbExcel = 'https://www.figma.com/api/mcp/asset/d4d3a822-330b-4f69-8613-ebccda4ac8b0';
+const imgThumbPptx  = 'https://www.figma.com/api/mcp/asset/2b800d7d-adf0-45e3-a7c8-55f794b9568e';
 
 const seg: React.CSSProperties = { fontFamily: '"Segoe UI", -apple-system, sans-serif' };
 
@@ -80,8 +89,8 @@ function DayBriefHeader() {
 type TabId = 'Meetings' | 'Files' | 'Email' | 'Mentions' | 'People';
 
 function ResponseNavBar({ activeTab, setActiveTab }: { activeTab: TabId; setActiveTab: (t: TabId) => void }) {
-  const tabs: { id: TabId; label: string; filled: React.ReactNode; regular: React.ReactNode; dropdown?: boolean }[] = [
-    { id: 'Meetings', label: 'Meetings', filled: <CalendarFilled style={{ width: 16, height: 16 }} />, regular: <CalendarRegular style={{ width: 16, height: 16 }} />, dropdown: true },
+  const tabs: { id: TabId; label: string; filled: React.ReactNode; regular: React.ReactNode }[] = [
+    { id: 'Meetings', label: 'Meetings', filled: <CalendarFilled style={{ width: 16, height: 16 }} />, regular: <CalendarRegular style={{ width: 16, height: 16 }} /> },
     { id: 'Files',    label: 'Files',    filled: <FolderFilled style={{ width: 16, height: 16 }} />,   regular: <FolderRegular style={{ width: 16, height: 16 }} /> },
     { id: 'Email',    label: 'Email',    filled: <MailFilled style={{ width: 16, height: 16 }} />,     regular: <MailRegular style={{ width: 16, height: 16 }} /> },
     { id: 'Mentions', label: 'Mentions', filled: <MentionFilled style={{ width: 16, height: 16 }} />,  regular: <MentionRegular style={{ width: 16, height: 16 }} /> },
@@ -109,7 +118,6 @@ function ResponseNavBar({ activeTab, setActiveTab }: { activeTab: TabId; setActi
           >
             {selected ? tab.filled : tab.regular}
             <span>{tab.label}</span>
-            {tab.dropdown && <ChevronDownRegular style={{ width: 12, height: 12 }} />}
           </button>
         );
       })}
@@ -118,176 +126,8 @@ function ResponseNavBar({ activeTab, setActiveTab }: { activeTab: TabId; setActi
 }
 
 // ── Calendar Companion ─────────────────────────────────────────────────────────
-function CalendarCompanion() {
-  const weekDays = [
-    { letter: 'S', num: 30 }, { letter: 'M', num: 1 }, { letter: 'T', num: 2 },
-    { letter: 'W', num: 3, selected: true }, { letter: 'T', num: 4 }, { letter: 'F', num: 5 }, { letter: 'S', num: 6 },
-  ];
-  const meetingGroups = [
-    { group: 'Earlier today', items: [
-      { title: 'Microsoft All Hands', time: '10:30 AM', recurring: true, avatarColors: ['#c7e0f4', '#c3d7a8', '#ffd7b5'], overflow: 6 },
-      { title: 'Sync on the Q3 Budget', time: '10:30 AM', recurring: false, avatarColors: ['#d4b5f5', '#c7e0f4', '#ffc9b5'], overflow: 12 },
-    ]},
-    { group: 'Yesterday', items: [
-      { title: 'Stand-up meeting', time: '10:30 AM', recurring: true, avatarColors: ['#c7e0f4', '#c3d7a8', '#ffd7b5'], overflow: 6 },
-      { title: '[FHL] Starting with your own AI system - ByJames', time: '10:30 AM', recurring: true, avatarColors: ['#c7e0f4'], overflow: 49 },
-      { title: 'AI Unlocked: The GitHub Copilot Journey', time: '12:00 AM', recurring: false, avatarColors: ['#f5c6c6'], overflow: 6 },
-      { title: 'Working with Dev', time: '10:30 AM', recurring: false, avatarColors: ['#d4b5f5', '#c7e0f4', '#ffd7b5'], overflow: undefined },
-    ]},
-    { group: 'Monday', items: [
-      { title: "Jerry's Principal's Briefing", time: '10:00 AM', recurring: true, avatarColors: ['#c7e0f4', '#ffd7b5'], overflow: 12 },
-      { title: '1-1 with Aaron', time: '10:30 AM', recurring: true, avatarColors: ['#c7e0f4'], overflow: undefined },
-    ]},
-  ];
 
-  return (
-    <div style={{ width: 270, flexShrink: 0 }}>
-      <div style={{
-        backgroundColor: '#fff', borderRadius: 13.5,
-        boxShadow: '0px 0px 1.688px rgba(0,0,0,0.12), 0px 1.688px 3.375px rgba(0,0,0,0.14)',
-        overflow: 'hidden',
-      }}>
-        {/* Header */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 4, padding: '6.75px 8.438px 3.375px 10.125px' }}>
-          <div style={{ width: 46, height: 46, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img src={iconSunMug} alt="" style={{ width: 46, height: 46 }} />
-          </div>
-          <span style={{ ...seg, fontSize: 13, fontWeight: 600, color: '#424242', lineHeight: '13.5px' }}>My day</span>
-        </div>
 
-        {/* Month + filter */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '2px 8.438px 2px 0' }}>
-          <button style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#242424', background: 'none', border: 'none', cursor: 'pointer', padding: '4px 13.5px' }}>
-            Wed, April 3
-          </button>
-          <button style={{ ...seg, fontSize: 11, background: '#fff', border: '1px solid #e0e0e0', borderRadius: 6, padding: '3px 8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4, color: '#424242' }}>
-            <CalendarRegular style={{ width: 12, height: 12 }} />
-            <span>Meetings</span>
-            <ChevronDownRegular style={{ width: 10, height: 10 }} />
-          </button>
-        </div>
-
-        {/* Week row */}
-        <div style={{ borderBottom: '0.844px solid rgba(0,0,0,0.1)', padding: '6.75px 13.5px', display: 'flex' }}>
-          {weekDays.map((d, i) => (
-            <div key={i} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
-              <span style={{ ...seg, fontSize: 8, color: '#616161', fontWeight: 400, lineHeight: '12px' }}>{d.letter}</span>
-              <div style={{ width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', backgroundColor: d.selected ? '#ebefff' : 'transparent' }}>
-                <span style={{ ...seg, fontSize: 10, fontWeight: 600, color: d.selected ? '#464feb' : 'rgba(0,0,0,0.9)' }}>{d.num}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Agenda */}
-        <div style={{ overflowY: 'auto', maxHeight: 440 }}>
-          {meetingGroups.map(group => (
-            <div key={group.group}>
-              <div style={{ padding: '8px 13.5px 4px', ...seg, fontSize: 8.5, fontWeight: 600, color: '#616161' }}>{group.group}</div>
-              {group.items.map((item, i) => (
-                <div key={i} style={{ display: 'flex', gap: 6.75, alignItems: 'stretch', padding: '3px 13.5px' }}>
-                  <div style={{ width: 3.375, backgroundColor: '#464feb', borderRadius: '1.424px 0 0 1.424px', flexShrink: 0, minHeight: 28 }} />
-                  <div style={{ flex: 1, padding: '3px 0', minWidth: 0, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 4 }}>
-                    <div style={{ minWidth: 0, flex: 1 }}>
-                      <p style={{ ...seg, fontSize: 11, fontWeight: 600, color: '#242424', margin: 0, lineHeight: '14px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.title}</p>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 3, marginTop: 2 }}>
-                        <span style={{ ...seg, fontSize: 9.5, color: '#616161' }}>{item.time}</span>
-                        {item.recurring && <img src={iconRepeat} alt="recurring" style={{ width: 10, height: 10 }} />}
-                      </div>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-                      {item.avatarColors.map((color, ai) => (
-                        <div key={ai} style={{ width: 13.5, height: 13.5, borderRadius: '50%', backgroundColor: color, border: '0.5px solid #fff', marginLeft: ai > 0 ? -3 : 0, flexShrink: 0 }} />
-                      ))}
-                      {item.overflow !== undefined && (
-                        <div style={{ height: 13.5, backgroundColor: '#fafafa', border: '0.844px solid #e0e0e0', borderRadius: 100, padding: '0 3px', marginLeft: -3, display: 'flex', alignItems: 'center' }}>
-                          <span style={{ ...seg, fontSize: 7.5, fontWeight: 600, color: '#616161' }}>+{item.overflow}</span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-
-        {/* Pin button */}
-        <div style={{ padding: '8px 16px 11px', borderTop: '1px solid #f0f0f0' }}>
-          <button style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: '#fff', border: '1px solid #e0e0e0', borderRadius: 8, padding: '8px 12px', cursor: 'pointer', ...seg, fontSize: 12, color: '#424242' }}
-            onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
-            onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#fff')}
-          >
-            <AddSquareRegular style={{ width: 14, height: 14 }} />
-            Pin this widget to home
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ── Calendar event tile ────────────────────────────────────────────────────────
-function EventTile({ title, sub, accent = '#0078D4', style = {} }: {
-  title: string; sub?: string; accent?: string; style?: React.CSSProperties;
-}) {
-  return (
-    <div style={{
-      backgroundColor: '#dce9f7', borderRadius: 4, padding: '3px 6px',
-      borderLeft: `3px solid ${accent}`,
-      display: 'flex', flexDirection: 'column', justifyContent: 'center',
-      minHeight: 28, boxSizing: 'border-box', overflow: 'hidden', ...style,
-    }}>
-      <span style={{ ...seg, fontSize: 11, fontWeight: 600, color: '#242424', lineHeight: '14px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{title}</span>
-      {sub && <span style={{ ...seg, fontSize: 10, color: '#424242', lineHeight: '13px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{sub}</span>}
-    </div>
-  );
-}
-
-// ── Context pill ──────────────────────────────────────────────────────────────
-function ContextPill({ label }: { label: string }) {
-  return (
-    <span style={{
-      ...seg, display: 'inline-flex', alignItems: 'center', gap: 4,
-      fontSize: 11, color: '#424242', backgroundColor: '#f0f0f0',
-      border: '1px solid #e0e0e0', borderRadius: 12, padding: '2px 8px', whiteSpace: 'nowrap',
-    }}>
-      <CalendarRegular style={{ width: 12, height: 12, color: '#616161' }} />
-      {label}
-    </span>
-  );
-}
-
-// ── Meeting artifact card ─────────────────────────────────────────────────────
-function MeetingCard({ date, day, time, title, organizer, thumb }: {
-  date: string; day: string; time: string; title: string; organizer: string; thumb: string;
-}) {
-  return (
-    <div style={{ border: '1px solid #e8e8e8', borderRadius: 8, padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 10, backgroundColor: '#fff', maxWidth: 440 }}>
-      <div style={{ width: 3, alignSelf: 'stretch', backgroundColor: '#0078D4', borderRadius: 2, flexShrink: 0 }} />
-      {/* Date */}
-      <div style={{ flexShrink: 0, textAlign: 'center', minWidth: 44 }}>
-        <div style={{ ...seg, fontSize: 12, fontWeight: 600, color: '#242424', lineHeight: '16px' }}>{date}</div>
-        <div style={{ ...seg, fontSize: 10, color: '#616161', lineHeight: '14px' }}>{day}</div>
-      </div>
-      {/* Info */}
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ ...seg, fontSize: 13, fontWeight: 600, color: '#242424', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 2 }}>{title}</div>
-        <div style={{ ...seg, fontSize: 11, color: '#616161', marginBottom: 2 }}>{time}</div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-          <div style={{ width: 14, height: 14, borderRadius: 7, backgroundColor: '#c7e0f4', flexShrink: 0 }} />
-          <span style={{ ...seg, fontSize: 11, color: '#616161' }}>{organizer}</span>
-        </div>
-      </div>
-      {/* Thumbnail */}
-      <div style={{ width: 64, height: 48, borderRadius: 4, overflow: 'hidden', flexShrink: 0 }}>
-        <img src={thumb} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-      </div>
-      {/* Expand */}
-      <ArrowMaximize20Regular style={{ width: 14, height: 14, color: '#616161', flexShrink: 0, cursor: 'pointer' }} />
-    </div>
-  );
-}
 
 // ── Action bar ─────────────────────────────────────────────────────────────────
 function ActionBar() {
@@ -308,10 +148,435 @@ function ActionBar() {
   );
 }
 
+// ── Shared copilot byline ──────────────────────────────────────────────────────
+function CopilotByline() {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+      <img src="/assets/images/ZavaCore_logo.svg" alt="" style={{ width: 18, height: 18 }} />
+      <span style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#616161' }}>Copilot</span>
+    </div>
+  );
+}
+
+// ── Suggestion chips ───────────────────────────────────────────────────────────
+function SuggestionChips({ chips }: { chips: string[] }) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 24, marginBottom: 8, alignItems: 'flex-end' }}>
+      {chips.map(chip => (
+        <button key={chip} style={{ ...seg, fontSize: 14, color: '#242424', backgroundColor: '#fff', border: '1px solid #d1d1d1', borderRadius: 16, padding: '6px 16px', cursor: 'pointer' }}
+          onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+          onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#fff')}
+        >{chip}</button>
+      ))}
+    </div>
+  );
+}
+
+// ── Meetings tab ───────────────────────────────────────────────────────────────
+function MeetingsContent() {
+  const upcoming = [
+    { name: 'ZavaCore Q2 Roadmap Review',           organizer: 'Kat Larsson', time: 'Today · 11:35 AM – 12:30 PM', location: 'Microsoft Teams Meeting', rsvp: 'Accepted' },
+    { name: 'AI Platform · Weekly Eng Sync',        organizer: 'Aadi Kapoor', time: 'Today · 12:35 PM – 1:05 PM',  location: 'Microsoft Teams Meeting', rsvp: 'RSVP'     },
+    { name: 'New Hire Kickoff — Onboarding Week 1', organizer: 'Lydia Bauer', time: 'Today · 5:35 PM – 6:30 PM',   location: 'Microsoft Teams Meeting', rsvp: 'Accepted' },
+  ];
+
+  const catchup = [
+    { title: 'ZavaCore AI Agent — Design Review',   organizer: 'Mona Kane',    img: imgAvatarMona,  date: 'Wed Mar 5', time: '12:30 – 1:00 PM', thumb: imgThumb1, takeaway: 'Team reviewed the ZavaCore AI agent UX end-to-end. Key feedback focused on the response card layout and action button hierarchy.' },
+    { title: 'ZavaCore All Hands — March Edition',  organizer: 'Jordan Lee',   img: imgAvatarJordan, date: 'Wed Mar 5', time: '12:00 – 1:00 PM', thumb: imgThumb2, takeaway: 'Leadership shared Q1 results and H2 priorities. Emphasis on accelerating AI platform adoption and expanding enterprise partnerships.' },
+    { title: 'Platform Architecture · Infra Review', organizer: 'Robin Counts', img: imgAvatarRobin, date: 'Wed Mar 5', time: '12:00 – 1:00 PM', thumb: imgThumb3, takeaway: 'Robin walked through proposed infra changes for the ZavaCore data pipeline. Discussion on scaling for multi-tenant enterprise workloads.' },
+  ];
+
+  return (
+    <>
+      <CopilotByline />
+      <p style={{ ...seg, margin: '0 0 16px', fontSize: 16, lineHeight: '24px', color: '#424242' }}>
+        You have 3 upcoming meetings today and a few recordings worth catching up on.
+      </p>
+
+      {/* Upcoming */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+        <CalendarRegular style={{ width: 14, height: 14, color: '#616161' }} />
+        <span style={{ ...seg, fontSize: 13, fontWeight: 600, color: '#616161' }}>Upcoming</span>
+      </div>
+      <div style={{ backgroundColor: '#fbfbfb', borderRadius: 24, padding: '8px 24px', marginBottom: 16 }}>
+        {upcoming.map((m, i) => (
+          <div key={m.name} style={{
+            display: 'flex', gap: 12, alignItems: 'flex-start',
+            padding: '16px 0',
+            borderBottom: i < upcoming.length - 1 ? '1px solid rgba(0,0,0,0.1)' : 'none',
+          }}>
+            {/* Calendar icon */}
+            <div style={{ width: 36, height: 36, borderRadius: 8, backgroundColor: '#ebefff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <CalendarFilled style={{ width: 20, height: 20, color: '#464feb' }} />
+            </div>
+
+            {/* Content */}
+            <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <div>
+                <div style={{ ...seg, fontSize: 16, fontWeight: 600, color: '#242424' }}>{m.name}</div>
+                <div style={{ ...seg, fontSize: 13, color: '#616161', marginTop: 2 }}>{m.time} · {m.location}</div>
+                <div style={{ ...seg, fontSize: 13, color: '#616161', marginTop: 2 }}>Organized by {m.organizer}</div>
+              </div>
+              <div style={{ display: 'flex', gap: 8 }}>
+                {[m.rsvp, 'Join'].map(label => (
+                  <button key={label} style={{
+                    ...seg, fontSize: 14, color: '#242424', backgroundColor: 'transparent',
+                    border: '1px solid #d1d1d1', borderRadius: 4, padding: '4px 12px', cursor: 'pointer',
+                    display: 'flex', alignItems: 'center', gap: 4,
+                  }}
+                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+                  >
+                    {label}
+                    {label === 'RSVP' && <ChevronDownRegular style={{ width: 12, height: 12 }} />}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Catch-up */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+        <ArrowSyncRegular style={{ width: 14, height: 14, color: '#616161' }} />
+        <span style={{ ...seg, fontSize: 13, fontWeight: 600, color: '#616161' }}>Catch-up</span>
+      </div>
+      <div style={{ backgroundColor: '#fbfbfb', borderRadius: 24, padding: '8px 24px', marginBottom: 16 }}>
+        {catchup.map((m, i) => (
+          <div key={m.title} style={{
+            display: 'flex', gap: 12, alignItems: 'flex-start',
+            padding: '16px 0',
+            borderBottom: i < catchup.length - 1 ? '1px solid rgba(0,0,0,0.1)' : 'none',
+          }}>
+            {/* Thumbnail */}
+            <div style={{ width: 100, height: 60, borderRadius: 8, overflow: 'hidden', backgroundColor: '#f0f0f0', flexShrink: 0, position: 'relative' }}>
+              <img src={m.thumb} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }} />
+            </div>
+
+            {/* Content */}
+            <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <div>
+                <div style={{ ...seg, fontSize: 16, fontWeight: 600, color: '#242424', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{m.title}</div>
+                <div style={{ ...seg, fontSize: 13, color: '#616161', marginTop: 2 }}>{m.date} · {m.time}</div>
+                <div style={{ ...seg, fontSize: 13, color: '#424242', lineHeight: '20px', marginTop: 4, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' as const }}>{m.takeaway}</div>
+              </div>
+              <div style={{ display: 'flex', gap: 8 }}>
+                {['Summarize', 'View Recording'].map(label => (
+                  <button key={label} style={{
+                    ...seg, fontSize: 14, color: '#242424', backgroundColor: 'transparent',
+                    border: '1px solid #d1d1d1', borderRadius: 4, padding: '4px 12px', cursor: 'pointer',
+                  }}
+                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+                  >{label}</button>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <ActionBar />
+      <SuggestionChips chips={['Catch me up on the meeting I missed this morning', 'What should I prioritize first?', 'What are the most pressing action items from those meetings?']} />
+    </>
+  );
+}
+
+// ── Files tab ──────────────────────────────────────────────────────────────────
+function FilesContent() {
+  const iconMap: Record<string, string> = { docx: iconDocx, pptx: iconPptx, xlsx: iconXls, xls: iconXls };
+  const openLabel: Record<string, string> = { docx: 'Open in Word', pptx: 'Open in PowerPoint', xlsx: 'Open in Excel', xls: 'Open in Excel' };
+
+  const files = [
+    { type: 'xlsx', name: 'Q3 Budget Review',           description: 'Budget overview covering Q3 targets, actuals, and variance analysis across all teams. Shared before today\'s Contoso checkpoint.',           thumb: imgThumbExcel },
+    { type: 'pptx', name: 'Contoso Partnership Deck',   description: 'Partnership proposal deck outlining go-to-market strategy, milestones, and co-sell opportunities with Contoso.',                             thumb: imgThumbPptx  },
+    { type: 'docx', name: 'Onboarding Plan — New Hire', description: 'Structured onboarding checklist for the new team member starting next week. Includes tools setup, intro meetings, and 30/60/90 day goals.', thumb: imgThumbWord  },
+    { type: 'pptx', name: 'ZavaCore Roadmap H2 2026',   description: 'Half-year product roadmap covering priorities, milestones, and key bets across platform, AI, and growth workstreams.',                       thumb: imgThumbPptx  },
+    { type: 'xlsx', name: 'Q4 Forecast Model',          description: 'Financial model projecting Q4 revenue, headcount, and investment scenarios. Last updated with actuals from Jordan Lee.',                     thumb: imgThumbExcel },
+  ];
+
+  return (
+    <>
+      <CopilotByline />
+      <p style={{ ...seg, margin: '0 0 16px', fontSize: 16, lineHeight: '24px', color: '#424242' }}>
+        I found 8 files relevant to your day — here are the most important ones based on your upcoming meetings.
+      </p>
+
+      {/* Card list container */}
+      <div style={{ backgroundColor: '#fbfbfb', borderRadius: 24, padding: '8px 24px', marginBottom: 16 }}>
+        {files.map((f, i) => (
+          <div key={f.name} style={{
+            display: 'flex', gap: 8, alignItems: 'flex-start',
+            padding: '16px 0',
+            borderBottom: i < files.length - 1 ? '1px solid rgba(0,0,0,0.1)' : 'none',
+          }}>
+            {/* File icon */}
+            <div style={{ width: 24, height: 24, borderRadius: 8, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <img src={iconMap[f.type]} alt={f.type} style={{ width: 20, height: 20, display: 'block' }} />
+            </div>
+
+            {/* Text + buttons */}
+            <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                <span style={{ ...seg, fontSize: 16, fontWeight: 600, color: '#242424', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{f.name}</span>
+                <span style={{ ...seg, fontSize: 12, color: '#616161', lineHeight: '16px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{f.description}</span>
+              </div>
+              <div style={{ display: 'flex', gap: 8 }}>
+                {['Ask', openLabel[f.type] ?? 'Open'].map(label => (
+                  <button key={label} style={{
+                    ...seg, fontSize: 14, color: '#242424', backgroundColor: 'transparent',
+                    border: '1px solid #d1d1d1', borderRadius: 4, padding: '4px 12px', cursor: 'pointer',
+                  }}
+                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+                  >{label}</button>
+                ))}
+              </div>
+            </div>
+
+            {/* Thumbnail */}
+            <div style={{ width: 132, height: 76, borderRadius: 8, overflow: 'hidden', backgroundColor: '#f0f0f0', flexShrink: 0, position: 'relative' }}>
+              <img src={f.thumb} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }} />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* More files */}
+      <div style={{ marginBottom: 12 }}>
+        <button style={{ ...seg, fontSize: 14, color: '#242424', backgroundColor: 'transparent', border: '1px solid #d1d1d1', borderRadius: 4, padding: '4px 12px', cursor: 'pointer' }}
+          onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+          onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+        >4 more files</button>
+      </div>
+
+      <ActionBar />
+      <SuggestionChips chips={['Summarize updates from all files', 'Which should I prioritize first?', 'What are the most pressing action items from this list?']} />
+    </>
+  );
+}
+
+// ── Email tab ──────────────────────────────────────────────────────────────────
+function EmailContent() {
+  const emails = [
+    { name: 'Kat Larsson',  img: imgAvatarKat,  time: '9:42 AM',   badge: 'Action needed', subject: 'RE: Contoso Partnership — Contract Update', preview: 'Hi Carole, I wanted to follow up on the contract terms we discussed in yesterday\'s sync. Can you review section 4 before our meeting today?' },
+    { name: 'Aadi Kapoor',  img: imgAvatarAadi, time: '8:15 AM',   badge: null,            subject: 'Q3 Budget Approval — Deadline Friday',      preview: 'Team, a reminder that all budget submissions are due by end of day Friday. Please ensure your team\'s numbers have been reviewed and signed off.' },
+    { name: 'Microsoft HR', img: imgAvatarHR,   time: 'Yesterday', badge: null,            subject: 'Your benefits enrollment closes March 10',   preview: 'Don\'t miss the window to review and update your benefits selections for the upcoming open enrollment period ending March 10.' },
+    { name: 'Lydia Bauer',  img: imgAvatarLydia,time: 'Yesterday', badge: null,            subject: 'Onboarding checklist for new hire',           preview: 'Hi Carole, please review the attached onboarding plan for the new team member starting next Monday. Let me know if anything looks off.' },
+  ];
+
+  return (
+    <>
+      <CopilotByline />
+      <p style={{ ...seg, margin: '0 0 16px', fontSize: 16, lineHeight: '24px', color: '#424242' }}>
+        You have 16 unread emails. Here are the 4 that need your attention most today.
+      </p>
+
+      {/* Card list container */}
+      <div style={{ backgroundColor: '#fbfbfb', borderRadius: 24, padding: '8px 24px', marginBottom: 16 }}>
+        {emails.map((e, i) => (
+          <div key={e.subject} style={{
+            display: 'flex', gap: 12, alignItems: 'flex-start',
+            padding: '16px 0',
+            borderBottom: i < emails.length - 1 ? '1px solid rgba(0,0,0,0.1)' : 'none',
+          }}>
+            {/* Avatar */}
+            <Avatar name={e.name} image={{ src: e.img }} size={36} style={{ flexShrink: 0 }} />
+
+            {/* Content */}
+            <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8 }}>
+                <div style={{ minWidth: 0 }}>
+                  <span style={{ ...seg, fontSize: 16, fontWeight: 600, color: '#242424' }}>{e.name}</span>
+                  <div style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#242424', marginTop: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.subject}</div>
+                  <div style={{ ...seg, fontSize: 13, color: '#616161', lineHeight: '20px', marginTop: 2, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' as const }}>{e.preview}</div>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4, flexShrink: 0 }}>
+                  {e.badge && (
+                    <span style={{ ...seg, fontSize: 11, fontWeight: 600, color: '#0f6cbd', backgroundColor: '#ebf3fc', border: '1px solid #0078d4', borderRadius: 10, padding: '1px 7px', whiteSpace: 'nowrap' }}>{e.badge}</span>
+                  )}
+                  <span style={{ ...seg, fontSize: 13, color: '#616161', whiteSpace: 'nowrap' }}>{e.time}</span>
+                </div>
+              </div>
+              <div style={{ display: 'flex', gap: 8 }}>
+                {['Ask', 'Reply', 'Open in Outlook'].map(label => (
+                  <button key={label} style={{
+                    ...seg, fontSize: 14, color: '#242424', backgroundColor: 'transparent',
+                    border: '1px solid #d1d1d1', borderRadius: 4, padding: '4px 12px', cursor: 'pointer',
+                  }}
+                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+                  >{label}</button>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* More emails */}
+      <div style={{ marginBottom: 12 }}>
+        <button style={{ ...seg, fontSize: 14, color: '#242424', backgroundColor: 'transparent', border: '1px solid #d1d1d1', borderRadius: 4, padding: '4px 12px', cursor: 'pointer' }}
+          onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+          onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+        >12 more emails</button>
+      </div>
+
+      <ActionBar />
+      <SuggestionChips chips={['Draft a reply to Kat Larsson', 'Summarize my unread emails', 'What emails need a response today?']} />
+    </>
+  );
+}
+
+// ── Mentions tab ───────────────────────────────────────────────────────────────
+function MentionsContent() {
+  const mentions = [
+    { name: 'Aadi Kapoor',  img: imgAvatarAadi,  context: 'Teams · #project-contoso',     time: '1 hour ago',  message: '@Carole can you review the updated slide deck before our 11:35 meeting? I\'ve added the new pricing section you asked about.' },
+    { name: 'Jordan Lee',   img: imgAvatarJordan,context: 'Teams · #budget-planning',      time: '3 hours ago', message: '@Carole the Q4 numbers look great — I\'ve incorporated the edits from yesterday\'s session and they\'re ready for your sign-off.' },
+    { name: 'Robin Counts', img: imgAvatarRobin, context: 'Outlook · Architecture Review', time: 'Yesterday',   message: 'I\'ve looped in @Carole who can provide more context on the infrastructure requirements for this initiative going into Q3.' },
+    { name: 'Mona Kane',    img: imgAvatarMona,  context: 'Teams · #leadership-updates',   time: 'Yesterday',   message: '@Carole great work on the Copilot pilot rollout — Satya specifically called it out in today\'s all-hands as a model program.' },
+  ];
+
+  return (
+    <>
+      <CopilotByline />
+      <p style={{ ...seg, margin: '0 0 16px', fontSize: 16, lineHeight: '24px', color: '#424242' }}>
+        You were mentioned 5 times since yesterday. Here are the ones most likely to need a response.
+      </p>
+
+      {/* Card list container */}
+      <div style={{ backgroundColor: '#fbfbfb', borderRadius: 24, padding: '8px 24px', marginBottom: 16 }}>
+        {mentions.map((m, i) => (
+          <div key={m.message} style={{
+            display: 'flex', gap: 12, alignItems: 'flex-start',
+            padding: '16px 0',
+            borderBottom: i < mentions.length - 1 ? '1px solid rgba(0,0,0,0.1)' : 'none',
+          }}>
+            {/* Avatar */}
+            <Avatar name={m.name} image={{ src: m.img }} size={36} style={{ flexShrink: 0 }} />
+
+            {/* Content */}
+            <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8 }}>
+                <div style={{ minWidth: 0 }}>
+                  <span style={{ ...seg, fontSize: 16, fontWeight: 600, color: '#242424' }}>{m.name}</span>
+                  <span style={{ ...seg, fontSize: 13, color: '#616161' }}> · {m.context}</span>
+                </div>
+                <span style={{ ...seg, fontSize: 13, color: '#616161', flexShrink: 0, whiteSpace: 'nowrap' }}>{m.time}</span>
+              </div>
+              <div style={{ ...seg, fontSize: 14, color: '#424242', lineHeight: '22px', backgroundColor: 'rgba(0,0,0,0.04)', borderRadius: 8, padding: '8px 12px', borderLeft: '3px solid #d1d1d1' }}>
+                {m.message}
+              </div>
+              <div style={{ display: 'flex', gap: 8 }}>
+                {['Ask', 'Reply', 'View in Teams'].map(label => (
+                  <button key={label} style={{
+                    ...seg, fontSize: 14, color: '#242424', backgroundColor: 'transparent',
+                    border: '1px solid #d1d1d1', borderRadius: 4, padding: '4px 12px', cursor: 'pointer',
+                  }}
+                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+                  >{label}</button>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* More mentions */}
+      <div style={{ marginBottom: 12 }}>
+        <button style={{ ...seg, fontSize: 14, color: '#242424', backgroundColor: 'transparent', border: '1px solid #d1d1d1', borderRadius: 4, padding: '4px 12px', cursor: 'pointer' }}
+          onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+          onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+        >1 more mention</button>
+      </div>
+
+      <ActionBar />
+      <SuggestionChips chips={['Help me reply to Aadi Kapoor', 'Show all my Teams mentions this week', 'Which mentions need a response?']} />
+    </>
+  );
+}
+
+// ── People tab ─────────────────────────────────────────────────────────────────
+function PeopleContent() {
+  const people = [
+    { name: 'Kat Larsson',  img: imgAvatarKat,   role: 'Program Manager',    org: 'Contoso Partnership',   meetingAt: '11:35 AM', presence: 'away'      as const, activity: 'Emailed you 2 hours ago about contract terms' },
+    { name: 'Aadi Kapoor',  img: imgAvatarAadi,  role: 'Finance Lead',        org: 'ZavaCore Finance',      meetingAt: '12:35 PM', presence: 'available' as const, activity: 'Mentioned you in Teams · #project-contoso' },
+    { name: 'Lydia Bauer',  img: imgAvatarLydia, role: 'HR Business Partner', org: 'People & Culture',      meetingAt: '5:35 PM',  presence: 'available' as const, activity: 'Sent you the onboarding plan for review' },
+    { name: 'Robin Counts', img: imgAvatarRobin, role: 'Principal Engineer',  org: 'Platform Architecture', meetingAt: null,       presence: 'busy'      as const, activity: 'Mentioned you in the Architecture Review thread' },
+  ];
+
+  return (
+    <>
+      <CopilotByline />
+      <p style={{ ...seg, margin: '0 0 16px', fontSize: 16, lineHeight: '24px', color: '#424242' }}>
+        Here are the key people in your day — those you have meetings with and those who've recently reached out.
+      </p>
+
+      {/* Card list container */}
+      <div style={{ backgroundColor: '#fbfbfb', borderRadius: 24, padding: '8px 24px', marginBottom: 16 }}>
+        {people.map((p, i) => (
+          <div key={p.name} style={{
+            display: 'flex', gap: 12, alignItems: 'flex-start',
+            padding: '16px 0',
+            borderBottom: i < people.length - 1 ? '1px solid rgba(0,0,0,0.1)' : 'none',
+          }}>
+            {/* Avatar + presence badge */}
+            <Avatar name={p.name} image={{ src: p.img }} size={40} badge={{ status: p.presence }} style={{ flexShrink: 0 }} />
+
+            {/* Content */}
+            <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8 }}>
+                <div style={{ minWidth: 0 }}>
+                  <span style={{ ...seg, fontSize: 16, fontWeight: 600, color: '#242424' }}>{p.name}</span>
+                  <div style={{ ...seg, fontSize: 13, color: '#616161', marginTop: 2 }}>{p.role} · {p.org}</div>
+                  <div style={{ ...seg, fontSize: 13, color: '#424242', marginTop: 4 }}>{p.activity}</div>
+                </div>
+                {p.meetingAt && (
+                  <span style={{ ...seg, display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 12, color: '#424242', backgroundColor: '#f0f0f0', border: '1px solid #e0e0e0', borderRadius: 12, padding: '3px 10px', flexShrink: 0, whiteSpace: 'nowrap' }}>
+                    <CalendarRegular style={{ width: 12, height: 12, color: '#616161' }} />
+                    {p.meetingAt}
+                  </span>
+                )}
+              </div>
+              <div style={{ display: 'flex', gap: 8 }}>
+                {['Message', 'View Profile'].map(label => (
+                  <button key={label} style={{
+                    ...seg, fontSize: 14, color: '#242424', backgroundColor: 'transparent',
+                    border: '1px solid #d1d1d1', borderRadius: 4, padding: '4px 12px', cursor: 'pointer',
+                  }}
+                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+                  >{label}</button>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* More people */}
+      <div style={{ marginBottom: 12 }}>
+        <button style={{ ...seg, fontSize: 14, color: '#242424', backgroundColor: 'transparent', border: '1px solid #d1d1d1', borderRadius: 4, padding: '4px 12px', cursor: 'pointer' }}
+          onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+          onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+        >3 more people</button>
+      </div>
+
+      <ActionBar />
+      <SuggestionChips chips={['Catch me up on my interactions with Kat Larsson', 'Who should I prioritize reaching out to today?', 'Show recent activity from my team']} />
+    </>
+  );
+}
+
 // ── Main ───────────────────────────────────────────────────────────────────────
-export default function PlanMyDayResponse() {
+interface PlanMyDayResponseProps {
+  onAddToHome?: () => void;
+}
+
+export default function PlanMyDayResponse({ onAddToHome }: PlanMyDayResponseProps) {
   const [activeTab, setActiveTab] = useState<TabId>('Meetings');
-  const [calView, setCalView] = useState<'Calendar' | 'List'>('Calendar');
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: '100%', ...seg }}>
@@ -328,246 +593,16 @@ export default function PlanMyDayResponse() {
           {/* Nav */}
           <ResponseNavBar activeTab={activeTab} setActiveTab={setActiveTab} />
 
-          {/* Copilot intro */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-            <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" style={{ width: 18, height: 18 }} />
-            <span style={{ ...seg, fontSize: 13, fontWeight: 600, color: '#616161' }}>Copilot</span>
-          </div>
-          <p style={{ ...seg, margin: '0 0 20px', fontSize: 14, lineHeight: '22px', color: '#424242' }}>
-            I've checked your calendar and found 3 upcoming meetings and several past recordings that might be worth revisiting.
-          </p>
-
-          {/* ── Calendar section ── */}
-          <div style={{ marginBottom: 24 }}>
-            {/* Section heading row */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '0 4px 12px 4px' }}>
-              <CalendarFilled style={{ width: 20, height: 20, color: '#424242' }} />
-              <span style={{ ...seg, fontSize: 16, fontWeight: 600, color: '#242424' }}>Your meetings for July 16 2026</span>
-            </div>
-
-            {/* Calendar card */}
-            <div style={{ border: '1px solid #e8e8e8', borderRadius: 8, overflow: 'hidden', backgroundColor: '#fff' }}>
-
-              {/* Quick actions toolbar */}
-              <div style={{ padding: '8px 16px', borderBottom: '1px solid #f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <CalendarRegular style={{ width: 18, height: 18, color: '#616161' }} />
-                  <div>
-                    <div style={{ ...seg, fontSize: 13, fontWeight: 600, color: '#242424', lineHeight: '18px' }}>Meetings</div>
-                    <div style={{ ...seg, fontSize: 11, color: '#616161', lineHeight: '16px' }}>24 events found</div>
-                  </div>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                  {/* Calendar / List toggle */}
-                  <div style={{ display: 'flex', border: '1px solid #e0e0e0', borderRadius: 6, overflow: 'hidden' }}>
-                    {(['Calendar', 'List'] as const).map(v => (
-                      <button key={v} onClick={() => setCalView(v)} style={{ ...seg, fontSize: 12, padding: '4px 12px', cursor: 'pointer', border: 'none', backgroundColor: calView === v ? '#0078D4' : '#fff', color: calView === v ? '#fff' : '#424242', transition: 'all 0.1s' }}>
-                        {v}
-                      </button>
-                    ))}
-                  </div>
-                  {/* Collapse chevron */}
-                  <button style={{ width: 28, height: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'none', border: 'none', borderRadius: 4, cursor: 'pointer', color: '#424242' }}
-                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f0f0f0')}
-                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
-                  >
-                    <ChevronUpRegular style={{ width: 16, height: 16 }} />
-                  </button>
-                </div>
-              </div>
-
-              {/* Date navigation toolbar */}
-              <div style={{ padding: '6px 12px', borderBottom: '1px solid #f0f0f0', display: 'flex', alignItems: 'center', gap: 6, backgroundColor: '#fafafa' }}>
-                <button style={{ ...seg, fontSize: 12, padding: '3px 10px', border: '1px solid #e0e0e0', borderRadius: 4, backgroundColor: '#fff', cursor: 'pointer', color: '#242424', fontWeight: 500 }}>Today</button>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <button style={{ width: 26, height: 26, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'none', border: 'none', cursor: 'pointer', borderRadius: 4, color: '#424242' }}
-                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f0f0f0')}
-                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
-                  >
-                    <ChevronLeftRegular style={{ width: 14, height: 14 }} />
-                  </button>
-                  <button style={{ ...seg, fontSize: 13, fontWeight: 600, color: '#242424', background: 'none', border: 'none', cursor: 'pointer', padding: '2px 6px', borderRadius: 4 }}
-                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f0f0f0')}
-                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
-                  >July 10</button>
-                  <button style={{ width: 26, height: 26, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'none', border: 'none', cursor: 'pointer', borderRadius: 4, color: '#424242' }}
-                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f0f0f0')}
-                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
-                  >
-                    <ChevronRightRegular style={{ width: 14, height: 14 }} />
-                  </button>
-                </div>
-              </div>
-
-              {/* Calendar grid */}
-              <div style={{ display: 'flex', padding: '0' }}>
-                {/* Time column */}
-                <div style={{ width: 52, flexShrink: 0, paddingTop: 38 }}>
-                  {['9 AM', '10 AM', '11 AM', '12 PM'].map(t => (
-                    <div key={t} style={{ height: 76, display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-end', paddingRight: 8, paddingTop: 4 }}>
-                      <span style={{ ...seg, fontSize: 11, color: '#808080' }}>{t}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Day column */}
-                <div style={{ flex: 1, borderLeft: '1px solid #f0f0f0', minWidth: 0 }}>
-                  {/* Day header */}
-                  <div style={{ height: 38, padding: '6px 12px', borderBottom: '1px solid #f0f0f0', display: 'flex', alignItems: 'center' }}>
-                    <span style={{ ...seg, fontSize: 13, fontWeight: 600, color: '#242424' }}>July 16, </span>
-                    <span style={{ ...seg, fontSize: 13, color: '#616161', marginLeft: 4 }}>Wed</span>
-                  </div>
-
-                  {/* Hour rows */}
-                  <div style={{ position: 'relative' }}>
-                    {[0, 1, 2, 3].map(i => (
-                      <div key={i} style={{ height: 76, borderBottom: '1px solid #f5f5f5' }} />
-                    ))}
-
-                    {/* Event overlay */}
-                    <div style={{ position: 'absolute', inset: 0, padding: '3px 6px', pointerEvents: 'none' }}>
-                      {/* 9 AM - Launch Checkpoint (full width) */}
-                      <div style={{ position: 'absolute', top: 4, left: 6, right: 6, height: 30 }}>
-                        <EventTile title="Contoso <> Launch Checkpoint" sub="Microsoft Teams" />
-                      </div>
-                      {/* 10 AM - Project Brief (left half) */}
-                      <div style={{ position: 'absolute', top: 80, left: 6, width: '47%', height: 68 }}>
-                        <EventTile title="Contoso <> Project Brief" sub="Microsoft Teams" style={{ height: '100%' }} />
-                      </div>
-                      {/* 10 AM - Quick Sync (right top) */}
-                      <div style={{ position: 'absolute', top: 80, left: '50%', right: 6, height: 28 }}>
-                        <EventTile title="Quick Sync" sub="1 PM · Conf Room B1" accent="#5B9BD5" />
-                      </div>
-                      {/* 10 AM - Baseline sync (right bottom) */}
-                      <div style={{ position: 'absolute', top: 112, left: '50%', right: 6, height: 34 }}>
-                        <EventTile title="Baseline sync" sub="9:30 AM · Miguel Garcia" accent="#107C10" />
-                      </div>
-                      {/* 11 AM - Contoso Sync (left) */}
-                      <div style={{ position: 'absolute', top: 156, left: 6, width: '47%', height: 28 }}>
-                        <EventTile title="Contoso <> Sync" sub="Microsoft Teams" />
-                      </div>
-                      {/* 11 AM - Discussion (right) */}
-                      <div style={{ position: 'absolute', top: 156, left: '50%', right: 6, height: 38 }}>
-                        <EventTile title="Discussion on information architecture" sub="1 PM · Robin Counts" accent="#5B9BD5" />
-                      </div>
-                      {/* 12 PM - Contoso Checkpoint2 (left) */}
-                      <div style={{ position: 'absolute', top: 232, left: 6, width: '47%', height: 28 }}>
-                        <EventTile title="Contoso <> Checkpoint2" sub="Microsoft Teams" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          {/* ── High-impact prep ── */}
-          <div style={{ marginBottom: 24 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 12 }}>
-              <span style={{ fontSize: 16, lineHeight: 1 }}>🗓️</span>
-              <span style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#242424' }}>High‑impact prep (what to scan first)</span>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              {[
-                { name: 'Contoso <> Checkpoint', organizer: 'Kat Larsson', time: 'Today 11:35 PM – Tomorrow 12:30 AM', pill: 'Contoso <> Checkpoint' },
-                { name: 'Contoso <> Marketing',  organizer: 'Aadi Kapoor',  time: '12:35 AM – 1:05 AM', pill: 'Contoso <> Marketing' },
-                { name: 'Contoso <> Onboarding', organizer: 'Lydia Bauer',  time: '5:35 AM – 6:30 AM',  pill: 'Contoso <> Onboarding' },
-              ].map(m => (
-                <div key={m.name}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
-                    <span style={{ ...seg, fontSize: 13, color: '#0078D4', textDecoration: 'underline', cursor: 'pointer' }}>· {m.name}</span>
-                    <ContextPill label={m.pill} />
-                  </div>
-                  <div style={{ ...seg, fontSize: 13, color: '#424242', paddingLeft: 14, lineHeight: '22px' }}>
-                    <div>Organizer: {m.organizer}</div>
-                    <div>Time: {m.time}</div>
-                    <div>Location: Microsoft Teams Meeting</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* ── Divider ── */}
-          <div style={{ height: 1, backgroundColor: '#e8e8e8', margin: '4px 0 20px' }} />
-
-          {/* ── Catch-up label ── */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
-            <ArrowSyncRegular style={{ width: 16, height: 16, color: '#616161' }} />
-            <span style={{ ...seg, fontSize: 12, color: '#616161', fontWeight: 600 }}>Catch-up</span>
-          </div>
-          <p style={{ ...seg, margin: '0 0 20px', fontSize: 14, lineHeight: '22px', color: '#424242' }}>
-            Here are a few high-impact meetings you may want to revisit.
-          </p>
-
-          {/* ── Meeting 1 ── */}
-          <div style={{ marginBottom: 32 }}>
-            <h3 style={{ ...seg, fontSize: 16, fontWeight: 700, color: '#242424', margin: '0 0 8px' }}>Copilot Core UX - Work Share</h3>
-            <div style={{ ...seg, fontSize: 13, fontWeight: 600, color: '#424242', marginBottom: 6 }}>Key takeaways</div>
-            <ul style={{ ...seg, fontSize: 13, lineHeight: '22px', color: '#424242', margin: '0 0 14px', paddingLeft: 20 }}>
-              <li>Arnita Saini presented a new feature for Biz Chat that helps users schedule meetings within the chat. This feature originated from the Time and Places team in Outlook.</li>
-              <li>Peter and Katrina shared updates from the People Experiences team, including new AI features designed to help users feel prepared for upcoming interactions.</li>
-            </ul>
-            <MeetingCard date="5 Mar" day="Wednesday" time="12:30 AM – 1:00 AM" title="Copilot Core UX - Work Share" organizer="Mona Kane organized this" thumb={imgThumb1} />
-            <ActionBar />
-          </div>
-
-          {/* ── Meeting 2 ── */}
-          <div style={{ marginBottom: 32 }}>
-            <h3 style={{ ...seg, fontSize: 16, fontWeight: 700, color: '#242424', margin: '0 0 8px' }}>All Hands</h3>
-            <div style={{ ...seg, fontSize: 13, fontWeight: 600, color: '#424242', marginBottom: 6 }}>Key takeaways</div>
-            <ul style={{ ...seg, fontSize: 13, lineHeight: '22px', color: '#424242', margin: '0 0 14px', paddingLeft: 20 }}>
-              <li>Satya Nadella emphasized the importance of making high-quality decisions faster to reduce friction and drive clarity.</li>
-              <li>He urged employees to reflect on their personal D&I goals and discuss them with managers.</li>
-              <li>The town hall included an open Q&A session where employees asked Satya Nadella and the leadership team various questions.</li>
-            </ul>
-            <MeetingCard date="5 Mar" day="Wednesday" time="12:00 PM – 1:00 PM" title="Microsoft All Hands" organizer="Satya organized this" thumb={imgThumb2} />
-            <ActionBar />
-          </div>
-
-          {/* ── Meeting 3 ── */}
-          <div style={{ marginBottom: 32 }}>
-            <h3 style={{ ...seg, fontSize: 16, fontWeight: 700, color: '#242424', margin: '0 0 8px' }}>[FHL] Starting with your own AI system - ByJames</h3>
-            <div style={{ ...seg, fontSize: 13, fontWeight: 600, color: '#424242', marginBottom: 6 }}>Key takeaways</div>
-            <ul style={{ ...seg, fontSize: 13, lineHeight: '22px', color: '#424242', margin: '0 0 14px', paddingLeft: 20 }}>
-              <li>James presented an overview of AI system design, emphasizing the importance of understanding the core components such as machine learning, natural language processing, and computer vision.</li>
-              <li>Emphasized responsible AI practices, including fairness, transparency, and accountability.</li>
-              <li>Shared practical insights on AI implementation, showcasing use cases like automated customer support and predictive analytics.</li>
-            </ul>
-            <MeetingCard date="5 Mar" day="Wednesday" time="12:00 PM – 1:00 PM" title="[FHL] Starting with your own AI sy..." organizer="James organized this" thumb={imgThumb3} />
-            <ActionBar />
-          </div>
-
-          {/* ── Sources footer ── */}
-          <div style={{ borderTop: '1px solid #e8e8e8', paddingTop: 14, marginBottom: 20 }}>
-            <button style={{ display: 'flex', alignItems: 'center', gap: 4, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-              onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
-              onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
-            >
-              <span style={{ ...seg, fontSize: 13, color: '#424242' }}>Sources</span>
-              <ChevronRightRegular style={{ width: 14, height: 14, color: '#424242' }} />
-            </button>
-          </div>
-
-          {/* ── Suggestion chips ── */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 24, alignItems: 'flex-end' }}>
-            {[
-              'Catch me up on the meeting I missed this morning',
-              'What should I prioritize first?',
-              'What are the most pressing action items from those meetings?',
-            ].map(chip => (
-              <button key={chip} style={{ ...seg, fontSize: 13, color: '#242424', backgroundColor: '#fff', border: '1px solid #d1d1d1', borderRadius: 16, padding: '6px 16px', cursor: 'pointer' }}
-                onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
-                onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#fff')}
-              >{chip}</button>
-            ))}
-          </div>
+          {activeTab === 'Meetings' && <MeetingsContent />}
+          {activeTab === 'Files'    && <FilesContent />}
+          {activeTab === 'Email'    && <EmailContent />}
+          {activeTab === 'Mentions' && <MentionsContent />}
+          {activeTab === 'People'   && <PeopleContent />}
 
         </div>
 
         {/* ── Aside ── */}
-        <CalendarCompanion />
+        <DayBriefWidget onAddToHome={onAddToHome} />
       </div>
     </div>
   );

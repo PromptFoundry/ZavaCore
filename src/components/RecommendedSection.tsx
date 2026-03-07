@@ -1,4 +1,5 @@
 import gameChangerImg from '../assets/images/game changer.png';
+import DayBriefWidget from './DayBriefWidget';
 import avatar1 from '../assets/images/Avatar/People Card-Avatar/Avatar.png';
 import avatar2 from '../assets/images/Avatar/People Card-Avatar/Avatar-1.png';
 import avatar3 from '../assets/images/Avatar/People Card-Avatar/Avatar-2.png';
@@ -106,7 +107,7 @@ function StatPill({ icon, count, label, iconOffsetY = '50%' }: { icon: string; c
   );
 }
 
-export default function RecommendedSection() {
+export default function RecommendedSection({ showDayAtAGlance = false }: { showDayAtAGlance?: boolean }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
 
@@ -126,19 +127,29 @@ export default function RecommendedSection() {
       {/* 3-col grid */}
       <div className="widget-grid-3col recommended-grid">
 
-        {/* ── Left: Event Card ── */}
-        <div style={{ borderRadius: '24px', overflow: 'hidden', position: 'relative', boxShadow: shadow, cursor: 'pointer' }}>
-          <div style={{ position: 'absolute', inset: -32, backgroundImage: `url("${imgEventBg}")`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(225.832deg, rgba(255,0,135,0.2) 1.7136%, rgba(68,38,127,0.9) 92.1%)' }} />
-          <CalendarBadge />
-          <div style={{ position: 'absolute', bottom: 25, left: 28, width: 218, display: 'flex', flexDirection: 'column', gap: 8, color: '#fff' }}>
-            <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: '16px', fontWeight: 600, lineHeight: '22px', fontVariationSettings: "'opsz' 10.5" }}>
-              From Production To Precision: How AI Is Reshaping Manufacturing
-            </p>
-            <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: '14px', fontWeight: 400, lineHeight: '20px' }}>
-              Upcoming event · Nov 14, 2026
-            </p>
-          </div>
+        {/* ── Left: Event Card or Day at a Glance widget ── */}
+        <div style={{
+          borderRadius: '24px', overflow: 'hidden', position: 'relative',
+          boxShadow: shadow, cursor: showDayAtAGlance ? 'default' : 'pointer',
+          transition: 'opacity 0.4s ease',
+        }}>
+          {showDayAtAGlance ? (
+            <DayBriefWidget homeMode />
+          ) : (
+            <>
+              <div style={{ position: 'absolute', inset: -32, backgroundImage: `url("${imgEventBg}")`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(225.832deg, rgba(255,0,135,0.2) 1.7136%, rgba(68,38,127,0.9) 92.1%)' }} />
+              <CalendarBadge />
+              <div style={{ position: 'absolute', bottom: 25, left: 28, width: 218, display: 'flex', flexDirection: 'column', gap: 8, color: '#fff' }}>
+                <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: '16px', fontWeight: 600, lineHeight: '22px', fontVariationSettings: "'opsz' 10.5" }}>
+                  From Production To Precision: How AI Is Reshaping Manufacturing
+                </p>
+                <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: '14px', fontWeight: 400, lineHeight: '20px' }}>
+                  Upcoming event · Nov 14, 2026
+                </p>
+              </div>
+            </>
+          )}
         </div>
 
         {/* ── Middle: 2 Prompt Cards ── */}

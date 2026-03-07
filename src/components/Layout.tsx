@@ -19,6 +19,7 @@ import RecentActivitySection from './RecentActivitySection';
 import EngageResponse from './EngageResponse';
 import NewsResponseMessage from './NewsResponseMessage';
 import PlanMyDayResponse from './PlanMyDayResponse';
+import { CheckmarkCircleFilled } from '@fluentui/react-icons';
 import OrderLunchResponse from './OrderLunchResponse';
 import OrderTracker from './OrderTracker';
 
@@ -43,6 +44,9 @@ export default function Layout() {
   const [showOrderLunch, setShowOrderLunch] = useState(false);
   const [isOrderLunchLoading, setIsOrderLunchLoading] = useState(false);
   const [orderTracker, setOrderTracker] = useState<{ dish: string; emoji: string } | null>(null);
+  const [showDayAtAGlance, setShowDayAtAGlance] = useState(false);
+  const [showAddedToast, setShowAddedToast] = useState(false);
+  const [toastVisible, setToastVisible] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
 
   const toggleMobileNav = () => setIsMobileNavOpen(!isMobileNavOpen);
@@ -103,6 +107,14 @@ export default function Layout() {
     setShowOrderLunch(false);
     setIsOrderLunchLoading(false);
     setOrderTracker(null);
+  };
+
+  const handleAddToHome = () => {
+    setShowDayAtAGlance(true);
+    setShowAddedToast(true);
+    setToastVisible(true);
+    setTimeout(() => setToastVisible(false), 2500);
+    setTimeout(() => setShowAddedToast(false), 3100);
   };
 
   const handleSummarizeNews = () => {
@@ -274,7 +286,7 @@ export default function Layout() {
                             <AnimatedLoader />
                           </>
                         ) : (
-                          <PlanMyDayResponse />
+                          <PlanMyDayResponse onAddToHome={handleAddToHome} />
                         )}
                       </div>
                     </div>
@@ -399,7 +411,7 @@ export default function Layout() {
                 />
               )}
               <div data-name="news-hero"><NewsHero onSummarizeNews={handleSummarizeNews} onEngageClick={handleEngageSummarize} /></div>
-              <div data-name="recommended"><RecommendedSection /></div>
+              <div data-name="recommended"><RecommendedSection showDayAtAGlance={showDayAtAGlance} /></div>
               <div data-name="quick-actions"><QuickActions onOrderLunch={handleOrderLunch} /></div>
               <div data-name="recent-activity"><RecentActivitySection onEngageClick={handleEngageSummarize} /></div>
             </div>
@@ -437,6 +449,26 @@ export default function Layout() {
         isOpen={isArticlePanelOpen}
         onClose={() => setIsArticlePanelOpen(false)}
       />
+
+      {/* Add to home toast */}
+      {showAddedToast && (
+        <div style={{
+          position: 'fixed', bottom: 32, left: '50%', transform: 'translateX(-50%)',
+          backgroundColor: '#107c10', color: '#fff',
+          borderRadius: 100, padding: '10px 20px',
+          display: 'flex', alignItems: 'center', gap: 8,
+          fontFamily: '"Segoe UI", -apple-system, sans-serif',
+          fontSize: 14, fontWeight: 600,
+          boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
+          zIndex: 9999, whiteSpace: 'nowrap',
+          opacity: toastVisible ? 1 : 0,
+          transition: 'opacity 0.5s ease',
+          pointerEvents: 'none',
+        }}>
+          <CheckmarkCircleFilled style={{ width: 18, height: 18, color: '#fff', flexShrink: 0 }} />
+          Day at a Glance added to home
+        </div>
+      )}
 
     </div>
   );
