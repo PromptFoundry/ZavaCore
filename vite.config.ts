@@ -5,7 +5,7 @@ const BASE = '/ZavaCore/';
 
 // https://vite.dev/config/
 export default defineConfig(({ command: _command }) => ({
-  publicDir: 'src',
+  publicDir: 'public',
   plugins: [
     react(),
     {

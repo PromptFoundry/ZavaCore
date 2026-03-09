@@ -238,8 +238,8 @@ export default function CatalystPanel({
                     ) : (
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '500px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" style={{ width: '24px', height: '24px' }} />
-                          <span style={{ fontWeight: 600, fontSize: '16px', color: '#616161' }}>Copilot</span>
+                          <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore Agent" style={{ width: '24px', height: '24px' }} />
+                          <span style={{ fontWeight: 600, fontSize: '16px', color: '#616161' }}>ZavaCore Agent</span>
                         </div>
                         <p style={{ margin: 0, fontSize: '16px', lineHeight: '24px', color: '#808080' }}>{msg.content}</p>
                         <EntityCard title="Summit Center Project Plan" metadata="Modified 2 hours ago • Project Document" />
@@ -251,8 +251,8 @@ export default function CatalystPanel({
                 {isLoading && (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxWidth: '500px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" style={{ width: '24px', height: '24px' }} />
-                      <span style={{ fontWeight: 600, fontSize: '16px', color: '#616161' }}>Copilot</span>
+                      <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore Agent" style={{ width: '24px', height: '24px' }} />
+                      <span style={{ fontWeight: 600, fontSize: '16px', color: '#616161' }}>ZavaCore Agent</span>
                     </div>
                     <p style={{ margin: 0, fontSize: '16px', lineHeight: '24px', color: '#808080' }}>Creating a day at a glance…</p>
                     <AnimatedLoader />

@@ -20,7 +20,7 @@ export default function SharePointDemo() {
       actions: [
         {
           id: 'copilot',
-          icon: <img src="/assets/icons/CopilotOutline.svg" alt="Copilot" style={{ width: '24px', height: '24px' }} />
+          icon: <img src="/assets/icons/CopilotOutline.svg" alt="ZavaCore Agent" style={{ width: '24px', height: '24px' }} />
         },
         {
           id: 'feedback',

@@ -139,7 +139,7 @@ export default function SharePointShell({
       >
         <img
           src="/assets/icons/Copilot.svg"
-          alt="Copilot"
+          alt="ZavaCore Agent"
           style={{ width: '32px', height: '32px' }}
         />
       </button>
