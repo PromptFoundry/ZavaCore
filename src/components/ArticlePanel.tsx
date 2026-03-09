@@ -144,7 +144,7 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
             <div style={{ position: 'absolute', inset: 0, backgroundColor: 'white' }} />
             <img
               alt=""
-              src={isQuarterly ? `${import.meta.env.BASE_URL}assets/images/Slide4.jpg` : imgTitleRegion}
+              src={isQuarterly ? `${import.meta.env.BASE_URL}assets/images/fiber-v2-bg.png` : imgTitleRegion}
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', maxWidth: 'none' }}
             />
             <div style={{
