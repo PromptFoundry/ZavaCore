@@ -334,7 +334,7 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
             <div style={{ flex: '1 0 0', height: '100%', minHeight: 0, minWidth: 0, position: 'relative', borderRadius: 4, overflow: 'hidden' }}>
               <img
                 alt=""
-                src={isQuarterly ? `${import.meta.env.BASE_URL}assets/images/helix-weave-left.jpg` : `${import.meta.env.BASE_URL}assets/images/helix-loom.png`}
+                src={isQuarterly ? `${import.meta.env.BASE_URL}assets/images/helix-weave-left.jpg` : `${import.meta.env.BASE_URL}assets/images/helix-blue-textile.jpg`}
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', maxWidth: 'none', borderRadius: 4, pointerEvents: 'none' }}
               />
             </div>
@@ -349,7 +349,7 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
               <div style={{ flex: '1 0 0', minHeight: 0, minWidth: 0, position: 'relative', borderRadius: 4, overflow: 'hidden', width: '100%' }}>
                 <img
                   alt=""
-                  src={isQuarterly ? `${import.meta.env.BASE_URL}assets/images/helix-weave-top.jpg` : `${import.meta.env.BASE_URL}assets/images/helix-orange-weave.png`}
+                  src={isQuarterly ? `${import.meta.env.BASE_URL}assets/images/helix-weave-top.jpg` : `${import.meta.env.BASE_URL}assets/images/helix-loom.png`}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', maxWidth: 'none', borderRadius: 4, pointerEvents: 'none' }}
                 />
               </div>
