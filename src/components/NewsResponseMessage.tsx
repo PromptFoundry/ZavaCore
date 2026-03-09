@@ -10,7 +10,6 @@ const imgVideo = 'https://www.figma.com/api/mcp/asset/8fbc9dd8-6ec4-46d7-867c-bc
 const imgTitleRegion = 'https://www.figma.com/api/mcp/asset/4e4b3496-c249-4b7b-9354-fbb2fae486c2';
 const imgFaviconSource = 'https://www.figma.com/api/mcp/asset/7e4d78b3-a51c-4536-8c52-d7a5da8c4f51';
 const imgFaviconZavaNews = 'https://www.figma.com/api/mcp/asset/a9888eee-7916-4d77-bdea-98640cc12f0f';
-const imgNewsThumb1 = 'https://www.figma.com/api/mcp/asset/7e843c74-40c3-4aaa-a45f-8abb37095eb3';
 const imgNewsThumb2 = 'https://www.figma.com/api/mcp/asset/785043c8-5e43-4ca5-ae53-a00a8c43d969';
 const imgNewsThumb3 = 'https://www.figma.com/api/mcp/asset/2d22862e-6d75-42f4-9086-18a857d08dbe';
 // Events (refreshed from node 120-18999)
