@@ -23,9 +23,7 @@ const merriweather: React.CSSProperties = { fontFamily: '"Merriweather", Georgia
 const bigShoulders: React.CSSProperties = { fontFamily: '"Big Shoulders Display", "Arial Black", sans-serif' };
 
 const imgTitleRegion = 'https://www.figma.com/api/mcp/asset/4e4b3496-c249-4b7b-9354-fbb2fae486c2';
-const imgLeft = 'https://www.figma.com/api/mcp/asset/df013b2a-588c-4d82-ae52-574e7490ee09';
-const imgTopRight = 'https://www.figma.com/api/mcp/asset/9fbb9f16-46b3-45cb-966b-12d97ae46553';
-const imgBottomRight = 'https://www.figma.com/api/mcp/asset/1d000646-9a9b-44f5-946d-59e5921ae02b';
+
 const imgSlightlySmilingFace = 'https://www.figma.com/api/mcp/asset/c5f51278-532b-45b2-b5f2-24121c524759';
 
 const commentsHelixweave = [
