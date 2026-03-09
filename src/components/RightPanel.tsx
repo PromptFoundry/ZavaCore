@@ -168,7 +168,7 @@ export default function RightPanel({
                 }}>
                   <img src={slide.src} alt={`Slide ${slide.num}`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                   {/* Play badge */}
-                  {slide.badge && (
+                  {false && (
                     <div style={{
                       position: 'absolute', top: 2, right: 2,
                       backgroundColor: '#f5f5f5', border: '0.6px solid #e0e0e0',
