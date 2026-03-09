@@ -349,14 +349,14 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
               <div style={{ flex: '1 0 0', minHeight: 0, minWidth: 0, position: 'relative', borderRadius: 4, overflow: 'hidden', width: '100%' }}>
                 <img
                   alt=""
-                  src={isQuarterly ? `${import.meta.env.BASE_URL}assets/images/helix-weave-top.jpg` : `${import.meta.env.BASE_URL}assets/images/helix-loom.png`}
+                  src={isQuarterly ? `${import.meta.env.BASE_URL}assets/images/helix-weave-top.jpg` : `${import.meta.env.BASE_URL}assets/images/helix-orange-weave.png`}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', maxWidth: 'none', borderRadius: 4, pointerEvents: 'none' }}
                 />
               </div>
               <div style={{ flex: '1 0 0', minHeight: 0, minWidth: 0, position: 'relative', borderRadius: 4, overflow: 'hidden', width: '100%' }}>
                 <img
                   alt=""
-                  src={isQuarterly ? `${import.meta.env.BASE_URL}assets/images/fiber-v2-bg.png` : `${import.meta.env.BASE_URL}assets/images/helix-loom.png`}
+                  src={isQuarterly ? `${import.meta.env.BASE_URL}assets/images/fiber-v2-bg.png` : `${import.meta.env.BASE_URL}assets/images/helix-planning.jpg`}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', maxWidth: 'none', borderRadius: 4, pointerEvents: 'none' }}
                 />
               </div>
