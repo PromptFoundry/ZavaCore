@@ -99,7 +99,7 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
           <img src={zavalLogo} alt="ZavaCore" style={{ width: 20, height: 20, flexShrink: 0 }} />
           <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
             <span style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#242424', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              {isQuarterly ? 'Q2 roadmap confirmed: product teams align on...' : 'ZavaCore unveils adaptive weave break...'}
+              {isQuarterly ? 'Q2 roadmap confirmed: product teams align on...' : 'HelixWeave™ brings real-time adaptive response...'}
             </span>
             <span style={{ ...seg, fontSize: 12, color: '#616161' }}>{isQuarterly ? 'The Source · 2h' : 'Zava News · 7h'}</span>
           </div>
@@ -184,7 +184,7 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
             }}>
               {isQuarterly
                 ? 'Q2 Roadmap Confirmed: Product Teams Align on Three Strategic Pillars'
-                : 'ZavaCore unveils adaptive weave breakthrough for extreme endurance environments'}
+                : 'HelixWeave™ brings real-time adaptive response to next-generation performance textiles'}
             </p>
           </div>
         </div>
@@ -218,16 +218,19 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
             ) : (
               <div style={{ ...merriweather, fontSize: 16, color: '#333', width: '100%' }}>
                 <p style={{ lineHeight: 1.6, marginBottom: 32, marginTop: 0 }}>
-                  <span style={{ fontWeight: 700 }}>The Zephyr project has reached an exciting milestone: </span>
-                  <span style={{ fontWeight: 400 }}>the completion of our initial prototype. This marks a significant step forward in our mission to create a drone that empowers sustainability and conservation efforts. WiZavaCore has introduced HelixWeave™, a next-gen textile architecture that dynamically stiffens under impact and relaxes during recovery, redefining how performance fabrics respond in motion.</span>
+                  <span style={{ fontWeight: 700 }}>ZavaCore introduces HelixWeave™ adaptive fabric engineered for real-time performance response. </span>
+                  <span style={{ fontWeight: 400 }}>The HelixWeave™ initiative marks a major step forward in ZavaCore's pursuit of responsive performance textiles. Developed through multiple prototype cycles, the new fabric architecture introduces a dynamic fiber system capable of adapting to the physical demands placed on it during movement.</span>
+                </p>
+                <p style={{ lineHeight: 1.6, marginBottom: 32, marginTop: 0 }}>
+                  HelixWeave™ is built on a lattice of micro-responsive strands that react instantly to shifts in temperature, exertion, and directional movement. Rather than behaving as a static material, the textile continuously adjusts its internal structure, reinforcing areas under strain while relaxing zones that require flexibility or ventilation.
                 </p>
                 <p style={{ lineHeight: 1.6, marginBottom: 32, marginTop: 0 }}>
                   <span style={{ fontWeight: 700 }}>What's new: </span>
-                  <span style={{ fontWeight: 400 }}>Built with embedded micro-responsive fibers, the material senses temperature shifts, muscle exertion, and directional force in real time. </span>
+                  <span style={{ fontWeight: 400 }}>HelixWeave™ integrates responsive fiber bundles that expand, contract, and redistribute tension in real time. This allows the fabric to dynamically balance support, mobility, and airflow depending on the intensity and type of activity.</span>
                 </p>
                 <p style={{ lineHeight: 1.6, marginBottom: 0, marginTop: 0 }}>
                   <span style={{ fontWeight: 700 }}>Why it matters: </span>
-                  <span style={{ fontWeight: 400 }}>From elite athletics to industrial safety gear, adaptive textiles could reduce fatigue, improve recovery cycles, and enhance durability under repeated stress. With the prototype in hand, we're now gearing up for rigorous testing to validate its performance in real-world conditions. Simultaneously, preparations for early-stage manufacturing are underway, with a focus on refining processes to ensure quality and scalability.</span>
+                  <span style={{ fontWeight: 400 }}>Traditional performance fabrics are engineered for a fixed set of conditions. HelixWeave™ moves beyond that limitation by adapting to the athlete or operator as conditions change. The result is improved endurance, reduced fatigue, and more consistent comfort across varied environments and workloads.</span>
                 </p>
               </div>
             )}
@@ -273,10 +276,13 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
               ) : (
                 <>
                   <p style={{ marginBottom: 32, marginTop: 0 }}>
-                    Since the launch of ZavaCore Fiber v2 in mid-May 2026, pilot program feedback has surged by 52%, signaling strong engagement but also surfacing critical performance considerations. While adoption momentum remains high, field testing revealed durability and adaptive-response variability in high-exertion environments.
+                    Since the introduction of HelixWeave™ into early testing programs, pilot participants have reported stronger performance stability across both endurance and high-intensity movement scenarios. Early field evaluations indicate measurable improvements in heat regulation and structural recovery following repeated stress cycles.
+                  </p>
+                  <p style={{ marginBottom: 32, marginTop: 0 }}>
+                    Testing environments have also highlighted the textile's ability to maintain consistent responsiveness during extended wear periods, particularly in conditions involving rapid shifts in activity level or environmental temperature.
                   </p>
                   <p style={{ margin: 0 }}>
-                    Quantitative metrics show a 29% increase in high-load stress reports during extreme endurance simulations compared to baseline fabric models, indicating deeper performance calibration opportunities under sustained strain.
+                    Initial data from controlled trials shows a 37% improvement in adaptive airflow regulation compared with conventional performance fabrics. Researchers also observed faster structural recovery after repeated compression events, suggesting strong potential for applications across athletics, industrial safety apparel, and next-generation wearable systems.
                   </p>
                 </>
               )}
@@ -382,25 +388,27 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
               ) : (
                 <>
                   <p style={{ lineHeight: '28px', marginBottom: 32, marginTop: 0, color: '#424242' }}>
-                    Three dominant themes have emerged across pilot programs and validation logs:
+                    Three emerging insights have surfaced through prototype testing and field validation programs:
                   </p>
                   <ul style={{ listStyle: 'disc', paddingLeft: 24, marginBottom: 32, marginTop: 0 }}>
                     <li style={{ color: '#424242', fontSize: 16 }}>
-                      <span style={{ lineHeight: '28px' }}>Dynamic tension lag </span>
-                      <span style={{ lineHeight: '28px' }}>was observed in 34% of high-exertion trials, particularly during rapid directional shifts in field athletics testing.</span>
+                      <span style={{ lineHeight: '28px', fontWeight: 700 }}>Dynamic structural reinforcement </span>
+                      <span style={{ lineHeight: '28px' }}>occurred most frequently during explosive movement phases, where HelixWeave™ fibers temporarily increased localized tension to stabilize motion.</span>
                     </li>
                     <li style={{ color: '#424242', fontSize: 16 }}>
-                      <span style={{ lineHeight: '28px' }}>Thermal response variance led to inconsistent breathability in extended heat exposure scenarios, prompting recalibration of micro-responsive fibers.</span>
+                      <span style={{ lineHeight: '28px', fontWeight: 700 }}>Thermal response calibration </span>
+                      <span style={{ lineHeight: '28px' }}>improved airflow consistency during extended activity periods, allowing the fabric to increase breathability as body temperature rose.</span>
                     </li>
                     <li style={{ color: '#424242', fontSize: 16 }}>
-                      <span style={{ lineHeight: '28px' }}>Load distribution imbalance under repeated compression cycles was flagged in industrial wear simulations, with measurable stiffness drift after prolonged strain.</span>
+                      <span style={{ lineHeight: '28px', fontWeight: 700 }}>Adaptive load balancing </span>
+                      <span style={{ lineHeight: '28px' }}>redistributed pressure across fiber channels during repeated stress cycles, helping maintain flexibility without sacrificing support.</span>
                     </li>
                   </ul>
                   <p style={{ lineHeight: '28px', marginBottom: 32, marginTop: 0, color: '#424242' }}>
-                    Customer sentiment reflects both enthusiasm and precision feedback. In the Product Validation Summary, 63% of enterprise partners cited performance consistency as the top priority for full-scale deployment.
+                    Customer response has been overwhelmingly positive, particularly from partners exploring advanced performance apparel applications. In recent product validation surveys, 68% of testing partners identified adaptive responsiveness as the most valuable characteristic for next-generation textile platforms.
                   </p>
                   <p style={{ lineHeight: '28px', margin: 0, color: '#424242' }}>
-                    Weekly validation reports show a noticeable spike in cross-pattern anomalies beginning May 18, aligning directly with expanded endurance testing protocols.
+                    Ongoing validation programs continue to expand across additional use cases, including endurance athletics, technical outerwear, and industrial performance gear. Early indicators suggest HelixWeave™ may serve as the foundation for a new category of intelligent textiles capable of evolving alongside the demands of human performance.
                   </p>
                 </>
               )}
