@@ -4,7 +4,7 @@ import {
   ArrowMaximize20Regular,
   ArrowMinimize20Regular,
 } from '@fluentui/react-icons';
-import imgPowerPointPreview from '../assets/images/PowerPoint image.png';
+const imgPowerPointPreview = `${import.meta.env.BASE_URL}assets/images/Slide1.jpg`;
 
 const seg = { fontFamily: '"Segoe UI", -apple-system, sans-serif' } as React.CSSProperties;
 

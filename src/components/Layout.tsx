@@ -3,7 +3,7 @@ import {
   ChevronDownIcon,
   CheckBadgeIcon,
 } from '@heroicons/react/24/outline';
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ChatInput from './ChatInput';
 import LeftNav from './LeftNav';
 import Header from './Header';
@@ -27,6 +27,68 @@ import OrderTracker from './OrderTracker';
 interface Message {
   type: 'user' | 'assistant';
   content: string;
+}
+
+const seg = { fontFamily: '"Segoe UI", -apple-system, sans-serif' } as React.CSSProperties;
+
+function SummitCenterResponse() {
+  const sections = [
+    {
+      emoji: '🤝',
+      label: 'Overview',
+      body: 'The Summit Center project is a multi-phase initiative focused on developing a centralized hub for collaboration, innovation, and community engagement. Initial planning and stakeholder alignment began in Q2 2025, with the project currently moving through the design and feasibility phase.',
+    },
+    {
+      emoji: '📅',
+      label: 'Timeline',
+      body: 'The proposed timeline estimates approximately 18 months for completion, with key milestones including site preparation, architectural planning, and phased construction of the primary facility. Once completed, the Summit Center is expected to provide modern meeting spaces, flexible work environments, and shared amenities intended to support cross-team collaboration and large-scale events.',
+    },
+    {
+      emoji: '🌱',
+      label: 'Sustainability & Future-Readiness',
+      body: 'Early planning discussions highlight goals around sustainability, accessibility, and future-ready infrastructure, ensuring the facility can adapt to evolving organizational and community needs.',
+    },
+  ];
+
+  const suggestions = [
+    { emoji: '🗓️', text: 'Key project milestones and delivery phases' },
+    { emoji: '💰', text: 'Budget and funding considerations' },
+    { emoji: '🏗️', text: 'Planned facilities and amenities' },
+    { emoji: '👥', text: 'Stakeholder teams involved in the project' },
+  ];
+
+  return (
+    <div style={{ ...seg, display: 'flex', flexDirection: 'column', gap: 20 }}>
+      <p style={{ margin: 0, fontSize: 16, lineHeight: '26px', color: '#424242' }}>
+        Based on the information available, here's an overview of the Summit Center Project.
+      </p>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        {sections.map(({ emoji, label, body }) => (
+          <div key={label} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <span style={{ fontSize: 15, fontWeight: 600, color: '#333333' }}>{emoji} {label}</span>
+            <p style={{ margin: 0, fontSize: 15, lineHeight: '26px', color: '#242424' }}>{body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <p style={{ margin: 0, fontSize: 15, lineHeight: '24px', color: '#424242' }}>I can also provide more detail on:</p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {suggestions.map(({ emoji, text }) => (
+            <div key={text} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+              <span style={{ fontSize: 15, lineHeight: '24px' }}>{emoji}</span>
+              <span style={{ fontSize: 15, lineHeight: '24px', color: '#242424' }}>{text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <p style={{ margin: 0, fontSize: 15, lineHeight: '24px', color: '#424242' }}>
+        Just let me know which area you'd like to explore further.
+      </p>
+    </div>
+  );
 }
 
 export default function Layout() {
@@ -173,7 +235,7 @@ export default function Layout() {
       }
       if (checked === targets.length) {
         // Nothing visible — retry shortly
-        shimmerTimer.current = setTimeout(cycle, 1000);
+        shimmerTimer.current = setTimeout(cycle, 300);
         return;
       }
       const next = targets[index];
@@ -182,11 +244,11 @@ export default function Layout() {
 
       shimmerTimer.current = setTimeout(() => {
         setActiveShimmer(null);
-        shimmerTimer.current = setTimeout(cycle, 1000 + Math.random() * 1500);
-      }, 1800);
+        shimmerTimer.current = setTimeout(cycle, 400 + Math.random() * 600);
+      }, 1200);
     };
 
-    shimmerTimer.current = setTimeout(cycle, 1000);
+    shimmerTimer.current = setTimeout(cycle, 500);
 
     return () => {
       if (shimmerTimer.current) clearTimeout(shimmerTimer.current);
@@ -408,7 +470,7 @@ export default function Layout() {
                             </div>
                             <span className="font-semibold text-base text-[#333333]">ZavaCore Agent</span>
                           </div>
-                          <p className="text-base leading-6 text-[#333333] whitespace-pre-wrap">{msg.content}</p>
+                          <SummitCenterResponse />
                           <div onClick={handleEntityCardClick} className="cursor-pointer">
                             <EntityCard title="Summit Center Project Plan" metadata="PowerPoint" condensed={isPanelOpen} />
                           </div>

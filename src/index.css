@@ -54,7 +54,7 @@ button, div[role="button"], [onclick] {
 }
 
 .zava-shimmer {
-  animation: zavaShimmerGlow 1.8s ease-in-out forwards;
+  animation: zavaShimmerGlow 1.2s ease-in-out forwards;
 }
 
 /* ── Responsive widget layouts ── */

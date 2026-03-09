@@ -301,7 +301,8 @@ export default function NewsResponseMessage({ onArticleClick }: NewsResponseMess
       {/* ── Section 4: ZavaCore news (gap: 16) ── */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
         <SectionHeading>ZavaCore news updates</SectionHeading>
-        <div style={{ display: 'flex', gap: 20, minHeight: 424 }}>
+        <div className="@container">
+        <div className="flex flex-col @[560px]:flex-row @[560px]:[min-height:424px]" style={{ gap: 20 }}>
 
         {/* Left card — flex 3 */}
         <div onClick={onArticleClick} style={{
@@ -353,9 +354,9 @@ export default function NewsResponseMessage({ onArticleClick }: NewsResponseMess
             </button>
           </div>
           {/* 3 news items — evenly spaced in 344px */}
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: 344, flex: 1, minHeight: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 20, flex: 1, minHeight: 0 }}>
             {newsItems.map((item, i) => (
-              <div key={i} onClick={onArticleClick} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', cursor: 'pointer' }}>
+              <div key={i} onClick={i === 0 ? onArticleClick : undefined} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', cursor: i === 0 ? 'pointer' : 'not-allowed' }}>
                 {/* Text */}
                 <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -379,6 +380,7 @@ export default function NewsResponseMessage({ onArticleClick }: NewsResponseMess
             ))}
           </div>
         </div>
+        </div>{/* end @container */}
 
       </div>
       </div>{/* end news section */}
