@@ -147,8 +147,8 @@ export default function NewsResponseMessage({ onArticleClick }: NewsResponseMess
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 28, width: '100%', maxWidth: 772 }}>
 
-      {/* ── Section 1: Copilot header + greeting (gap: 12) ── */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      {/* ── Section 1: Copilot header + greeting (gap: 32) ── */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <img src={zavalLogo} alt="ZavaCore Agent" style={{ width: 24, height: 24 }} />
           <span style={{ ...segoe, fontWeight: 600, fontSize: 16, lineHeight: '22px', color: '#424242' }}>ZavaCore Agent</span>

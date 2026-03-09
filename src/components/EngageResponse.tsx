@@ -356,7 +356,7 @@ export default function EngageResponse() {
         display: 'flex', flexDirection: 'column', gap: 32,
       }}>
         {/* Intro */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
           <AgentByline />
           <h2 style={{ ...seg, margin: 0, fontSize: 36, fontWeight: 600, lineHeight: '44px', color: '#242424' }}>
             Carole, here's what's driving conversation

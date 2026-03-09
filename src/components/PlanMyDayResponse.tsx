@@ -149,7 +149,7 @@ function ActionBar() {
 // ── Shared copilot byline ──────────────────────────────────────────────────────
 function AgentByline() {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
       <img src="/assets/images/ZavaCore_logo.svg" alt="" style={{ width: 18, height: 18 }} />
       <span style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#616161' }}>ZavaCore Agent</span>
     </div>
