@@ -45,12 +45,12 @@ function DataBlock({ label, icon, value }: { label: string; icon: React.ReactNod
   return (
     <div style={{
       backgroundColor: '#fcfcfc', border: '1px solid #e6e6e6', borderRadius: 8,
-      padding: '4px 10px 4px 6px',
-      display: 'flex', alignItems: 'center', gap: 5, flexShrink: 0,
+      padding: '6px 14px 6px 10px',
+      display: 'flex', alignItems: 'center', gap: 7, flexShrink: 0,
     }}>
-      <div style={{ width: 20, height: 20, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{icon}</div>
-      <span style={{ ...seg, fontSize: 12, color: '#616161' }}>{label}</span>
-      <span style={{ ...seg, fontSize: 12, fontWeight: 600, color: '#242424' }}>{value}</span>
+      <div style={{ width: 24, height: 24, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{icon}</div>
+      <span style={{ ...seg, fontSize: 14, color: '#616161' }}>{label}</span>
+      <span style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#242424' }}>{value}</span>
     </div>
   );
 }
@@ -72,10 +72,10 @@ function DayBriefHeader() {
         Your daily guide to understanding what's happening, and why it matters.
       </p>
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-        <DataBlock label="1pm" icon={<img src={iconWeather} alt="Weather" style={{ width: 20, height: 20 }} />} value="44°" />
-        <DataBlock label="Emails" icon={<img src={iconOutlook} alt="Outlook" style={{ width: 20, height: 20 }} />} value="16" />
-        <DataBlock label="Chats" icon={<img src={iconTeams} alt="Teams" style={{ width: 20, height: 20 }} />} value="23" />
-        <DataBlock label="Meetings" icon={<img src={iconCalendar} alt="Calendar" style={{ width: 20, height: 20 }} />} value="6" />
+        <DataBlock label="1pm" icon={<img src={iconWeather} alt="Weather" style={{ width: 24, height: 24 }} />} value="44°" />
+        <DataBlock label="Emails" icon={<img src={iconOutlook} alt="Outlook" style={{ width: 24, height: 24 }} />} value="16" />
+        <DataBlock label="Chats" icon={<img src={iconTeams} alt="Teams" style={{ width: 24, height: 24 }} />} value="23" />
+        <DataBlock label="Meetings" icon={<img src={iconCalendar} alt="Calendar" style={{ width: 24, height: 24 }} />} value="6" />
       </div>
     </div>
   );
