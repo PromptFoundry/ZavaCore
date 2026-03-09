@@ -49,7 +49,7 @@ const eventColumns = [
 ];
 
 const newsItems = [
-  { favicon: imgFaviconSource, source: 'The Source', time: '2h', title: 'HelixWeave™ brings real-time adaptive response to next-generation performance textiles', img: imgNewsThumb1, type: 'quarterly' as const },
+  { favicon: imgFaviconSource, source: 'The Source', time: '2h', title: 'HelixWeave™ brings real-time adaptive response to next-generation performance textiles', img: `${import.meta.env.BASE_URL}assets/images/helix-banner.jpg`, type: 'quarterly' as const },
   { favicon: imgFaviconZavaNews, source: 'Zava News', time: '7h', title: 'ZavaCore Fiber v2 enters durability validation phase', img: imgNewsThumb2, type: null },
   { favicon: imgFaviconSource, source: 'The Source', time: '10h', title: 'Smart‑fiber durability targets rise across the industry', img: imgNewsThumb3, type: null },
 ];

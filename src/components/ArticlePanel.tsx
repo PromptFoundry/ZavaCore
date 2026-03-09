@@ -28,7 +28,7 @@ const imgTopRight = 'https://www.figma.com/api/mcp/asset/9fbb9f16-46b3-45cb-966b
 const imgBottomRight = 'https://www.figma.com/api/mcp/asset/1d000646-9a9b-44f5-946d-59e5921ae02b';
 const imgSlightlySmilingFace = 'https://www.figma.com/api/mcp/asset/c5f51278-532b-45b2-b5f2-24121c524759';
 
-const comments = [
+const commentsHelixweave = [
   {
     name: 'Daisy Phillips',
     time: '3hr ago',
@@ -60,6 +60,38 @@ const comments = [
   },
 ];
 
+const commentsHelixweaveNew = [
+  {
+    name: 'Jordan Osei',
+    time: '1hr ago',
+    avatar: '/assets/images/Avatar-5.png',
+    text: 'The 37% airflow improvement number is striking. We saw something similar in early endurance trials — once the fiber bundles started redistributing tension dynamically, heat buildup dropped noticeably in the second half of runs.',
+    reactions: [
+      { emoji: '👍', label: 'Thumbs up' },
+      { emoji: '🔥', label: 'Fire' },
+    ],
+    reactionCount: '22',
+  },
+  {
+    name: 'Priya Nair',
+    time: '38 min ago',
+    avatar: '/assets/images/Avatar-6.png',
+    text: 'Really well written. The section on adaptive load balancing resonates — our industrial wear team flagged similar behavior under compression cycling. Good to see it quantified here.',
+    reactions: [
+      { emoji: '👍', label: 'Thumbs up' },
+    ],
+    reactionCount: '11',
+  },
+  {
+    name: 'Tom Reeves',
+    time: '14 min ago',
+    avatar: '/assets/images/Avatar-7.png',
+    text: 'Curious whether the thermal calibration improvements hold up in cold environments, not just heat exposure. Would love to see data from the winter pilot programs if that\'s been tested.',
+    reactions: [],
+    reactionCount: null,
+  },
+];
+
 function SubtleButton({ icon, label, small = false }: { icon: React.ReactNode; label: string; small?: boolean }) {
   const [hover, setHover] = React.useState(false);
   return (
@@ -83,6 +115,7 @@ function SubtleButton({ icon, label, small = false }: { icon: React.ReactNode; l
 
 export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweave' }: ArticlePanelProps) {
   const isQuarterly = articleType === 'quarterly';
+  const comments = isQuarterly ? commentsHelixweaveNew : commentsHelixweave;
   return (
     <div
       className={`h-screen flex-shrink-0 flex flex-col overflow-hidden bg-white transition-[width] duration-300 ease-in-out border-l border-[#e0e0e0] ${
@@ -447,7 +480,7 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
                   <SubtleButton icon={<ThumbLike20Regular style={{ width: 20, height: 20, color: '#333' }} />} label="Like" />
                   <SubtleButton icon={<Chat20Regular style={{ width: 20, height: 20, color: '#333' }} />} label="Comment" />
                   <SubtleButton icon={<Bookmark20Regular style={{ width: 20, height: 20, color: '#333' }} />} label="Save for later" />
-                  <SubtleButton icon={<Eye20Regular style={{ width: 20, height: 20, color: '#333' }} />} label="119 Views" />
+                  <SubtleButton icon={<Eye20Regular style={{ width: 20, height: 20, color: '#333' }} />} label={isQuarterly ? '247 Views' : '119 Views'} />
                 </div>
               </div>
 
@@ -458,7 +491,7 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
                 <div style={{ position: 'relative', width: 20, height: 20, flexShrink: 0, overflow: 'clip' }}>
                   <img alt="" src={imgSlightlySmilingFace} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }} />
                 </div>
-                <span style={{ ...seg, fontSize: 14, color: '#333' }}>Daisy Phillips and 34 others</span>
+                <span style={{ ...seg, fontSize: 14, color: '#333' }}>{isQuarterly ? 'Jordan Osei and 51 others' : 'Daisy Phillips and 34 others'}</span>
               </div>
             </div>
 
