@@ -105,7 +105,12 @@ export default function NewsHero({ onSummarizeNews, onEngageClick, shimmerTarget
       <div className="news-hero-layout">
 
         {/* ── Large Slider ── */}
-        <div data-shimmer-id="news-summarize" className={`news-hero-slider${shimmerTarget === 'news-summarize' ? ' zava-shimmer' : ''}`} style={{ boxShadow: cardShadow }}>
+        <div
+          data-shimmer-id="news-summarize"
+          className={`news-hero-slider${shimmerTarget === 'news-summarize' ? ' zava-shimmer' : ''}`}
+          style={{ boxShadow: cardShadow, cursor: slide.buttonLabel === 'Summarize my news' ? 'pointer' : 'default' }}
+          onClick={slide.buttonLabel === 'Summarize my news' ? onSummarizeNews : undefined}
+        >
 
           {/* Background image */}
           <div
@@ -130,7 +135,7 @@ export default function NewsHero({ onSummarizeNews, onEngageClick, shimmerTarget
 
           {/* Prev button */}
           <button
-            onClick={prev}
+            onClick={e => { e.stopPropagation(); prev(); }}
             style={{
               position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)',
               width: 33, height: 33, borderRadius: 11, backgroundColor: 'rgba(0,0,0,0.55)',
@@ -145,7 +150,7 @@ export default function NewsHero({ onSummarizeNews, onEngageClick, shimmerTarget
 
           {/* Next button */}
           <button
-            onClick={next}
+            onClick={e => { e.stopPropagation(); next(); }}
             style={{
               position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)',
               width: 33, height: 33, borderRadius: 11, backgroundColor: 'rgba(0,0,0,0.55)',
@@ -188,7 +193,7 @@ export default function NewsHero({ onSummarizeNews, onEngageClick, shimmerTarget
 
               {/* Action button */}
               <button
-                onClick={slide.buttonLabel === 'Summarize my news' ? onSummarizeNews : undefined}
+                onClick={e => { e.stopPropagation(); if (slide.buttonLabel === 'Summarize my news') onSummarizeNews?.(); }}
                 style={{
                   ...segoe, flexShrink: 0,
                   padding: '10px 16px', backgroundColor: 'rgba(0,0,0,0.55)',
@@ -207,7 +212,7 @@ export default function NewsHero({ onSummarizeNews, onEngageClick, shimmerTarget
               {slides.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => setCurrent(i)}
+                  onClick={e => { e.stopPropagation(); setCurrent(i); }}
                   style={{
                     flex: 1, height: 4, borderRadius: 2, padding: 0, border: 'none',
                     backgroundColor: 'rgba(255,255,255,0.3)',
