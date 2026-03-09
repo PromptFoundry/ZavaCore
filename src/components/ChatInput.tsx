@@ -38,7 +38,7 @@ export default function ChatInput({ onSubmit }: ChatInputProps) {
           {/* Textarea */}
           <div className="textarea flex items-start pb-3 pt-4 px-2 w-full">
             <textarea
-              placeholder="Message Zava Agent"
+              placeholder="Message ZavaCore Agent"
               className="w-full font-['Segoe_UI',sans-serif] text-base leading-6 text-[#707070] resize-none outline-none border-none bg-transparent"
               rows={1}
               value={message}

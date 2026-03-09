@@ -40,9 +40,7 @@ const shadow = '0px 2px 4px 0px rgba(0,0,0,0.14), 0px 0px 2px 0px rgba(0,0,0,0.1
 function BuildingCard() {
   return (
     <div style={{
-      background: '#fff', borderRadius: 20, padding: '24px 40px',
-      boxShadow: '0px 1.5px 6px 0px rgba(0,0,0,0.18)',
-      display: 'flex', flexDirection: 'column', gap: 16,
+      display: 'flex', flexDirection: 'column', gap: 16, padding: '32px 0',
     }}>
       {/* Heading */}
       <div>
@@ -50,14 +48,9 @@ function BuildingCard() {
           <span style={{ ...seg, fontSize: 36, fontWeight: 600, lineHeight: '48px', color: '#242424', whiteSpace: 'nowrap' }}>
             What's new in your
           </span>
-          <div style={{
-            backgroundColor: '#ebf3fc', borderRadius: 20,
-            padding: '4px 16px', display: 'flex', alignItems: 'center',
-          }}>
-            <span style={{ ...seg, fontSize: 36, fontWeight: 600, lineHeight: '48px', color: '#242424', whiteSpace: 'nowrap' }}>
-              Engage communities
-            </span>
-          </div>
+          <span style={{ ...seg, fontSize: 36, fontWeight: 600, lineHeight: '48px', color: '#242424', whiteSpace: 'nowrap' }}>
+            Engage communities
+          </span>
         </div>
         <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242' }}>
           Here's a summary of the latest activity across your communities, highlighting key topics and contributors.
@@ -69,7 +62,7 @@ function BuildingCard() {
 }
 
 // ── Copilot byline ─────────────────────────────────────────────────────────────
-function CopilotByline() {
+function AgentByline() {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
       <img src={imgCarole} alt="" style={{ width: 20, height: 20, borderRadius: 10, objectFit: 'cover' }} />
@@ -364,7 +357,7 @@ export default function EngageResponse() {
       }}>
         {/* Intro */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <CopilotByline />
+          <AgentByline />
           <h2 style={{ ...seg, margin: 0, fontSize: 36, fontWeight: 600, lineHeight: '44px', color: '#242424' }}>
             Carole, here's what's driving conversation
           </h2>

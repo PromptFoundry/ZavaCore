@@ -26,16 +26,16 @@ export default function RightPanel({
 }: RightPanelProps) {
   return (
     <div
-      className={`fixed right-0 top-0 h-screen bg-white transition-transform duration-300 ease-in-out z-30 w-full md:w-[600px] lg:w-[800px] xl:w-[1200px] flex flex-col overflow-hidden ${
-        isOpen ? 'translate-x-0' : 'translate-x-full'
+      className={`h-screen flex-shrink-0 flex flex-col overflow-hidden bg-white transition-[width] duration-300 ease-in-out border-l border-[#e0e0e0] ${
+        isOpen ? 'w-[48vw] lg:w-[55vw] xl:w-[62vw]' : 'w-0'
       }`}
-      style={{ boxShadow: '0px 0px 2px rgba(0,0,0,0.12), 0px 4px 8px rgba(0,0,0,0.14)' }}
+      style={{ boxShadow: isOpen ? '-2px 0 8px rgba(0,0,0,0.08)' : 'none' }}
     >
       {/* Header */}
       <div style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         padding: '16px 20px', backgroundColor: 'white', flexShrink: 0,
-        backdropFilter: 'blur(30px)',
+        backdropFilter: 'blur(30px)', minWidth: 300,
       }}>
         {/* Left: icon + title */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0, flex: 1 }}>

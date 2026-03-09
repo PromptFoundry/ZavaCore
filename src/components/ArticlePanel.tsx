@@ -31,8 +31,7 @@ const comments = [
   {
     name: 'Daisy Phillips',
     time: '3hr ago',
-    initials: 'DP',
-    avatarColor: '#5B5EA6',
+    avatar: '/assets/images/Avatar-1.png',
     text: 'Congrats! Really nice analysis, deserves to be shared broadly with the org.',
     reactions: [
       { emoji: '👍', label: 'Thumbs up' },
@@ -43,8 +42,7 @@ const comments = [
   {
     name: 'Miguel Garcia',
     time: '45 min ago',
-    initials: 'MG',
-    avatarColor: '#2D7D46',
+    avatar: '/assets/images/Avatar-2.png',
     text: 'Exciting!\nI will have to A primary driver of propeller performance is the development of next-generation composites that offer an optimal balance of stiffness, strength, and weight.',
     reactions: [
       { emoji: '👍', label: 'Thumbs up' },
@@ -54,8 +52,7 @@ const comments = [
   {
     name: 'Kat Larsson',
     time: '20 min ago',
-    initials: 'KL',
-    avatarColor: '#C77B00',
+    avatar: '/assets/images/Avatar-3.png',
     text: 'Challenges? Navigating complex and evolving regulatory frameworks, ensuring operational safety and airspace integration, addressing security vulnerabilities like hijacking, and managing funding and economic hurdles.',
     reactions: [],
     reactionCount: null,
@@ -86,15 +83,15 @@ function SubtleButton({ icon, label, small = false }: { icon: React.ReactNode; l
 export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
   return (
     <div
-      className={`fixed right-0 top-0 h-screen bg-white shadow-[-2px_0_8px_rgba(0,0,0,0.1)] transition-transform duration-300 ease-in-out z-30 w-full md:w-[600px] lg:w-[800px] xl:w-[956px] flex flex-col overflow-hidden ${
-        isOpen ? 'translate-x-0' : 'translate-x-full'
+      className={`h-screen flex-shrink-0 flex flex-col overflow-hidden bg-white transition-[width] duration-300 ease-in-out border-l border-[#e0e0e0] ${
+        isOpen ? 'w-[48vw] lg:w-[55vw] xl:w-[62vw]' : 'w-0'
       }`}
     >
       {/* Panel Header */}
       <div style={{
         height: 60, padding: '0 16px', flexShrink: 0,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        borderBottom: '1px solid #e0e0e0',
+        borderBottom: '1px solid #e0e0e0', minWidth: 300,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0, flex: 1 }}>
           <img src={zavalLogo} alt="ZavaCore" style={{ width: 20, height: 20, flexShrink: 0 }} />
@@ -157,7 +154,7 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
           {/* Content wrapper */}
           <div style={{
             position: 'relative', display: 'flex', flexDirection: 'column',
-            gap: 34, alignItems: 'center', width: 774, flexShrink: 0,
+            gap: 34, alignItems: 'center', width: '100%', maxWidth: 774, flexShrink: 0,
           }}>
             {/* "Status update" badge */}
             <div style={{
@@ -194,7 +191,7 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
           display: 'flex', gap: 17, alignItems: 'center', justifyContent: 'center',
           padding: 34, flexShrink: 0, width: '100%',
         }}>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, width: 774 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, width: '100%', maxWidth: 774 }}>
             <div style={{ ...merriweather, fontSize: 16, color: '#333', width: '100%' }}>
               <p style={{ lineHeight: 1.6, marginBottom: 32, marginTop: 0 }}>
                 <span style={{ fontWeight: 700 }}>The Zephyr project has reached an exciting milestone: </span>
@@ -222,7 +219,7 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
           {/* Heading wrapper */}
           <div style={{
             display: 'flex', flexDirection: 'column', gap: 0,
-            alignItems: 'center', paddingTop: 0, flexShrink: 0, width: 774,
+            alignItems: 'center', paddingTop: 0, flexShrink: 0, width: '100%', maxWidth: 774,
           }}>
             <p style={{
               ...bigShoulders, fontWeight: 700,
@@ -236,7 +233,7 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
           {/* Body wrapper */}
           <div style={{
             display: 'flex', flexDirection: 'column', gap: 0,
-            alignItems: 'center', flexShrink: 0, width: 774,
+            alignItems: 'center', flexShrink: 0, width: '100%', maxWidth: 774,
           }}>
             <div style={{ ...merriweather, lineHeight: 1.6, fontSize: 16, color: '#333', width: '100%' }}>
               <p style={{ marginBottom: 32, marginTop: 0 }}>
@@ -304,7 +301,7 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
           {/* Heading wrapper */}
           <div style={{
             display: 'flex', flexDirection: 'column', gap: 0,
-            alignItems: 'center', paddingTop: 0, flexShrink: 0, width: 774,
+            alignItems: 'center', paddingTop: 0, flexShrink: 0, width: '100%', maxWidth: 774,
           }}>
             <p style={{
               ...bigShoulders, fontWeight: 700,
@@ -318,7 +315,7 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
           {/* Body wrapper */}
           <div style={{
             display: 'flex', flexDirection: 'column', gap: 0,
-            alignItems: 'center', flexShrink: 0, width: 774,
+            alignItems: 'center', flexShrink: 0, width: '100%', maxWidth: 774,
           }}>
             <div style={{ ...merriweather, fontSize: 16, color: '#333', width: '100%' }}>
               <p style={{ lineHeight: '28px', marginBottom: 32, marginTop: 0, color: '#424242' }}>
@@ -354,7 +351,7 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
           overflowX: 'clip', paddingTop: 34, paddingBottom: 34,
           flexShrink: 0, width: '100%',
         }}>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', flexShrink: 0, width: 774 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', flexShrink: 0, width: '100%', maxWidth: 774 }}>
 
             {/* Discussion header */}
             <div style={{
@@ -419,14 +416,11 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
                 }}
               >
                 {/* Avatar */}
-                <div style={{
-                  width: 32, height: 32, borderRadius: '50%',
-                  backgroundColor: comment.avatarColor,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  flexShrink: 0,
-                }}>
-                  <span style={{ ...seg, fontSize: 11, fontWeight: 700, color: 'white' }}>{comment.initials}</span>
-                </div>
+                <img
+                  src={comment.avatar}
+                  alt={comment.name}
+                  style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
+                />
 
                 {/* Bubble */}
                 <div style={{
@@ -491,14 +485,11 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
               width: '100%',
             }}>
               {/* User avatar */}
-              <div style={{
-                width: 32, height: 32, borderRadius: '50%',
-                backgroundColor: '#464FEB',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                flexShrink: 0,
-              }}>
-                <span style={{ ...seg, fontSize: 11, fontWeight: 700, color: 'white' }}>CP</span>
-              </div>
+              <img
+                src="/assets/images/Carole Poland.png"
+                alt="Carole Poland"
+                style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
+              />
 
               {/* Input field */}
               <div style={{ display: 'flex', flex: '1 0 0', flexDirection: 'row', alignItems: 'center', alignSelf: 'stretch' }}>

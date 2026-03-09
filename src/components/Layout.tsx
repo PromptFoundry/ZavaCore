@@ -147,7 +147,7 @@ export default function Layout() {
 
 
   return (
-    <div className="min-h-screen bg-[#fcfcfc] flex">
+    <div className="min-h-screen bg-[#fcfcfc] flex overflow-hidden h-screen">
       {/* Mobile Nav Backdrop */}
       {isMobileNavOpen && (
         <div
@@ -167,11 +167,12 @@ export default function Layout() {
         <LeftNav
           onMobileItemClick={() => setIsMobileNavOpen(false)}
           onMobileClose={() => setIsMobileNavOpen(false)}
+          forceCollapse={isPanelOpen || isArticlePanelOpen}
         />
       </aside>
 
-      {/* Right side with Header and Content */}
-      <div className={`flex-1 flex flex-col h-screen transition-all duration-300 ${isPanelOpen ? 'hidden md:flex md:mr-[600px] lg:mr-[800px] xl:mr-[1200px]' : isArticlePanelOpen ? 'hidden md:flex md:mr-[600px] lg:mr-[800px] xl:mr-[956px]' : 'mr-0'}`}>
+      {/* Main content - no margin tricks */}
+      <div className="flex-1 min-w-0 flex flex-col h-screen transition-all duration-300 relative">
         <Header
           onToggleNav={toggleMobileNav}
           isNavOpen={isMobileNavOpen}
@@ -189,13 +190,13 @@ export default function Layout() {
         {/* Main Content */}
         <main
           ref={mainRef}
-          className={`flex-1 overflow-auto py-8 md:py-16 lg:py-[126px] px-4 md:px-6 lg:px-8 relative bg-white flex flex-col gap-8 ${hasConversation ? 'pb-28' : ''}`}
+          className={`flex-1 overflow-auto py-8 md:py-16 lg:py-[126px] px-4 md:px-6 lg:px-8 relative bg-white flex flex-col gap-8`}
           style={!hasConversation ? {
             backgroundImage: 'url("/assets/images/Zava agent background - gradient fade.png")',
             backgroundPosition: 'top center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: '100% auto'
-          } : {}}
+          } : { paddingBottom: '220px' }}
         >
           {/* Agent Top */}
           <div data-name="agent-top" className={`w-full mx-auto flex flex-col items-center gap-8 md:gap-12 lg:gap-[53px] ${(showPlanMyDay || isPlanMyDayLoading) ? 'max-w-[1100px]' : 'max-w-[790px]'}`}>
@@ -249,8 +250,8 @@ export default function Layout() {
                       </div>
                       <div className="flex flex-col gap-4">
                         <div className="flex items-center gap-2">
-                          <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" className="w-6 h-6" />
-                          <span className="font-semibold text-base text-[#333333]">Copilot</span>
+                          <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore Agent" className="w-6 h-6" />
+                          <span className="font-semibold text-base text-[#333333]">ZavaCore Agent</span>
                         </div>
                         {isOrderLunchLoading ? (
                           <>
@@ -277,8 +278,8 @@ export default function Layout() {
                       </div>
                       <div className="flex flex-col gap-4">
                         <div className="flex items-center gap-2">
-                          <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" className="w-6 h-6" />
-                          <span className="font-semibold text-base text-[#333333]">Copilot</span>
+                          <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore Agent" className="w-6 h-6" />
+                          <span className="font-semibold text-base text-[#333333]">ZavaCore Agent</span>
                         </div>
                         {isPlanMyDayLoading ? (
                           <>
@@ -304,8 +305,8 @@ export default function Layout() {
                         {isNewsLoading ? (
                           <>
                             <div className="flex items-center gap-2">
-                              <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" className="w-6 h-6" />
-                              <span className="font-semibold text-base text-[#333333]">Copilot</span>
+                              <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore Agent" className="w-6 h-6" />
+                              <span className="font-semibold text-base text-[#333333]">ZavaCore Agent</span>
                             </div>
                             <p className="text-base leading-6 text-[#333333]">Summarizing your news…</p>
                             <AnimatedLoader />
@@ -328,9 +329,9 @@ export default function Layout() {
                       <div className="flex flex-col gap-4">
                         <div className="flex items-center gap-2">
                           <div className="w-6 h-6">
-                            <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" className="w-full h-full" />
+                            <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore Agent" className="w-full h-full" />
                           </div>
-                          <span className="font-semibold text-base text-[#333333]">Copilot</span>
+                          <span className="font-semibold text-base text-[#333333]">ZavaCore Agent</span>
                         </div>
                         {isEngageLoading ? (
                           <>
@@ -354,9 +355,9 @@ export default function Layout() {
                         <div className="flex flex-col gap-4 max-w-[590px]">
                           <div className="flex items-center gap-2">
                             <div className="w-6 h-6">
-                              <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" className="w-full h-full" />
+                              <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore Agent" className="w-full h-full" />
                             </div>
-                            <span className="font-semibold text-base text-[#333333]">Copilot</span>
+                            <span className="font-semibold text-base text-[#333333]">ZavaCore Agent</span>
                           </div>
                           <p className="text-base leading-6 text-[#333333] whitespace-pre-wrap">{msg.content}</p>
                           <div onClick={handleEntityCardClick} className="cursor-pointer">
@@ -370,9 +371,9 @@ export default function Layout() {
                     <div className="flex flex-col gap-2 max-w-[590px]">
                       <div className="flex items-center gap-2">
                         <div className="w-6 h-6">
-                          <img src="/assets/images/ZavaCore_logo.svg" alt="Copilot" className="w-full h-full" />
+                          <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore Agent" className="w-full h-full" />
                         </div>
-                        <span className="font-semibold text-base text-[#333333]">Copilot</span>
+                        <span className="font-semibold text-base text-[#333333]">ZavaCore Agent</span>
                       </div>
                       <p className="text-base leading-6 text-[#333333]">Gathering information about the Summit Center project…</p>
                       <AnimatedLoader />
@@ -420,7 +421,7 @@ export default function Layout() {
 
         {/* Floating chat input — shown during conversation, sits below scroll area */}
         {hasConversation && (
-          <div className="px-4 md:px-6 lg:px-8 pb-5 pt-0 bg-white">
+          <div className="chat-input-container absolute bottom-0 left-0 right-0 px-4 md:px-6 lg:px-8 pb-5 pt-0 z-50" style={{ background: 'none' }}>
             <div className="max-w-[790px] mx-auto">
               <ChatInput onSubmit={handleSubmitMessage} />
             </div>
@@ -428,15 +429,7 @@ export default function Layout() {
         )}
       </div>
 
-      {/* Mobile backdrop for panel */}
-      {isPanelOpen && (
-        <div
-          className="md:hidden fixed inset-0 bg-black/50 z-20"
-          onClick={handlePanelClose}
-        />
-      )}
-
-      {/* Right Panel */}
+      {/* Inline Right Panel */}
       <RightPanel
         isOpen={isPanelOpen}
         onClose={handlePanelClose}
@@ -444,7 +437,7 @@ export default function Layout() {
         entityType="Document"
       />
 
-      {/* Article Panel */}
+      {/* Inline Article Panel */}
       <ArticlePanel
         isOpen={isArticlePanelOpen}
         onClose={() => setIsArticlePanelOpen(false)}

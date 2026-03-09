@@ -59,9 +59,7 @@ function DataBlock({ label, icon, value }: { label: string; icon: React.ReactNod
 function DayBriefHeader() {
   return (
     <div style={{
-      backgroundColor: '#fff', borderRadius: 20, padding: '24px 40px',
-      boxShadow: '0px 1.5px 6px 0px rgba(0,0,0,0.18)',
-      display: 'flex', alignItems: 'center', gap: 8,
+      display: 'flex', alignItems: 'center', gap: 8, padding: '32px 0',
     }}>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
@@ -149,11 +147,11 @@ function ActionBar() {
 }
 
 // ── Shared copilot byline ──────────────────────────────────────────────────────
-function CopilotByline() {
+function AgentByline() {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
       <img src="/assets/images/ZavaCore_logo.svg" alt="" style={{ width: 18, height: 18 }} />
-      <span style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#616161' }}>Copilot</span>
+      <span style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#616161' }}>ZavaCore Agent</span>
     </div>
   );
 }
@@ -188,7 +186,7 @@ function MeetingsContent() {
 
   return (
     <>
-      <CopilotByline />
+      <AgentByline />
       <p style={{ ...seg, margin: '0 0 16px', fontSize: 16, lineHeight: '24px', color: '#424242' }}>
         You have 3 upcoming meetings today and a few recordings worth catching up on.
       </p>
@@ -298,7 +296,7 @@ function FilesContent() {
 
   return (
     <>
-      <CopilotByline />
+      <AgentByline />
       <p style={{ ...seg, margin: '0 0 16px', fontSize: 16, lineHeight: '24px', color: '#424242' }}>
         I found 8 files relevant to your day — here are the most important ones based on your upcoming meetings.
       </p>
@@ -368,7 +366,7 @@ function EmailContent() {
 
   return (
     <>
-      <CopilotByline />
+      <AgentByline />
       <p style={{ ...seg, margin: '0 0 16px', fontSize: 16, lineHeight: '24px', color: '#424242' }}>
         You have 16 unread emails. Here are the 4 that need your attention most today.
       </p>
@@ -435,12 +433,12 @@ function MentionsContent() {
     { name: 'Aadi Kapoor',  img: imgAvatarAadi,  context: 'Teams · #project-contoso',     time: '1 hour ago',  message: '@Carole can you review the updated slide deck before our 11:35 meeting? I\'ve added the new pricing section you asked about.' },
     { name: 'Jordan Lee',   img: imgAvatarJordan,context: 'Teams · #budget-planning',      time: '3 hours ago', message: '@Carole the Q4 numbers look great — I\'ve incorporated the edits from yesterday\'s session and they\'re ready for your sign-off.' },
     { name: 'Robin Counts', img: imgAvatarRobin, context: 'Outlook · Architecture Review', time: 'Yesterday',   message: 'I\'ve looped in @Carole who can provide more context on the infrastructure requirements for this initiative going into Q3.' },
-    { name: 'Mona Kane',    img: imgAvatarMona,  context: 'Teams · #leadership-updates',   time: 'Yesterday',   message: '@Carole great work on the Copilot pilot rollout — Satya specifically called it out in today\'s all-hands as a model program.' },
+    { name: 'Mona Kane',    img: imgAvatarMona,  context: 'Teams · #leadership-updates',   time: 'Yesterday',   message: '@Carole great work on the ZavaCore Agent pilot rollout — Satya specifically called it out in today\'s all-hands as a model program.' },
   ];
 
   return (
     <>
-      <CopilotByline />
+      <AgentByline />
       <p style={{ ...seg, margin: '0 0 16px', fontSize: 16, lineHeight: '24px', color: '#424242' }}>
         You were mentioned 5 times since yesterday. Here are the ones most likely to need a response.
       </p>
@@ -509,7 +507,7 @@ function PeopleContent() {
 
   return (
     <>
-      <CopilotByline />
+      <AgentByline />
       <p style={{ ...seg, margin: '0 0 16px', fontSize: 16, lineHeight: '24px', color: '#424242' }}>
         Here are the key people in your day — those you have meetings with and those who've recently reached out.
       </p>

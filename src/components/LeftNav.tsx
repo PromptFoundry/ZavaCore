@@ -11,13 +11,16 @@ import { useNavigate, useLocation } from 'react-router-dom';
 interface LeftNavProps {
   onMobileItemClick?: () => void;
   onMobileClose?: () => void;
+  forceCollapse?: boolean;
 }
 
-export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavProps) {
+export default function LeftNav({ onMobileItemClick, onMobileClose, forceCollapse }: LeftNavProps) {
   const [selectedItem, setSelectedItem] = useState('zavacore');
   const [isCollapsed, setIsCollapsed] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const effectiveCollapsed = isCollapsed || !!forceCollapse;
 
   const handleItemClick = (itemId: string) => {
     setSelectedItem(itemId);
@@ -27,10 +30,19 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
     }
   };
 
+  // Icon rail items for collapsed state
+  const railItems = [
+    { id: 'newchat', iconSrc: '/assets/icons/Chat icon.svg', iconColorSrc: '/assets/icons/Chat icon color.svg', alt: 'New chat' },
+    { id: 'search', iconSrc: '/assets/icons/Search icon.svg', iconColorSrc: '/assets/icons/Search icon color.svg', alt: 'Search' },
+    { id: 'library', iconSrc: '/assets/icons/Library icon.svg', iconColorSrc: '/assets/icons/Library icon color.svg', alt: 'Library' },
+    { id: 'create', iconSrc: '/assets/icons/Create icon.svg', iconColorSrc: '/assets/icons/Create icon color.svg', alt: 'Create' },
+    { id: 'frontier', iconSrc: '/assets/icons/Frontier icon.svg', iconColorSrc: '/assets/icons/Frontier icon color.svg', alt: 'Frontier' },
+  ];
+
   return (
-    <nav className={`flex flex-col h-full bg-[#f5f5f5] transition-all duration-300 relative z-20 ${isCollapsed ? 'w-[60px]' : 'w-[320px]'} [&_*]:!outline-none`}>
+    <nav className={`flex flex-col h-full bg-[#f5f5f5] transition-all duration-300 relative z-20 ${effectiveCollapsed ? 'w-[48px]' : 'w-[320px]'} [&_*]:!outline-none`}>
       {/* Close button for mobile - positioned absolutely */}
-      {onMobileClose && (
+      {onMobileClose && !effectiveCollapsed && (
         <button
           className="lg:hidden absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded hover:bg-[#e6e6e6] transition-colors z-10"
           onClick={onMobileClose}
@@ -40,23 +52,72 @@ export default function LeftNav({ onMobileItemClick, onMobileClose }: LeftNavPro
         </button>
       )}
 
-      {isCollapsed ? (
-        /* Collapsed state - only show toggle button (hidden on mobile) */
-        <div className="hidden lg:flex items-center justify-center px-3 py-3 shrink-0">
+      {effectiveCollapsed ? (
+        /* Collapsed state - icon rail, visible on ALL screen sizes */
+        <div className="flex flex-col items-center gap-1 py-3 w-full">
+          {/* Expand button */}
           <button
-            className="p-1.5 hover:bg-[#e6e6e6] rounded transition-colors"
-            onClick={() => setIsCollapsed(false)}
+            className={`w-9 h-9 flex items-center justify-center rounded-[12px] transition-colors ${
+              forceCollapse ? 'cursor-default opacity-50' : 'hover:bg-[#e6e6e6] cursor-pointer'
+            }`}
+            onClick={() => { if (!forceCollapse) setIsCollapsed(false); }}
+            aria-label="Expand navigation"
           >
             <PanelLeft20Regular className="w-5 h-5 text-[#424242]" />
           </button>
+
+          {/* Nav icon buttons */}
+          {railItems.map(item => (
+            <button
+              key={item.id}
+              className={`w-9 h-9 flex items-center justify-center rounded-[12px] transition-colors cursor-pointer ${
+                selectedItem === item.id
+                  ? 'bg-[#fafafa] border border-[#F2F2F2]'
+                  : 'hover:bg-[#e6e6e6]'
+              }`}
+              onClick={() => handleItemClick(item.id)}
+              aria-label={item.alt}
+            >
+              <img
+                src={selectedItem === item.id ? item.iconColorSrc : item.iconSrc}
+                alt=""
+                className="w-5 h-5"
+              />
+            </button>
+          ))}
+
+          {/* ZavaCore logo icon */}
+          <button
+            className={`w-9 h-9 flex items-center justify-center rounded-[12px] transition-colors cursor-pointer ${
+              selectedItem === 'zavacore'
+                ? 'bg-[#fafafa] border border-[#F2F2F2]'
+                : 'hover:bg-[#e6e6e6]'
+            }`}
+            onClick={() => handleItemClick('zavacore')}
+            aria-label="ZavaCore"
+          >
+            <img src="/assets/images/ZavaCore_logo.svg" alt="" className="w-5 h-5" />
+          </button>
+
+          {/* Spacer */}
+          <div className="flex-1" />
+
+          {/* User avatar */}
+          <div className="mb-3">
+            <img
+              src="/assets/images/Carole Poland.png"
+              alt="User avatar"
+              className="w-8 h-8 rounded-full object-cover"
+            />
+          </div>
         </div>
       ) : (
         <>
           {/* Top bar */}
           <div className="flex items-center justify-between px-3 py-3 shrink-0">
             <div className="flex items-center gap-2">
-              <img src="/assets/icons/Copilot.svg" alt="Copilot" className="w-5 h-5 shrink-0" />
-              <span className="text-sm font-semibold text-[#242424]">M365 Copilot</span>
+              <img src="/assets/icons/Copilot.svg" alt="ZavaCore Agent" className="w-5 h-5 shrink-0" />
+              <span className="text-sm font-semibold text-[#242424]">ZavaCore Agent</span>
             </div>
             {/* Collapse button - hidden on mobile */}
             <button
