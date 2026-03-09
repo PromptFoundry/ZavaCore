@@ -44,13 +44,13 @@ const seg: React.CSSProperties = { fontFamily: '"Segoe UI", -apple-system, sans-
 function DataBlock({ label, icon, value }: { label: string; icon: React.ReactNode; value: string }) {
   return (
     <div style={{
-      backgroundColor: '#fcfcfc', border: '1px solid #e6e6e6', borderRadius: 10,
-      width: 76, padding: '6px 0',
-      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, flexShrink: 0,
+      backgroundColor: '#fcfcfc', border: '1px solid #e6e6e6', borderRadius: 8,
+      padding: '4px 10px 4px 6px',
+      display: 'flex', alignItems: 'center', gap: 5, flexShrink: 0,
     }}>
-      <span style={{ ...seg, fontSize: 11, color: '#33302e' }}>{label}</span>
-      <div style={{ width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{icon}</div>
-      <span style={{ ...seg, fontSize: 17, color: '#33302e', lineHeight: '26px' }}>{value}</span>
+      <div style={{ width: 20, height: 20, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{icon}</div>
+      <span style={{ ...seg, fontSize: 12, color: '#616161' }}>{label}</span>
+      <span style={{ ...seg, fontSize: 12, fontWeight: 600, color: '#242424' }}>{value}</span>
     </div>
   );
 }
@@ -59,25 +59,23 @@ function DataBlock({ label, icon, value }: { label: string; icon: React.ReactNod
 function DayBriefHeader() {
   return (
     <div style={{
-      display: 'flex', alignItems: 'center', gap: 8, padding: '32px 0',
+      display: 'flex', flexDirection: 'column', gap: 12, padding: '32px 0',
     }}>
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
-          <img src={imgProfileAvatar} alt="" style={{ width: 24, height: 24, borderRadius: 12, objectFit: 'cover' }} />
-          <span style={{ ...seg, fontSize: 13, color: '#272320' }}>· Curated for you · 30m</span>
-        </div>
-        <h1 style={{ ...seg, fontSize: 36, fontWeight: 600, color: '#272320', margin: '0 0 4px', lineHeight: '48px', whiteSpace: 'nowrap' }}>
-          Carole, your daily brief is ready
-        </h1>
-        <p style={{ ...seg, fontSize: 16, color: '#424242', margin: 0, lineHeight: '28px' }}>
-          Your daily guide to understanding what's happening, and why it matters.
-        </p>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
+        <img src={imgProfileAvatar} alt="" style={{ width: 24, height: 24, borderRadius: 12, objectFit: 'cover' }} />
+        <span style={{ ...seg, fontSize: 13, color: '#272320' }}>· Curated for you · 30m</span>
       </div>
-      <div style={{ display: 'flex', gap: 8, flexShrink: 0 }}>
-        <DataBlock label="1pm" icon={<img src={iconWeather} alt="Weather" style={{ width: 32, height: 32 }} />} value="44°" />
-        <DataBlock label="Emails" icon={<img src={iconOutlook} alt="Outlook" style={{ width: 32, height: 32 }} />} value="16" />
-        <DataBlock label="Chats" icon={<img src={iconTeams} alt="Teams" style={{ width: 32, height: 32 }} />} value="23" />
-        <DataBlock label="Meetings" icon={<img src={iconCalendar} alt="Calendar" style={{ width: 32, height: 32 }} />} value="6" />
+      <h1 style={{ ...seg, fontSize: 36, fontWeight: 600, color: '#272320', margin: 0, lineHeight: '48px', whiteSpace: 'nowrap' }}>
+        Carole, your daily brief is ready
+      </h1>
+      <p style={{ ...seg, fontSize: 16, color: '#424242', margin: 0, lineHeight: '28px' }}>
+        Your daily guide to understanding what's happening, and why it matters.
+      </p>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+        <DataBlock label="1pm" icon={<img src={iconWeather} alt="Weather" style={{ width: 20, height: 20 }} />} value="44°" />
+        <DataBlock label="Emails" icon={<img src={iconOutlook} alt="Outlook" style={{ width: 20, height: 20 }} />} value="16" />
+        <DataBlock label="Chats" icon={<img src={iconTeams} alt="Teams" style={{ width: 20, height: 20 }} />} value="23" />
+        <DataBlock label="Meetings" icon={<img src={iconCalendar} alt="Calendar" style={{ width: 20, height: 20 }} />} value="6" />
       </div>
     </div>
   );
