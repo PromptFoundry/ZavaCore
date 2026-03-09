@@ -216,7 +216,7 @@ export default function NewsResponseMessage({ onArticleClick }: NewsResponseMess
           >
             <video
               ref={videoRef}
-              src="/assets/videos/Weekly_Company_Update_Video_Ready.mp4"
+              src={`${import.meta.env.BASE_URL}assets/videos/Weekly_Company_Update_Video_Ready.mp4`}
               controls
               autoPlay
               style={{ width: '100%', display: 'block', maxHeight: '80vh' }}

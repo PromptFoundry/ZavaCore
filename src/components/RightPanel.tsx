@@ -1,16 +1,21 @@
 import { Dismiss20Regular, ChevronLeft20Regular, ChevronRight20Regular } from '@fluentui/react-icons';
-import imgPreview from '../assets/images/PowerPoint image.png';
+import { useState } from 'react';
 
 const seg = { fontFamily: '"Segoe UI", -apple-system, sans-serif' } as React.CSSProperties;
 
 const slides = [
-  { num: 1, src: 'https://www.figma.com/api/mcp/asset/b7d24c6b-1a5f-4786-bfd4-39b0ce6f7713', selected: true },
-  { num: 2, src: 'https://www.figma.com/api/mcp/asset/d519e6be-9246-4942-b963-4bcd08a80e64', badge: true },
-  { num: 3, src: 'https://www.figma.com/api/mcp/asset/a2b28fb0-c1cc-4ccb-bae3-b3c9cc552714', badge: true },
-  { num: 4, src: 'https://www.figma.com/api/mcp/asset/cfbe2002-c63f-47af-b2fc-4d200f54737b' },
-  { num: 5, src: 'https://www.figma.com/api/mcp/asset/9fe7eb08-eec9-4e7e-b0b8-f7a1252b58ad' },
-  { num: 6, src: 'https://www.figma.com/api/mcp/asset/e09f13b8-b4a6-4cef-9700-bdca485d0968' },
-  { num: 7, src: 'https://www.figma.com/api/mcp/asset/7ce24704-1c12-43df-8693-4d4cb971d230' },
+  { num: 1,  src: '/assets/images/Slide1.jpg' },
+  { num: 2,  src: '/assets/images/Slide2.jpg' },
+  { num: 3,  src: '/assets/images/Slide3.jpg' },
+  { num: 4,  src: '/assets/images/Slide4.jpg' },
+  { num: 5,  src: '/assets/images/Slide5.jpg' },
+  { num: 6,  src: '/assets/images/Slide6.jpg' },
+  { num: 7,  src: '/assets/images/Slide7.jpg' },
+  { num: 8,  src: '/assets/images/Slide8.jpg' },
+  { num: 9,  src: '/assets/images/Slide9.jpg' },
+  { num: 10, src: '/assets/images/Slide10.jpg' },
+  { num: 11, src: '/assets/images/Slide11.jpg' },
+  { num: 12, src: '/assets/images/Slide12.jpg' },
 ];
 
 interface RightPanelProps {
@@ -24,6 +29,10 @@ export default function RightPanel({
   isOpen,
   onClose,
 }: RightPanelProps) {
+  const [currentSlide, setCurrentSlide] = useState(1);
+
+  const goTo = (n: number) => setCurrentSlide(Math.max(1, Math.min(slides.length, n)));
+
   return (
     <div
       className={`h-screen flex-shrink-0 flex flex-col overflow-hidden bg-white transition-[width] duration-300 ease-in-out border-l border-[#e0e0e0] ${
@@ -98,7 +107,11 @@ export default function RightPanel({
           width: '100%', aspectRatio: '16/9',
           flexShrink: 0,
         }}>
-          <img src={imgPreview} alt="Slide preview" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          <img
+            src={slides[currentSlide - 1].src}
+            alt={`Slide ${currentSlide}`}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          />
 
           {/* Navigation controls — bottom right */}
           <div style={{
@@ -107,23 +120,31 @@ export default function RightPanel({
             boxShadow: '0px 0px 2px rgba(0,0,0,0.12), 0px 4px 8px rgba(0,0,0,0.14)',
             display: 'flex', alignItems: 'center', padding: 2,
           }}>
-            <button style={{
-              width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center',
-              border: 'none', borderRadius: 8, background: 'transparent', cursor: 'pointer',
-            }}
-              onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+            <button
+              onClick={() => goTo(currentSlide - 1)}
+              disabled={currentSlide === 1}
+              style={{
+                width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                border: 'none', borderRadius: 8, background: 'transparent', cursor: currentSlide === 1 ? 'default' : 'pointer',
+                opacity: currentSlide === 1 ? 0.3 : 1,
+              }}
+              onMouseEnter={e => { if (currentSlide !== 1) e.currentTarget.style.backgroundColor = '#f5f5f5'; }}
               onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
             >
               <ChevronLeft20Regular style={{ width: 16, height: 16, color: '#242424' }} />
             </button>
             <span style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#242424', padding: '0 4px', minWidth: 36, textAlign: 'center' }}>
-              1/16
+              {currentSlide}/{slides.length}
             </span>
-            <button style={{
-              width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center',
-              border: 'none', borderRadius: 8, background: 'transparent', cursor: 'pointer',
-            }}
-              onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+            <button
+              onClick={() => goTo(currentSlide + 1)}
+              disabled={currentSlide === slides.length}
+              style={{
+                width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                border: 'none', borderRadius: 8, background: 'transparent', cursor: currentSlide === slides.length ? 'default' : 'pointer',
+                opacity: currentSlide === slides.length ? 0.3 : 1,
+              }}
+              onMouseEnter={e => { if (currentSlide !== slides.length) e.currentTarget.style.backgroundColor = '#f5f5f5'; }}
               onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
             >
               <ChevronRight20Regular style={{ width: 16, height: 16, color: '#242424' }} />
@@ -135,12 +156,15 @@ export default function RightPanel({
         <div style={{ overflowX: 'auto', flexShrink: 0, paddingBottom: 4 }}>
           <div style={{ display: 'flex', gap: 19, alignItems: 'flex-start' }}>
             {slides.map(slide => (
-              <div key={slide.num} style={{ display: 'flex', flexDirection: 'column', gap: 4, flexShrink: 0, position: 'relative' }}>
+              <div
+                key={slide.num}
+                onClick={() => setCurrentSlide(slide.num)}
+                style={{ display: 'flex', flexDirection: 'column', gap: 4, flexShrink: 0, position: 'relative', cursor: 'pointer' }}
+              >
                 <span style={{ ...seg, fontSize: 9, color: '#666', lineHeight: '12px' }}>{slide.num}</span>
                 <div style={{
                   width: 164, height: 92, borderRadius: 2, overflow: 'hidden', position: 'relative',
-                  border: slide.selected ? '1.2px solid #464feb' : 'none',
-                  cursor: 'pointer',
+                  border: slide.num === currentSlide ? '1.2px solid #464feb' : '1.2px solid transparent',
                 }}>
                   <img src={slide.src} alt={`Slide ${slide.num}`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                   {/* Play badge */}
