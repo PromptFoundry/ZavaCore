@@ -85,35 +85,32 @@ function DayBriefHeader() {
 type TabId = 'Meetings' | 'Files' | 'Email' | 'Mentions' | 'People';
 
 function ResponseNavBar({ activeTab, setActiveTab }: { activeTab: TabId; setActiveTab: (t: TabId) => void }) {
-  const tabs: { id: TabId; label: string; filled: React.ReactNode; regular: React.ReactNode }[] = [
-    { id: 'Meetings', label: 'Meetings', filled: <CalendarFilled style={{ width: 16, height: 16 }} />, regular: <CalendarRegular style={{ width: 16, height: 16 }} /> },
-    { id: 'Files',    label: 'Files',    filled: <FolderFilled style={{ width: 16, height: 16 }} />,   regular: <FolderRegular style={{ width: 16, height: 16 }} /> },
-    { id: 'Email',    label: 'Email',    filled: <MailFilled style={{ width: 16, height: 16 }} />,     regular: <MailRegular style={{ width: 16, height: 16 }} /> },
-    { id: 'Mentions', label: 'Mentions', filled: <MentionFilled style={{ width: 16, height: 16 }} />,  regular: <MentionRegular style={{ width: 16, height: 16 }} /> },
-    { id: 'People',   label: 'People',   filled: <PeopleFilled style={{ width: 16, height: 16 }} />,   regular: <PeopleRegular style={{ width: 16, height: 16 }} /> },
+  const tabs: { id: TabId; label: string; icon: React.ReactNode; iconSelected: React.ReactNode }[] = [
+    { id: 'Meetings', label: 'Meetings', icon: <CalendarRegular style={{ width: 24, height: 24 }} />, iconSelected: <CalendarFilled style={{ width: 24, height: 24 }} /> },
+    { id: 'Files',    label: 'Files',    icon: <FolderRegular style={{ width: 24, height: 24 }} />,   iconSelected: <FolderFilled style={{ width: 24, height: 24 }} /> },
+    { id: 'Email',    label: 'Email',    icon: <MailRegular style={{ width: 24, height: 24 }} />,     iconSelected: <MailFilled style={{ width: 24, height: 24 }} /> },
+    { id: 'Mentions', label: 'Mentions', icon: <MentionRegular style={{ width: 24, height: 24 }} />,  iconSelected: <MentionFilled style={{ width: 24, height: 24 }} /> },
+    { id: 'People',   label: 'People',   icon: <PeopleRegular style={{ width: 24, height: 24 }} />,   iconSelected: <PeopleFilled style={{ width: 24, height: 24 }} /> },
   ];
 
   return (
-    <div style={{
-      backgroundColor: '#fff', borderRadius: 10, padding: '6.75px',
-      boxShadow: '0px 0.844px 1.688px rgba(0,0,0,0.14), 0px 0px 1.688px rgba(0,0,0,0.12)',
-      display: 'flex', gap: 4, marginBottom: 20,
-    }}>
+    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 20 }}>
       {tabs.map(tab => {
         const selected = activeTab === tab.id;
         return (
           <button key={tab.id} onClick={() => setActiveTab(tab.id)} style={{
-            ...seg, display: 'flex', alignItems: 'center', gap: 6,
-            padding: '5px 10px', borderRadius: 6, border: 'none', cursor: 'pointer',
-            backgroundColor: selected ? '#ebefff' : 'transparent',
-            color: selected ? '#464feb' : '#424242',
-            fontSize: 14, fontWeight: selected ? 600 : 400, transition: 'background-color 0.1s',
+            ...seg, display: 'flex', alignItems: 'center', gap: 7,
+            padding: '6px 14px 6px 10px', borderRadius: 8, cursor: 'pointer',
+            backgroundColor: selected ? '#ebefff' : '#fcfcfc',
+            border: selected ? '1px solid #464feb' : '1px solid #e6e6e6',
+            color: selected ? '#464feb' : '#616161',
+            fontSize: 14, fontWeight: 400, transition: 'background-color 0.1s',
           }}
             onMouseEnter={e => { if (!selected) e.currentTarget.style.backgroundColor = '#f5f5f5'; }}
-            onMouseLeave={e => { if (!selected) e.currentTarget.style.backgroundColor = 'transparent'; }}
+            onMouseLeave={e => { if (!selected) e.currentTarget.style.backgroundColor = '#fcfcfc'; }}
           >
-            {selected ? tab.filled : tab.regular}
-            <span>{tab.label}</span>
+            {selected ? tab.iconSelected : tab.icon}
+            <span style={{ color: selected ? '#464feb' : '#242424', fontWeight: selected ? 600 : 400 }}>{tab.label}</span>
           </button>
         );
       })}
