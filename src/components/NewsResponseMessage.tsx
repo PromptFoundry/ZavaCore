@@ -49,9 +49,9 @@ const eventColumns = [
 ];
 
 const newsItems = [
-  { favicon: imgFaviconSource, source: 'The Source', time: '2h', title: 'Quarterly priorities set for Zava product teams', img: imgNewsThumb1 },
-  { favicon: imgFaviconZavaNews, source: 'Zava News', time: '7h', title: 'ZavaCore Fiber v2 enters durability validation phase', img: imgNewsThumb2 },
-  { favicon: imgFaviconSource, source: 'The Source', time: '10h', title: 'Smart‑fiber durability targets rise across the industry', img: imgNewsThumb3 },
+  { favicon: imgFaviconSource, source: 'The Source', time: '2h', title: 'Q2 roadmap confirmed: product teams align on three strategic pillars', img: imgNewsThumb1, type: 'quarterly' as const },
+  { favicon: imgFaviconZavaNews, source: 'Zava News', time: '7h', title: 'ZavaCore Fiber v2 enters durability validation phase', img: imgNewsThumb2, type: null },
+  { favicon: imgFaviconSource, source: 'The Source', time: '10h', title: 'Smart‑fiber durability targets rise across the industry', img: imgNewsThumb3, type: null },
 ];
 
 // Chevron right icon
@@ -124,7 +124,7 @@ function EventCard({ month, day, dow, title, location, time, img }: EventCardPro
 
 
 interface NewsResponseMessageProps {
-  onArticleClick?: () => void;
+  onArticleClick?: (type: 'helixweave' | 'quarterly') => void;
 }
 
 export default function NewsResponseMessage({ onArticleClick }: NewsResponseMessageProps = {}) {
@@ -305,7 +305,7 @@ export default function NewsResponseMessage({ onArticleClick }: NewsResponseMess
         <div className="flex flex-col @[560px]:flex-row @[560px]:[min-height:424px]" style={{ gap: 20 }}>
 
         {/* Left card — flex 3 */}
-        <div onClick={onArticleClick} style={{
+        <div onClick={() => onArticleClick?.('helixweave')} style={{
           flex: 3, minWidth: 0, border: '1px solid #e6e6e6', borderRadius: 16,
           overflow: 'hidden', display: 'flex', flexDirection: 'column', boxSizing: 'border-box',
           cursor: onArticleClick ? 'pointer' : 'default',
@@ -356,7 +356,7 @@ export default function NewsResponseMessage({ onArticleClick }: NewsResponseMess
           {/* 3 news items — evenly spaced in 344px */}
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 20, flex: 1, minHeight: 0 }}>
             {newsItems.map((item, i) => (
-              <div key={i} onClick={i === 0 ? onArticleClick : undefined} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', cursor: i === 0 ? 'pointer' : 'not-allowed' }}>
+              <div key={i} onClick={item.type ? () => onArticleClick?.(item.type!) : undefined} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', cursor: item.type ? 'pointer' : 'not-allowed' }}>
                 {/* Text */}
                 <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>

@@ -15,6 +15,7 @@ import zavalLogo from '../assets/images/ZavaCore_logo.svg';
 interface ArticlePanelProps {
   isOpen: boolean;
   onClose: () => void;
+  articleType?: 'helixweave' | 'quarterly';
 }
 
 const seg: React.CSSProperties = { fontFamily: '"Segoe UI", -apple-system, sans-serif' };
@@ -80,7 +81,8 @@ function SubtleButton({ icon, label, small = false }: { icon: React.ReactNode; l
   );
 }
 
-export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
+export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweave' }: ArticlePanelProps) {
+  const isQuarterly = articleType === 'quarterly';
   return (
     <div
       className={`h-screen flex-shrink-0 flex flex-col overflow-hidden bg-white transition-[width] duration-300 ease-in-out border-l border-[#e0e0e0] ${
@@ -97,9 +99,9 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
           <img src={zavalLogo} alt="ZavaCore" style={{ width: 20, height: 20, flexShrink: 0 }} />
           <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
             <span style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#242424', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              ZavaCore unveils adaptive weave break...
+              {isQuarterly ? 'Q2 roadmap confirmed: product teams align on...' : 'ZavaCore unveils adaptive weave break...'}
             </span>
-            <span style={{ ...seg, fontSize: 12, color: '#616161' }}>Zava News · 7h</span>
+            <span style={{ ...seg, fontSize: 12, color: '#616161' }}>{isQuarterly ? 'The Source · 2h' : 'Zava News · 7h'}</span>
           </div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
@@ -142,7 +144,7 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
             <div style={{ position: 'absolute', inset: 0, backgroundColor: 'white' }} />
             <img
               alt=""
-              src={imgTitleRegion}
+              src={isQuarterly ? `${import.meta.env.BASE_URL}assets/images/Slide4.jpg` : imgTitleRegion}
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', maxWidth: 'none' }}
             />
             <div style={{
@@ -156,7 +158,7 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
             position: 'relative', display: 'flex', flexDirection: 'column',
             gap: 34, alignItems: 'center', width: '100%', maxWidth: 774, flexShrink: 0,
           }}>
-            {/* "Status update" badge */}
+            {/* Badge */}
             <div style={{
               border: 0, borderColor: '#f7630c', borderStyle: 'solid',
               display: 'flex', flexDirection: 'column', gap: 0,
@@ -169,7 +171,7 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
                 textAlign: 'center', letterSpacing: '0.28px',
                 textTransform: 'uppercase', whiteSpace: 'nowrap', margin: 0,
               }}>
-                Status update
+                {isQuarterly ? 'Internal Update' : 'Status Update'}
               </p>
             </div>
 
@@ -180,7 +182,9 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
               textAlign: 'center', margin: 0, minWidth: '100%', width: 'min-content',
               textShadow: '0px 0px 8px rgba(0,0,0,0.2), 0px 32px 64px rgba(0,0,0,0.24)',
             }}>
-              ZavaCore unveils adaptive weave breakthrough for extreme endurance environments
+              {isQuarterly
+                ? 'Q2 Roadmap Confirmed: Product Teams Align on Three Strategic Pillars'
+                : 'ZavaCore unveils adaptive weave breakthrough for extreme endurance environments'}
             </p>
           </div>
         </div>
@@ -192,20 +196,41 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
           padding: 34, flexShrink: 0, width: '100%',
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, width: '100%', maxWidth: 774 }}>
-            <div style={{ ...merriweather, fontSize: 16, color: '#333', width: '100%' }}>
-              <p style={{ lineHeight: 1.6, marginBottom: 32, marginTop: 0 }}>
-                <span style={{ fontWeight: 700 }}>The Zephyr project has reached an exciting milestone: </span>
-                <span style={{ fontWeight: 400 }}>the completion of our initial prototype. This marks a significant step forward in our mission to create a drone that empowers sustainability and conservation efforts. WiZavaCore has introduced HelixWeave™, a next-gen textile architecture that dynamically stiffens under impact and relaxes during recovery, redefining how performance fabrics respond in motion.</span>
-              </p>
-              <p style={{ lineHeight: 1.6, marginBottom: 32, marginTop: 0 }}>
-                <span style={{ fontWeight: 700 }}>What's new: </span>
-                <span style={{ fontWeight: 400 }}>Built with embedded micro-responsive fibers, the material senses temperature shifts, muscle exertion, and directional force in real time. </span>
-              </p>
-              <p style={{ lineHeight: 1.6, marginBottom: 0, marginTop: 0 }}>
-                <span style={{ fontWeight: 700 }}>Why it matters: </span>
-                <span style={{ fontWeight: 400 }}>From elite athletics to industrial safety gear, adaptive textiles could reduce fatigue, improve recovery cycles, and enhance durability under repeated stress. th the prototype in hand, we're now gearing up for rigorous testing to validate its performance in real-world conditions. Simultaneously, preparations for early-stage manufacturing are underway, with a focus on refining processes to ensure quality and scalability. In this edition, we'll dive into the latest developments, highlight team achievements, and outline what's next as we progress toward launch.</span>
-              </p>
-            </div>
+            {isQuarterly ? (
+              <div style={{ ...merriweather, fontSize: 16, color: '#333', width: '100%' }}>
+                <p style={{ lineHeight: 1.6, marginBottom: 32, marginTop: 0 }}>
+                  <span style={{ fontWeight: 700 }}>Zava product teams have finalized their Q2 roadmap</span>
+                  <span style={{ fontWeight: 400 }}>, converging on three strategic pillars designed to accelerate smart-fiber delivery, strengthen cross-team coordination, and sharpen focus on the features that matter most to enterprise customers.</span>
+                </p>
+                <p style={{ lineHeight: 1.6, marginBottom: 32, marginTop: 0 }}>
+                  <span style={{ fontWeight: 700 }}>Pillar 1 — Fiber performance at scale: </span>
+                  <span style={{ fontWeight: 400 }}>Validation and durability testing of ZavaCore Fiber v2 will move into an expanded phase this quarter, with a focus on real-world stress environments. Teams are expected to hit key benchmarks by the end of May.</span>
+                </p>
+                <p style={{ lineHeight: 1.6, marginBottom: 32, marginTop: 0 }}>
+                  <span style={{ fontWeight: 700 }}>Pillar 2 — Cross-team alignment: </span>
+                  <span style={{ fontWeight: 400 }}>Product, design, and validation teams will operate under a shared milestone framework for the first time, reducing handoff friction and giving each team earlier visibility into dependencies and blockers.</span>
+                </p>
+                <p style={{ lineHeight: 1.6, marginBottom: 0, marginTop: 0 }}>
+                  <span style={{ fontWeight: 700 }}>Pillar 3 — Enterprise-ready delivery: </span>
+                  <span style={{ fontWeight: 400 }}>Based on partner feedback from Q1 pilots, performance consistency has been elevated to a top-tier priority. All shipping criteria will be reviewed against enterprise readiness standards before any Q3 commitments are made.</span>
+                </p>
+              </div>
+            ) : (
+              <div style={{ ...merriweather, fontSize: 16, color: '#333', width: '100%' }}>
+                <p style={{ lineHeight: 1.6, marginBottom: 32, marginTop: 0 }}>
+                  <span style={{ fontWeight: 700 }}>The Zephyr project has reached an exciting milestone: </span>
+                  <span style={{ fontWeight: 400 }}>the completion of our initial prototype. This marks a significant step forward in our mission to create a drone that empowers sustainability and conservation efforts. WiZavaCore has introduced HelixWeave™, a next-gen textile architecture that dynamically stiffens under impact and relaxes during recovery, redefining how performance fabrics respond in motion.</span>
+                </p>
+                <p style={{ lineHeight: 1.6, marginBottom: 32, marginTop: 0 }}>
+                  <span style={{ fontWeight: 700 }}>What's new: </span>
+                  <span style={{ fontWeight: 400 }}>Built with embedded micro-responsive fibers, the material senses temperature shifts, muscle exertion, and directional force in real time. </span>
+                </p>
+                <p style={{ lineHeight: 1.6, marginBottom: 0, marginTop: 0 }}>
+                  <span style={{ fontWeight: 700 }}>Why it matters: </span>
+                  <span style={{ fontWeight: 400 }}>From elite athletics to industrial safety gear, adaptive textiles could reduce fatigue, improve recovery cycles, and enhance durability under repeated stress. With the prototype in hand, we're now gearing up for rigorous testing to validate its performance in real-world conditions. Simultaneously, preparations for early-stage manufacturing are underway, with a focus on refining processes to ensure quality and scalability.</span>
+                </p>
+              </div>
+            )}
           </div>
         </div>
 
@@ -226,7 +251,7 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
               fontSize: 32, lineHeight: 1.2, color: '#333',
               textAlign: 'center', width: '100%', margin: 0,
             }}>
-              Performance Trends and Product Impact
+              {isQuarterly ? 'Key Priorities & Delivery Targets' : 'Performance Trends and Product Impact'}
             </p>
           </div>
 
@@ -236,12 +261,25 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
             alignItems: 'center', flexShrink: 0, width: '100%', maxWidth: 774,
           }}>
             <div style={{ ...merriweather, lineHeight: 1.6, fontSize: 16, color: '#333', width: '100%' }}>
-              <p style={{ marginBottom: 32, marginTop: 0 }}>
-                Since the launch of ZavaCore Fiber v2 in mid-May 2026, pilot program feedback has surged by 52%, signaling strong engagement but also surfacing critical performance considerations. While adoption momentum remains high, field testing revealed durability and adaptive-response variability in high-exertion environments.
-              </p>
-              <p style={{ margin: 0 }}>
-                Quantitative metrics show a 29% increase in high-load stress reports during extreme endurance simulations compared to baseline fabric models, indicating deeper performance calibration opportunities under sustained strain.
-              </p>
+              {isQuarterly ? (
+                <>
+                  <p style={{ marginBottom: 32, marginTop: 0 }}>
+                    The Q2 plan is built around four measurable delivery targets: completing durability benchmarks for Fiber v2 by May 30, launching the shared milestone dashboard by April 15, reducing cross-team handoff delays by 40%, and achieving enterprise readiness sign-off on at least two pilot configurations.
+                  </p>
+                  <p style={{ margin: 0 }}>
+                    Leadership has asked each product group to identify one critical dependency outside their direct control by the end of the first sprint—giving the coordination layer enough runway to resolve blockers before they become schedule risks.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p style={{ marginBottom: 32, marginTop: 0 }}>
+                    Since the launch of ZavaCore Fiber v2 in mid-May 2026, pilot program feedback has surged by 52%, signaling strong engagement but also surfacing critical performance considerations. While adoption momentum remains high, field testing revealed durability and adaptive-response variability in high-exertion environments.
+                  </p>
+                  <p style={{ margin: 0 }}>
+                    Quantitative metrics show a 29% increase in high-load stress reports during extreme endurance simulations compared to baseline fabric models, indicating deeper performance calibration opportunities under sustained strain.
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -263,7 +301,7 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
             <div style={{ flex: '1 0 0', height: '100%', minHeight: 0, minWidth: 0, position: 'relative', borderRadius: 4, overflow: 'hidden' }}>
               <img
                 alt=""
-                src={imgLeft}
+                src={isQuarterly ? `${import.meta.env.BASE_URL}assets/images/Slide2.jpg` : imgLeft}
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', maxWidth: 'none', borderRadius: 4, pointerEvents: 'none' }}
               />
             </div>
@@ -278,14 +316,14 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
               <div style={{ flex: '1 0 0', minHeight: 0, minWidth: 0, position: 'relative', borderRadius: 4, overflow: 'hidden', width: '100%' }}>
                 <img
                   alt=""
-                  src={imgTopRight}
+                  src={isQuarterly ? `${import.meta.env.BASE_URL}assets/images/Slide5.jpg` : imgTopRight}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', maxWidth: 'none', borderRadius: 4, pointerEvents: 'none' }}
                 />
               </div>
               <div style={{ flex: '1 0 0', minHeight: 0, minWidth: 0, position: 'relative', borderRadius: 4, overflow: 'hidden', width: '100%' }}>
                 <img
                   alt=""
-                  src={imgBottomRight}
+                  src={isQuarterly ? `${import.meta.env.BASE_URL}assets/images/Slide8.jpg` : imgBottomRight}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', maxWidth: 'none', borderRadius: 4, pointerEvents: 'none' }}
                 />
               </div>
@@ -308,7 +346,7 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
               fontSize: 32, lineHeight: 1.2, color: '#333',
               textAlign: 'center', width: '100%', margin: 0,
             }}>
-              Looking Ahead
+              {isQuarterly ? 'What This Means for Your Team' : 'Looking Ahead'}
             </p>
           </div>
 
@@ -318,27 +356,54 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
             alignItems: 'center', flexShrink: 0, width: '100%', maxWidth: 774,
           }}>
             <div style={{ ...merriweather, fontSize: 16, color: '#333', width: '100%' }}>
-              <p style={{ lineHeight: '28px', marginBottom: 32, marginTop: 0, color: '#424242' }}>
-                Three dominant themes have emerged across pilot programs and validation logs:
-              </p>
-              <ul style={{ listStyle: 'disc', paddingLeft: 24, marginBottom: 32, marginTop: 0 }}>
-                <li style={{ color: '#424242', fontSize: 16 }}>
-                  <span style={{ lineHeight: '28px' }}>Dynamic tension lag </span>
-                  <span style={{ lineHeight: '28px' }}>was observed in 34% of high-exertion trials, particularly during rapid directional shifts in field athletics testing.</span>
-                </li>
-                <li style={{ color: '#424242', fontSize: 16 }}>
-                  <span style={{ lineHeight: '28px' }}>Thermal response variance led to inconsistent breathability in extended heat exposure scenarios, prompting recalibration of micro-responsive fibers.</span>
-                </li>
-                <li style={{ color: '#424242', fontSize: 16 }}>
-                  <span style={{ lineHeight: '28px' }}>Load distribution imbalance under repeated compression cycles was flagged in industrial wear simulations, with measurable stiffness drift after prolonged strain.</span>
-                </li>
-              </ul>
-              <p style={{ lineHeight: '28px', marginBottom: 32, marginTop: 0, color: '#424242' }}>
-                Customer sentiment reflects both enthusiasm and precision feedback. In the Product Validation Summary, 63% of enterprise partners cited performance consistency as the top priority for full-scale deployment.
-              </p>
-              <p style={{ lineHeight: '28px', margin: 0, color: '#424242' }}>
-                Weekly validation reports show a noticeable spike in cross-pattern anomalies beginning May 18, aligning directly with expanded endurance testing protocols.
-              </p>
+              {isQuarterly ? (
+                <>
+                  <p style={{ lineHeight: '28px', marginBottom: 32, marginTop: 0, color: '#424242' }}>
+                    For teams working on smart-fiber development, the Q2 plan brings clarity on what's expected and when. Three areas directly affect day-to-day work:
+                  </p>
+                  <ul style={{ listStyle: 'disc', paddingLeft: 24, marginBottom: 32, marginTop: 0 }}>
+                    <li style={{ color: '#424242', fontSize: 16 }}>
+                      <span style={{ lineHeight: '28px', fontWeight: 700 }}>Validation timelines are fixed. </span>
+                      <span style={{ lineHeight: '28px' }}>Durability benchmarks for Fiber v2 must be complete by May 30. Teams should flag risks to this milestone before the end of sprint one.</span>
+                    </li>
+                    <li style={{ color: '#424242', fontSize: 16 }}>
+                      <span style={{ lineHeight: '28px', fontWeight: 700 }}>Shared dashboard goes live April 15. </span>
+                      <span style={{ lineHeight: '28px' }}>All product groups will be expected to update their milestone status weekly. This will replace the existing ad-hoc status report process.</span>
+                    </li>
+                    <li style={{ color: '#424242', fontSize: 16 }}>
+                      <span style={{ lineHeight: '28px', fontWeight: 700 }}>Enterprise readiness is a gate, not a goal. </span>
+                      <span style={{ lineHeight: '28px' }}>No Q3 commitments will be made for configurations that haven't passed enterprise readiness review. Teams should align with their partner success contacts early.</span>
+                    </li>
+                  </ul>
+                  <p style={{ lineHeight: '28px', margin: 0, color: '#424242' }}>
+                    The full roadmap document and sprint planning templates are available on the Zava internal portal. Questions should be directed to your product lead ahead of the Q2 kickoff all-hands on April 10.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p style={{ lineHeight: '28px', marginBottom: 32, marginTop: 0, color: '#424242' }}>
+                    Three dominant themes have emerged across pilot programs and validation logs:
+                  </p>
+                  <ul style={{ listStyle: 'disc', paddingLeft: 24, marginBottom: 32, marginTop: 0 }}>
+                    <li style={{ color: '#424242', fontSize: 16 }}>
+                      <span style={{ lineHeight: '28px' }}>Dynamic tension lag </span>
+                      <span style={{ lineHeight: '28px' }}>was observed in 34% of high-exertion trials, particularly during rapid directional shifts in field athletics testing.</span>
+                    </li>
+                    <li style={{ color: '#424242', fontSize: 16 }}>
+                      <span style={{ lineHeight: '28px' }}>Thermal response variance led to inconsistent breathability in extended heat exposure scenarios, prompting recalibration of micro-responsive fibers.</span>
+                    </li>
+                    <li style={{ color: '#424242', fontSize: 16 }}>
+                      <span style={{ lineHeight: '28px' }}>Load distribution imbalance under repeated compression cycles was flagged in industrial wear simulations, with measurable stiffness drift after prolonged strain.</span>
+                    </li>
+                  </ul>
+                  <p style={{ lineHeight: '28px', marginBottom: 32, marginTop: 0, color: '#424242' }}>
+                    Customer sentiment reflects both enthusiasm and precision feedback. In the Product Validation Summary, 63% of enterprise partners cited performance consistency as the top priority for full-scale deployment.
+                  </p>
+                  <p style={{ lineHeight: '28px', margin: 0, color: '#424242' }}>
+                    Weekly validation reports show a noticeable spike in cross-pattern anomalies beginning May 18, aligning directly with expanded endurance testing protocols.
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>

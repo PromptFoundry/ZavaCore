@@ -101,6 +101,7 @@ export default function Layout() {
   const [showNewsResponse, setShowNewsResponse] = useState(false);
   const [isNewsLoading, setIsNewsLoading] = useState(false);
   const [isArticlePanelOpen, setIsArticlePanelOpen] = useState(false);
+  const [activeArticle, setActiveArticle] = useState<'helixweave' | 'quarterly'>('helixweave');
   const [showPlanMyDay, setShowPlanMyDay] = useState(false);
   const [isPlanMyDayLoading, setIsPlanMyDayLoading] = useState(false);
   const [showOrderLunch, setShowOrderLunch] = useState(false);
@@ -423,7 +424,7 @@ export default function Layout() {
                             <AnimatedLoader />
                           </>
                         ) : (
-                          <NewsResponseMessage onArticleClick={() => setIsArticlePanelOpen(true)} />
+                          <NewsResponseMessage onArticleClick={(type) => { setActiveArticle(type); setIsArticlePanelOpen(true); }} />
                         )}
                       </div>
                     </div>
@@ -552,6 +553,7 @@ export default function Layout() {
       <ArticlePanel
         isOpen={isArticlePanelOpen}
         onClose={() => setIsArticlePanelOpen(false)}
+        articleType={activeArticle}
       />
 
       {/* Add to home toast */}
