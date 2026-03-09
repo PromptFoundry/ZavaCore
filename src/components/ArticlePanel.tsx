@@ -99,7 +99,7 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
           <img src={zavalLogo} alt="ZavaCore" style={{ width: 20, height: 20, flexShrink: 0 }} />
           <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
             <span style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#242424', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              {isQuarterly ? 'Q2 roadmap confirmed: product teams align on...' : 'ZavaCore unveils adaptive weave break...'}
+              {isQuarterly ? 'HelixWeave™ brings real-time adaptive response...' : 'ZavaCore unveils adaptive weave break...'}
             </span>
             <span style={{ ...seg, fontSize: 12, color: '#616161' }}>{isQuarterly ? 'The Source · 2h' : 'Zava News · 7h'}</span>
           </div>
@@ -183,7 +183,7 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
               textShadow: '0px 0px 8px rgba(0,0,0,0.2), 0px 32px 64px rgba(0,0,0,0.24)',
             }}>
               {isQuarterly
-                ? 'Q2 Roadmap Confirmed: Product Teams Align on Three Strategic Pillars'
+                ? 'HelixWeave™ brings real-time adaptive response to next-generation performance textiles'
                 : 'ZavaCore unveils adaptive weave breakthrough for extreme endurance environments'}
             </p>
           </div>
@@ -199,20 +199,19 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
             {isQuarterly ? (
               <div style={{ ...merriweather, fontSize: 16, color: '#333', width: '100%' }}>
                 <p style={{ lineHeight: 1.6, marginBottom: 32, marginTop: 0 }}>
-                  <span style={{ fontWeight: 700 }}>Zava product teams have finalized their Q2 roadmap</span>
-                  <span style={{ fontWeight: 400 }}>, converging on three strategic pillars designed to accelerate smart-fiber delivery, strengthen cross-team coordination, and sharpen focus on the features that matter most to enterprise customers.</span>
+                  <span style={{ fontWeight: 700 }}>ZavaCore introduces HelixWeave™ adaptive fabric engineered for real-time performance response. </span>
+                  <span style={{ fontWeight: 400 }}>The HelixWeave™ initiative marks a major step forward in ZavaCore's pursuit of responsive performance textiles. Developed through multiple prototype cycles, the new fabric architecture introduces a dynamic fiber system capable of adapting to the physical demands placed on it during movement.</span>
                 </p>
                 <p style={{ lineHeight: 1.6, marginBottom: 32, marginTop: 0 }}>
-                  <span style={{ fontWeight: 700 }}>Pillar 1 — Fiber performance at scale: </span>
-                  <span style={{ fontWeight: 400 }}>Validation and durability testing of ZavaCore Fiber v2 will move into an expanded phase this quarter, with a focus on real-world stress environments. Teams are expected to hit key benchmarks by the end of May.</span>
+                  HelixWeave™ is built on a lattice of micro-responsive strands that react instantly to shifts in temperature, exertion, and directional movement. Rather than behaving as a static material, the textile continuously adjusts its internal structure, reinforcing areas under strain while relaxing zones that require flexibility or ventilation.
                 </p>
                 <p style={{ lineHeight: 1.6, marginBottom: 32, marginTop: 0 }}>
-                  <span style={{ fontWeight: 700 }}>Pillar 2 — Cross-team alignment: </span>
-                  <span style={{ fontWeight: 400 }}>Product, design, and validation teams will operate under a shared milestone framework for the first time, reducing handoff friction and giving each team earlier visibility into dependencies and blockers.</span>
+                  <span style={{ fontWeight: 700 }}>What's new: </span>
+                  <span style={{ fontWeight: 400 }}>HelixWeave™ integrates responsive fiber bundles that expand, contract, and redistribute tension in real time. This allows the fabric to dynamically balance support, mobility, and airflow depending on the intensity and type of activity.</span>
                 </p>
                 <p style={{ lineHeight: 1.6, marginBottom: 0, marginTop: 0 }}>
-                  <span style={{ fontWeight: 700 }}>Pillar 3 — Enterprise-ready delivery: </span>
-                  <span style={{ fontWeight: 400 }}>Based on partner feedback from Q1 pilots, performance consistency has been elevated to a top-tier priority. All shipping criteria will be reviewed against enterprise readiness standards before any Q3 commitments are made.</span>
+                  <span style={{ fontWeight: 700 }}>Why it matters: </span>
+                  <span style={{ fontWeight: 400 }}>Traditional performance fabrics are engineered for a fixed set of conditions. HelixWeave™ moves beyond that limitation by adapting to the athlete or operator as conditions change. The result is improved endurance, reduced fatigue, and more consistent comfort across varied environments and workloads.</span>
                 </p>
               </div>
             ) : (
@@ -251,7 +250,7 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
               fontSize: 32, lineHeight: 1.2, color: '#333',
               textAlign: 'center', width: '100%', margin: 0,
             }}>
-              {isQuarterly ? 'Key Priorities & Delivery Targets' : 'Performance Trends and Product Impact'}
+              {isQuarterly ? 'Performance Trends and Product Impact' : 'Performance Trends and Product Impact'}
             </p>
           </div>
 
@@ -264,10 +263,13 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
               {isQuarterly ? (
                 <>
                   <p style={{ marginBottom: 32, marginTop: 0 }}>
-                    The Q2 plan is built around four measurable delivery targets: completing durability benchmarks for Fiber v2 by May 30, launching the shared milestone dashboard by April 15, reducing cross-team handoff delays by 40%, and achieving enterprise readiness sign-off on at least two pilot configurations.
+                    Since the introduction of HelixWeave™ into early testing programs, pilot participants have reported stronger performance stability across both endurance and high-intensity movement scenarios. Early field evaluations indicate measurable improvements in heat regulation and structural recovery following repeated stress cycles.
+                  </p>
+                  <p style={{ marginBottom: 32, marginTop: 0 }}>
+                    Testing environments have also highlighted the textile's ability to maintain consistent responsiveness during extended wear periods, particularly in conditions involving rapid shifts in activity level or environmental temperature.
                   </p>
                   <p style={{ margin: 0 }}>
-                    Leadership has asked each product group to identify one critical dependency outside their direct control by the end of the first sprint—giving the coordination layer enough runway to resolve blockers before they become schedule risks.
+                    Initial data from controlled trials shows a 37% improvement in adaptive airflow regulation compared with conventional performance fabrics. Researchers also observed faster structural recovery after repeated compression events, suggesting strong potential for applications across athletics, industrial safety apparel, and next-generation wearable systems.
                   </p>
                 </>
               ) : (
@@ -346,7 +348,7 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
               fontSize: 32, lineHeight: 1.2, color: '#333',
               textAlign: 'center', width: '100%', margin: 0,
             }}>
-              {isQuarterly ? 'What This Means for Your Team' : 'Looking Ahead'}
+              {isQuarterly ? 'Looking Ahead' : 'Looking Ahead'}
             </p>
           </div>
 
@@ -359,24 +361,27 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
               {isQuarterly ? (
                 <>
                   <p style={{ lineHeight: '28px', marginBottom: 32, marginTop: 0, color: '#424242' }}>
-                    For teams working on smart-fiber development, the Q2 plan brings clarity on what's expected and when. Three areas directly affect day-to-day work:
+                    Three emerging insights have surfaced through prototype testing and field validation programs:
                   </p>
                   <ul style={{ listStyle: 'disc', paddingLeft: 24, marginBottom: 32, marginTop: 0 }}>
                     <li style={{ color: '#424242', fontSize: 16 }}>
-                      <span style={{ lineHeight: '28px', fontWeight: 700 }}>Validation timelines are fixed. </span>
-                      <span style={{ lineHeight: '28px' }}>Durability benchmarks for Fiber v2 must be complete by May 30. Teams should flag risks to this milestone before the end of sprint one.</span>
+                      <span style={{ lineHeight: '28px', fontWeight: 700 }}>Dynamic structural reinforcement </span>
+                      <span style={{ lineHeight: '28px' }}>occurred most frequently during explosive movement phases, where HelixWeave™ fibers temporarily increased localized tension to stabilize motion.</span>
                     </li>
                     <li style={{ color: '#424242', fontSize: 16 }}>
-                      <span style={{ lineHeight: '28px', fontWeight: 700 }}>Shared dashboard goes live April 15. </span>
-                      <span style={{ lineHeight: '28px' }}>All product groups will be expected to update their milestone status weekly. This will replace the existing ad-hoc status report process.</span>
+                      <span style={{ lineHeight: '28px', fontWeight: 700 }}>Thermal response calibration </span>
+                      <span style={{ lineHeight: '28px' }}>improved airflow consistency during extended activity periods, allowing the fabric to increase breathability as body temperature rose.</span>
                     </li>
                     <li style={{ color: '#424242', fontSize: 16 }}>
-                      <span style={{ lineHeight: '28px', fontWeight: 700 }}>Enterprise readiness is a gate, not a goal. </span>
-                      <span style={{ lineHeight: '28px' }}>No Q3 commitments will be made for configurations that haven't passed enterprise readiness review. Teams should align with their partner success contacts early.</span>
+                      <span style={{ lineHeight: '28px', fontWeight: 700 }}>Adaptive load balancing </span>
+                      <span style={{ lineHeight: '28px' }}>redistributed pressure across fiber channels during repeated stress cycles, helping maintain flexibility without sacrificing support.</span>
                     </li>
                   </ul>
+                  <p style={{ lineHeight: '28px', marginBottom: 32, marginTop: 0, color: '#424242' }}>
+                    Customer response has been overwhelmingly positive, particularly from partners exploring advanced performance apparel applications. In recent product validation surveys, 68% of testing partners identified adaptive responsiveness as the most valuable characteristic for next-generation textile platforms.
+                  </p>
                   <p style={{ lineHeight: '28px', margin: 0, color: '#424242' }}>
-                    The full roadmap document and sprint planning templates are available on the Zava internal portal. Questions should be directed to your product lead ahead of the Q2 kickoff all-hands on April 10.
+                    Ongoing validation programs continue to expand across additional use cases, including endurance athletics, technical outerwear, and industrial performance gear. Early indicators suggest HelixWeave™ may serve as the foundation for a new category of intelligent textiles capable of evolving alongside the demands of human performance.
                   </p>
                 </>
               ) : (
