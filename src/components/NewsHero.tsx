@@ -3,7 +3,7 @@ import { ChevronLeft24Regular, ChevronRight24Regular } from '@fluentui/react-ico
 import soundWaveIcon from '../assets/icons/Sound Wave Circle Sparkle.svg';
 import sliderImg1 from '../assets/images/Slider image 1.png';
 import carouselBg1 from '../assets/images/Carousel-Background-1.png';
-import carouselBg2 from '../assets/images/Carousel-Background-2.png';
+// carouselBg2 replaced with public asset below
 import carouselBg3 from '../assets/images/Carousel-Background-3.png';
 import carouselBg4 from '../assets/images/Carousel-Background-4.png';
 import learningHero from '../assets/images/learning image hero.png';
@@ -33,7 +33,7 @@ const slides = [
     buttonLabel: 'Read now',
   },
   {
-    bg: carouselBg2,
+    bg: `${import.meta.env.BASE_URL}assets/images/fiber-v2-bg.png`,
     icon: soundWaveIcon,
     title: 'ZavaCore Fiber v2 pilot feedback surges 52%',
     source: 'Product news',
