@@ -45,16 +45,45 @@ button, div[role="button"], [onclick] {
 }
 
 /* ── ZavaCore shimmer effect ── */
-@keyframes zavaShimmerGlow {
-  0%   { outline: 2px solid transparent;           outline-offset: 1px; }
-  15%  { outline: 2px solid rgba(70, 79, 235, 0.7);  outline-offset: 1px; }
-  48%  { outline: 2px solid rgba(214, 96, 255, 0.65); outline-offset: 1px; }
-  80%  { outline: 2px solid rgba(45, 180, 255, 0.6);  outline-offset: 1px; }
-  100% { outline: 2px solid transparent;           outline-offset: 1px; }
+@property --zava-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes zavaRotateBorder {
+  from { --zava-angle: 0deg; }
+  to   { --zava-angle: 360deg; }
 }
 
 .zava-shimmer {
-  animation: zavaShimmerGlow 1.2s ease-in-out forwards;
+  position: relative;
+}
+
+.zava-shimmer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--zava-angle),
+    transparent 0%,
+    transparent 30%,
+    #2db4ff 40%,
+    #464feb 50%,
+    #d660ff 60%,
+    transparent 70%,
+    transparent 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  animation: zavaRotateBorder 1.2s linear forwards;
+  pointer-events: none;
+  z-index: 10;
 }
 
 /* ── Responsive widget layouts ── */
