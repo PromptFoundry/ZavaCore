@@ -21,9 +21,10 @@ const actions = [
 
 interface QuickActionsProps {
   onOrderLunch?: () => void;
+  shimmerTarget?: string | null;
 }
 
-export default function QuickActions({ onOrderLunch }: QuickActionsProps) {
+export default function QuickActions({ onOrderLunch, shimmerTarget }: QuickActionsProps) {
   const rows = [actions.slice(0, 3), actions.slice(3, 6)];
 
   return (
@@ -39,6 +40,8 @@ export default function QuickActions({ onOrderLunch }: QuickActionsProps) {
               <div
                 key={i}
                 onClick={title === 'Order Lunch' ? onOrderLunch : undefined}
+                data-shimmer-id={title === 'Order Lunch' ? 'order-lunch' : undefined}
+                className={title === 'Order Lunch' && shimmerTarget === 'order-lunch' ? 'zava-shimmer' : undefined}
                 style={{
                   background: '#fff',
                   border: '0.5px solid #f0f0f0',
@@ -50,7 +53,7 @@ export default function QuickActions({ onOrderLunch }: QuickActionsProps) {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: 12,
-                  cursor: 'pointer',
+                  cursor: title === 'Order Lunch' ? 'pointer' : 'not-allowed',
                   overflow: 'hidden',
                 }}
                 onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#fafafa')}

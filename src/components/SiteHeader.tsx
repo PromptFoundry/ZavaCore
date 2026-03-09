@@ -54,15 +54,15 @@ export default function SiteHeader({ isPanelOpen = false }: SiteHeaderProps) {
             <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
               {!isPanelOpen && (
                 <>
-                  <div style={{ display: 'flex', gap: '4px', alignItems: 'center', fontSize: '14px', color: 'white', cursor: 'pointer' }}>
+                  <div style={{ display: 'flex', gap: '4px', alignItems: 'center', fontSize: '14px', color: 'white', cursor: 'default' }}>
                     <img src="/assets/icons/Star.svg" alt="" style={{ width: '14px', height: '14px' }} />
                     <span>Not following</span>
                   </div>
-                  <div style={{ display: 'flex', gap: '4px', alignItems: 'center', fontSize: '14px', color: 'white', cursor: 'pointer' }}>
+                  <div style={{ display: 'flex', gap: '4px', alignItems: 'center', fontSize: '14px', color: 'white', cursor: 'default' }}>
                     <img src="/assets/icons/Share.svg" alt="" style={{ width: '14px', height: '14px' }} />
                     <span>Share</span>
                   </div>
-                  <div style={{ display: 'flex', gap: '4px', alignItems: 'center', fontSize: '14px', color: 'white', cursor: 'pointer' }}>
+                  <div style={{ display: 'flex', gap: '4px', alignItems: 'center', fontSize: '14px', color: 'white', cursor: 'default' }}>
                     <img src="/assets/icons/Person.svg" alt="" style={{ width: '16px', height: '16px' }} />
                     <span>27 members</span>
                   </div>
@@ -78,7 +78,7 @@ export default function SiteHeader({ isPanelOpen = false }: SiteHeaderProps) {
                   background: 'transparent',
                   border: 'none',
                   borderRadius: '4px',
-                  cursor: 'pointer',
+                  cursor: 'not-allowed',
                   transition: 'background-color 0.2s ease',
                 }}
                 onMouseEnter={(e) => {

@@ -53,7 +53,7 @@ export default function BenefitsWidget() {
         {benefits.map((benefit, index) => (
           <div
             key={index}
-            className="flex items-center gap-3 py-2 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer"
+            className="flex items-center gap-3 py-2 hover:bg-gray-50 rounded-lg transition-colors cursor-default"
           >
             {/* Icon */}
             <div className="w-10 h-10 shrink-0 flex items-center justify-center">

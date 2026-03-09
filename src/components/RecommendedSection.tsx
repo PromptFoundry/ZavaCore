@@ -130,7 +130,7 @@ export default function RecommendedSection({ showDayAtAGlance = false }: { showD
         {/* ── Left: Event Card or Day at a Glance widget ── */}
         <div style={{
           borderRadius: '24px', overflow: 'hidden', position: 'relative',
-          boxShadow: shadow, cursor: showDayAtAGlance ? 'default' : 'pointer',
+          boxShadow: shadow, cursor: 'not-allowed',
           transition: 'opacity 0.4s ease',
         }}>
           {showDayAtAGlance ? (
@@ -157,7 +157,7 @@ export default function RecommendedSection({ showDayAtAGlance = false }: { showD
 
           {/* Card 1 – Summarize: wrapper is relative/full-width, inner card is absolute inset-0 */}
           <div style={{ position: 'relative', height: 133, borderRadius: 24, flexShrink: 0 }}>
-            <div style={{ position: 'absolute', inset: 0, backgroundColor: '#fff', border: '0.5px solid #f0f0f0', boxShadow: shadow, borderRadius: 24, padding: '12px 16px', display: 'flex', flexDirection: 'column', gap: 13, cursor: 'pointer' }}>
+            <div style={{ position: 'absolute', inset: 0, backgroundColor: '#fff', border: '0.5px solid #f0f0f0', boxShadow: shadow, borderRadius: 24, padding: '12px 16px', display: 'flex', flexDirection: 'column', gap: 13, cursor: 'not-allowed' }}>
               <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: 16, fontWeight: 600, lineHeight: '22px', color: 'rgba(0,0,0,0.86)', whiteSpace: 'pre-wrap' }}>
                 {'Summarize what people in my \norg are working on...'}
               </p>
@@ -177,7 +177,7 @@ export default function RecommendedSection({ showDayAtAGlance = false }: { showD
 
           {/* Card 2 – Attention */}
           <div style={{ position: 'relative', height: 133, borderRadius: 24, flexShrink: 0 }}>
-            <div style={{ position: 'absolute', inset: 0, backgroundColor: '#fff', border: '0.5px solid #f0f0f0', boxShadow: shadow, borderRadius: 24, padding: '12px 16px', display: 'flex', flexDirection: 'column', gap: 13, cursor: 'pointer' }}>
+            <div style={{ position: 'absolute', inset: 0, backgroundColor: '#fff', border: '0.5px solid #f0f0f0', boxShadow: shadow, borderRadius: 24, padding: '12px 16px', display: 'flex', flexDirection: 'column', gap: 13, cursor: 'not-allowed' }}>
               <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: 16, fontWeight: 600, lineHeight: '22px', color: 'rgba(0,0,0,0.86)', whiteSpace: 'pre-wrap' }}>
                 {'Highlight what needs \nmy attention today'}
               </p>
@@ -192,7 +192,7 @@ export default function RecommendedSection({ showDayAtAGlance = false }: { showD
         </div>
 
         {/* ── Right: Video Card ── */}
-        <div style={{ borderRadius: '24px', overflow: 'hidden', position: 'relative', boxShadow: shadow, cursor: 'pointer' }}>
+        <div style={{ borderRadius: '24px', overflow: 'hidden', position: 'relative', boxShadow: shadow, cursor: 'not-allowed' }}>
           <div style={{ position: 'absolute', inset: -32, backgroundImage: `url("${gameChangerImg}")`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
           <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, top: '105px', background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%)' }} />
 

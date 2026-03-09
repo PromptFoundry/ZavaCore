@@ -13,6 +13,7 @@ const cardShell: React.CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   overflow: 'hidden',
+  cursor: 'not-allowed',
 };
 
 const cardHeaderLabel: React.CSSProperties = {
@@ -47,7 +48,7 @@ const outlineBtn: React.CSSProperties = {
   fontWeight: 600,
   lineHeight: '20px',
   color: '#242424',
-  cursor: 'pointer',
+  cursor: 'not-allowed',
   height: '32px',
 };
 
@@ -94,7 +95,7 @@ const benefitsItems = [
   },
 ];
 
-export default function RecentActivitySection({ onEngageClick }: { onEngageClick?: () => void }) {
+export default function RecentActivitySection({ onEngageClick, shimmerTarget }: { onEngageClick?: () => void; shimmerTarget?: string | null }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
 
@@ -120,7 +121,7 @@ export default function RecentActivitySection({ onEngageClick }: { onEngageClick
           {/* Articles */}
           <div style={{ flex: 1, padding: '9px 20px 0', display: 'flex', flexDirection: 'column', gap: '16px', overflowY: 'auto' }}>
             {learningArticles.map((article, i) => (
-              <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'center', cursor: 'pointer', height: '96px', flexShrink: 0 }}>
+              <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'center', cursor: 'not-allowed', height: '96px', flexShrink: 0 }}>
                 {/* Thumbnail */}
                 <div style={{ width: '144px', height: '96px', borderRadius: '20px', overflow: 'hidden', flexShrink: 0 }}>
                   <img src={article.img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
@@ -214,7 +215,7 @@ export default function RecentActivitySection({ onEngageClick }: { onEngageClick
                     {primaryLink ? (
                       <>
                         {primary}{' '}
-                        <span style={{ color: '#0078d4', cursor: 'pointer' }}>{primaryLink}</span>
+                        <span style={{ color: '#0078d4', cursor: 'not-allowed' }}>{primaryLink}</span>
                       </>
                     ) : primary}
                   </p>
@@ -252,7 +253,7 @@ export default function RecentActivitySection({ onEngageClick }: { onEngageClick
         </div>
 
         {/* ── Engage Card ── */}
-        <div className="activity-card" style={{ ...cardShell, cursor: 'pointer' }} onClick={onEngageClick}>
+        <div data-shimmer-id="engage-activity" className={`activity-card${shimmerTarget === 'engage-activity' ? ' zava-shimmer' : ''}`} style={{ ...cardShell, cursor: 'pointer' }} onClick={onEngageClick}>
 
           {/* Header */}
           <div style={cardHeaderLabel}>Engage</div>

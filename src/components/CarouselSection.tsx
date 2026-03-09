@@ -459,7 +459,8 @@ export default function CarouselSection({
         <div
           style={{
             display: 'flex',
-            gap: 0,
+            flex: 1,
+            gap: 4,
             alignItems: 'center',
           }}
         >
@@ -468,30 +469,26 @@ export default function CarouselSection({
               key={index}
               onClick={() => handleDotClick(index)}
               style={{
-                padding: '6px 4px',
+                flex: 1,
+                padding: '4px 0',
                 background: 'transparent',
                 border: 'none',
                 borderRadius: '4px',
                 cursor: 'pointer',
-                transition: 'background-color 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.05)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent';
+                display: 'flex',
+                alignItems: 'center',
               }}
               aria-label={`Go to slide ${index + 1}`}
               aria-current={actualCurrentIndex === index ? 'true' : 'false'}
             >
               <div
                 style={{
-                  width: actualCurrentIndex === index ? '16px' : '8px',
-                  height: '8px',
+                  width: '100%',
+                  height: '4px',
                   backgroundColor: '#242424',
                   borderRadius: '9999px',
-                  opacity: actualCurrentIndex === index ? 1 : 0.3,
-                  transition: 'all 0.3s ease',
+                  opacity: actualCurrentIndex === index ? 1 : 0.25,
+                  transition: 'opacity 0.3s ease',
                 }}
               />
             </button>

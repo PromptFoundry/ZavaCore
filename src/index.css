@@ -44,6 +44,19 @@ button, div[role="button"], [onclick] {
   user-select: none;
 }
 
+/* ── ZavaCore shimmer effect ── */
+@keyframes zavaShimmerGlow {
+  0%   { outline: 2px solid transparent;           outline-offset: 1px; }
+  15%  { outline: 2px solid rgba(70, 79, 235, 0.7);  outline-offset: 1px; }
+  48%  { outline: 2px solid rgba(214, 96, 255, 0.65); outline-offset: 1px; }
+  80%  { outline: 2px solid rgba(45, 180, 255, 0.6);  outline-offset: 1px; }
+  100% { outline: 2px solid transparent;           outline-offset: 1px; }
+}
+
+.zava-shimmer {
+  animation: zavaShimmerGlow 1.8s ease-in-out forwards;
+}
+
 /* ── Responsive widget layouts ── */
 
 /* NewsHero */

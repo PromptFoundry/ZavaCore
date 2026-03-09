@@ -367,7 +367,7 @@ export default function ArticlePanel({ isOpen, onClose }: ArticlePanelProps) {
               {/* Enable comments toggle */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span style={{ ...seg, fontSize: 14, color: '#333' }}>Enable comments</span>
-                <div style={{ position: 'relative', width: 40, height: 20, flexShrink: 0, cursor: 'pointer' }}>
+                <div style={{ position: 'relative', width: 40, height: 20, flexShrink: 0, cursor: 'default' }}>
                   <div style={{
                     position: 'absolute', inset: 0, borderRadius: 10,
                     backgroundColor: '#464FEB',

@@ -3,7 +3,7 @@ import {
   ChevronDownIcon,
   CheckBadgeIcon,
 } from '@heroicons/react/24/outline';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import ChatInput from './ChatInput';
 import LeftNav from './LeftNav';
 import Header from './Header';
@@ -47,7 +47,9 @@ export default function Layout() {
   const [showDayAtAGlance, setShowDayAtAGlance] = useState(false);
   const [showAddedToast, setShowAddedToast] = useState(false);
   const [toastVisible, setToastVisible] = useState(false);
+  const [activeShimmer, setActiveShimmer] = useState<string | null>(null);
   const mainRef = useRef<HTMLElement>(null);
+  const shimmerTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const toggleMobileNav = () => setIsMobileNavOpen(!isMobileNavOpen);
 
@@ -145,6 +147,53 @@ export default function Layout() {
 
   const hasConversation = messages.length > 0 || isLoading || isEngageLoading || showEngageResponse || isNewsLoading || showNewsResponse || isPlanMyDayLoading || showPlanMyDay || isOrderLunchLoading || showOrderLunch;
 
+  useEffect(() => {
+    if (hasConversation) {
+      setActiveShimmer(null);
+      if (shimmerTimer.current) clearTimeout(shimmerTimer.current);
+      return;
+    }
+
+    const targets = ['plan-my-day', 'news-summarize', 'engage-card', 'order-lunch', 'engage-activity'];
+    let index = 0;
+
+    const isVisible = (id: string) => {
+      const el = document.querySelector(`[data-shimmer-id="${id}"]`);
+      if (!el) return false;
+      const rect = el.getBoundingClientRect();
+      return rect.bottom > 0 && rect.top < window.innerHeight;
+    };
+
+    const cycle = () => {
+      // Advance through targets in order, skipping non-visible ones
+      let checked = 0;
+      while (checked < targets.length && !isVisible(targets[index])) {
+        index = (index + 1) % targets.length;
+        checked++;
+      }
+      if (checked === targets.length) {
+        // Nothing visible — retry shortly
+        shimmerTimer.current = setTimeout(cycle, 1000);
+        return;
+      }
+      const next = targets[index];
+      index = (index + 1) % targets.length;
+      setActiveShimmer(next);
+
+      shimmerTimer.current = setTimeout(() => {
+        setActiveShimmer(null);
+        shimmerTimer.current = setTimeout(cycle, 1000 + Math.random() * 1500);
+      }, 1800);
+    };
+
+    shimmerTimer.current = setTimeout(cycle, 1000);
+
+    return () => {
+      if (shimmerTimer.current) clearTimeout(shimmerTimer.current);
+      setActiveShimmer(null);
+    };
+  }, [hasConversation]);
+
 
   return (
     <div className="min-h-screen bg-[#fcfcfc] flex overflow-hidden h-screen">
@@ -196,7 +245,7 @@ export default function Layout() {
             backgroundPosition: 'top center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: '100% auto'
-          } : { paddingBottom: '220px' }}
+          } : { paddingTop: '24px', paddingBottom: '220px' }}
         >
           {/* Agent Top */}
           <div data-name="agent-top" className={`w-full mx-auto flex flex-col items-center gap-8 md:gap-12 lg:gap-[53px] ${(showPlanMyDay || isPlanMyDayLoading) ? 'max-w-[1100px]' : 'max-w-[790px]'}`}>
@@ -386,7 +435,7 @@ export default function Layout() {
               {!hasConversation && (
                 <div className="flex flex-col gap-4 md:gap-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-                    <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Plan my day" description="What should I prioritize based on my schedule?" onClick={handlePlanMyDay} />
+                    <div data-shimmer-id="plan-my-day"><PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Plan my day" description="What should I prioritize based on my schedule?" onClick={handlePlanMyDay} className={activeShimmer === 'plan-my-day' ? 'zava-shimmer' : ''} /></div>
                     <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Take action" description="Find marketing documents that need my feedback" />
                     <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Catch up" description="Highlight town hall updates relevant to my work" />
                   </div>
@@ -411,10 +460,10 @@ export default function Layout() {
                   onDismiss={() => setOrderTracker(null)}
                 />
               )}
-              <div data-name="news-hero"><NewsHero onSummarizeNews={handleSummarizeNews} onEngageClick={handleEngageSummarize} /></div>
+              <div data-name="news-hero"><NewsHero onSummarizeNews={handleSummarizeNews} onEngageClick={handleEngageSummarize} shimmerTarget={activeShimmer} /></div>
               <div data-name="recommended"><RecommendedSection showDayAtAGlance={showDayAtAGlance} /></div>
-              <div data-name="quick-actions"><QuickActions onOrderLunch={handleOrderLunch} /></div>
-              <div data-name="recent-activity"><RecentActivitySection onEngageClick={handleEngageSummarize} /></div>
+              <div data-name="quick-actions"><QuickActions onOrderLunch={handleOrderLunch} shimmerTarget={activeShimmer} /></div>
+              <div data-name="recent-activity"><RecentActivitySection onEngageClick={handleEngageSummarize} shimmerTarget={activeShimmer} /></div>
             </div>
           )}
         </main>

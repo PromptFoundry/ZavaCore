@@ -292,7 +292,7 @@ export default function NewsResponseMessage({ onArticleClick }: NewsResponseMess
           <div style={{ ...segoe, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242' }}>
             <p style={{ margin: '0 0 0' }}>This quarter's plan focuses on advancing smart‑fiber development, tightening durability targets for core use cases, and strengthening coordination between product, design, and validation teams.</p>
             <p style={{ margin: '8px 0 0' }}>Priorities include validating new materials under real‑world stress conditions, aligning on shared success criteria, and smoothing handoffs as work moves from concept into testing. It's a helpful snapshot of what to prioritize—and what to keep an eye on—as the quarter unfolds.</p>
-            <p style={{ margin: '4px 0 0', color: '#115ea3', cursor: 'pointer' }}>Read the memo</p>
+            <p style={{ margin: '4px 0 0', color: '#115ea3', cursor: 'default' }}>Read the memo</p>
           </div>
         </div>
       </div>
@@ -348,7 +348,7 @@ export default function NewsResponseMessage({ onArticleClick }: NewsResponseMess
             <p style={{ ...segoe, flex: 1, fontSize: 14, fontWeight: 700, lineHeight: '20px', color: '#000', margin: 0 }}>
               Discover more headlines
             </p>
-            <button style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'none', border: 'none', cursor: 'pointer', padding: 0, flexShrink: 0 }}>
+            <button style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'none', border: 'none', cursor: 'default', padding: 0, flexShrink: 0 }}>
               <ChevronRight />
             </button>
           </div>

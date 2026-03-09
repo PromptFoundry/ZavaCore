@@ -61,7 +61,7 @@ export default function QuickLinksSection({
               padding: '10px 24px 5px',
               border: 'none',
               background: 'transparent',
-              cursor: 'pointer',
+              cursor: 'not-allowed',
               borderRadius: '16px',
               transition: 'background-color 0.2s ease',
             }}

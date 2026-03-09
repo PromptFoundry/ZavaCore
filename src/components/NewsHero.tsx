@@ -82,9 +82,10 @@ const rightCards = [
 interface NewsHeroProps {
   onSummarizeNews?: () => void;
   onEngageClick?: () => void;
+  shimmerTarget?: string | null;
 }
 
-export default function NewsHero({ onSummarizeNews, onEngageClick }: NewsHeroProps = {}) {
+export default function NewsHero({ onSummarizeNews, onEngageClick, shimmerTarget }: NewsHeroProps = {}) {
   const [current, setCurrent] = useState(0);
 
   const prev = () => setCurrent(i => (i - 1 + slides.length) % slides.length);
@@ -104,7 +105,7 @@ export default function NewsHero({ onSummarizeNews, onEngageClick }: NewsHeroPro
       <div className="news-hero-layout">
 
         {/* ── Large Slider ── */}
-        <div className="news-hero-slider" style={{ boxShadow: cardShadow }}>
+        <div data-shimmer-id="news-summarize" className={`news-hero-slider${shimmerTarget === 'news-summarize' ? ' zava-shimmer' : ''}`} style={{ boxShadow: cardShadow }}>
 
           {/* Background image */}
           <div
@@ -192,7 +193,7 @@ export default function NewsHero({ onSummarizeNews, onEngageClick }: NewsHeroPro
                   ...segoe, flexShrink: 0,
                   padding: '10px 16px', backgroundColor: 'rgba(0,0,0,0.55)',
                   border: 'none', borderRadius: 18, fontSize: 13, fontWeight: 400,
-                  color: '#e5ebfa', cursor: 'pointer', whiteSpace: 'nowrap',
+                  color: '#e5ebfa', cursor: slide.buttonLabel === 'Summarize my news' ? 'pointer' : 'not-allowed', whiteSpace: 'nowrap',
                 }}
                 onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.75)')}
                 onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.55)')}
@@ -216,7 +217,7 @@ export default function NewsHero({ onSummarizeNews, onEngageClick }: NewsHeroPro
                   {i === current && (
                     <div style={{
                       position: 'absolute', top: 0, left: 0, bottom: 0,
-                      width: '75%', backgroundColor: '#e5ebfa',
+                      width: '100%', backgroundColor: '#e5ebfa',
                     }} />
                   )}
                 </button>
@@ -231,9 +232,11 @@ export default function NewsHero({ onSummarizeNews, onEngageClick }: NewsHeroPro
             <div
               key={i}
               onClick={i === 1 ? onEngageClick : undefined}
+              data-shimmer-id={i === 1 ? 'engage-card' : undefined}
+              className={i === 1 && shimmerTarget === 'engage-card' ? 'zava-shimmer' : undefined}
               style={{
                 flex: 1, position: 'relative', borderRadius: 24, overflow: 'hidden',
-                boxShadow: cardShadow, cursor: 'pointer',
+                boxShadow: cardShadow, cursor: i === 1 ? 'pointer' : 'not-allowed',
               }}
             >
               {/* Background image */}

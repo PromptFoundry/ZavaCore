@@ -127,7 +127,7 @@ export default function OrderTracker({ dish, emoji, onDismiss }: OrderTrackerPro
           <span style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#484644', whiteSpace: 'nowrap' }}>
             {dateStr}&nbsp;&nbsp;·&nbsp;&nbsp;Order #{orderNum.toString()}
           </span>
-          <span style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#0f6cbd', cursor: 'pointer', whiteSpace: 'nowrap' }}>
+          <span style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#0f6cbd', cursor: 'default', whiteSpace: 'nowrap' }}>
             View Details
           </span>
         </div>

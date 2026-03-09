@@ -23,10 +23,6 @@ import imgAvatarLydia  from '../assets/images/Avatar/People Card-Avatar/Avatar-3
 import imgAvatarHR     from '../assets/images/Avatar-7.png';
 import imgAvatarJordan from '../assets/images/Coworker-2.png';
 import imgAvatarMona   from '../assets/images/Coworker-3.png';
-import iconWeather from '../assets/day-at-a-glance/Weather Icon.svg';
-import iconOutlook from '../assets/day-at-a-glance/Outlook.svg';
-import iconTeams from '../assets/day-at-a-glance/Teams.svg';
-import iconCalendar from '../assets/day-at-a-glance/Calendar.svg';
 import imgThumb1 from '../assets/day-at-a-glance/artifact-human.png';
 import imgThumb2 from '../assets/day-at-a-glance/artifact-chart.png';
 import imgThumb3 from '../assets/day-at-a-glance/Image_single.png';
@@ -40,42 +36,23 @@ const imgThumbPptx  = 'https://www.figma.com/api/mcp/asset/2b800d7d-adf0-45e3-a7
 
 const seg: React.CSSProperties = { fontFamily: '"Segoe UI", -apple-system, sans-serif' };
 
-// ── Data block ─────────────────────────────────────────────────────────────────
-function DataBlock({ label, icon, value }: { label: string; icon: React.ReactNode; value: string }) {
-  return (
-    <div style={{
-      backgroundColor: '#fcfcfc', border: '1px solid #e6e6e6', borderRadius: 8,
-      padding: '6px 14px 6px 10px',
-      display: 'flex', alignItems: 'center', gap: 7, flexShrink: 0,
-    }}>
-      <div style={{ width: 24, height: 24, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{icon}</div>
-      <span style={{ ...seg, fontSize: 14, color: '#616161' }}>{label}</span>
-      <span style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#242424' }}>{value}</span>
-    </div>
-  );
-}
-
 // ── Header ─────────────────────────────────────────────────────────────────────
 function DayBriefHeader() {
   return (
     <div style={{
-      display: 'flex', flexDirection: 'column', gap: 12, padding: '32px 0',
+      display: 'flex', alignItems: 'center', gap: 8, padding: '32px 0',
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
-        <img src={imgProfileAvatar} alt="" style={{ width: 24, height: 24, borderRadius: 12, objectFit: 'cover' }} />
-        <span style={{ ...seg, fontSize: 13, color: '#272320' }}>· Curated for you · 30m</span>
-      </div>
-      <h1 style={{ ...seg, fontSize: 36, fontWeight: 600, color: '#272320', margin: 0, lineHeight: '48px', whiteSpace: 'nowrap' }}>
-        Carole, your daily brief is ready
-      </h1>
-      <p style={{ ...seg, fontSize: 16, color: '#424242', margin: 0, lineHeight: '28px' }}>
-        Your daily guide to understanding what's happening, and why it matters.
-      </p>
-      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-        <DataBlock label="1pm" icon={<img src={iconWeather} alt="Weather" style={{ width: 24, height: 24 }} />} value="44°" />
-        <DataBlock label="Emails" icon={<img src={iconOutlook} alt="Outlook" style={{ width: 24, height: 24 }} />} value="16" />
-        <DataBlock label="Chats" icon={<img src={iconTeams} alt="Teams" style={{ width: 24, height: 24 }} />} value="23" />
-        <DataBlock label="Meetings" icon={<img src={iconCalendar} alt="Calendar" style={{ width: 24, height: 24 }} />} value="6" />
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
+          <img src={imgProfileAvatar} alt="" style={{ width: 24, height: 24, borderRadius: 12, objectFit: 'cover' }} />
+          <span style={{ ...seg, fontSize: 13, color: '#272320' }}>· Curated for you · 30m</span>
+        </div>
+        <h1 style={{ ...seg, fontSize: 36, fontWeight: 600, color: '#272320', margin: '0 0 4px', lineHeight: '48px', whiteSpace: 'nowrap' }}>
+          Carole, your daily brief is ready
+        </h1>
+        <p style={{ ...seg, fontSize: 16, color: '#424242', margin: 0, lineHeight: '28px' }}>
+          Your daily guide to understanding what's happening, and why it matters.
+        </p>
       </div>
     </div>
   );
@@ -141,16 +118,6 @@ function ActionBar() {
   );
 }
 
-// ── Shared copilot byline ──────────────────────────────────────────────────────
-function AgentByline() {
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-      <img src="/assets/images/ZavaCore_logo.svg" alt="" style={{ width: 18, height: 18 }} />
-      <span style={{ ...seg, fontSize: 14, fontWeight: 600, color: '#616161' }}>ZavaCore Agent</span>
-    </div>
-  );
-}
-
 // ── Suggestion chips ───────────────────────────────────────────────────────────
 function SuggestionChips({ chips }: { chips: string[] }) {
   return (
@@ -181,7 +148,6 @@ function MeetingsContent() {
 
   return (
     <>
-      <AgentByline />
       <p style={{ ...seg, margin: '0 0 16px', fontSize: 16, lineHeight: '24px', color: '#424242' }}>
         You have 3 upcoming meetings today and a few recordings worth catching up on.
       </p>
@@ -291,7 +257,6 @@ function FilesContent() {
 
   return (
     <>
-      <AgentByline />
       <p style={{ ...seg, margin: '0 0 16px', fontSize: 16, lineHeight: '24px', color: '#424242' }}>
         I found 8 files relevant to your day — here are the most important ones based on your upcoming meetings.
       </p>
@@ -361,7 +326,6 @@ function EmailContent() {
 
   return (
     <>
-      <AgentByline />
       <p style={{ ...seg, margin: '0 0 16px', fontSize: 16, lineHeight: '24px', color: '#424242' }}>
         You have 16 unread emails. Here are the 4 that need your attention most today.
       </p>
@@ -433,7 +397,6 @@ function MentionsContent() {
 
   return (
     <>
-      <AgentByline />
       <p style={{ ...seg, margin: '0 0 16px', fontSize: 16, lineHeight: '24px', color: '#424242' }}>
         You were mentioned 5 times since yesterday. Here are the ones most likely to need a response.
       </p>
@@ -502,7 +465,6 @@ function PeopleContent() {
 
   return (
     <>
-      <AgentByline />
       <p style={{ ...seg, margin: '0 0 16px', fontSize: 16, lineHeight: '24px', color: '#424242' }}>
         Here are the key people in your day — those you have meetings with and those who've recently reached out.
       </p>
@@ -594,8 +556,11 @@ export default function PlanMyDayResponse({ onAddToHome }: PlanMyDayResponseProp
 
         </div>
 
-        {/* ── Aside ── */}
-        <DayBriefWidget onAddToHome={onAddToHome} />
+        {/* Aside — Day at a Glance widget */}
+        <aside style={{ flexShrink: 0, position: 'sticky', top: 24, alignSelf: 'flex-start' }}>
+          <DayBriefWidget onAddToHome={onAddToHome} />
+        </aside>
+
       </div>
     </div>
   );

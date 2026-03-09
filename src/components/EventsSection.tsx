@@ -150,7 +150,7 @@ export default function EventsSection({
               overflow: 'hidden',
               backgroundColor: 'white',
               boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.1)',
-              cursor: 'pointer',
+              cursor: 'not-allowed',
               transition: 'box-shadow 0.2s ease, transform 0.2s ease',
             }}
             onMouseEnter={(e) => {

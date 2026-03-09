@@ -47,7 +47,7 @@ export default function LearningWidget() {
         {courses.map((course, index) => (
           <div
             key={index}
-            className="flex items-center gap-3 py-3 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer"
+            className="flex items-center gap-3 py-3 hover:bg-gray-50 rounded-lg transition-colors cursor-default"
           >
             {/* Image */}
             <div className="w-[140px] h-[90px] shrink-0 rounded-lg overflow-hidden">

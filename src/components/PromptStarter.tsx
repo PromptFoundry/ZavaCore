@@ -65,7 +65,7 @@ export default function PromptStarter({
           fontWeight: 400,
           lineHeight: '20px',
           color: '#242424',
-          cursor: 'pointer',
+          cursor: onClick ? 'pointer' : 'not-allowed',
           transition: 'all 0.2s',
         }}
         onMouseEnter={(e) => {
@@ -86,7 +86,7 @@ export default function PromptStarter({
   return (
     <div
       onClick={onClick}
-      className={`bg-white border border-[#e0e0e0] rounded-3xl md:rounded-[28px] p-3 md:p-4 flex flex-col gap-2 min-h-[120px] md:h-[134px] hover:border-[#c7c7c7] transition-colors cursor-pointer ${className}`}
+      className={`bg-white border border-[#e0e0e0] rounded-3xl md:rounded-[28px] p-3 md:p-4 flex flex-col gap-2 min-h-[120px] md:h-[134px] hover:border-[#c7c7c7] transition-colors ${onClick ? 'cursor-pointer' : 'cursor-not-allowed'} ${className}`}
     >
       {/* Icon and Title */}
       {(icon || title) && (

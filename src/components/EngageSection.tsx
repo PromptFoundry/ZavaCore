@@ -132,7 +132,7 @@ export default function EngageSection({
                 backgroundColor: '#f2f2f2',
                 border: 'none',
                 borderRadius: '4px',
-                cursor: 'pointer',
+                cursor: 'default',
                 fontFamily: 'Segoe UI, sans-serif',
                 fontSize: '14px',
                 color: '#605e5c',
@@ -158,7 +158,7 @@ export default function EngageSection({
                 backgroundColor: 'transparent',
                 border: 'none',
                 borderRadius: '4px',
-                cursor: 'pointer',
+                cursor: 'default',
                 fontFamily: 'Segoe UI, sans-serif',
                 fontSize: '14px',
                 color: '#605e5c',
@@ -184,7 +184,7 @@ export default function EngageSection({
                 backgroundColor: 'transparent',
                 border: 'none',
                 borderRadius: '4px',
-                cursor: 'pointer',
+                cursor: 'default',
                 fontFamily: 'Segoe UI, sans-serif',
                 fontSize: '14px',
                 color: '#605e5c',
@@ -210,7 +210,7 @@ export default function EngageSection({
                 backgroundColor: 'transparent',
                 border: 'none',
                 borderRadius: '4px',
-                cursor: 'pointer',
+                cursor: 'default',
                 fontFamily: 'Segoe UI, sans-serif',
                 fontSize: '14px',
                 color: '#605e5c',
@@ -236,7 +236,7 @@ export default function EngageSection({
                 backgroundColor: 'transparent',
                 border: 'none',
                 borderRadius: '4px',
-                cursor: 'pointer',
+                cursor: 'default',
                 fontFamily: 'Segoe UI, sans-serif',
                 fontSize: '14px',
                 color: '#605e5c',
@@ -410,7 +410,7 @@ export default function EngageSection({
                   backgroundColor: 'transparent',
                   border: 'none',
                   borderRadius: '4px',
-                  cursor: 'pointer',
+                  cursor: 'default',
                   transition: 'background-color 0.2s ease',
                 }}
                 onMouseEnter={(e) => {
@@ -442,7 +442,7 @@ export default function EngageSection({
                   backgroundColor: 'transparent',
                   border: 'none',
                   borderRadius: '4px',
-                  cursor: 'pointer',
+                  cursor: 'default',
                   transition: 'background-color 0.2s ease',
                 }}
                 onMouseEnter={(e) => {
@@ -478,7 +478,7 @@ export default function EngageSection({
                   backgroundColor: 'transparent',
                   border: 'none',
                   borderRadius: '4px',
-                  cursor: 'pointer',
+                  cursor: 'default',
                   transition: 'background-color 0.2s ease',
                 }}
                 onMouseEnter={(e) => {

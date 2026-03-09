@@ -28,7 +28,7 @@ export default function EngageWidget({ onSummarize }: { onSummarize?: () => void
       {/* Body */}
       <div className="flex-1 px-5 py-4 flex flex-col gap-2">
         {/* Item 1: New responses Q&A */}
-        <div className="flex items-center gap-4 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer py-2">
+        <div className="flex items-center gap-4 hover:bg-gray-50 rounded-lg transition-colors cursor-default py-2">
           {/* Avatar */}
           <div className="w-14 h-14 shrink-0 rounded-[16px] overflow-hidden">
             <img
@@ -64,7 +64,7 @@ export default function EngageWidget({ onSummarize }: { onSummarize?: () => void
         </div>
 
         {/* Item 2: New leadership updates */}
-        <div className="flex items-center gap-4 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer py-2">
+        <div className="flex items-center gap-4 hover:bg-gray-50 rounded-lg transition-colors cursor-default py-2">
           {/* Avatar Pie */}
           <div className="w-14 h-14 shrink-0 rounded-[16px] overflow-hidden">
             <img
