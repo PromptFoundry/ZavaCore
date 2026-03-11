@@ -25,6 +25,7 @@ import EngageWidget from '../components/EngageWidget';
 import BenefitsWidget from '../components/BenefitsWidget';
 import LearningWidget from '../components/LearningWidget';
 import AnimatedLoader from '../components/AnimatedLoader';
+import LatencyLoader from '../components/LatencyLoader';
 import PromptStarter from '../components/PromptStarter';
 import WidgetContainer from '../components/WidgetContainer';
 import NewsHero from '../components/NewsHero';
@@ -289,6 +290,7 @@ const CHANGELOG: ChangelogEntry[] = [
   { date: 'Mar 10, 2026', type: 'changed', component: 'CopilotShell',          componentId: 'shell-copilot', description: 'Renamed from StandardShell. Preview now renders the real LeftNav sidebar with agents, notebooks, chats, and quick links.' },
   { date: 'Feb 21, 2026', type: 'added',   component: 'CopilotShell',          componentId: 'shell-copilot', description: 'Initial shell with collapsible nav sidebar, sticky header, and breadcrumbs.' },
   { date: 'Feb 21, 2026', type: 'added',   component: 'SharePointShell',      componentId: 'shell-sp',      description: 'SharePoint-style shell with branded header, vertical app rail, and AI panel slot.' },
+  { date: 'Mar 11, 2026', type: 'added',   component: 'LatencyLoader',        componentId: 'comp-latency-loader', description: 'Horizontal traversal loader cycling three gradient dots (pink, teal, blue-purple) to indicate streaming latency.' },
   { date: 'Feb 14, 2026', type: 'added',   component: 'AnimatedLoader',       componentId: 'comp-loader',   description: 'Pulsing skeleton loader used as a thinking indicator in all agent response flows.' },
   { date: 'Feb 14, 2026', type: 'added',   component: 'PromptStarter',        componentId: 'comp-prompt',   description: 'Suggested prompt card in two sizes: large (3-up grid) and small (panel list).' },
 ];
@@ -597,6 +599,16 @@ function buildSections(): NavSection[] {
           render: () => (
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 120 }}>
               <AnimatedLoader />
+            </div>
+          ),
+        },
+        {
+          id: 'comp-latency-loader', label: 'LatencyLoader', badge: 'Component', canvasMode: 'padded',
+          description: 'Horizontal traversal loader that cycles through three gradient-colored dots — used to indicate streaming latency or background processing.',
+          code: `<LatencyLoader />`,
+          render: () => (
+            <div style={{ width: '100%', maxWidth: 600, padding: '40px 0' }}>
+              <LatencyLoader />
             </div>
           ),
         },
