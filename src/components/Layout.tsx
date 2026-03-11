@@ -22,6 +22,7 @@ import PlanMyDayResponse from './PlanMyDayResponse';
 import { CheckmarkCircleFilled } from '@fluentui/react-icons';
 import OrderLunchResponse from './OrderLunchResponse';
 import OrderTracker from './OrderTracker';
+import PeopleOrgResponse from './PeopleOrgResponse';
 
 
 interface Message {
@@ -106,6 +107,8 @@ export default function Layout() {
   const [isPlanMyDayLoading, setIsPlanMyDayLoading] = useState(false);
   const [showOrderLunch, setShowOrderLunch] = useState(false);
   const [isOrderLunchLoading, setIsOrderLunchLoading] = useState(false);
+  const [showPeopleOrg, setShowPeopleOrg] = useState(false);
+  const [isPeopleOrgLoading, setIsPeopleOrgLoading] = useState(false);
   const [orderTracker, setOrderTracker] = useState<{ dish: string; emoji: string } | null>(null);
   const [showDayAtAGlance, setShowDayAtAGlance] = useState(false);
   const [showAddedToast, setShowAddedToast] = useState(false);
@@ -172,6 +175,8 @@ export default function Layout() {
     setShowOrderLunch(false);
     setIsOrderLunchLoading(false);
     setOrderTracker(null);
+    setShowPeopleOrg(false);
+    setIsPeopleOrgLoading(false);
   };
 
   const handleAddToHome = () => {
@@ -188,6 +193,15 @@ export default function Layout() {
     setTimeout(() => {
       setIsNewsLoading(false);
       setShowNewsResponse(true);
+    }, 2000);
+  };
+
+  const handlePeopleOrg = () => {
+    setIsPeopleOrgLoading(true);
+    mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      setIsPeopleOrgLoading(false);
+      setShowPeopleOrg(true);
     }, 2000);
   };
 
@@ -208,7 +222,7 @@ export default function Layout() {
     setIsPanelOpen(false);
   };
 
-  const hasConversation = messages.length > 0 || isLoading || isEngageLoading || showEngageResponse || isNewsLoading || showNewsResponse || isPlanMyDayLoading || showPlanMyDay || isOrderLunchLoading || showOrderLunch;
+  const hasConversation = messages.length > 0 || isLoading || isEngageLoading || showEngageResponse || isNewsLoading || showNewsResponse || isPlanMyDayLoading || showPlanMyDay || isOrderLunchLoading || showOrderLunch || isPeopleOrgLoading || showPeopleOrg;
 
   useEffect(() => {
     if (hasConversation) {
@@ -217,7 +231,7 @@ export default function Layout() {
       return;
     }
 
-    const targets = ['plan-my-day', 'news-summarize', 'engage-card', 'order-lunch', 'engage-activity'];
+    const targets = ['plan-my-day', 'news-summarize', 'engage-card', 'order-lunch', 'engage-activity', 'people-org'];
     let index = 0;
 
     const isVisible = (id: string) => {
@@ -294,6 +308,7 @@ export default function Layout() {
             (showNewsResponse || isNewsLoading) ? 'News Summary' :
             (showEngageResponse || isEngageLoading) ? 'Engage Summary' :
             (showOrderLunch || isOrderLunchLoading) ? 'Order Lunch' :
+            (showPeopleOrg || isPeopleOrgLoading) ? 'Org Summary' :
             (messages.length > 0 || isLoading) ? 'Summit Center Project' :
             undefined
           }
@@ -457,6 +472,31 @@ export default function Layout() {
                     </div>
                   )}
 
+                  {/* People org response flow */}
+                  {(isPeopleOrgLoading || showPeopleOrg) && (
+                    <div className="flex flex-col gap-4">
+                      <div className="flex justify-end">
+                        <div className="bg-[#f5f5f5] rounded-2xl px-4 py-3 max-w-[590px]">
+                          <p className="text-base leading-6 text-[#424242]">Summarize what people in my org are working on</p>
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-4">
+                        <div className="flex items-center gap-2">
+                          <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore Agent" className="w-6 h-6" />
+                          <span className="font-semibold text-base text-[#333333]">ZavaCore Agent</span>
+                        </div>
+                        {isPeopleOrgLoading ? (
+                          <>
+                            <p className="text-base leading-6 text-[#333333]">Looking up your org activity…</p>
+                            <AnimatedLoader />
+                          </>
+                        ) : (
+                          <PeopleOrgResponse />
+                        )}
+                      </div>
+                    </div>
+                  )}
+
                   {messages.map((msg, index) => (
                     <div key={index} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
                       {msg.type === 'user' ? (
@@ -524,7 +564,7 @@ export default function Layout() {
                 />
               )}
               <div data-name="news-hero"><NewsHero onSummarizeNews={handleSummarizeNews} onEngageClick={handleEngageSummarize} shimmerTarget={activeShimmer} /></div>
-              <div data-name="recommended"><RecommendedSection showDayAtAGlance={showDayAtAGlance} /></div>
+              <div data-name="recommended"><RecommendedSection showDayAtAGlance={showDayAtAGlance} onPeopleCardClick={handlePeopleOrg} shimmerTarget={activeShimmer} /></div>
               <div data-name="quick-actions"><QuickActions onOrderLunch={handleOrderLunch} shimmerTarget={activeShimmer} /></div>
               <div data-name="recent-activity"><RecentActivitySection onEngageClick={handleEngageSummarize} shimmerTarget={activeShimmer} /></div>
             </div>

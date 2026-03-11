@@ -1,4 +1,5 @@
 import React from 'react';
+import SidexSidePanel from './SidexSidePanel';
 import {
   Dismiss20Regular,
   ArrowUpRight20Regular,
@@ -115,11 +116,7 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
   const isQuarterly = articleType === 'quarterly';
   const comments = isQuarterly ? commentsHelixweaveNew : commentsHelixweave;
   return (
-    <div
-      className={`h-screen flex-shrink-0 flex flex-col overflow-hidden bg-white transition-[width] duration-300 ease-in-out border-l border-[#e0e0e0] ${
-        isOpen ? 'w-[48vw] lg:w-[55vw] xl:w-[62vw]' : 'w-0'
-      }`}
-    >
+    <SidexSidePanel isOpen={isOpen} onClose={onClose}>
       {/* Panel Header */}
       <div style={{
         height: 60, padding: '0 16px', flexShrink: 0,
@@ -603,6 +600,6 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
         </div>
 
       </div>
-    </div>
+    </SidexSidePanel>
   );
 }

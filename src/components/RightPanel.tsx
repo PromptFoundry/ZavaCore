@@ -1,5 +1,6 @@
 import { Dismiss20Regular, ChevronLeft20Regular, ChevronRight20Regular } from '@fluentui/react-icons';
 import { useState } from 'react';
+import SidexSidePanel from './SidexSidePanel';
 
 const seg = { fontFamily: '"Segoe UI", -apple-system, sans-serif' } as React.CSSProperties;
 
@@ -34,12 +35,7 @@ export default function RightPanel({
   const goTo = (n: number) => setCurrentSlide(Math.max(1, Math.min(slides.length, n)));
 
   return (
-    <div
-      className={`h-screen flex-shrink-0 flex flex-col overflow-hidden bg-white transition-[width] duration-300 ease-in-out border-l border-[#e0e0e0] ${
-        isOpen ? 'w-[48vw] lg:w-[55vw] xl:w-[62vw]' : 'w-0'
-      }`}
-      style={{ boxShadow: isOpen ? '-2px 0 8px rgba(0,0,0,0.08)' : 'none' }}
-    >
+    <SidexSidePanel isOpen={isOpen} onClose={onClose}>
       {/* Header */}
       <div style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -188,6 +184,6 @@ export default function RightPanel({
         </div>
 
       </div>
-    </div>
+    </SidexSidePanel>
   );
 }

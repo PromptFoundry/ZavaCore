@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Avatar } from '@fluentui/react-avatar';
 import {
   CalendarFilled, CalendarRegular,
@@ -532,34 +532,49 @@ interface PlanMyDayResponseProps {
 
 export default function PlanMyDayResponse({ onAddToHome }: PlanMyDayResponseProps) {
   const [activeTab, setActiveTab] = useState<TabId>('Meetings');
+  const [isNarrow, setIsNarrow] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([entry]) => {
+      setIsNarrow(entry.contentRect.width < 720);
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: '100%', ...seg }}>
+    <div ref={containerRef} style={{ display: 'flex', flexDirection: 'column', gap: 16, width: '100%', ...seg }}>
 
       {/* ── Full-width header ── */}
       <DayBriefHeader />
+
+      {/* ── Widget stacked at top when narrow ── */}
+      {isNarrow && (
+        <DayBriefWidget onAddToHome={onAddToHome} fullWidth />
+      )}
 
       {/* ── Response area ── */}
       <div style={{ display: 'flex', gap: 24, width: '100%', alignItems: 'flex-start' }}>
 
         {/* Main column */}
         <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column' }}>
-
-          {/* Nav */}
           <ResponseNavBar activeTab={activeTab} setActiveTab={setActiveTab} />
-
           {activeTab === 'Meetings' && <MeetingsContent />}
           {activeTab === 'Files'    && <FilesContent />}
           {activeTab === 'Email'    && <EmailContent />}
           {activeTab === 'Mentions' && <MentionsContent />}
           {activeTab === 'People'   && <PeopleContent />}
-
         </div>
 
-        {/* Aside — Day at a Glance widget */}
-        <aside style={{ flexShrink: 0, position: 'sticky', top: 24, alignSelf: 'flex-start' }}>
-          <DayBriefWidget onAddToHome={onAddToHome} />
-        </aside>
+        {/* Aside — sticky widget on wide screens */}
+        {!isNarrow && (
+          <aside style={{ flexShrink: 0, position: 'sticky', top: 24, alignSelf: 'flex-start' }}>
+            <DayBriefWidget onAddToHome={onAddToHome} />
+          </aside>
+        )}
 
       </div>
     </div>

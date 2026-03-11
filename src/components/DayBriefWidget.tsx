@@ -167,9 +167,10 @@ function PeopleMini() {
 interface DayBriefWidgetProps {
   onAddToHome?: () => void;
   homeMode?: boolean;
+  fullWidth?: boolean;
 }
 
-export default function DayBriefWidget({ onAddToHome, homeMode = false }: DayBriefWidgetProps) {
+export default function DayBriefWidget({ onAddToHome, homeMode = false, fullWidth = false }: DayBriefWidgetProps) {
   const [activeTab, setActiveTab] = useState<TabId>('Meetings');
   const [added, setAdded] = useState(false);
 
@@ -181,9 +182,9 @@ export default function DayBriefWidget({ onAddToHome, homeMode = false }: DayBri
 
   return (
     <div style={{
-      width: homeMode ? '100%' : 270,
+      width: (homeMode || fullWidth) ? '100%' : 270,
       height: homeMode ? '100%' : undefined,
-      flexShrink: homeMode ? undefined : 0,
+      flexShrink: (homeMode || fullWidth) ? undefined : 0,
       backgroundColor: '#fff',
       border: '1px solid #edebe9',
       borderRadius: 24,

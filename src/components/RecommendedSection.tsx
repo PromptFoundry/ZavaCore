@@ -107,7 +107,7 @@ function StatPill({ icon, count, label, iconOffsetY = '50%' }: { icon: string; c
   );
 }
 
-export default function RecommendedSection({ showDayAtAGlance = false }: { showDayAtAGlance?: boolean }) {
+export default function RecommendedSection({ showDayAtAGlance = false, onPeopleCardClick, shimmerTarget }: { showDayAtAGlance?: boolean; onPeopleCardClick?: () => void; shimmerTarget?: string | null }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
 
@@ -156,8 +156,11 @@ export default function RecommendedSection({ showDayAtAGlance = false }: { showD
         <div className="recommended-middle" style={{ display: 'flex', flexDirection: 'column', gap: 12, height: '100%', justifyContent: 'center' }}>
 
           {/* Card 1 – Summarize: wrapper is relative/full-width, inner card is absolute inset-0 */}
-          <div style={{ position: 'relative', height: 133, borderRadius: 24, flexShrink: 0 }}>
-            <div style={{ position: 'absolute', inset: 0, backgroundColor: '#fff', border: '0.5px solid #f0f0f0', boxShadow: shadow, borderRadius: 24, padding: '12px 16px', display: 'flex', flexDirection: 'column', gap: 13, cursor: 'not-allowed' }}>
+          <div data-shimmer-id="people-org" style={{ position: 'relative', height: 133, borderRadius: 24, flexShrink: 0 }} className={shimmerTarget === 'people-org' ? 'zava-shimmer' : ''}>
+            <div onClick={onPeopleCardClick} style={{ position: 'absolute', inset: 0, backgroundColor: '#fff', border: '0.5px solid #f0f0f0', boxShadow: shadow, borderRadius: 24, padding: '12px 16px', display: 'flex', flexDirection: 'column', gap: 13, cursor: onPeopleCardClick ? 'pointer' : 'not-allowed', transition: 'background-color 0.1s' }}
+              onMouseEnter={e => { if (onPeopleCardClick) e.currentTarget.style.backgroundColor = '#f9f9f9'; }}
+              onMouseLeave={e => { if (onPeopleCardClick) e.currentTarget.style.backgroundColor = '#fff'; }}
+            >
               <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: 16, fontWeight: 600, lineHeight: '22px', color: 'rgba(0,0,0,0.86)', whiteSpace: 'pre-wrap' }}>
                 {'Summarize what people in my \norg are working on...'}
               </p>
