@@ -132,8 +132,13 @@ export default function AgentCapabilitiesResponse() {
         >
           <span style={{ fontSize: 14, fontWeight: 400, lineHeight: '20px', color: '#424242' }}>Sources</span>
           <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
-            {[0, 1, 2].map(i => (
-              <img key={i} src={zavcoreLogo} alt="" style={{ width: 16, height: 16, borderRadius: 2 }} />
+            {[
+              `${import.meta.env.BASE_URL}assets/images/source-icon-pin.png`,
+              `${import.meta.env.BASE_URL}assets/images/source-icon-heart.png`,
+              `${import.meta.env.BASE_URL}assets/images/source-icon-drop.png`,
+              `${import.meta.env.BASE_URL}assets/images/source-icon-orbit.png`,
+            ].map((src, i) => (
+              <img key={i} src={src} alt="" style={{ width: 16, height: 16, borderRadius: 2, objectFit: 'cover' }} />
             ))}
           </div>
           <ChevronDown16Regular style={{ width: 16, height: 16, color: '#424242', flexShrink: 0 }} />
