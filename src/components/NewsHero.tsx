@@ -64,10 +64,11 @@ const statTiles = [
 interface NewsHeroProps {
   onSummarizeNews?: () => void;
   onEngageClick?: () => void;
+  onPlanMyDay?: () => void;
   shimmerTarget?: string | null;
 }
 
-export default function NewsHero({ onSummarizeNews, onEngageClick: _onEngageClick, shimmerTarget }: NewsHeroProps = {}) {
+export default function NewsHero({ onSummarizeNews, onEngageClick: _onEngageClick, onPlanMyDay, shimmerTarget }: NewsHeroProps = {}) {
   const [current, setCurrent] = useState(0);
 
   const prev = () => setCurrent(i => (i - 1 + slides.length) % slides.length);
@@ -272,14 +273,19 @@ export default function NewsHero({ onSummarizeNews, onEngageClick: _onEngageClic
           </div>
 
           {/* Card 2 — Suggested Prompt */}
-          <div style={{
+          <div
+            onClick={onPlanMyDay}
+            style={{
             borderRadius: 24,
             border: '1px solid #e0e0e0',
             boxShadow: '0px 2px 4px 0px rgba(0,0,0,0.14), 0px 0px 2px 0px rgba(0,0,0,0.12)',
             backgroundColor: '#fff',
             display: 'flex', flexDirection: 'column', justifyContent: 'center',
-            padding: 16, gap: 26, cursor: 'not-allowed', overflow: 'hidden',
-          }}>
+            padding: 16, gap: 26, cursor: onPlanMyDay ? 'pointer' : 'not-allowed', overflow: 'hidden',
+          }}
+            onMouseEnter={onPlanMyDay ? e => (e.currentTarget.style.backgroundColor = '#fafafa') : undefined}
+            onMouseLeave={onPlanMyDay ? e => (e.currentTarget.style.backgroundColor = '#fff') : undefined}
+          >
             {/* Top: label + title */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <span style={{ ...segoe, fontSize: 10, fontWeight: 400, lineHeight: '14px', color: '#424242' }}>
@@ -298,7 +304,7 @@ export default function NewsHero({ onSummarizeNews, onEngageClick: _onEngageClic
                 <div key={label} style={{
                   flex: 1, display: 'flex', alignItems: 'center', gap: 9,
                   padding: 9, borderRadius: 8,
-                  border: '0.787px solid #e5e5e5', overflow: 'hidden',
+                  border: '0.787px solid #c8c8c8', overflow: 'hidden',
                 }}>
                   <Icon style={{ width: 24, height: 24, flexShrink: 0, color: '#4f59f4' }} />
                   <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>

@@ -487,9 +487,9 @@ export default function Layout() {
               {!hasConversation && (
                 <div className="flex flex-col gap-4 md:gap-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-                    <div data-shimmer-id="plan-my-day"><PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Agent overview" description="What should I prioritize based on my schedule?" onClick={handlePlanMyDay} className={activeShimmer === 'plan-my-day' ? 'zava-shimmer' : ''} /></div>
-                    <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Leadership updates" description="Summarize the latest leadership announcements relevant to me" />
-                    <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="This week's deadlines" description="What deadlines and deliverables do I have this week?" />
+                    <div data-shimmer-id="plan-my-day"><PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Agent overview" description="Show me what the ZavaCore Agent can do" onClick={handlePlanMyDay} className={activeShimmer === 'plan-my-day' ? 'zava-shimmer' : ''} /></div>
+                    <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Leadership updates" description="Summarize the latest updates from leadership" />
+                    <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="This week's deadlines" description="Show deadlines across learning, HR or benefits, and key tasks" />
                   </div>
                   <div className="flex justify-end">
                     <button className="flex items-center gap-1 px-3 py-1.5 text-xs md:text-sm text-[#424242] hover:bg-gray-50 rounded-md transition-colors">
@@ -512,7 +512,7 @@ export default function Layout() {
                   onDismiss={() => setOrderTracker(null)}
                 />
               )}
-              <div data-name="news-hero"><NewsHero onSummarizeNews={handleSummarizeNews} onEngageClick={handleEngageSummarize} shimmerTarget={activeShimmer} /></div>
+              <div data-name="news-hero"><NewsHero onSummarizeNews={handleSummarizeNews} onEngageClick={handleEngageSummarize} onPlanMyDay={handlePlanMyDay} shimmerTarget={activeShimmer} /></div>
               <div data-name="quick-actions"><QuickActions onOrderLunch={handleOrderLunch} shimmerTarget={activeShimmer} /></div>
               <div data-name="recent-activity"><RecentActivitySection onEngageClick={handleEngageSummarize} shimmerTarget={activeShimmer} /></div>
             </div>
