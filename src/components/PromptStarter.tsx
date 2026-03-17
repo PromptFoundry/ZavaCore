@@ -86,7 +86,8 @@ export default function PromptStarter({
   return (
     <div
       onClick={onClick}
-      className={`bg-white border border-[#e0e0e0] rounded-3xl md:rounded-[28px] p-3 md:p-4 flex flex-col gap-2 min-h-[120px] md:h-[134px] hover:border-[#c7c7c7] transition-colors ${onClick ? 'cursor-pointer' : 'cursor-not-allowed'} ${className}`}
+      className={`bg-white border border-[#e0e0e0] rounded-[28px] flex flex-col gap-[8px] hover:border-[#c7c7c7] transition-colors ${onClick ? 'cursor-pointer' : 'cursor-not-allowed'} ${className}`}
+      style={{ padding: '16px' }}
     >
       {/* Icon and Title */}
       {(icon || title) && (
@@ -97,7 +98,7 @@ export default function PromptStarter({
       )}
 
       {/* Description */}
-      <p className="text-sm text-[#424242] line-clamp-2" style={{ lineHeight: '20px', height: '40px', overflow: 'hidden' }}>{description}</p>
+      <p className="text-sm text-[#424242] line-clamp-2" style={{ lineHeight: '20px' }}>{description}</p>
 
       {/* Footer */}
       {footer && <p className="text-[10px] text-[#616161]">{footer}</p>}
