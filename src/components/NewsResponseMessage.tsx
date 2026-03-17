@@ -144,11 +144,11 @@ export default function NewsResponseMessage({ onArticleClick }: NewsResponseMess
 
       {/* ── Section 1: Header ── */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 4, padding: '32px 0 0' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
-          <img src={imgProfileAvatar} alt="" style={{ width: 24, height: 24, borderRadius: 12, objectFit: 'cover' }} />
-          <span style={{ ...segoe, fontSize: 13, color: '#272320' }}>· Curated for you · 6m 31s</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+          <img src={imgProfileAvatar} alt="" style={{ width: 20, height: 20, borderRadius: 10, objectFit: 'cover' }} />
+          <span style={{ ...segoe, fontSize: 13, color: '#616161' }}>· Curated for you · 6m 31s</span>
         </div>
-        <h1 style={{ ...segoe, fontSize: 36, fontWeight: 600, color: '#272320', margin: '0 0 4px', lineHeight: '48px' }}>
+        <h1 style={{ ...segoe, fontSize: 36, fontWeight: 600, color: '#242424', margin: '0 0 4px', lineHeight: '48px' }}>
           Carole, your news summary is ready
         </h1>
         <p style={{ ...segoe, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242', margin: 0 }}>
