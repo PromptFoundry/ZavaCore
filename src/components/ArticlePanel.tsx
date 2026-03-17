@@ -4,10 +4,13 @@ import {
   Dismiss20Regular,
   ArrowUpRight20Regular,
   ThumbLike20Regular,
+  ThumbLike20Filled,
   ThumbLike16Regular,
+  ThumbLike16Filled,
   Chat20Regular,
   Chat16Regular,
   Bookmark20Regular,
+  Bookmark20Filled,
   Eye20Regular,
   MoreHorizontal16Regular,
 } from '@fluentui/react-icons';
@@ -96,23 +99,32 @@ const commentsHelixweaveNew = [
   },
 ];
 
-function SubtleButton({ icon, label, small = false }: { icon: React.ReactNode; label: string; small?: boolean }) {
+function SubtleButton({
+  icon, activeIcon, label, activeLabel, small = false, active = false, onClick,
+}: {
+  icon: React.ReactNode; activeIcon?: React.ReactNode;
+  label: string; activeLabel?: string;
+  small?: boolean; active?: boolean; onClick?: () => void;
+}) {
   const [hover, setHover] = React.useState(false);
   return (
     <button
+      onClick={onClick}
       style={{
         display: 'flex', alignItems: 'center', gap: small ? 3 : 4,
         padding: small ? '3px 6px' : '4px 8px',
         background: hover ? '#f0f0f0' : 'transparent',
         border: 'none', borderRadius: 4, cursor: 'pointer',
-        ...seg, fontSize: small ? 12 : 14, color: '#333', fontWeight: 400,
+        ...seg, fontSize: small ? 12 : 14,
+        color: active ? '#0078d4' : '#333',
+        fontWeight: active ? 600 : 400,
         transition: 'background 0.1s',
       }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      {icon}
-      <span>{label}</span>
+      {active && activeIcon ? activeIcon : icon}
+      <span>{active && activeLabel ? activeLabel : label}</span>
     </button>
   );
 }
@@ -120,6 +132,11 @@ function SubtleButton({ icon, label, small = false }: { icon: React.ReactNode; l
 export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweave' }: ArticlePanelProps) {
   const isQuarterly = articleType === 'quarterly';
   const comments = isQuarterly ? commentsHelixweaveNew : commentsHelixweave;
+  const [articleLiked, setArticleLiked] = React.useState(false);
+  const [articleSaved, setArticleSaved] = React.useState(false);
+  const [commentLiked, setCommentLiked] = React.useState<Record<string, boolean>>({});
+  const toggleCommentLike = (name: string) =>
+    setCommentLiked(prev => ({ ...prev, [name]: !prev[name] }));
   return (
     <SidexSidePanel isOpen={isOpen} onClose={onClose}>
       {/* Panel Header */}
@@ -477,9 +494,21 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
               {/* Action buttons */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                  <SubtleButton icon={<ThumbLike20Regular style={{ width: 20, height: 20, color: '#333' }} />} label="Like" />
+                  <SubtleButton
+                    icon={<ThumbLike20Regular style={{ width: 20, height: 20, color: '#333' }} />}
+                    activeIcon={<ThumbLike20Filled style={{ width: 20, height: 20, color: '#0078d4' }} />}
+                    label="Like" activeLabel="Liked"
+                    active={articleLiked}
+                    onClick={() => setArticleLiked(p => !p)}
+                  />
                   <SubtleButton icon={<Chat20Regular style={{ width: 20, height: 20, color: '#333' }} />} label="Comment" />
-                  <SubtleButton icon={<Bookmark20Regular style={{ width: 20, height: 20, color: '#333' }} />} label="Save for later" />
+                  <SubtleButton
+                    icon={<Bookmark20Regular style={{ width: 20, height: 20, color: '#333' }} />}
+                    activeIcon={<Bookmark20Filled style={{ width: 20, height: 20, color: '#0078d4' }} />}
+                    label="Save for later" activeLabel="Saved"
+                    active={articleSaved}
+                    onClick={() => setArticleSaved(p => !p)}
+                  />
                   <SubtleButton icon={<Eye20Regular style={{ width: 20, height: 20, color: '#333' }} />} label={isQuarterly ? '247 Views' : '119 Views'} />
                 </div>
               </div>
@@ -558,9 +587,16 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
                     position: 'absolute', bottom: -28, left: 0,
                     display: 'flex', alignItems: 'center', gap: 4,
                   }}>
-                    <SubtleButton small icon={<ThumbLike16Regular style={{ width: 16, height: 16, color: '#616161' }} />} label="Like" />
-                    <SubtleButton small icon={<Chat16Regular style={{ width: 16, height: 16, color: '#616161' }} />} label="Comment" />
-                    <SubtleButton small icon={<MoreHorizontal16Regular style={{ width: 16, height: 16, color: '#616161' }} />} label="Comment" />
+                    <SubtleButton
+                        small
+                        icon={<ThumbLike16Regular style={{ width: 16, height: 16, color: '#616161' }} />}
+                        activeIcon={<ThumbLike16Filled style={{ width: 16, height: 16, color: '#0078d4' }} />}
+                        label="Like" activeLabel="Liked"
+                        active={!!commentLiked[comment.name]}
+                        onClick={() => toggleCommentLike(comment.name)}
+                      />
+                      <SubtleButton small icon={<Chat16Regular style={{ width: 16, height: 16, color: '#616161' }} />} label="Comment" />
+                      <SubtleButton small icon={<MoreHorizontal16Regular style={{ width: 16, height: 16, color: '#616161' }} />} label="Comment" />
                   </div>
                 </div>
               </div>
