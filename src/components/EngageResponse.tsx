@@ -24,14 +24,12 @@ import imgAvatarAadi   from '../assets/images/Avatar/People Card-Avatar/Avatar-1
 import imgAvatarRobin  from '../assets/images/Avatar/People Card-Avatar/Avatar-2.png';
 import imgAvatarLydia  from '../assets/images/Avatar/People Card-Avatar/Avatar-3.png';
 import imgAvatarJordan from '../assets/images/Coworker-2.png';
-// Topic card thumbnail images (from Figma, valid 7 days)
-const imgThumb1 = 'https://www.figma.com/api/mcp/asset/495e582f-777f-4f78-9508-647e6d5d5235';
-const imgThumb2 = 'https://www.figma.com/api/mcp/asset/b967a58a-0963-4ff2-8b76-addcd01dbeb3';
-// Community cover images (from Figma, valid 7 days)
-const imgCommunityCover1 = 'https://www.figma.com/api/mcp/asset/e39e916b-4273-4980-be93-c345dc7501a8';
-const imgCommunityCover2 = 'https://www.figma.com/api/mcp/asset/585aa16e-8023-4b7b-ad55-8d37aba43c79';
-const imgCommunityAvatar1 = 'https://www.figma.com/api/mcp/asset/072e907f-18d5-4db6-89c3-6181044f6aad';
-const imgCommunityAvatar2 = 'https://www.figma.com/api/mcp/asset/cc687155-95d0-4551-8e1d-9149b4272516';
+const imgThumb1          = `${import.meta.env.BASE_URL}assets/engage-assets/GettyImages-2233751483 1.png`;
+const imgThumb2          = `${import.meta.env.BASE_URL}assets/images/engage image hero.png`;
+const imgCommunityCover1 = `${import.meta.env.BASE_URL}assets/images/Carousel-Background-1.png`;
+const imgCommunityCover2 = `${import.meta.env.BASE_URL}assets/images/Carousel-Background-4.png`;
+const imgCommunityAvatar1 = `${import.meta.env.BASE_URL}assets/images/Subtract-1.png`;
+const imgCommunityAvatar2 = `${import.meta.env.BASE_URL}assets/images/Subtract-2.png`;
 
 const seg: React.CSSProperties = { fontFamily: '"Segoe UI", -apple-system, sans-serif' };
 const shadow = '0px 2px 4px 0px rgba(0,0,0,0.14), 0px 0px 2px 0px rgba(0,0,0,0.12)';

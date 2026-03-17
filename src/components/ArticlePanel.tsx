@@ -12,6 +12,13 @@ import {
   MoreHorizontal16Regular,
 } from '@fluentui/react-icons';
 import zavalLogo from '../assets/images/ZavaCore_logo.svg';
+import avatar1 from '../assets/images/Avatar-1.png';
+import avatar2 from '../assets/images/Avatar-2.png';
+import avatar3 from '../assets/images/Avatar-3.png';
+import avatar5 from '../assets/images/Avatar-5.png';
+import avatar6 from '../assets/images/Avatar-6.png';
+import avatar7 from '../assets/images/Avatar-7.png';
+import carolePng from '../assets/images/Carole Poland.png';
 
 interface ArticlePanelProps {
   isOpen: boolean;
@@ -23,15 +30,13 @@ const seg: React.CSSProperties = { fontFamily: '"Segoe UI", -apple-system, sans-
 const merriweather: React.CSSProperties = { fontFamily: '"Merriweather", Georgia, serif' };
 const bigShoulders: React.CSSProperties = { fontFamily: '"Big Shoulders Display", "Arial Black", sans-serif' };
 
-const imgTitleRegion = 'https://www.figma.com/api/mcp/asset/4e4b3496-c249-4b7b-9354-fbb2fae486c2';
-
-const imgSlightlySmilingFace = 'https://www.figma.com/api/mcp/asset/c5f51278-532b-45b2-b5f2-24121c524759';
+const imgTitleRegion = `${import.meta.env.BASE_URL}assets/images/Title region background.png`;
 
 const commentsHelixweave = [
   {
     name: 'Daisy Phillips',
     time: '3hr ago',
-    avatar: '/assets/images/Avatar-1.png',
+    avatar: avatar1,
     text: 'Congrats! Really nice analysis, deserves to be shared broadly with the org.',
     reactions: [
       { emoji: '👍', label: 'Thumbs up' },
@@ -42,7 +47,7 @@ const commentsHelixweave = [
   {
     name: 'Miguel Garcia',
     time: '45 min ago',
-    avatar: '/assets/images/Avatar-2.png',
+    avatar: avatar2,
     text: 'Exciting!\nI will have to A primary driver of propeller performance is the development of next-generation composites that offer an optimal balance of stiffness, strength, and weight.',
     reactions: [
       { emoji: '👍', label: 'Thumbs up' },
@@ -52,7 +57,7 @@ const commentsHelixweave = [
   {
     name: 'Kat Larsson',
     time: '20 min ago',
-    avatar: '/assets/images/Avatar-3.png',
+    avatar: avatar3,
     text: 'Challenges? Navigating complex and evolving regulatory frameworks, ensuring operational safety and airspace integration, addressing security vulnerabilities like hijacking, and managing funding and economic hurdles.',
     reactions: [],
     reactionCount: null,
@@ -63,7 +68,7 @@ const commentsHelixweaveNew = [
   {
     name: 'Jordan Osei',
     time: '1hr ago',
-    avatar: '/assets/images/Avatar-5.png',
+    avatar: avatar5,
     text: 'The 37% airflow improvement number is striking. We saw something similar in early endurance trials — once the fiber bundles started redistributing tension dynamically, heat buildup dropped noticeably in the second half of runs.',
     reactions: [
       { emoji: '👍', label: 'Thumbs up' },
@@ -74,7 +79,7 @@ const commentsHelixweaveNew = [
   {
     name: 'Priya Nair',
     time: '38 min ago',
-    avatar: '/assets/images/Avatar-6.png',
+    avatar: avatar6,
     text: 'Really well written. The section on adaptive load balancing resonates — our industrial wear team flagged similar behavior under compression cycling. Good to see it quantified here.',
     reactions: [
       { emoji: '👍', label: 'Thumbs up' },
@@ -84,7 +89,7 @@ const commentsHelixweaveNew = [
   {
     name: 'Tom Reeves',
     time: '14 min ago',
-    avatar: '/assets/images/Avatar-7.png',
+    avatar: avatar7,
     text: 'Curious whether the thermal calibration improvements hold up in cold environments, not just heat exposure. Would love to see data from the winter pilot programs if that\'s been tested.',
     reactions: [],
     reactionCount: null,
@@ -483,9 +488,7 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
               <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                 <span style={{ fontSize: 20, lineHeight: 1, width: 20, height: 20, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>👍</span>
                 <span style={{ fontSize: 20, lineHeight: 1, width: 20, height: 20, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>❤️</span>
-                <div style={{ position: 'relative', width: 20, height: 20, flexShrink: 0, overflow: 'clip' }}>
-                  <img alt="" src={imgSlightlySmilingFace} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }} />
-                </div>
+                <span style={{ fontSize: 20, lineHeight: 1, width: 20, height: 20, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>🙂</span>
                 <span style={{ ...seg, fontSize: 14, color: '#333' }}>{isQuarterly ? 'Jordan Osei and 51 others' : 'Daisy Phillips and 34 others'}</span>
               </div>
             </div>
@@ -570,7 +573,7 @@ export default function ArticlePanel({ isOpen, onClose, articleType = 'helixweav
             }}>
               {/* User avatar */}
               <img
-                src="/assets/images/Carole Poland.png"
+                src={carolePng}
                 alt="Carole Poland"
                 style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
               />

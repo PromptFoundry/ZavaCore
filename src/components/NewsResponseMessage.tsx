@@ -4,24 +4,19 @@ import { EditRegular, CopyRegular, ArrowForwardRegular, ThumbLikeRegular, ThumbD
 
 const segoe: React.CSSProperties = { fontFamily: '"Segoe UI", sans-serif' };
 
-// Figma asset URLs (valid 7 days from generation)
-const imgVideo = 'https://www.figma.com/api/mcp/asset/8fbc9dd8-6ec4-46d7-867c-bcd6defa19cd';
-// Article card images (from ArticlePanel)
-const imgTitleRegion = 'https://www.figma.com/api/mcp/asset/4e4b3496-c249-4b7b-9354-fbb2fae486c2';
-const imgFaviconSource = 'https://www.figma.com/api/mcp/asset/7e4d78b3-a51c-4536-8c52-d7a5da8c4f51';
-const imgFaviconZavaNews = 'https://www.figma.com/api/mcp/asset/a9888eee-7916-4d77-bdea-98640cc12f0f';
-const imgNewsThumb2 = 'https://www.figma.com/api/mcp/asset/785043c8-5e43-4ca5-ae53-a00a8c43d969';
-const imgNewsThumb3 = 'https://www.figma.com/api/mcp/asset/2d22862e-6d75-42f4-9086-18a857d08dbe';
-// Events (refreshed from node 120-18999)
-const imgEventAMA = 'https://www.figma.com/api/mcp/asset/76ef549c-b2a4-421b-a1ae-97d169986441';
-const imgEventHappyHour = 'https://www.figma.com/api/mcp/asset/6946bbc3-821a-4bbe-bbd9-de31ed4b80f7';
-const imgEventDiscovery = 'https://www.figma.com/api/mcp/asset/db3226ed-4cca-484f-a630-5cc3b1bbe64a';
-const imgEventCloud = 'https://www.figma.com/api/mcp/asset/4a80c4be-4732-4b6f-a2a1-10b523da0818';
-
-// Sources footer favicons
-const imgFavSrc1 = 'https://www.figma.com/api/mcp/asset/297efb03-fe8e-4434-8ad6-4a4e14d08631';
-const imgFavSrc2 = 'https://www.figma.com/api/mcp/asset/c1aebbd2-514d-4a20-be25-372b3ecce574';
-const imgFavSrc3 = 'https://www.figma.com/api/mcp/asset/18b4266f-1a97-4589-a165-7fe9211a9e98';
+const imgVideo           = `${import.meta.env.BASE_URL}assets/images/News image large.png`;
+const imgTitleRegion     = `${import.meta.env.BASE_URL}assets/images/Title region background.png`;
+const imgFaviconSource   = `${import.meta.env.BASE_URL}assets/images/Icon-0.svg`;
+const imgFaviconZavaNews = zavalLogo;
+const imgNewsThumb2      = `${import.meta.env.BASE_URL}assets/images/News image small 1.png`;
+const imgNewsThumb3      = `${import.meta.env.BASE_URL}assets/images/News image small 2.png`;
+const imgEventAMA        = `${import.meta.env.BASE_URL}assets/images/Subtract-1.png`;
+const imgEventHappyHour  = `${import.meta.env.BASE_URL}assets/images/Subtract-2.png`;
+const imgEventDiscovery  = `${import.meta.env.BASE_URL}assets/images/Subtract-3.png`;
+const imgEventCloud      = `${import.meta.env.BASE_URL}assets/images/Subtract-4.png`;
+const imgFavSrc1         = zavalLogo;
+const imgFavSrc2         = `${import.meta.env.BASE_URL}assets/images/Icon-0.svg`;
+const imgFavSrc3         = `${import.meta.env.BASE_URL}assets/images/Icon-1.svg`;
 
 // Events structured as columns × 2 rows for the carousel
 const eventColumns = [

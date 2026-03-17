@@ -3,9 +3,6 @@ import { CheckmarkCircle16Filled } from '@fluentui/react-icons';
 
 const seg: React.CSSProperties = { fontFamily: '"Segoe UI", -apple-system, sans-serif' };
 
-const imgLineActive  = 'https://www.figma.com/api/mcp/asset/649dbc72-4950-4190-a5f2-cca803d8721a';
-const imgLinePending = 'https://www.figma.com/api/mcp/asset/18216b3e-393d-4f5d-9540-bf03bdb417c2';
-const imgSpinner     = 'https://www.figma.com/api/mcp/asset/916bdfa0-fca9-40f9-ab66-1249ce36bda6';
 
 const STEP_LABELS = ['Ordered', 'Preparing', 'Cooking', 'Ready to go!'];
 const STEP_INTERVAL = 1200; // ms between each step advance
@@ -96,7 +93,7 @@ export default function OrderTracker({ dish, emoji, onDismiss }: OrderTrackerPro
                   {done ? (
                     <CheckmarkCircle16Filled style={{ width: 16, height: 16, color: '#107C10', flexShrink: 0 }} />
                   ) : (
-                    <img src={imgSpinner} alt="" style={{ width: 12, height: 12, flexShrink: 0 }} />
+                    <span style={{ width: 10, height: 10, flexShrink: 0, display: 'inline-block', borderRadius: '50%', border: '2px solid #d1d1d1' }} />
                   )}
                   <span style={{
                     ...seg, fontSize: 14, lineHeight: '20px', whiteSpace: 'nowrap',
@@ -108,11 +105,11 @@ export default function OrderTracker({ dish, emoji, onDismiss }: OrderTrackerPro
                   </span>
                 </div>
                 {!isLast && (
-                  <img
-                    src={done ? imgLineActive : imgLinePending}
-                    alt=""
-                    style={{ width: 41, height: 17, flexShrink: 0, transition: 'opacity 0.3s ease' }}
-                  />
+                  <div style={{
+                    width: 36, height: 2, flexShrink: 0, borderRadius: 1, alignSelf: 'center',
+                    backgroundColor: done ? '#107C10' : '#e0e0e0',
+                    transition: 'background-color 0.3s ease',
+                  }} />
                 )}
               </React.Fragment>
             );

@@ -6,22 +6,16 @@ import {
   MoreHorizontalRegular,
 } from '@fluentui/react-icons';
 
+import imgKoreanChicken from '../assets/response/food-korean-chicken.png';
+import imgTacos         from '../assets/response/food-tacos.png';
+import imgBurger        from '../assets/response/food-burger.png';
+import imgIconLocation  from '../assets/response/icon-location.svg';
+import imgIconBowl      from '../assets/response/icon-bowl.svg';
+
 const seg: React.CSSProperties = { fontFamily: '"Segoe UI", -apple-system, sans-serif' };
 
-// Order history list icons
-const imgIconOrderHistory = 'https://www.figma.com/api/mcp/asset/b913a0ab-5080-4bfe-b005-b0038ee35f18';
-const imgIconLocation     = 'https://www.figma.com/api/mcp/asset/43f3d0fa-40ea-417b-a176-1ab7f88c7943';
-const imgIconBowl         = 'https://www.figma.com/api/mcp/asset/d653e3b5-ca2e-4cce-bb5d-b922cda4c4de';
-
-// Place an order card icon (food/utensils)
-const imgIconFood         = 'https://www.figma.com/api/mcp/asset/e5f8f88c-dd7b-4a8c-9ec4-de4b9699b68d';
-// Bowl salad icon for confirmation card
-const imgIconBowlConfirm  = 'https://www.figma.com/api/mcp/asset/ec42d27b-529a-43b3-876c-4a39350487ca';
-
-// Food images
-const imgKoreanChicken = 'https://www.figma.com/api/mcp/asset/b97ad09b-0188-4005-af80-2fb32d4ae8d6';
-const imgTacos         = 'https://www.figma.com/api/mcp/asset/266ec519-acd2-4d78-8e78-9f5dd47b3161';
-const imgBurger        = 'https://www.figma.com/api/mcp/asset/b39f900b-e87d-4657-8dbe-2d658b8acfd7';
+const imgIconOrderHistory = `${import.meta.env.BASE_URL}assets/images/icon-clock-bill.svg`;
+const imgIconFood         = `${import.meta.env.BASE_URL}assets/images/icon-food.svg`;
 
 type Order = {
   location: string;
@@ -218,7 +212,7 @@ function PlaceOrderCard({ order, onBack, onOrderComplete }: { order: Order; onBa
             {/* Dish name */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <div style={{ width: 20, height: 20, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <img src={imgIconBowlConfirm} alt="" style={{ width: 16, height: 16, display: 'block' }} />
+                <img src={imgIconBowl} alt="" style={{ width: 16, height: 16, display: 'block' }} />
               </div>
               <span style={{ ...seg, fontSize: 16, fontWeight: 600, color: '#424242', lineHeight: '24px' }}>{order.dish}</span>
             </div>

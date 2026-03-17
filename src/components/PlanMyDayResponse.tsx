@@ -30,9 +30,9 @@ import iconDocx from '../assets/icons/docx.svg';
 import iconPptx from '../assets/icons/pptx.svg';
 import iconXls from '../assets/icons/xls.svg';
 
-const imgThumbWord  = 'https://www.figma.com/api/mcp/asset/db969f1e-ba72-4734-a909-0dff163dfc2d';
-const imgThumbExcel = 'https://www.figma.com/api/mcp/asset/d4d3a822-330b-4f69-8613-ebccda4ac8b0';
-const imgThumbPptx  = 'https://www.figma.com/api/mcp/asset/2b800d7d-adf0-45e3-a7c8-55f794b9568e';
+const imgThumbWord  = `${import.meta.env.BASE_URL}assets/images/Thumbnail.png`;
+const imgThumbExcel = `${import.meta.env.BASE_URL}assets/images/Thumbnail-1.png`;
+const imgThumbPptx  = `${import.meta.env.BASE_URL}assets/images/Thumbnail-2.png`;
 
 const seg: React.CSSProperties = { fontFamily: '"Segoe UI", -apple-system, sans-serif' };
 
