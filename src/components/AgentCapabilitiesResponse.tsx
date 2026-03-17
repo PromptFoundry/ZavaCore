@@ -56,35 +56,46 @@ export default function AgentCapabilitiesResponse() {
 
         {[
           {
+            emoji: '📰',
             title: 'Catch up quickly',
             body: 'Get a weekly wrap of what\u2019s new, listen to a short audio summary, or see what needs your attention today\u2014based on what\u2019s relevant to your work.',
           },
           {
+            emoji: '💡',
             title: 'Find answers you can trust',
             body: 'Ask questions about policies, tools, or workplace resources and get clear answers using ZavaCore information.',
           },
           {
+            emoji: '🧭',
             title: 'Navigate apps and resources',
             body: 'I can point you to the right app, page, or tool\u2014so you don\u2019t have to remember where everything lives.',
           },
           {
+            emoji: '✨',
             title: 'Keep your work personalized',
             body: 'Bring together updates, tasks, and information that matter to you, all in one place.',
           },
-        ].map(({ title, body }) => (
+        ].map(({ emoji, title, body }) => (
           <div key={title} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 600, lineHeight: '22px', color: '#242424' }}>{title}</p>
+            <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 600, lineHeight: '22px', color: '#242424' }}>{emoji} {title}</p>
             <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242' }}>{body}</p>
           </div>
         ))}
 
         {/* Take action — with sub-items */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-          <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 600, lineHeight: '22px', color: '#242424' }}>Take action on common work tasks</p>
+          <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 600, lineHeight: '22px', color: '#242424' }}>✅ Take action on common work tasks</p>
           <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242' }}>Do things like:</p>
-          <ul style={{ margin: 0, paddingLeft: 24 }}>
-            {['View your recent paystub', 'Review or manage your benefits', 'Book a shuttle or check schedules', 'Order lunch or manage your time'].map(item => (
-              <li key={item} style={{ ...seg, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242' }}>{item}</li>
+          <ul style={{ margin: 0, paddingLeft: 24, listStyleType: 'disc' }}>
+            {[
+              { emoji: '💰', text: 'View your recent paystub' },
+              { emoji: '🏥', text: 'Review or manage your benefits' },
+              { emoji: '🚌', text: 'Book a shuttle or check schedules' },
+              { emoji: '🍱', text: 'Order lunch or manage your time' },
+            ].map(({ emoji, text }) => (
+              <li key={text} style={{ ...seg, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242' }}>
+                {emoji} {text}
+              </li>
             ))}
           </ul>
         </div>
