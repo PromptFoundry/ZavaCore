@@ -28,105 +28,105 @@ const actionIcons = [
 
 export default function AgentCapabilitiesResponse() {
   return (
-    <div style={{ ...seg, display: 'flex', flexDirection: 'column', gap: 12 }}>
+    <div style={{ ...seg, display: 'flex', flexDirection: 'column', gap: 32 }}>
 
       {/* ── Agent byline ── */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, height: 32 }}>
-        <img src={zavcoreLogo} alt="" style={{ width: 24, height: 24 }} />
-        <span style={{ fontWeight: 600, fontSize: 16, lineHeight: '22px', color: '#424242' }}>
-          ZavaCore Agent
-        </span>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        <img src={zavcoreLogo} alt="" style={{ width: 20, height: 20 }} />
+        <span style={{ fontSize: 13, color: '#616161' }}>· ZavaCore Agent</span>
       </div>
 
-      {/* ── Main text ── */}
-      <div style={{ fontSize: 24, lineHeight: '28px', color: '#424242' }}>
-
-        <p style={{ margin: '0 0 28px', fontWeight: 700 }}>
+      {/* ── Heading ── */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <h2 style={{ ...seg, margin: 0, fontSize: 36, fontWeight: 600, lineHeight: '44px', color: '#242424' }}>
           ZavaCore Agent helps you stay on top of work—and get things done.
-        </p>
+        </h2>
 
-        <p style={{ margin: '0 0 28px', fontWeight: 400 }}>
+        <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242' }}>
           You can use me to understand what's happening across ZavaCore, take care of everyday tasks, and find the right information without jumping between tools.
         </p>
 
-        <p style={{ margin: '0 0 28px', fontWeight: 400 }}>Here's how I can help:</p>
-
-        <ul style={{ margin: '0 0 28px', paddingLeft: 36, display: 'flex', flexDirection: 'column', gap: 28 }}>
-
-          <li style={{ listStyle: 'disc' }}>
-            <span style={{ fontWeight: 700 }}>Catch up quickly</span>
-            <br />
-            <span style={{ fontWeight: 400 }}>Get a weekly wrap of what's new, listen to a short audio summary, or see what needs your attention today—based on what's relevant to your work.</span>
-          </li>
-
-          <li style={{ listStyle: 'disc' }}>
-            <span style={{ fontWeight: 700 }}>Take action on common work tasks</span>
-            <br />
-            <span style={{ fontWeight: 400 }}>Do things like:</span>
-            <ul style={{ marginTop: 0, paddingLeft: 36, display: 'flex', flexDirection: 'column', gap: 0 }}>
-              <li style={{ listStyle: 'disc', fontWeight: 400 }}>View your recent paystub</li>
-              <li style={{ listStyle: 'disc', fontWeight: 400 }}>Review or manage your benefits</li>
-              <li style={{ listStyle: 'disc', fontWeight: 400 }}>Book a shuttle or check schedules</li>
-              <li style={{ listStyle: 'disc', fontWeight: 400 }}>Order lunch or manage your time</li>
-            </ul>
-          </li>
-
-          <li style={{ listStyle: 'disc' }}>
-            <span style={{ fontWeight: 700 }}>Find answers you can trust</span>
-            <br />
-            <span style={{ fontWeight: 400 }}>Ask questions about policies, tools, or workplace resources and get clear answers using ZavaCore information.</span>
-          </li>
-
-          <li style={{ listStyle: 'disc' }}>
-            <span style={{ fontWeight: 700 }}>Navigate apps and resources</span>
-            <br />
-            <span style={{ fontWeight: 400 }}>I can point you to the right app, page, or tool—so you don't have to remember where everything lives.</span>
-          </li>
-
-          <li style={{ listStyle: 'disc' }}>
-            <span style={{ fontWeight: 700 }}>Keep your work personalized</span>
-            <br />
-            <span style={{ fontWeight: 400 }}>Bring together updates, tasks, and information that matter to you, all in one place.</span>
-          </li>
-
-        </ul>
-
-        <p style={{ margin: '0 0 28px', fontWeight: 400 }}>
-          You can ask in your own words, request summaries, or jump straight into action.
+        <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242' }}>
+          Here's how I can help:
         </p>
+      </div>
 
-        <p style={{ margin: 0, fontWeight: 400 }}>What would you like to do next?</p>
+      {/* ── Capability list ── */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+
+        {[
+          {
+            title: 'Catch up quickly',
+            body: 'Get a weekly wrap of what\u2019s new, listen to a short audio summary, or see what needs your attention today\u2014based on what\u2019s relevant to your work.',
+          },
+          {
+            title: 'Find answers you can trust',
+            body: 'Ask questions about policies, tools, or workplace resources and get clear answers using ZavaCore information.',
+          },
+          {
+            title: 'Navigate apps and resources',
+            body: 'I can point you to the right app, page, or tool\u2014so you don\u2019t have to remember where everything lives.',
+          },
+          {
+            title: 'Keep your work personalized',
+            body: 'Bring together updates, tasks, and information that matter to you, all in one place.',
+          },
+        ].map(({ title, body }) => (
+          <div key={title} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+            <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 600, lineHeight: '22px', color: '#242424' }}>{title}</p>
+            <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242' }}>{body}</p>
+          </div>
+        ))}
+
+        {/* Take action — with sub-items */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+          <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 600, lineHeight: '22px', color: '#242424' }}>Take action on common work tasks</p>
+          <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242' }}>Do things like:</p>
+          <ul style={{ margin: 0, paddingLeft: 24 }}>
+            {['View your recent paystub', 'Review or manage your benefits', 'Book a shuttle or check schedules', 'Order lunch or manage your time'].map(item => (
+              <li key={item} style={{ ...seg, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242' }}>{item}</li>
+            ))}
+          </ul>
+        </div>
 
       </div>
 
+      {/* ── Closing ── */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242' }}>
+          You can ask in your own words, request summaries, or jump straight into action.
+        </p>
+        <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242' }}>
+          What would you like to do next?
+        </p>
+      </div>
+
       {/* ── Divider ── */}
-      <div style={{ height: 1, backgroundColor: 'rgba(0, 30, 68, 0.05)', margin: '4px 0' }} />
+      <div style={{ height: 1, backgroundColor: 'rgba(0, 30, 68, 0.05)' }} />
 
       {/* ── Footer ── */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, paddingTop: 8 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
 
         {/* Sources pill */}
-        <div>
-          <button style={{
-            ...seg,
-            display: 'flex', alignItems: 'center', gap: 6,
-            height: 40, padding: '6px 12px',
-            backgroundColor: 'transparent',
-            border: '1px solid #e6e6e6',
-            borderRadius: 8, cursor: 'pointer',
-          }}
-            onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
-            onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
-          >
-            <span style={{ fontSize: 14, fontWeight: 400, lineHeight: '20px', color: '#424242' }}>Sources</span>
-            <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
-              {[0, 1, 2].map(i => (
-                <img key={i} src={zavcoreLogo} alt="" style={{ width: 16, height: 16, borderRadius: 2, objectFit: 'cover' }} />
-              ))}
-            </div>
-            <ChevronDown16Regular style={{ width: 16, height: 16, color: '#424242', flexShrink: 0 }} />
-          </button>
-        </div>
+        <button style={{
+          ...seg, alignSelf: 'flex-start',
+          display: 'flex', alignItems: 'center', gap: 6,
+          height: 40, padding: '6px 12px',
+          backgroundColor: 'transparent',
+          border: '1px solid #e6e6e6',
+          borderRadius: 8, cursor: 'pointer',
+        }}
+          onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+          onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+        >
+          <span style={{ fontSize: 14, fontWeight: 400, lineHeight: '20px', color: '#424242' }}>Sources</span>
+          <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+            {[0, 1, 2].map(i => (
+              <img key={i} src={zavcoreLogo} alt="" style={{ width: 16, height: 16, borderRadius: 2 }} />
+            ))}
+          </div>
+          <ChevronDown16Regular style={{ width: 16, height: 16, color: '#424242', flexShrink: 0 }} />
+        </button>
 
         {/* Action bar */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
@@ -151,7 +151,7 @@ export default function AgentCapabilitiesResponse() {
       </div>
 
       {/* ── Suggestion chips ── */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'flex-end', paddingTop: 8 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'flex-end' }}>
         {suggestions.map(text => (
           <button
             key={text}
