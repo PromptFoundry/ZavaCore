@@ -38,7 +38,7 @@ export default function AgentCapabilitiesResponse() {
 
       {/* ── Heading ── */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-        <h2 style={{ ...seg, margin: 0, fontSize: 36, fontWeight: 600, lineHeight: '44px', color: '#242424' }}>
+        <h2 style={{ ...seg, margin: 0, fontSize: 28, fontWeight: 600, lineHeight: '36px', color: '#242424' }}>
           ZavaCore Agent helps you stay on top of work—and get things done.
         </h2>
 

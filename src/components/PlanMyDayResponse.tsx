@@ -47,7 +47,7 @@ function DayBriefHeader() {
           <img src={imgProfileAvatar} alt="" style={{ width: 24, height: 24, borderRadius: 12, objectFit: 'cover' }} />
           <span style={{ ...seg, fontSize: 13, color: '#272320' }}>· Curated for you · 30m</span>
         </div>
-        <h1 style={{ ...seg, fontSize: 36, fontWeight: 600, color: '#272320', margin: '0 0 4px', lineHeight: '48px', whiteSpace: 'nowrap' }}>
+        <h1 style={{ ...seg, fontSize: 28, fontWeight: 600, color: '#272320', margin: '0 0 4px', lineHeight: '36px', whiteSpace: 'nowrap' }}>
           Carole, your daily brief is ready
         </h1>
         <p style={{ ...seg, fontSize: 16, color: '#424242', margin: 0, lineHeight: '28px' }}>

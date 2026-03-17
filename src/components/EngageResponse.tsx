@@ -43,10 +43,10 @@ function BuildingCard() {
       {/* Heading */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-          <span style={{ ...seg, fontSize: 36, fontWeight: 600, lineHeight: '48px', color: '#242424', whiteSpace: 'nowrap' }}>
+          <span style={{ ...seg, fontSize: 28, fontWeight: 600, lineHeight: '36px', color: '#242424', whiteSpace: 'nowrap' }}>
             What's new in your
           </span>
-          <span style={{ ...seg, fontSize: 36, fontWeight: 600, lineHeight: '48px', color: '#242424', whiteSpace: 'nowrap' }}>
+          <span style={{ ...seg, fontSize: 28, fontWeight: 600, lineHeight: '36px', color: '#242424', whiteSpace: 'nowrap' }}>
             Engage communities
           </span>
         </div>
@@ -356,7 +356,7 @@ export default function EngageResponse() {
         {/* Intro */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
           <AgentByline />
-          <h2 style={{ ...seg, margin: 0, fontSize: 36, fontWeight: 600, lineHeight: '44px', color: '#242424' }}>
+          <h2 style={{ ...seg, margin: 0, fontSize: 28, fontWeight: 600, lineHeight: '36px', color: '#242424' }}>
             Carole, here's what's driving conversation
           </h2>
           <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242' }}>
@@ -369,7 +369,7 @@ export default function EngageResponse() {
 
         {/* Standout Posts */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-          <h2 style={{ ...seg, margin: 0, fontSize: 36, fontWeight: 600, lineHeight: '44px', color: '#242424' }}>
+          <h2 style={{ ...seg, margin: 0, fontSize: 28, fontWeight: 600, lineHeight: '36px', color: '#242424' }}>
             This week's standout posts
           </h2>
           <QuickSummaryCard />
@@ -378,7 +378,7 @@ export default function EngageResponse() {
 
       {/* ── Trending Topics ── */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-        <h2 style={{ ...seg, margin: 0, fontSize: 36, fontWeight: 600, lineHeight: '44px', color: '#242424' }}>
+        <h2 style={{ ...seg, margin: 0, fontSize: 28, fontWeight: 600, lineHeight: '36px', color: '#242424' }}>
           Trending topics across ZavaCore
         </h2>
         <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242' }}>
@@ -436,7 +436,7 @@ export default function EngageResponse() {
         display: 'flex', flexDirection: 'column', gap: 32,
       }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <h2 style={{ ...seg, margin: 0, fontSize: 36, fontWeight: 600, lineHeight: '44px', color: '#242424' }}>
+          <h2 style={{ ...seg, margin: 0, fontSize: 28, fontWeight: 600, lineHeight: '36px', color: '#242424' }}>
             Grow your network
           </h2>
           <p style={{ ...seg, margin: 0, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242' }}>
