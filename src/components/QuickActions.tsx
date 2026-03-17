@@ -11,7 +11,7 @@ const shadow = '0px 2px 4px 0px rgba(0,0,0,0.14), 0px 0px 2px 0px rgba(0,0,0,0.1
 const iconGradient = 'linear-gradient(135deg, #4750eb 0%, #6b54f0 35%, #8f58f5 65%, #d660ff 100%)';
 
 const actions = [
-  { icon: foodIcon,         title: 'Order lunch',         description: 'Find nearby cafe options, place my usual order, and estimate pickup time.' },
+  { icon: foodIcon,         title: 'Order lunch',         description: 'Help me order my favorite dish from the cafe' },
   { icon: shiftsIcon,       title: 'Manage time',         description: 'Help me organize my calendar, block focus time, and resolve meeting conflicts.' },
   { icon: savingsIcon,      title: 'View recent paystub', description: 'Check my most recent paystub to see earnings, deductions, and take‑home pay.' },
   { icon: rocketIcon,       title: 'Book a shuttle',      description: 'Find the next available campus shuttle and reserve a seat to my destination.' },
