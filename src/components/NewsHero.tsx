@@ -67,7 +67,7 @@ interface NewsHeroProps {
   shimmerTarget?: string | null;
 }
 
-export default function NewsHero({ onSummarizeNews, onEngageClick, shimmerTarget }: NewsHeroProps = {}) {
+export default function NewsHero({ onSummarizeNews, onEngageClick: _onEngageClick, shimmerTarget }: NewsHeroProps = {}) {
   const [current, setCurrent] = useState(0);
 
   const prev = () => setCurrent(i => (i - 1 + slides.length) % slides.length);

@@ -5,7 +5,7 @@ import {
 } from '@heroicons/react/24/outline';
 import zavcoreLogo from '../assets/images/ZavaCore_logo.svg';
 import agentBgGradientFade from '../assets/images/Zava agent background - gradient fade.png';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import ChatInput from './ChatInput';
 import LeftNav from './LeftNav';
 import Header from './Header';
@@ -16,7 +16,6 @@ import RightPanel from './RightPanel';
 import ArticlePanel from './ArticlePanel';
 import PromptStarter from './PromptStarter';
 import NewsHero from './NewsHero';
-import RecommendedSection from './RecommendedSection';
 import RecentActivitySection from './RecentActivitySection';
 import EngageResponse from './EngageResponse';
 import NewsResponseMessage from './NewsResponseMessage';
@@ -109,15 +108,15 @@ export default function Layout() {
   const [isPlanMyDayLoading, setIsPlanMyDayLoading] = useState(false);
   const [showOrderLunch, setShowOrderLunch] = useState(false);
   const [isOrderLunchLoading, setIsOrderLunchLoading] = useState(false);
-  const [showPeopleOrg, setShowPeopleOrg] = useState(false);
-  const [isPeopleOrgLoading, setIsPeopleOrgLoading] = useState(false);
+  const [showPeopleOrg, _setShowPeopleOrg] = useState(false);
+  const [isPeopleOrgLoading, _setIsPeopleOrgLoading] = useState(false);
   const [orderTracker, setOrderTracker] = useState<{ dish: string; emoji: string } | null>(null);
-  const [showDayAtAGlance, setShowDayAtAGlance] = useState(false);
+  const [_showDayAtAGlance, setShowDayAtAGlance] = useState(false);
   const [showAddedToast, setShowAddedToast] = useState(false);
   const [toastVisible, setToastVisible] = useState(false);
-  const [activeShimmer, setActiveShimmer] = useState<string | null>(null);
+  const [activeShimmer, _setActiveShimmer] = useState<string | null>(null);
   const mainRef = useRef<HTMLElement>(null);
-  const shimmerTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
 
   const toggleMobileNav = () => setIsMobileNavOpen(!isMobileNavOpen);
 
@@ -177,8 +176,8 @@ export default function Layout() {
     setShowOrderLunch(false);
     setIsOrderLunchLoading(false);
     setOrderTracker(null);
-    setShowPeopleOrg(false);
-    setIsPeopleOrgLoading(false);
+    _setShowPeopleOrg(false);
+    _setIsPeopleOrgLoading(false);
   };
 
   const handleAddToHome = () => {
@@ -198,14 +197,6 @@ export default function Layout() {
     }, 2000);
   };
 
-  const handlePeopleOrg = () => {
-    setIsPeopleOrgLoading(true);
-    mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
-    setTimeout(() => {
-      setIsPeopleOrgLoading(false);
-      setShowPeopleOrg(true);
-    }, 2000);
-  };
 
   const handleEngageSummarize = () => {
     setIsEngageLoading(true);

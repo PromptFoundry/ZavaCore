@@ -35,14 +35,6 @@ const cardHeaderLabel: React.CSSProperties = {
   alignItems: 'flex-start',
 };
 
-const footerStyle: React.CSSProperties = {
-  height: '64px',
-  padding: '12px 20px 0',
-  display: 'flex',
-  alignItems: 'flex-start',
-  gap: '8px',
-  flexShrink: 0,
-};
 
 const outlineBtn: React.CSSProperties = {
   padding: '5px 11px',
@@ -78,7 +70,7 @@ const benefitsItems = [
 ];
 
 
-export default function RecentActivitySection({ shimmerTarget }: { onEngageClick?: () => void; shimmerTarget?: string | null }) {
+export default function RecentActivitySection({ shimmerTarget: _shimmerTarget }: { onEngageClick?: () => void; shimmerTarget?: string | null }) {
   return (
     <div className="widget-grid-3col activity-grid">
 
