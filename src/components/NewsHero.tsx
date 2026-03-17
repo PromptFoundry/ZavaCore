@@ -16,9 +16,10 @@ const slides = [
   {
     bg: sliderImg1,
     icon: soundWaveIcon,
-    title: 'Listen to an audio summary',
-    source: 'News summary',
-    timestamp: '6m 31s',
+    title: "Carole, here's what's new this week",
+    subtitle: 'ZavaCore highlights, personalized for you',
+    source: '',
+    timestamp: '',
     buttonLabel: 'Summarize my news',
   },
   {
@@ -166,12 +167,25 @@ export default function NewsHero({ onSummarizeNews, onEngageClick: _onEngageClic
 
               {/* Title + meta */}
               <div style={{ flex: 1, minWidth: 0 }}>
-                <p style={{ ...segoe, margin: 0, fontSize: 18, fontWeight: 600, lineHeight: '24px', color: '#fffbf8', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                  {slide.title}
-                </p>
-                <p style={{ ...segoe, margin: 0, fontSize: 13, fontWeight: 400, lineHeight: '18px', color: 'rgba(255,255,255,0.85)' }}>
-                  {slide.source} · {slide.timestamp}
-                </p>
+                {'subtitle' in slide && slide.subtitle ? (
+                  <>
+                    <p style={{ ...segoe, margin: 0, fontSize: 24, fontWeight: 600, lineHeight: '32px', color: '#fffbf8', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textShadow: '0px 0px 8px rgba(0,0,0,0.2), 0px 14px 28px rgba(0,0,0,0.24), 0px 0px 4px rgba(0,0,0,0.9)' }}>
+                      {slide.title}
+                    </p>
+                    <p style={{ ...segoe, margin: 0, fontSize: 20, fontWeight: 400, lineHeight: '28px', color: 'rgba(255,255,255,0.9)' }}>
+                      {slide.subtitle}
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p style={{ ...segoe, margin: 0, fontSize: 18, fontWeight: 600, lineHeight: '24px', color: '#fffbf8', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {slide.title}
+                    </p>
+                    <p style={{ ...segoe, margin: 0, fontSize: 13, fontWeight: 400, lineHeight: '18px', color: 'rgba(255,255,255,0.85)' }}>
+                      {slide.source} · {slide.timestamp}
+                    </p>
+                  </>
+                )}
               </div>
 
               {/* Action button */}

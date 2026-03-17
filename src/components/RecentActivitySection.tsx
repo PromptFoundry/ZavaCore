@@ -70,7 +70,7 @@ const benefitsItems = [
 ];
 
 
-export default function RecentActivitySection({ shimmerTarget: _shimmerTarget }: { onEngageClick?: () => void; shimmerTarget?: string | null }) {
+export default function RecentActivitySection({ onEngageClick, shimmerTarget: _shimmerTarget }: { onEngageClick?: () => void; shimmerTarget?: string | null }) {
   return (
     <div className="widget-grid-3col activity-grid">
 
@@ -188,12 +188,17 @@ export default function RecentActivitySection({ shimmerTarget: _shimmerTarget }:
         </div>
 
         {/* Card 2 — White: Summarize trending updates */}
-        <div style={{
-          flex: 1, borderRadius: 24, padding: 16,
-          display: 'flex', flexDirection: 'column', gap: 8, justifyContent: 'center',
-          backgroundColor: '#fff', border: '1px solid #e0e0e0',
-          boxShadow: shadow, cursor: 'not-allowed', overflow: 'hidden',
-        }}>
+        <div
+          onClick={onEngageClick}
+          style={{
+            flex: 1, borderRadius: 24, padding: 16,
+            display: 'flex', flexDirection: 'column', gap: 8, justifyContent: 'center',
+            backgroundColor: '#fff', border: '1px solid #e0e0e0',
+            boxShadow: shadow, cursor: onEngageClick ? 'pointer' : 'not-allowed', overflow: 'hidden',
+          }}
+          onMouseEnter={onEngageClick ? e => (e.currentTarget.style.backgroundColor = '#fafafa') : undefined}
+          onMouseLeave={onEngageClick ? e => (e.currentTarget.style.backgroundColor = '#fff') : undefined}
+        >
           {/* Icon + label row */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <img src={vivaEngageIcon} alt="" style={{ width: 16, height: 16, flexShrink: 0 }} />

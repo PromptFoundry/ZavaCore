@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import zavalLogo from '../assets/images/ZavaCore_logo.svg';
+import imgProfileAvatar from '../assets/images/Carole Poland.png';
 import { EditRegular, CopyRegular, ArrowForwardRegular, ThumbLikeRegular, ThumbDislikeRegular, MoreHorizontalRegular } from '@fluentui/react-icons';
 
 const segoe: React.CSSProperties = { fontFamily: '"Segoe UI", sans-serif' };
@@ -141,21 +142,21 @@ export default function NewsResponseMessage({ onArticleClick }: NewsResponseMess
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 28, width: '100%', maxWidth: 772 }}>
 
-      {/* ── Section 1: Copilot header + greeting (gap: 32) ── */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <img src={zavalLogo} alt="ZavaCore Agent" style={{ width: 24, height: 24 }} />
-          <span style={{ ...segoe, fontWeight: 600, fontSize: 16, lineHeight: '22px', color: '#424242' }}>ZavaCore Agent</span>
+      {/* ── Section 1: Header ── */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 4, padding: '32px 0 0' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
+          <img src={imgProfileAvatar} alt="" style={{ width: 24, height: 24, borderRadius: 12, objectFit: 'cover' }} />
+          <span style={{ ...segoe, fontSize: 13, color: '#272320' }}>· Curated for you · 6m 31s</span>
         </div>
-        <div>
-          <p style={{ ...segoe, fontSize: 24, fontWeight: 400, lineHeight: '28px', color: '#424242', margin: '0 0 16px' }}>Hi Carole,</p>
-          <p style={{ ...segoe, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242', margin: 0 }}>
-            Here's your personalized roundup of what's new at Zava. I've picked the company updates most relevant to your work and packaged them into a quick video and skimmable highlights. You'll see what could impact your{' '}
-            <strong style={{ fontWeight: 600 }}>smart-fiber roadmap</strong>, upcoming{' '}
-            <strong style={{ fontWeight: 600 }}>milestones</strong>, key cross-team work, plus a few{' '}
-            <strong style={{ fontWeight: 600 }}>events and highlights you might enjoy</strong>{' '}along the way.
-          </p>
-        </div>
+        <h1 style={{ ...segoe, fontSize: 36, fontWeight: 600, color: '#272320', margin: '0 0 4px', lineHeight: '48px' }}>
+          Carole, your news summary is ready
+        </h1>
+        <p style={{ ...segoe, fontSize: 16, fontWeight: 400, lineHeight: '28px', color: '#424242', margin: 0 }}>
+          Here's your personalized roundup of what's new at Zava. I've picked the company updates most relevant to your work and packaged them into a quick video and skimmable highlights. You'll see what could impact your{' '}
+          <strong style={{ fontWeight: 600 }}>smart-fiber roadmap</strong>, upcoming{' '}
+          <strong style={{ fontWeight: 600 }}>milestones</strong>, key cross-team work, plus a few{' '}
+          <strong style={{ fontWeight: 600 }}>events and highlights you might enjoy</strong>{' '}along the way.
+        </p>
       </div>
 
       {/* ── Section 2: Video (gap: 14) ── */}
