@@ -3,12 +3,14 @@ import {
   ChevronDownIcon,
   CheckBadgeIcon,
 } from '@heroicons/react/24/outline';
+import zavcoreLogo from '../assets/images/ZavaCore_logo.svg';
+import agentBgGradientFade from '../assets/images/Zava agent background - gradient fade.png';
 import React, { useState, useRef, useEffect } from 'react';
 import ChatInput from './ChatInput';
 import LeftNav from './LeftNav';
 import Header from './Header';
 import QuickActions from './QuickActions';
-import AnimatedLoader from './AnimatedLoader';
+import LatencyLoader from './LatencyLoader';
 import EntityCard from './EntityCard';
 import RightPanel from './RightPanel';
 import ArticlePanel from './ArticlePanel';
@@ -224,52 +226,8 @@ export default function Layout() {
 
   const hasConversation = messages.length > 0 || isLoading || isEngageLoading || showEngageResponse || isNewsLoading || showNewsResponse || isPlanMyDayLoading || showPlanMyDay || isOrderLunchLoading || showOrderLunch || isPeopleOrgLoading || showPeopleOrg;
 
-  useEffect(() => {
-    if (hasConversation) {
-      setActiveShimmer(null);
-      if (shimmerTimer.current) clearTimeout(shimmerTimer.current);
-      return;
-    }
-
-    const targets = ['plan-my-day', 'news-summarize', 'engage-card', 'order-lunch', 'engage-activity', 'people-org'];
-    let index = 0;
-
-    const isVisible = (id: string) => {
-      const el = document.querySelector(`[data-shimmer-id="${id}"]`);
-      if (!el) return false;
-      const rect = el.getBoundingClientRect();
-      return rect.bottom > 0 && rect.top < window.innerHeight;
-    };
-
-    const cycle = () => {
-      // Advance through targets in order, skipping non-visible ones
-      let checked = 0;
-      while (checked < targets.length && !isVisible(targets[index])) {
-        index = (index + 1) % targets.length;
-        checked++;
-      }
-      if (checked === targets.length) {
-        // Nothing visible — retry shortly
-        shimmerTimer.current = setTimeout(cycle, 300);
-        return;
-      }
-      const next = targets[index];
-      index = (index + 1) % targets.length;
-      setActiveShimmer(next);
-
-      shimmerTimer.current = setTimeout(() => {
-        setActiveShimmer(null);
-        shimmerTimer.current = setTimeout(cycle, 400 + Math.random() * 600);
-      }, 1200);
-    };
-
-    shimmerTimer.current = setTimeout(cycle, 500);
-
-    return () => {
-      if (shimmerTimer.current) clearTimeout(shimmerTimer.current);
-      setActiveShimmer(null);
-    };
-  }, [hasConversation]);
+  // Shimmer effect disabled
+  // useEffect(() => { ... }, [hasConversation]);
 
 
   return (
@@ -319,7 +277,7 @@ export default function Layout() {
           ref={mainRef}
           className={`flex-1 overflow-auto py-8 md:py-16 lg:py-[126px] px-4 md:px-6 lg:px-8 relative bg-white flex flex-col gap-8`}
           style={!hasConversation ? {
-            backgroundImage: 'url("/assets/images/Zava agent background - gradient fade.png")',
+            backgroundImage: `url("${agentBgGradientFade}")`,
             backgroundPosition: 'top center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: '100% auto'
@@ -335,7 +293,7 @@ export default function Layout() {
                     {/* Agent Icon */}
                     <div className="w-10 h-10 md:w-12 md:h-12 bg-white border border-[#f0f0f0] rounded-xl md:rounded-2xl flex items-center justify-center">
                       <img
-                        src="/assets/images/ZavaCore_logo.svg"
+                        src={zavcoreLogo}
                         alt="ZavaCore"
                         className="w-5 h-5 md:w-6 md:h-6"
                       />
@@ -377,13 +335,13 @@ export default function Layout() {
                       </div>
                       <div className="flex flex-col gap-4">
                         <div className="flex items-center gap-2">
-                          <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore Agent" className="w-6 h-6" />
+                          <img src={zavcoreLogo} alt="ZavaCore Agent" className="w-6 h-6" />
                           <span className="font-semibold text-base text-[#333333]">ZavaCore Agent</span>
                         </div>
                         {isOrderLunchLoading ? (
                           <>
                             <p className="text-base leading-6 text-[#333333]">Looking up your order history…</p>
-                            <AnimatedLoader />
+                            <LatencyLoader />
                           </>
                         ) : (
                           <>
@@ -405,13 +363,13 @@ export default function Layout() {
                       </div>
                       <div className="flex flex-col gap-4">
                         <div className="flex items-center gap-2">
-                          <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore Agent" className="w-6 h-6" />
+                          <img src={zavcoreLogo} alt="ZavaCore Agent" className="w-6 h-6" />
                           <span className="font-semibold text-base text-[#333333]">ZavaCore Agent</span>
                         </div>
                         {isPlanMyDayLoading ? (
                           <>
                             <p className="text-base leading-6 text-[#333333]">Planning your day…</p>
-                            <AnimatedLoader />
+                            <LatencyLoader />
                           </>
                         ) : (
                           <PlanMyDayResponse onAddToHome={handleAddToHome} />
@@ -432,11 +390,11 @@ export default function Layout() {
                         {isNewsLoading ? (
                           <>
                             <div className="flex items-center gap-2">
-                              <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore Agent" className="w-6 h-6" />
+                              <img src={zavcoreLogo} alt="ZavaCore Agent" className="w-6 h-6" />
                               <span className="font-semibold text-base text-[#333333]">ZavaCore Agent</span>
                             </div>
                             <p className="text-base leading-6 text-[#333333]">Summarizing your news…</p>
-                            <AnimatedLoader />
+                            <LatencyLoader />
                           </>
                         ) : (
                           <NewsResponseMessage onArticleClick={(type) => { setActiveArticle(type); setIsArticlePanelOpen(true); }} />
@@ -456,14 +414,14 @@ export default function Layout() {
                       <div className="flex flex-col gap-4">
                         <div className="flex items-center gap-2">
                           <div className="w-6 h-6">
-                            <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore Agent" className="w-full h-full" />
+                            <img src={zavcoreLogo} alt="ZavaCore Agent" className="w-full h-full" />
                           </div>
                           <span className="font-semibold text-base text-[#333333]">ZavaCore Agent</span>
                         </div>
                         {isEngageLoading ? (
                           <>
                             <p className="text-base leading-6 text-[#333333]">Summarizing Engage activity…</p>
-                            <AnimatedLoader />
+                            <LatencyLoader />
                           </>
                         ) : (
                           <EngageResponse />
@@ -482,13 +440,13 @@ export default function Layout() {
                       </div>
                       <div className="flex flex-col gap-4">
                         <div className="flex items-center gap-2">
-                          <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore Agent" className="w-6 h-6" />
+                          <img src={zavcoreLogo} alt="ZavaCore Agent" className="w-6 h-6" />
                           <span className="font-semibold text-base text-[#333333]">ZavaCore Agent</span>
                         </div>
                         {isPeopleOrgLoading ? (
                           <>
                             <p className="text-base leading-6 text-[#333333]">Looking up your org activity…</p>
-                            <AnimatedLoader />
+                            <LatencyLoader />
                           </>
                         ) : (
                           <PeopleOrgResponse />
@@ -507,7 +465,7 @@ export default function Layout() {
                         <div className="flex flex-col gap-4 max-w-[590px]">
                           <div className="flex items-center gap-2">
                             <div className="w-6 h-6">
-                              <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore Agent" className="w-full h-full" />
+                              <img src={zavcoreLogo} alt="ZavaCore Agent" className="w-full h-full" />
                             </div>
                             <span className="font-semibold text-base text-[#333333]">ZavaCore Agent</span>
                           </div>
@@ -523,12 +481,12 @@ export default function Layout() {
                     <div className="flex flex-col gap-2 max-w-[590px]">
                       <div className="flex items-center gap-2">
                         <div className="w-6 h-6">
-                          <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore Agent" className="w-full h-full" />
+                          <img src={zavcoreLogo} alt="ZavaCore Agent" className="w-full h-full" />
                         </div>
                         <span className="font-semibold text-base text-[#333333]">ZavaCore Agent</span>
                       </div>
                       <p className="text-base leading-6 text-[#333333]">Gathering information about the Summit Center project…</p>
-                      <AnimatedLoader />
+                      <LatencyLoader />
                     </div>
                   )}
                 </div>
@@ -538,9 +496,9 @@ export default function Layout() {
               {!hasConversation && (
                 <div className="flex flex-col gap-4 md:gap-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-                    <div data-shimmer-id="plan-my-day"><PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Plan my day" description="What should I prioritize based on my schedule?" onClick={handlePlanMyDay} className={activeShimmer === 'plan-my-day' ? 'zava-shimmer' : ''} /></div>
-                    <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Take action" description="Find marketing documents that need my feedback" />
-                    <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Catch up" description="Highlight town hall updates relevant to my work" />
+                    <div data-shimmer-id="plan-my-day"><PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Agent overview" description="What should I prioritize based on my schedule?" onClick={handlePlanMyDay} className={activeShimmer === 'plan-my-day' ? 'zava-shimmer' : ''} /></div>
+                    <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Leadership updates" description="Summarize the latest leadership announcements relevant to me" />
+                    <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="This week's deadlines" description="What deadlines and deliverables do I have this week?" />
                   </div>
                   <div className="flex justify-end">
                     <button className="flex items-center gap-1 px-3 py-1.5 text-xs md:text-sm text-[#424242] hover:bg-gray-50 rounded-md transition-colors">
@@ -564,7 +522,6 @@ export default function Layout() {
                 />
               )}
               <div data-name="news-hero"><NewsHero onSummarizeNews={handleSummarizeNews} onEngageClick={handleEngageSummarize} shimmerTarget={activeShimmer} /></div>
-              <div data-name="recommended"><RecommendedSection showDayAtAGlance={showDayAtAGlance} onPeopleCardClick={handlePeopleOrg} shimmerTarget={activeShimmer} /></div>
               <div data-name="quick-actions"><QuickActions onOrderLunch={handleOrderLunch} shimmerTarget={activeShimmer} /></div>
               <div data-name="recent-activity"><RecentActivitySection onEngageClick={handleEngageSummarize} shimmerTarget={activeShimmer} /></div>
             </div>

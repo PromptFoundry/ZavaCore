@@ -112,8 +112,10 @@ button, div[role="button"], [onclick] {
   gap: 14.5px;
 }
 .news-hero-right > * {
-  flex: 1;
+  height: calc(50% - 7.25px);
+  flex-shrink: 0;
   min-height: 0;
+  box-sizing: border-box;
 }
 @media (max-width: 1023px) {
   .news-hero-layout {

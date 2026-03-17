@@ -11,12 +11,12 @@ const shadow = '0px 2px 4px 0px rgba(0,0,0,0.14), 0px 0px 2px 0px rgba(0,0,0,0.1
 const iconGradient = 'linear-gradient(135deg, #4750eb 0%, #6b54f0 35%, #8f58f5 65%, #d660ff 100%)';
 
 const actions = [
-  { icon: foodIcon,         title: 'Order Lunch',         description: 'Find and order your favorite meal from the café in seconds.' },
-  { icon: shiftsIcon,       title: 'Manage time',         description: 'Schedule time away and automatically update meetings and availability.' },
-  { icon: chatQuestionIcon, title: 'Ask a question',      description: 'Get quick answers about policies, tools, or company resources.' },
-  { icon: rocketIcon,       title: 'Book a shuttle',      description: 'Reserve a campus shuttle and see upcoming routes and times.' },
-  { icon: savingsIcon,      title: 'View recent paystub', description: 'Quickly access your latest paystub and payroll details.' },
-  { icon: premiumIcon,      title: 'Navigate MyBenefits', description: 'Explore your benefits and understand what\'s available to you.' },
+  { icon: foodIcon,         title: 'Order lunch',         description: 'Find nearby cafe options, place my usual order, and estimate pickup time.' },
+  { icon: shiftsIcon,       title: 'Manage time',         description: 'Help me organize my calendar, block focus time, and resolve meeting conflicts.' },
+  { icon: savingsIcon,      title: 'View recent paystub', description: 'Check my most recent paystub to see earnings, deductions, and take‑home pay.' },
+  { icon: rocketIcon,       title: 'Book a shuttle',      description: 'Find the next available campus shuttle and reserve a seat to my destination.' },
+  { icon: chatQuestionIcon, title: 'Ask a question',      description: 'Get quick answers about company tools, policies, or workplace resources.' },
+  { icon: premiumIcon,      title: 'Navigate my benefits', description: 'Review my benefits to understand what\'s included, what I\'m enrolled in, and how it applies to me.' },
 ];
 
 interface QuickActionsProps {
@@ -29,23 +29,19 @@ export default function QuickActions({ onOrderLunch, shimmerTarget }: QuickActio
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-      <h2 style={{ ...segoe, margin: 0, fontSize: '24px', fontWeight: 700, lineHeight: '32px', color: '#242424' }}>
-        Quick actions
-      </h2>
-
       <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
         {rows.map((row, rowIdx) => (
           <div key={rowIdx} className="quick-actions-row">
             {row.map(({ icon, title, description }, i) => (
               <div
                 key={i}
-                onClick={title === 'Order Lunch' ? onOrderLunch : undefined}
-                data-shimmer-id={title === 'Order Lunch' ? 'order-lunch' : undefined}
-                className={title === 'Order Lunch' && shimmerTarget === 'order-lunch' ? 'zava-shimmer' : undefined}
+                onClick={title === 'Order lunch' ? onOrderLunch : undefined}
+                data-shimmer-id={title === 'Order lunch' ? 'order-lunch' : undefined}
+                className={title === 'Order lunch' && shimmerTarget === 'order-lunch' ? 'zava-shimmer' : undefined}
                 style={{
                   background: '#fff',
                   border: '0.5px solid #f0f0f0',
-                  borderRadius: 12,
+                  borderRadius: 24,
                   boxShadow: shadow,
                   padding: 24,
                   height: 140,
@@ -53,7 +49,7 @@ export default function QuickActions({ onOrderLunch, shimmerTarget }: QuickActio
                   display: 'flex',
                   flexDirection: 'column',
                   gap: 12,
-                  cursor: title === 'Order Lunch' ? 'pointer' : 'not-allowed',
+                  cursor: title === 'Order lunch' ? 'pointer' : 'not-allowed',
                   overflow: 'hidden',
                 }}
                 onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#fafafa')}

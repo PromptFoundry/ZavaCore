@@ -1,15 +1,12 @@
 import { useState } from 'react';
-import { ChevronLeft24Regular, ChevronRight24Regular } from '@fluentui/react-icons';
+import { ChevronLeft24Regular, ChevronRight24Regular, Comment24Regular, Mention24Regular, CheckmarkCircle24Regular } from '@fluentui/react-icons';
 import soundWaveIcon from '../assets/icons/Sound Wave Circle Sparkle.svg';
 import sliderImg1 from '../assets/images/Slider image 1.png';
 import carouselBg1 from '../assets/images/Carousel-Background-1.png';
 // carouselBg2 replaced with public asset below
 import carouselBg3 from '../assets/images/Carousel-Background-3.png';
 import carouselBg4 from '../assets/images/Carousel-Background-4.png';
-import learningHero from '../assets/images/learning image hero.png';
-import engageHero from '../assets/images/engage image hero.png';
-import vivaLearningIcon from '../assets/icons/Viva Learning.svg';
-import vivaEngageIcon from '../assets/icons/Viva Engage.svg';
+import imgEventBg from '../assets/images/Event.png';
 
 const segoe: React.CSSProperties = { fontFamily: '"Segoe UI", sans-serif' };
 const cardShadow = '0px 10px 20px 0px rgba(0,0,0,0.14), 0px 0px 2.5px 0px rgba(0,0,0,0.12)';
@@ -58,25 +55,10 @@ const slides = [
   },
 ];
 
-const rightCards = [
-  {
-    bg: learningHero,
-    appIcon: vivaLearningIcon,
-    appIconBg: 'rgba(230,230,230,0.7)',
-    badge: 'Due in 2 days',
-    title: 'Safe manufacturing: Ensuring your safety and the safety of others',
-    source: 'Learning',
-    meta: '30m',
-  },
-  {
-    bg: engageHero,
-    appIcon: vivaEngageIcon,
-    appIconBg: 'rgba(230,230,230,0.9)',
-    badge: 'Trending now',
-    title: 'Top Trending Conversations & Announcements',
-    source: 'Engage',
-    meta: '6 new updates',
-  },
+const statTiles = [
+  { Icon: Comment24Regular,        label: 'Comments', value: 12 },
+  { Icon: Mention24Regular,        label: 'Mentions', value: 3 },
+  { Icon: CheckmarkCircle24Regular, label: 'Tasks',   value: 8 },
 ];
 
 interface NewsHeroProps {
@@ -233,78 +215,105 @@ export default function NewsHero({ onSummarizeNews, onEngageClick, shimmerTarget
 
         {/* ── Right column: 2 stacked cards ── */}
         <div className="news-hero-right">
-          {rightCards.map((card, i) => (
-            <div
-              key={i}
-              onClick={i === 1 ? onEngageClick : undefined}
-              data-shimmer-id={i === 1 ? 'engage-card' : undefined}
-              className={i === 1 && shimmerTarget === 'engage-card' ? 'zava-shimmer' : undefined}
+
+          {/* Card 1 — Event: CEO Keynote */}
+          <div style={{
+            position: 'relative', borderRadius: 24, overflow: 'hidden',
+            boxShadow: cardShadow, cursor: 'not-allowed',
+          }}>
+            {/* Background image — fills card, no dark overlay */}
+            <img
+              src={imgEventBg}
+              alt=""
               style={{
-                flex: 1, position: 'relative', borderRadius: 24, overflow: 'hidden',
-                boxShadow: cardShadow, cursor: i === 1 ? 'pointer' : 'not-allowed',
+                position: 'absolute', inset: 0, width: '100%', height: '100%',
+                objectFit: 'cover', objectPosition: 'center',
+                borderRadius: 24,
               }}
-            >
-              {/* Background image */}
-              <div style={{
-                position: 'absolute', inset: -32,
-                backgroundImage: `url("${card.bg}")`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-              }} />
+            />
 
-              {/* Dark gradient overlay */}
-              <div style={{
-                position: 'absolute', inset: 0,
-                background: 'linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,0.75) 100%)',
-              }} />
+            {/* Event badge — top right */}
+            <div style={{
+              position: 'absolute', top: 12, right: 12,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              height: 24, padding: '0 6px',
+              backgroundColor: 'rgba(18,17,17,0.2)',
+              border: '1px solid #e0e0e0',
+              borderRadius: 4,
+            }}>
+              <span style={{ ...segoe, fontSize: 12, fontWeight: 600, lineHeight: '16px', color: '#fff' }}>
+                Event
+              </span>
+            </div>
 
-              {/* App icon badge — top right */}
-              <div style={{
-                position: 'absolute', top: 12, right: 12,
-                width: 40, height: 40, borderRadius: 8,
-                backgroundColor: card.appIconBg,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
+            {/* Dark gradient behind text */}
+            <div style={{
+              position: 'absolute', inset: 0,
+              background: 'linear-gradient(to bottom, rgba(0,0,0,0) 15%, rgba(10,10,30,0.82) 100%)',
+              borderRadius: 24,
+            }} />
+
+            {/* Title + meta — lower left */}
+            <div style={{
+              position: 'absolute', bottom: 16, left: 20, right: 20,
+              display: 'flex', flexDirection: 'column', gap: 3,
+            }}>
+              <p style={{
+                ...segoe, margin: 0, fontSize: 18, fontWeight: 600,
+                lineHeight: '25px', color: '#fff',
+                                display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden',
               }}>
-                <img src={card.appIcon} alt="" style={{ width: 28, height: 28 }} />
-              </div>
+                CEO Elena Kade to present HelixWeave™ breakthrough at Global Performance Summit
+              </p>
+              <p style={{ ...segoe, margin: 0, fontSize: 13, fontWeight: 400, lineHeight: '18px', color: '#fff', textShadow: '0px 1px 4px rgba(0,0,0,0.6)' }}>
+                Keynote · Starts in 43m
+              </p>
+            </div>
+          </div>
 
-              {/* Content */}
-              <div style={{
-                position: 'absolute', inset: 0,
-                padding: 20,
-                display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
-              }}>
-                {/* Badge + Title + meta grouped at bottom */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                  <span style={{
-                    ...segoe,
-                    alignSelf: 'flex-start',
-                    display: 'inline-block',
-                    padding: '1px 6px',
-                    backgroundColor: 'rgba(18,17,17,0.2)',
-                    border: '1px solid #e0e0e0',
-                    borderRadius: 4,
-                    fontSize: 10, fontWeight: 600, lineHeight: '14px', color: '#fff',
-                  }}>
-                    {card.badge}
-                  </span>
-                  <div>
-                    <p style={{
-                      ...segoe, margin: '0 0 3px',
-                      fontSize: 16, fontWeight: 600, lineHeight: '22px', color: '#fff',
-                      display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden',
-                    }}>
-                      {card.title}
-                    </p>
-                    <p style={{ ...segoe, margin: 0, fontSize: 13, fontWeight: 400, lineHeight: '18px', color: 'rgba(255,255,255,0.85)' }}>
-                      {card.source} · {card.meta}
-                    </p>
+          {/* Card 2 — Suggested Prompt */}
+          <div style={{
+            borderRadius: 24,
+            border: '1px solid #e0e0e0',
+            boxShadow: '0px 2px 4px 0px rgba(0,0,0,0.14), 0px 0px 2px 0px rgba(0,0,0,0.12)',
+            backgroundColor: '#fff',
+            display: 'flex', flexDirection: 'column', justifyContent: 'center',
+            padding: 16, gap: 26, cursor: 'not-allowed', overflow: 'hidden',
+          }}>
+            {/* Top: label + title */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <span style={{ ...segoe, fontSize: 10, fontWeight: 400, lineHeight: '14px', color: '#424242' }}>
+                Awaiting your action
+              </span>
+              <p style={{ ...segoe, margin: 0, fontSize: 20, fontWeight: 600, lineHeight: '28px', color: '#242424', overflow: 'hidden' }}>
+                {'Summarize today\'s '}
+                <span style={{ color: '#4f59f4' }}>priorities</span>
+                {' and\nwhat needs my attention…'}
+              </p>
+            </div>
+
+            {/* Stat tiles */}
+            <div style={{ display: 'flex', gap: 9 }}>
+              {statTiles.map(({ Icon, label, value }) => (
+                <div key={label} style={{
+                  flex: 1, display: 'flex', alignItems: 'center', gap: 9,
+                  padding: 9, borderRadius: 8,
+                  border: '0.787px solid #e5e5e5', overflow: 'hidden',
+                }}>
+                  <Icon style={{ width: 24, height: 24, flexShrink: 0, color: '#4f59f4' }} />
+                  <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <span style={{ ...segoe, fontSize: 10, fontWeight: 400, lineHeight: '15.75px', color: '#616161' }}>
+                      {label}
+                    </span>
+                    <span style={{ ...segoe, fontSize: 20, fontWeight: 700, lineHeight: '22.5px', color: '#242424' }}>
+                      {value}
+                    </span>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+
         </div>
 
       </div>
