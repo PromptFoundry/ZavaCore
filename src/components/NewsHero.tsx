@@ -16,6 +16,7 @@ const slides = [
   {
     bg: sliderImg1,
     icon: soundWaveIcon,
+    iconGradient: 'linear-gradient(222.48deg, #31d7f1 12.925%, #8a61d2 94.343%)',
     title: "Carole, here's what's new this week",
     subtitle: 'ZavaCore highlights, personalized for you',
     source: '',
@@ -161,7 +162,7 @@ export default function NewsHero({ onSummarizeNews, onEngageClick: _onEngageClic
                 width: 44, height: 44, borderRadius: 11, flexShrink: 0,
                 display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden',
               }}>
-                <div style={{ position: 'absolute', inset: 0, background: iconGradient }} />
+                <div style={{ position: 'absolute', inset: 0, background: ('iconGradient' in slide ? slide.iconGradient : undefined) ?? iconGradient }} />
                 <img src={soundWaveIcon} alt="" style={{ position: 'relative', width: 20, height: 20 }} />
               </div>
 
@@ -169,10 +170,10 @@ export default function NewsHero({ onSummarizeNews, onEngageClick: _onEngageClic
               <div style={{ flex: 1, minWidth: 0 }}>
                 {'subtitle' in slide && slide.subtitle ? (
                   <>
-                    <p style={{ ...segoe, margin: 0, fontSize: 24, fontWeight: 600, lineHeight: '32px', color: '#fffbf8', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textShadow: '0px 0px 8px rgba(0,0,0,0.2), 0px 14px 28px rgba(0,0,0,0.24), 0px 0px 4px rgba(0,0,0,0.9)' }}>
+                    <p style={{ ...segoe, margin: 0, fontSize: 24, fontWeight: 600, lineHeight: '32px', color: '#fff', textShadow: '0px 0px 8px rgba(0,0,0,0.2), 0px 14px 28px rgba(0,0,0,0.24), 0px 0px 4px rgba(0,0,0,0.9)' }}>
                       {slide.title}
                     </p>
-                    <p style={{ ...segoe, margin: 0, fontSize: 20, fontWeight: 400, lineHeight: '28px', color: 'rgba(255,255,255,0.9)' }}>
+                    <p style={{ ...segoe, margin: 0, fontSize: 20, fontWeight: 400, lineHeight: '28px', color: '#fff', textShadow: '0px 0px 8px rgba(0,0,0,0.2), 0px 14px 28px rgba(0,0,0,0.24), 0px 0px 4px rgba(0,0,0,0.9)' }}>
                       {slide.subtitle}
                     </p>
                   </>
@@ -205,7 +206,7 @@ export default function NewsHero({ onSummarizeNews, onEngageClick: _onEngageClic
             </div>
 
             {/* Pagination bars */}
-            <div style={{ display: 'flex', gap: 3, alignItems: 'center', width: 125 }}>
+            <div style={{ display: 'flex', gap: 3, alignItems: 'center', width: 125, alignSelf: 'center' }}>
               {slides.map((_, i) => (
                 <button
                   key={i}
