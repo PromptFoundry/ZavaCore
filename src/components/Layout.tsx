@@ -24,6 +24,7 @@ import { CheckmarkCircleFilled } from '@fluentui/react-icons';
 import OrderLunchResponse from './OrderLunchResponse';
 import OrderTracker from './OrderTracker';
 import PeopleOrgResponse from './PeopleOrgResponse';
+import AgentCapabilitiesResponse from './AgentCapabilitiesResponse';
 
 
 interface Message {
@@ -110,6 +111,8 @@ export default function Layout() {
   const [isOrderLunchLoading, setIsOrderLunchLoading] = useState(false);
   const [showPeopleOrg, _setShowPeopleOrg] = useState(false);
   const [isPeopleOrgLoading, _setIsPeopleOrgLoading] = useState(false);
+  const [showAgentCapabilities, setShowAgentCapabilities] = useState(false);
+  const [isAgentCapabilitiesLoading, setIsAgentCapabilitiesLoading] = useState(false);
   const [orderTracker, setOrderTracker] = useState<{ dish: string; emoji: string } | null>(null);
   const [_showDayAtAGlance, setShowDayAtAGlance] = useState(false);
   const [showAddedToast, setShowAddedToast] = useState(false);
@@ -178,6 +181,8 @@ export default function Layout() {
     setOrderTracker(null);
     _setShowPeopleOrg(false);
     _setIsPeopleOrgLoading(false);
+    setShowAgentCapabilities(false);
+    setIsAgentCapabilitiesLoading(false);
   };
 
   const handleAddToHome = () => {
@@ -198,6 +203,15 @@ export default function Layout() {
   };
 
 
+  const handleAgentCapabilities = () => {
+    setIsAgentCapabilitiesLoading(true);
+    mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      setIsAgentCapabilitiesLoading(false);
+      setShowAgentCapabilities(true);
+    }, 2000);
+  };
+
   const handleEngageSummarize = () => {
     setIsEngageLoading(true);
     mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
@@ -215,7 +229,7 @@ export default function Layout() {
     setIsPanelOpen(false);
   };
 
-  const hasConversation = messages.length > 0 || isLoading || isEngageLoading || showEngageResponse || isNewsLoading || showNewsResponse || isPlanMyDayLoading || showPlanMyDay || isOrderLunchLoading || showOrderLunch || isPeopleOrgLoading || showPeopleOrg;
+  const hasConversation = messages.length > 0 || isLoading || isEngageLoading || showEngageResponse || isNewsLoading || showNewsResponse || isPlanMyDayLoading || showPlanMyDay || isOrderLunchLoading || showOrderLunch || isPeopleOrgLoading || showPeopleOrg || isAgentCapabilitiesLoading || showAgentCapabilities;
 
   // Shimmer effect disabled
   // useEffect(() => { ... }, [hasConversation]);
@@ -253,6 +267,7 @@ export default function Layout() {
           isNavOpen={isMobileNavOpen}
           onReset={handleReset}
           breadcrumbLabel={
+            (showAgentCapabilities || isAgentCapabilitiesLoading) ? 'Agent Overview' :
             (showPlanMyDay || isPlanMyDayLoading) ? 'Day at a Glance' :
             (showNewsResponse || isNewsLoading) ? 'News Summary' :
             (showEngageResponse || isEngageLoading) ? 'Engage Summary' :
@@ -315,6 +330,31 @@ export default function Layout() {
                     <span className="text-xs text-[#707070]">Today</span>
                     <div className="flex-1 h-px bg-[#e0e0e0]" />
                   </div>
+
+                  {/* Agent capabilities response flow */}
+                  {(isAgentCapabilitiesLoading || showAgentCapabilities) && (
+                    <div className="flex flex-col gap-4">
+                      <div className="flex justify-end">
+                        <div className="bg-[#f5f5f5] rounded-2xl px-4 py-3 max-w-[590px]">
+                          <p className="text-base leading-6 text-[#424242]">Show me what ZavaCore Agent can do for me. What does it help with?</p>
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-4">
+                        {isAgentCapabilitiesLoading ? (
+                          <>
+                            <div className="flex items-center gap-2">
+                              <img src={zavcoreLogo} alt="ZavaCore Agent" className="w-6 h-6" />
+                              <span className="font-semibold text-base text-[#333333]">ZavaCore Agent</span>
+                            </div>
+                            <p className="text-base leading-6 text-[#333333]">Pulling together what I can help with…</p>
+                            <LatencyLoader />
+                          </>
+                        ) : (
+                          <AgentCapabilitiesResponse />
+                        )}
+                      </div>
+                    </div>
+                  )}
 
                   {/* Order lunch response flow */}
                   {(isOrderLunchLoading || showOrderLunch) && (
@@ -487,7 +527,7 @@ export default function Layout() {
               {!hasConversation && (
                 <div className="flex flex-col gap-4 md:gap-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-                    <div data-shimmer-id="plan-my-day"><PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Agent overview" description="Show me what the ZavaCore Agent can do" onClick={handlePlanMyDay} className={activeShimmer === 'plan-my-day' ? 'zava-shimmer' : ''} /></div>
+                    <div data-shimmer-id="plan-my-day"><PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Agent overview" description="Show me what the ZavaCore Agent can do" onClick={handleAgentCapabilities} className={activeShimmer === 'plan-my-day' ? 'zava-shimmer' : ''} /></div>
                     <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Leadership updates" description="Summarize the latest updates from leadership" />
                     <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="This week's deadlines" description="Show deadlines across learning, HR or benefits, and key tasks" />
                   </div>
