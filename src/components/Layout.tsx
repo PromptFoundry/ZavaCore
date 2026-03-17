@@ -3,8 +3,8 @@ import {
   CheckBadgeIcon,
 } from '@heroicons/react/24/outline';
 
-const chatIconColor = `${import.meta.env.BASE_URL}assets/icons/Chat.svg`;
-const ChatIcon = () => <img src={chatIconColor} alt="" style={{ width: 20, height: 20 }} />;
+import chatIcon from '../assets/icons/Chat.svg';
+const ChatIcon = () => <img src={chatIcon} alt="" style={{ width: 20, height: 20 }} />;
 import zavcoreLogo from '../assets/images/ZavaCore_logo.svg';
 import agentBgGradientFade from '../assets/images/Zava agent background - gradient fade.png';
 import React, { useState, useRef } from 'react';
