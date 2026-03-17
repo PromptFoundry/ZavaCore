@@ -1,35 +1,19 @@
 export default function LatencyLoader() {
   return (
-    <div style={{ position: 'relative', width: '100%', height: 12, overflow: 'hidden' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 5, height: 20 }}>
       <style>{`
-        @keyframes latency-traverse {
-          0%   { transform: translateX(-50%) scale(0);   opacity: 0; }
-          50%  { transform: translateX(0%)   scale(1);   opacity: 1; }
-          100% { transform: translateX(50%)  scale(0);   opacity: 0; }
+        @keyframes latency-bounce {
+          0%, 60%, 100% { transform: translateY(0);   opacity: 0.4; }
+          30%            { transform: translateY(-5px); opacity: 1;   }
         }
-        .latency-dot {
-          position: absolute;
-          top: 0; left: 0;
-          width: 100%; height: 100%;
-          border-radius: 50%;
-          animation: latency-traverse 3600ms cubic-bezier(0.8, 0, 0.2, 1) infinite;
-        }
-        .latency-dot-1 {
-          background: linear-gradient(to right, rgb(209, 97, 170), rgb(233, 109, 128));
-          animation-delay: 0ms;
-        }
-        .latency-dot-2 {
-          background: linear-gradient(to right, rgb(66, 163, 166), rgb(115, 175, 105));
-          animation-delay: -1200ms;
-        }
-        .latency-dot-3 {
-          background: linear-gradient(to right, rgb(101, 165, 221), rgb(129, 115, 238));
-          animation-delay: -2400ms;
-        }
+        .ld { width: 7px; height: 7px; border-radius: 50%; animation: latency-bounce 1.2s ease-in-out infinite; }
+        .ld-1 { background: #2db4ff; animation-delay: 0ms; }
+        .ld-2 { background: #464feb; animation-delay: 150ms; }
+        .ld-3 { background: #d660ff; animation-delay: 300ms; }
       `}</style>
-      <div className="latency-dot latency-dot-1" />
-      <div className="latency-dot latency-dot-2" />
-      <div className="latency-dot latency-dot-3" />
+      <div className="ld ld-1" />
+      <div className="ld ld-2" />
+      <div className="ld ld-3" />
     </div>
   );
 }
