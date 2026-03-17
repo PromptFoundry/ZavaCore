@@ -90,14 +90,14 @@ export default function PromptStarter({
     >
       {/* Icon and Title */}
       {(icon || title) && (
-        <div className="flex items-start gap-2">
-          {icon && <div className="w-4 h-4 md:w-5 md:h-5 text-[#424242] shrink-0">{icon}</div>}
-          {title && <h3 className="text-sm font-semibold text-[#424242]">{title}</h3>}
+        <div className="flex items-center gap-[6px]">
+          {icon && <div className="w-5 h-5 shrink-0 flex items-center justify-center">{icon}</div>}
+          {title && <h3 className="text-sm font-semibold text-[#242424]">{title}</h3>}
         </div>
       )}
 
       {/* Description */}
-      <p className="text-xs md:text-sm text-[#424242] line-clamp-3 flex-1">{description}</p>
+      <p className="text-sm text-[#424242] line-clamp-2" style={{ lineHeight: '20px', height: '40px', overflow: 'hidden' }}>{description}</p>
 
       {/* Footer */}
       {footer && <p className="text-[10px] text-[#616161]">{footer}</p>}

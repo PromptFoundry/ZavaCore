@@ -1,8 +1,10 @@
 import {
-  ChatBubbleLeftIcon,
   ChevronDownIcon,
   CheckBadgeIcon,
 } from '@heroicons/react/24/outline';
+
+const chatIconColor = `${import.meta.env.BASE_URL}assets/icons/Chat icon color.svg`;
+const ChatIcon = () => <img src={chatIconColor} alt="" style={{ width: 20, height: 20 }} />;
 import zavcoreLogo from '../assets/images/ZavaCore_logo.svg';
 import agentBgGradientFade from '../assets/images/Zava agent background - gradient fade.png';
 import React, { useState, useRef } from 'react';
@@ -527,9 +529,9 @@ export default function Layout() {
               {!hasConversation && (
                 <div className="flex flex-col gap-4 md:gap-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-                    <div data-shimmer-id="plan-my-day"><PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Agent overview" description="Show me what the ZavaCore Agent can do" onClick={handleAgentCapabilities} className={activeShimmer === 'plan-my-day' ? 'zava-shimmer' : ''} /></div>
-                    <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="Leadership updates" description="Summarize the latest updates from leadership" />
-                    <PromptStarter size="large" icon={<ChatBubbleLeftIcon />} title="This week's deadlines" description="Show deadlines across learning, HR or benefits, and key tasks" />
+                    <div data-shimmer-id="plan-my-day"><PromptStarter size="large" icon={<ChatIcon />} title="Agent overview" description="Show me what the ZavaCore Agent can do" onClick={handleAgentCapabilities} className={activeShimmer === 'plan-my-day' ? 'zava-shimmer' : ''} /></div>
+                    <PromptStarter size="large" icon={<ChatIcon />} title="Leadership updates" description="Summarize the latest updates from leadership" />
+                    <PromptStarter size="large" icon={<ChatIcon />} title="This week's deadlines" description="Show deadlines across learning, HR or benefits, and key tasks" />
                   </div>
                   <div className="flex justify-end">
                     <button className="flex items-center gap-1 px-3 py-1.5 text-xs md:text-sm text-[#424242] hover:bg-gray-50 rounded-md transition-colors">

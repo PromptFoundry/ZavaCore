@@ -1,3 +1,20 @@
+import { useState } from 'react';
+import { BookmarkRegular, BookmarkFilled } from '@fluentui/react-icons';
+import engagePersona from '../assets/engage-assets/Persona.png';
+import engageDiscussion from '../assets/engage-assets/Discussion.svg';
+import engageQuestion from '../assets/engage-assets/Question.svg';
+import engagePraise from '../assets/engage-assets/Praise.svg';
+import engagePoll from '../assets/engage-assets/Poll.svg';
+import engageArticle from '../assets/engage-assets/Article.svg';
+import engageIcon from '../assets/engage-assets/Icon.svg';
+import carolePng from '../assets/images/Carole Poland.png';
+import engageGetty from '../assets/engage-assets/GettyImages-2233751483 1.png';
+import engageRedHeart from '../assets/engage-assets/Red heart.svg';
+import engageChat from '../assets/engage-assets/Post/Molecule/TS CTA Row/Atom/Chat.svg';
+import engageThumbsUp from '../assets/engage-assets/Thumbs up.svg';
+import engageClapping from '../assets/engage-assets/Clapping hands.svg';
+import engageCTA from '../assets/engage-assets/Post/Organism/L1 Reply Publisher/CTA.svg';
+
 export interface EngageSectionProps {
   /** Custom className */
   className?: string;
@@ -13,9 +30,31 @@ export interface EngageSectionProps {
  * <EngageSection />
  * ```
  */
+const reactions = [
+  { label: 'Like', emoji: '👍' },
+  { label: 'Love', emoji: '❤️' },
+  { label: 'Celebrate', emoji: '😄' },
+  { label: 'Insightful', emoji: '🥳' },
+  { label: 'Clap', emoji: '👏' },
+  { label: 'Curious', emoji: '😢' },
+];
+
 export default function EngageSection({
   className = '',
 }: EngageSectionProps) {
+  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(42);
+  const [saved, setSaved] = useState(false);
+  const [showReactions, setShowReactions] = useState(false);
+
+  const handleLike = () => {
+    setLiked(prev => {
+      setLikeCount(c => prev ? c - 1 : c + 1);
+      return !prev;
+    });
+    setShowReactions(false);
+  };
+
   return (
     <section
       className={className}
@@ -83,7 +122,7 @@ export default function EngageSection({
             }}
           >
             <img
-              src="/assets/engage-assets/Persona.png"
+              src={engagePersona}
               alt=""
               style={{
                 width: '32px',
@@ -145,7 +184,7 @@ export default function EngageSection({
                 e.currentTarget.style.backgroundColor = '#f2f2f2';
               }}
             >
-              <img src="/assets/engage-assets/Discussion.svg" alt="" style={{ width: '24px', height: '23px' }} />
+              <img src={engageDiscussion} alt="" style={{ width: '24px', height: '23px' }} />
               Discussion
             </button>
             <button
@@ -171,7 +210,7 @@ export default function EngageSection({
                 e.currentTarget.style.backgroundColor = 'transparent';
               }}
             >
-              <img src="/assets/engage-assets/Question.svg" alt="" style={{ width: '24px', height: '23px' }} />
+              <img src={engageQuestion} alt="" style={{ width: '24px', height: '23px' }} />
               Question
             </button>
             <button
@@ -197,7 +236,7 @@ export default function EngageSection({
                 e.currentTarget.style.backgroundColor = 'transparent';
               }}
             >
-              <img src="/assets/engage-assets/Praise.svg" alt="" style={{ width: '18px', height: '25px' }} />
+              <img src={engagePraise} alt="" style={{ width: '18px', height: '25px' }} />
               Praise
             </button>
             <button
@@ -223,7 +262,7 @@ export default function EngageSection({
                 e.currentTarget.style.backgroundColor = 'transparent';
               }}
             >
-              <img src="/assets/engage-assets/Poll.svg" alt="" style={{ width: '18px', height: '20px' }} />
+              <img src={engagePoll} alt="" style={{ width: '18px', height: '20px' }} />
               Poll
             </button>
             <button
@@ -249,7 +288,7 @@ export default function EngageSection({
                 e.currentTarget.style.backgroundColor = 'transparent';
               }}
             >
-              <img src="/assets/engage-assets/Article.svg" alt="" style={{ width: '16px', height: '19px' }} />
+              <img src={engageArticle} alt="" style={{ width: '16px', height: '19px' }} />
               Article
             </button>
           </div>
@@ -273,7 +312,7 @@ export default function EngageSection({
               gap: '8px',
             }}
           >
-            <img src="/assets/engage-assets/Icon.svg" alt="" style={{ width: '16px', height: '16px' }} />
+            <img src={engageIcon} alt="" style={{ width: '16px', height: '16px' }} />
             <span
               style={{
                 fontFamily: 'Segoe UI, sans-serif',
@@ -316,7 +355,7 @@ export default function EngageSection({
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <img
-                src="/assets/images/Carole Poland.png"
+                src={carolePng}
                 alt=""
                 style={{
                   width: '32px',
@@ -379,7 +418,7 @@ export default function EngageSection({
 
           {/* Featured Image */}
           <img
-            src="/assets/engage-assets/GettyImages-2233751483 1.png"
+            src={engageGetty}
             alt=""
             style={{
               width: '100%',
@@ -398,125 +437,153 @@ export default function EngageSection({
               height: '48px',
             }}
           >
-            {/* Reaction Buttons */}
-            <div style={{ display: 'flex', gap: '8px' }}>
+            {/* Action Buttons */}
+            <div style={{ display: 'flex', gap: '4px' }}>
+
+              {/* Like Button (with reaction picker) */}
+              <div style={{ position: 'relative' }}>
+                {/* Reaction Picker */}
+                {showReactions && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      bottom: '44px',
+                      left: '0',
+                      backgroundColor: '#292929',
+                      borderRadius: '24px',
+                      padding: '8px 12px',
+                      display: 'flex',
+                      gap: '4px',
+                      alignItems: 'center',
+                      boxShadow: '0 4px 16px rgba(0,0,0,0.3)',
+                      zIndex: 10,
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {reactions.map(({ label, emoji }) => (
+                      <button
+                        key={label}
+                        title={label}
+                        onClick={() => { setLiked(true); setLikeCount(c => liked ? c : c + 1); setShowReactions(false); }}
+                        style={{
+                          background: 'none',
+                          border: 'none',
+                          cursor: 'pointer',
+                          fontSize: '24px',
+                          lineHeight: 1,
+                          padding: '2px 4px',
+                          borderRadius: '8px',
+                          transition: 'transform 0.15s ease',
+                        }}
+                        onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.3)')}
+                        onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+                      >
+                        {emoji}
+                      </button>
+                    ))}
+                  </div>
+                )}
+                <button
+                  onClick={handleLike}
+                  onMouseEnter={() => setShowReactions(true)}
+                  onMouseLeave={() => setShowReactions(false)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '8px',
+                    height: '36px',
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    borderRadius: '4px',
+                    cursor: 'pointer',
+                    transition: 'background-color 0.2s ease',
+                  }}
+                >
+                  <img src={engageThumbsUp} alt="" style={{ width: '20px', height: '20px', opacity: liked ? 1 : 0.7 }} />
+                  <span
+                    style={{
+                      fontFamily: 'Segoe UI, sans-serif',
+                      fontSize: '12px',
+                      fontWeight: liked ? 600 : 400,
+                      color: liked ? '#0078d4' : '#605e5c',
+                    }}
+                  >
+                    {liked ? `Liked · ${likeCount}` : `Like · ${likeCount}`}
+                  </span>
+                </button>
+              </div>
+
+              {/* Comment Button */}
               <button
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '4px',
+                  gap: '6px',
                   padding: '8px',
                   height: '36px',
                   backgroundColor: 'transparent',
                   border: 'none',
                   borderRadius: '4px',
-                  cursor: 'default',
+                  cursor: 'pointer',
                   transition: 'background-color 0.2s ease',
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#f3f2f1';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'transparent';
-                }}
+                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#f3f2f1'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}
               >
-                <img src="/assets/engage-assets/Red heart.svg" alt="" style={{ width: '20px', height: '20px' }} />
-                <span
-                  style={{
-                    fontFamily: 'Segoe UI, sans-serif',
-                    fontSize: '12px',
-                    color: '#605e5c',
-                    marginLeft: '4px',
-                  }}
-                >
-                  42
+                <img src={engageChat} alt="" style={{ width: '20px', height: '20px' }} />
+                <span style={{ fontFamily: 'Segoe UI, sans-serif', fontSize: '12px', color: '#605e5c' }}>
+                  Comment · 18
                 </span>
               </button>
+
+              {/* Save for Later Button */}
               <button
+                onClick={() => setSaved(prev => !prev)}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '4px',
+                  gap: '6px',
                   padding: '8px',
                   height: '36px',
                   backgroundColor: 'transparent',
                   border: 'none',
                   borderRadius: '4px',
-                  cursor: 'default',
+                  cursor: 'pointer',
                   transition: 'background-color 0.2s ease',
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#f3f2f1';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'transparent';
-                }}
+                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#f3f2f1'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}
               >
-                <img
-                  src="/assets/engage-assets/Post/Molecule/TS CTA Row/Atom/Chat.svg"
-                  alt=""
-                  style={{ width: '20px', height: '20px' }}
-                />
+                {saved
+                  ? <BookmarkFilled style={{ width: 20, height: 20, color: '#0078d4' }} />
+                  : <BookmarkRegular style={{ width: 20, height: 20, color: '#605e5c' }} />
+                }
                 <span
                   style={{
                     fontFamily: 'Segoe UI, sans-serif',
                     fontSize: '12px',
-                    color: '#605e5c',
-                    marginLeft: '4px',
+                    fontWeight: saved ? 600 : 400,
+                    color: saved ? '#0078d4' : '#605e5c',
                   }}
                 >
-                  18 comments
+                  {saved ? 'Saved' : 'Save for later'}
                 </span>
               </button>
-              <button
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  padding: '8px',
-                  height: '36px',
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  borderRadius: '4px',
-                  cursor: 'default',
-                  transition: 'background-color 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#f3f2f1';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'transparent';
-                }}
-              >
-                <img
-                  src="/assets/engage-assets/Post/Molecule/TS CTA Row/Atom/Share.svg"
-                  alt=""
-                  style={{ width: '20px', height: '20px' }}
-                />
-                <span
-                  style={{
-                    fontFamily: 'Segoe UI, sans-serif',
-                    fontSize: '12px',
-                    color: '#605e5c',
-                    marginLeft: '4px',
-                  }}
-                >
-                  Share
-                </span>
-              </button>
+
             </div>
 
             {/* Social Proof */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <img src="/assets/engage-assets/Thumbs up.svg" alt="" style={{ width: '20px', height: '20px' }} />
+                <img src={engageThumbsUp} alt="" style={{ width: '20px', height: '20px' }} />
                 <img
-                  src="/assets/engage-assets/Red heart.svg"
+                  src={engageRedHeart}
                   alt=""
                   style={{ width: '20px', height: '20px', marginLeft: '2px' }}
                 />
                 <img
-                  src="/assets/engage-assets/Clapping hands.svg"
+                  src={engageClapping}
                   alt=""
                   style={{ width: '20px', height: '20px', marginLeft: '2px' }}
                 />
@@ -544,7 +611,7 @@ export default function EngageSection({
             }}
           >
             <img
-              src="/assets/engage-assets/Persona.png"
+              src={engagePersona}
               alt=""
               style={{
                 width: '32px',
@@ -575,7 +642,7 @@ export default function EngageSection({
                 Add a comment...
               </span>
               <img
-                src="/assets/engage-assets/Post/Organism/L1 Reply Publisher/CTA.svg"
+                src={engageCTA}
                 alt=""
                 style={{ width: '20px', height: '20px' }}
               />

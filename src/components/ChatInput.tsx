@@ -1,9 +1,6 @@
 import {
   Add20Regular,
-  Options20Regular,
-  Briefcase20Regular,
   Mic20Regular,
-  DeviceEq20Regular,
 } from '@fluentui/react-icons';
 import { useState } from 'react';
 import type { KeyboardEvent } from 'react';
@@ -48,56 +45,22 @@ export default function ChatInput({ onSubmit }: ChatInputProps) {
           </div>
 
           {/* Footer */}
-          <div className="footer flex items-start justify-between pb-[10px] pt-[6px] w-full">
-            {/* Utility controls (left side) */}
-            <div className="utility-controls flex gap-2 h-10 items-center">
-              {/* Add Button */}
-              <button
-                className="add-button p-2 hover:bg-gray-100 rounded transition-colors"
-                aria-label="Add attachment"
-              >
-                <Add20Regular className="w-5 h-5 text-[#424242]" />
-              </button>
+          <div className="footer flex items-center justify-between pb-[10px] pt-[6px] w-full">
+            {/* Add Button */}
+            <button
+              className="add-button p-2 hover:bg-gray-100 rounded transition-colors"
+              aria-label="Add attachment"
+            >
+              <Add20Regular className="w-5 h-5 text-[#424242]" />
+            </button>
 
-              {/* Tools Button */}
-              <button className="tools-button flex gap-1.5 items-center justify-center px-3 py-1.5 hover:bg-gray-100 rounded transition-colors">
-                <Options20Regular className="w-5 h-5 text-[#424242]" />
-                <div className="flex items-center justify-center h-5 pb-0.5">
-                  <span className="font-['Segoe_UI',sans-serif] font-semibold text-sm leading-5 text-[#424242] whitespace-nowrap">
-                    Tools
-                  </span>
-                </div>
-              </button>
-
-              {/* Sources Button */}
-              <button className="sources-button flex gap-1.5 items-center justify-center px-3 py-1.5 hover:bg-gray-100 rounded transition-colors">
-                <Briefcase20Regular className="w-5 h-5 text-[#424242]" />
-                <div className="flex items-center justify-center h-5 pb-0.5">
-                  <span className="font-['Segoe_UI',sans-serif] font-semibold text-sm leading-5 text-[#424242] whitespace-nowrap">
-                    Sources
-                  </span>
-                </div>
-              </button>
-            </div>
-
-            {/* Voice controls (right side) */}
-            <div className="voice-controls flex items-center">
-              {/* Dictate Button */}
-              <button
-                className="dictate-button flex items-center justify-center px-1.5 py-1.5 rounded-full hover:bg-gray-100 transition-colors w-10 h-10"
-                aria-label="Voice input"
-              >
-                <Mic20Regular className="w-5 h-5 text-[#424242]" />
-              </button>
-
-              {/* Device EQ Button */}
-              <button
-                className="device-eq-button flex items-center justify-center px-1.5 py-1.5 rounded-full hover:bg-gray-100 transition-colors w-10 h-10"
-                aria-label="Audio settings"
-              >
-                <DeviceEq20Regular className="w-5 h-5 text-[#424242]" />
-              </button>
-            </div>
+            {/* Mic Button */}
+            <button
+              className="dictate-button flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition-colors"
+              aria-label="Voice input"
+            >
+              <Mic20Regular className="w-5 h-5 text-[#424242]" />
+            </button>
           </div>
         </div>
       </div>
