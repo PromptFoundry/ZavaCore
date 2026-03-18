@@ -164,7 +164,7 @@ export default function RecommendedSection({ showDayAtAGlance = false, onPeopleC
 
           {/* Card 2 – Attention or Day at a Glance widget */}
           {showDayAtAGlance ? (
-            <div style={{ height: 133, borderRadius: 24, flexShrink: 0, overflow: 'hidden' }}>
+            <div style={{ height: 133, borderRadius: 24, flexShrink: 0 }}>
               <DayBriefWidget homeMode />
             </div>
           ) : (

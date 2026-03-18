@@ -291,7 +291,7 @@ export default function NewsHero({ onSummarizeNews, onEngageClick: _onEngageClic
 
           {/* Card 2 — Suggested Prompt or Day at a Glance widget */}
           {showDayAtAGlance ? (
-            <div style={{ borderRadius: 24, overflow: 'hidden', boxShadow: cardShadow }}>
+            <div style={{ borderRadius: 24, boxShadow: cardShadow, position: 'relative' }}>
               <DayBriefWidget homeMode />
             </div>
           ) : (

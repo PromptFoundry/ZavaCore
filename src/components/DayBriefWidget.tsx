@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Avatar } from '@fluentui/react-avatar';
 import {
   CalendarFilled, CalendarRegular,
@@ -7,7 +7,7 @@ import {
   MentionRegular,
   PeopleRegular,
   CheckmarkCircleFilled,
-  MoreHorizontalRegular,
+  ChevronDownRegular,
 } from '@fluentui/react-icons';
 
 import iconDayAtAGlance from '../assets/icons/Icon_Day at a glance.svg';
@@ -67,91 +67,20 @@ const peopleItems = [
 
 const iconMap: Record<string, string> = { docx: iconDocx, pptx: iconPptx, xlsx: iconXls, xls: iconXls };
 
-// ── Home aggregate view ────────────────────────────────────────────────────────
-function HomeAggregateView() {
-  const next = meetingItems[0];
-  const filled = next.cta === 'Join';
+const statChips = [
+  { icon: <CalendarRegular style={{ width: 14, height: 14 }} />, count: 3,  label: 'meetings', view: 'Meetings' as TabId },
+  { icon: <MailRegular     style={{ width: 14, height: 14 }} />, count: 16, label: 'emails',   view: 'Email'    as TabId },
+  { icon: <MentionRegular  style={{ width: 14, height: 14 }} />, count: 3,  label: 'mentions', view: 'Mentions' as TabId },
+  { icon: <FolderRegular   style={{ width: 14, height: 14 }} />, count: 4,  label: 'files',    view: 'Files'    as TabId },
+];
 
-  const stats = [
-    { icon: <CalendarRegular style={{ width: 14, height: 14 }} />, count: 3,  label: 'meetings' },
-    { icon: <MailRegular     style={{ width: 14, height: 14 }} />, count: 16, label: 'emails'   },
-    { icon: <MentionRegular  style={{ width: 14, height: 14 }} />, count: 3,  label: 'mentions' },
-    { icon: <FolderRegular   style={{ width: 14, height: 14 }} />, count: 4,  label: 'files'    },
-  ];
-
-  return (
-    <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', gap: 10, padding: '2px 16px 14px' }}>
-
-      {/* Next meeting */}
-      <div style={{
-        display: 'flex', alignItems: 'center',
-        backgroundColor: '#f5f5f5', borderRadius: 8,
-        paddingLeft: 8, paddingTop: 6, paddingBottom: 6, paddingRight: 8,
-        gap: 8, flexShrink: 0,
-      }}>
-        <div style={{
-          width: 3, height: 32, borderRadius: 3, flexShrink: 0,
-          backgroundColor: filled ? '#5b5fc7' : 'transparent',
-          border: filled ? 'none' : '1.5px solid #5b5fc7',
-          boxSizing: 'border-box',
-        }} />
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ ...seg, fontSize: 13, fontWeight: 600, color: '#242424', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', lineHeight: '18px' }}>{next.name}</div>
-          <div style={{ ...seg, fontSize: 11, color: '#616161', lineHeight: '16px' }}>{next.time} · {next.duration}</div>
-        </div>
-        <button style={{
-          ...seg, fontSize: 13, fontWeight: 600,
-          color: filled ? '#fff' : '#5b5fc7',
-          backgroundColor: filled ? '#5b5fc7' : 'transparent',
-          border: filled ? 'none' : '1px solid #5b5fc7',
-          borderRadius: 4, padding: '5px 10px',
-          cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap', lineHeight: 1,
-        }}
-          onMouseEnter={e => (e.currentTarget.style.opacity = '0.88')}
-          onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
-        >{next.cta}</button>
-      </div>
-
-      {/* Stat chips */}
-      <div style={{ display: 'flex', gap: 6, flexShrink: 0 }}>
-        {stats.map(s => (
-          <div key={s.label} style={{
-            flex: 1, display: 'flex', alignItems: 'center', gap: 5,
-            backgroundColor: '#f5f5f5', borderRadius: 6, padding: '5px 8px',
-            cursor: 'pointer', minWidth: 0,
-          }}>
-            <span style={{ color: '#5b5fc7', flexShrink: 0, display: 'flex' }}>{s.icon}</span>
-            <span style={{ ...seg, fontSize: 13, fontWeight: 700, color: '#242424', lineHeight: 1 }}>{s.count}</span>
-            <span style={{ ...seg, fontSize: 11, color: '#616161', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{s.label}</span>
-          </div>
-        ))}
-      </div>
-
-      {/* Activity rows */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 6, flexShrink: 0 }}>
-        {/* Top email */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <Avatar name={emailItems[0].name} image={{ src: emailItems[0].img }} size={24} style={{ flexShrink: 0 }} />
-          <span style={{ ...seg, fontSize: 12, color: '#242424', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-            <span style={{ fontWeight: 600 }}>{emailItems[0].name}</span>
-            {' · '}{emailItems[0].subject}
-          </span>
-          <span style={{ ...seg, fontSize: 11, color: '#616161', flexShrink: 0, marginLeft: 4 }}>{emailItems[0].time}</span>
-        </div>
-        {/* Top mention */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <Avatar name={mentionItems[0].name} image={{ src: mentionItems[0].img }} size={24} style={{ flexShrink: 0 }} />
-          <span style={{ ...seg, fontSize: 12, color: '#242424', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-            <span style={{ fontWeight: 600 }}>{mentionItems[0].name}</span>
-            {' mentioned you · '}{mentionItems[0].context}
-          </span>
-          <span style={{ ...seg, fontSize: 11, color: '#616161', flexShrink: 0, marginLeft: 4 }}>{mentionItems[0].time}</span>
-        </div>
-      </div>
-
-    </div>
-  );
-}
+const viewIcons: Record<TabId, React.ReactNode> = {
+  Meetings: <CalendarRegular style={{ width: 14, height: 14 }} />,
+  Files:    <FolderRegular   style={{ width: 14, height: 14 }} />,
+  Email:    <MailRegular     style={{ width: 14, height: 14 }} />,
+  Mentions: <MentionRegular  style={{ width: 14, height: 14 }} />,
+  People:   <PeopleRegular   style={{ width: 14, height: 14 }} />,
+};
 
 // ── Event card ────────────────────────────────────────────────────────────────
 function EventCard({ name, time, duration, cta }: { name: string; time: string; duration: string; cta: string }) {
@@ -291,12 +220,26 @@ interface DayBriefWidgetProps {
 export default function DayBriefWidget({ onAddToHome, homeMode = false, fullWidth = false }: DayBriefWidgetProps) {
   const [activeTab, setActiveTab] = useState<TabId>('Meetings');
   const [added, setAdded] = useState(false);
+  const [activeHomeView, setActiveHomeView] = useState<TabId>('Meetings');
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleAddToHome = () => {
     if (added) return;
     setAdded(true);
     onAddToHome?.();
   };
+
+  useEffect(() => {
+    if (!dropdownOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [dropdownOpen]);
 
   const moreLabel: Record<TabId, string> = {
     Meetings: '3 more events today',
@@ -317,23 +260,80 @@ export default function DayBriefWidget({ onAddToHome, homeMode = false, fullWidt
       boxShadow: '0px 4px 8px 0px rgba(0,0,0,0.14), 0px 0px 2px 0px rgba(0,0,0,0.12)',
       display: 'flex', flexDirection: 'column',
       boxSizing: 'border-box',
-      overflow: 'hidden',
+      overflow: homeMode ? 'visible' : 'hidden',
     }}>
 
       {/* Header */}
       <div style={{ padding: '16px 16px 12px', display: 'flex', alignItems: 'center', gap: 10 }}>
         <img src={iconDayAtAGlance} alt="" style={{ width: 32, height: 32, flexShrink: 0 }} />
         <span style={{ ...seg, fontSize: 15, fontWeight: 600, color: '#242424', flex: 1 }}>Day at a Glance</span>
-        <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#616161', padding: 4, borderRadius: 4, display: 'flex', alignItems: 'center' }}
-          onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
-          onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
-        >
-          <MoreHorizontalRegular style={{ width: 20, height: 20 }} />
-        </button>
+
+        {homeMode ? (
+          /* Dropdown button replaces ... in homeMode */
+          <div ref={dropdownRef} style={{ position: 'relative' }}>
+            <button
+              onClick={() => setDropdownOpen(o => !o)}
+              style={{
+                ...seg, display: 'flex', alignItems: 'center', gap: 5,
+                backgroundColor: dropdownOpen ? '#ebe8f9' : '#f5f5f5',
+                border: 'none', borderRadius: 6, padding: '5px 10px',
+                cursor: 'pointer', color: '#5b5fc7', fontSize: 13, fontWeight: 600,
+              }}
+              onMouseEnter={e => { if (!dropdownOpen) e.currentTarget.style.backgroundColor = '#ede9f8'; }}
+              onMouseLeave={e => { if (!dropdownOpen) e.currentTarget.style.backgroundColor = '#f5f5f5'; }}
+            >
+              <span style={{ color: '#5b5fc7', display: 'flex' }}>{viewIcons[activeHomeView]}</span>
+              {activeHomeView}
+              <ChevronDownRegular style={{ width: 12, height: 12, transition: 'transform 0.15s', transform: dropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)' }} />
+            </button>
+
+            {dropdownOpen && (
+              <div style={{
+                position: 'absolute', top: '100%', right: 0, marginTop: 4,
+                backgroundColor: '#fff', border: '1px solid #e0e0e0',
+                borderRadius: 8, boxShadow: '0 4px 12px rgba(0,0,0,0.12)',
+                zIndex: 100, minWidth: 130, overflow: 'hidden',
+              }}>
+                {tabs.map(tab => (
+                  <button
+                    key={tab.id}
+                    onClick={() => { setActiveHomeView(tab.id); setDropdownOpen(false); }}
+                    style={{
+                      ...seg, display: 'flex', alignItems: 'center', gap: 8,
+                      width: '100%', padding: '8px 12px', border: 'none', textAlign: 'left',
+                      backgroundColor: activeHomeView === tab.id ? '#ebe8f9' : 'transparent',
+                      color: activeHomeView === tab.id ? '#5b5fc7' : '#242424',
+                      fontSize: 13, fontWeight: activeHomeView === tab.id ? 600 : 400,
+                      cursor: 'pointer',
+                    }}
+                    onMouseEnter={e => { if (activeHomeView !== tab.id) e.currentTarget.style.backgroundColor = '#f5f5f5'; }}
+                    onMouseLeave={e => { if (activeHomeView !== tab.id) e.currentTarget.style.backgroundColor = 'transparent'; }}
+                  >
+                    <span style={{ display: 'flex', color: activeHomeView === tab.id ? '#5b5fc7' : '#616161' }}>{viewIcons[tab.id]}</span>
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        ) : (
+          <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#616161', padding: 4, borderRadius: 4, display: 'flex', alignItems: 'center' }}
+            onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+            onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+          >
+            <ChevronDownRegular style={{ width: 20, height: 20 }} />
+          </button>
+        )}
       </div>
 
       {homeMode ? (
-        <HomeAggregateView />
+        <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', padding: '0 16px 14px', overflowY: 'auto' }}>
+          {activeHomeView === 'Meetings' && <MeetingsMini />}
+          {activeHomeView === 'Files'    && <FilesMini />}
+          {activeHomeView === 'Email'    && <EmailMini />}
+          {activeHomeView === 'Mentions' && <MentionsMini />}
+          {activeHomeView === 'People'   && <PeopleMini />}
+        </div>
       ) : (
         <>
           {/* Tab bar */}
