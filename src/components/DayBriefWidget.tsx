@@ -67,12 +67,6 @@ const peopleItems = [
 
 const iconMap: Record<string, string> = { docx: iconDocx, pptx: iconPptx, xlsx: iconXls, xls: iconXls };
 
-const statChips = [
-  { icon: <CalendarRegular style={{ width: 14, height: 14 }} />, count: 3,  label: 'meetings', view: 'Meetings' as TabId },
-  { icon: <MailRegular     style={{ width: 14, height: 14 }} />, count: 16, label: 'emails',   view: 'Email'    as TabId },
-  { icon: <MentionRegular  style={{ width: 14, height: 14 }} />, count: 3,  label: 'mentions', view: 'Mentions' as TabId },
-  { icon: <FolderRegular   style={{ width: 14, height: 14 }} />, count: 4,  label: 'files',    view: 'Files'    as TabId },
-];
 
 const viewIcons: Record<TabId, React.ReactNode> = {
   Meetings: <CalendarRegular style={{ width: 14, height: 14 }} />,
