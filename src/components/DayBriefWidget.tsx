@@ -67,6 +67,92 @@ const peopleItems = [
 
 const iconMap: Record<string, string> = { docx: iconDocx, pptx: iconPptx, xlsx: iconXls, xls: iconXls };
 
+// ── Home aggregate view ────────────────────────────────────────────────────────
+function HomeAggregateView() {
+  const next = meetingItems[0];
+  const filled = next.cta === 'Join';
+
+  const stats = [
+    { icon: <CalendarRegular style={{ width: 14, height: 14 }} />, count: 3,  label: 'meetings' },
+    { icon: <MailRegular     style={{ width: 14, height: 14 }} />, count: 16, label: 'emails'   },
+    { icon: <MentionRegular  style={{ width: 14, height: 14 }} />, count: 3,  label: 'mentions' },
+    { icon: <FolderRegular   style={{ width: 14, height: 14 }} />, count: 4,  label: 'files'    },
+  ];
+
+  return (
+    <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', gap: 10, padding: '2px 16px 14px' }}>
+
+      {/* Next meeting */}
+      <div style={{
+        display: 'flex', alignItems: 'center',
+        backgroundColor: '#f5f5f5', borderRadius: 8,
+        paddingLeft: 8, paddingTop: 6, paddingBottom: 6, paddingRight: 8,
+        gap: 8, flexShrink: 0,
+      }}>
+        <div style={{
+          width: 3, height: 32, borderRadius: 3, flexShrink: 0,
+          backgroundColor: filled ? '#5b5fc7' : 'transparent',
+          border: filled ? 'none' : '1.5px solid #5b5fc7',
+          boxSizing: 'border-box',
+        }} />
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ ...seg, fontSize: 13, fontWeight: 600, color: '#242424', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', lineHeight: '18px' }}>{next.name}</div>
+          <div style={{ ...seg, fontSize: 11, color: '#616161', lineHeight: '16px' }}>{next.time} · {next.duration}</div>
+        </div>
+        <button style={{
+          ...seg, fontSize: 13, fontWeight: 600,
+          color: filled ? '#fff' : '#5b5fc7',
+          backgroundColor: filled ? '#5b5fc7' : 'transparent',
+          border: filled ? 'none' : '1px solid #5b5fc7',
+          borderRadius: 4, padding: '5px 10px',
+          cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap', lineHeight: 1,
+        }}
+          onMouseEnter={e => (e.currentTarget.style.opacity = '0.88')}
+          onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+        >{next.cta}</button>
+      </div>
+
+      {/* Stat chips */}
+      <div style={{ display: 'flex', gap: 6, flexShrink: 0 }}>
+        {stats.map(s => (
+          <div key={s.label} style={{
+            flex: 1, display: 'flex', alignItems: 'center', gap: 5,
+            backgroundColor: '#f5f5f5', borderRadius: 6, padding: '5px 8px',
+            cursor: 'pointer', minWidth: 0,
+          }}>
+            <span style={{ color: '#5b5fc7', flexShrink: 0, display: 'flex' }}>{s.icon}</span>
+            <span style={{ ...seg, fontSize: 13, fontWeight: 700, color: '#242424', lineHeight: 1 }}>{s.count}</span>
+            <span style={{ ...seg, fontSize: 11, color: '#616161', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{s.label}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Activity rows */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 6, flexShrink: 0 }}>
+        {/* Top email */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <Avatar name={emailItems[0].name} image={{ src: emailItems[0].img }} size={24} style={{ flexShrink: 0 }} />
+          <span style={{ ...seg, fontSize: 12, color: '#242424', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            <span style={{ fontWeight: 600 }}>{emailItems[0].name}</span>
+            {' · '}{emailItems[0].subject}
+          </span>
+          <span style={{ ...seg, fontSize: 11, color: '#616161', flexShrink: 0, marginLeft: 4 }}>{emailItems[0].time}</span>
+        </div>
+        {/* Top mention */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <Avatar name={mentionItems[0].name} image={{ src: mentionItems[0].img }} size={24} style={{ flexShrink: 0 }} />
+          <span style={{ ...seg, fontSize: 12, color: '#242424', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            <span style={{ fontWeight: 600 }}>{mentionItems[0].name}</span>
+            {' mentioned you · '}{mentionItems[0].context}
+          </span>
+          <span style={{ ...seg, fontSize: 11, color: '#616161', flexShrink: 0, marginLeft: 4 }}>{mentionItems[0].time}</span>
+        </div>
+      </div>
+
+    </div>
+  );
+}
+
 // ── Event card ────────────────────────────────────────────────────────────────
 function EventCard({ name, time, duration, cta }: { name: string; time: string; duration: string; cta: string }) {
   const filled = cta === 'Join';
@@ -113,9 +199,9 @@ function EventCard({ name, time, duration, cta }: { name: string; time: string; 
 }
 
 // ── Tab content ───────────────────────────────────────────────────────────────
-function MeetingsMini({ homeMode }: { homeMode?: boolean }) {
+function MeetingsMini() {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', ...(homeMode ? { flex: 1, justifyContent: 'space-evenly' } : { gap: 12 }) }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       <p style={{ ...seg, fontSize: 12, color: '#616161', margin: 0, lineHeight: '16px' }}>
         Your next <span style={{ color: '#464feb', fontWeight: 600 }}>appointment</span> will discuss Sales Performance reviews.
       </p>
@@ -246,75 +332,79 @@ export default function DayBriefWidget({ onAddToHome, homeMode = false, fullWidt
         </button>
       </div>
 
-      {/* Tab bar */}
-      <div style={{ padding: '0 16px 12px', display: 'flex', gap: 4 }}>
-        {tabs.map(tab => {
-          const selected = activeTab === tab.id;
-          return (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              title={tab.label}
-              style={{
-                ...seg, flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                padding: '6px 4px', borderRadius: 6, border: 'none', cursor: 'pointer',
-                backgroundColor: selected ? '#ebe8f9' : 'transparent',
-                color: selected ? '#5b5fc7' : '#616161',
-                transition: 'background-color 0.1s',
-              }}
-              onMouseEnter={e => { if (!selected) e.currentTarget.style.backgroundColor = '#f5f5f5'; }}
-              onMouseLeave={e => { if (!selected) e.currentTarget.style.backgroundColor = 'transparent'; }}
-            >
-              {selected ? (tab.iconSelected ?? tab.icon) : tab.icon}
-            </button>
-          );
-        })}
-      </div>
+      {homeMode ? (
+        <HomeAggregateView />
+      ) : (
+        <>
+          {/* Tab bar */}
+          <div style={{ padding: '0 16px 12px', display: 'flex', gap: 4 }}>
+            {tabs.map(tab => {
+              const selected = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  title={tab.label}
+                  style={{
+                    ...seg, flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    padding: '6px 4px', borderRadius: 6, border: 'none', cursor: 'pointer',
+                    backgroundColor: selected ? '#ebe8f9' : 'transparent',
+                    color: selected ? '#5b5fc7' : '#616161',
+                    transition: 'background-color 0.1s',
+                  }}
+                  onMouseEnter={e => { if (!selected) e.currentTarget.style.backgroundColor = '#f5f5f5'; }}
+                  onMouseLeave={e => { if (!selected) e.currentTarget.style.backgroundColor = 'transparent'; }}
+                >
+                  {selected ? (tab.iconSelected ?? tab.icon) : tab.icon}
+                </button>
+              );
+            })}
+          </div>
 
-      {/* Content */}
-      <div style={{ padding: '0 16px', ...(homeMode ? { flex: 1, minHeight: 0 } : { height: 185, overflow: 'hidden' }), display: 'flex', flexDirection: 'column' }}>
-        {activeTab === 'Meetings' && <MeetingsMini homeMode={homeMode} />}
-        {activeTab === 'Files'    && <FilesMini />}
-        {activeTab === 'Email'    && <EmailMini />}
-        {activeTab === 'Mentions' && <MentionsMini />}
-        {activeTab === 'People'   && <PeopleMini />}
-      </div>
+          {/* Content */}
+          <div style={{ padding: '0 16px', height: 185, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+            {activeTab === 'Meetings' && <MeetingsMini />}
+            {activeTab === 'Files'    && <FilesMini />}
+            {activeTab === 'Email'    && <EmailMini />}
+            {activeTab === 'Mentions' && <MentionsMini />}
+            {activeTab === 'People'   && <PeopleMini />}
+          </div>
 
-      {/* Footer */}
-      <div style={{ padding: '12px 16px 16px', borderTop: '1px solid #f0f0f0', marginTop: 8, display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <button style={{
-          ...seg, fontSize: 14, fontWeight: 400, color: '#464feb',
-          background: 'none', border: 'none', cursor: 'pointer', padding: 0, textAlign: 'center', width: '100%',
-        }}
-          onMouseEnter={e => (e.currentTarget.style.textDecoration = 'underline')}
-          onMouseLeave={e => (e.currentTarget.style.textDecoration = 'none')}
-        >
-          {moreLabel[activeTab]}
-        </button>
-
-        {!homeMode && (
-          <button
-            onClick={handleAddToHome}
-            style={{
-              width: '100%', ...seg, fontSize: 13, fontWeight: 600,
-              color: added ? '#107c10' : '#242424',
-              backgroundColor: added ? '#f1faf1' : '#fff',
-              border: `1px solid ${added ? '#107c10' : '#d1d1d1'}`,
-              borderRadius: 6, padding: '5px 12px', cursor: added ? 'default' : 'pointer',
-              lineHeight: '20px', transition: 'background-color 0.2s, color 0.2s, border-color 0.2s',
+          {/* Footer */}
+          <div style={{ padding: '12px 16px 16px', borderTop: '1px solid #f0f0f0', marginTop: 8, display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <button style={{
+              ...seg, fontSize: 14, fontWeight: 400, color: '#464feb',
+              background: 'none', border: 'none', cursor: 'pointer', padding: 0, textAlign: 'center', width: '100%',
             }}
-            onMouseEnter={e => { if (!added) e.currentTarget.style.backgroundColor = '#f5f5f5'; }}
-            onMouseLeave={e => { if (!added) e.currentTarget.style.backgroundColor = '#fff'; }}
-          >
-            {added ? (
-              <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
-                <CheckmarkCircleFilled style={{ width: 16, height: 16, color: '#107c10' }} />
-                Added to home
-              </span>
-            ) : 'Add to home'}
-          </button>
-        )}
-      </div>
+              onMouseEnter={e => (e.currentTarget.style.textDecoration = 'underline')}
+              onMouseLeave={e => (e.currentTarget.style.textDecoration = 'none')}
+            >
+              {moreLabel[activeTab]}
+            </button>
+
+            <button
+              onClick={handleAddToHome}
+              style={{
+                width: '100%', ...seg, fontSize: 13, fontWeight: 600,
+                color: added ? '#107c10' : '#242424',
+                backgroundColor: added ? '#f1faf1' : '#fff',
+                border: `1px solid ${added ? '#107c10' : '#d1d1d1'}`,
+                borderRadius: 6, padding: '5px 12px', cursor: added ? 'default' : 'pointer',
+                lineHeight: '20px', transition: 'background-color 0.2s, color 0.2s, border-color 0.2s',
+              }}
+              onMouseEnter={e => { if (!added) e.currentTarget.style.backgroundColor = '#f5f5f5'; }}
+              onMouseLeave={e => { if (!added) e.currentTarget.style.backgroundColor = '#fff'; }}
+            >
+              {added ? (
+                <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+                  <CheckmarkCircleFilled style={{ width: 16, height: 16, color: '#107c10' }} />
+                  Added to home
+                </span>
+              ) : 'Add to home'}
+            </button>
+          </div>
+        </>
+      )}
 
     </div>
   );

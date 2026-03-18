@@ -117,29 +117,23 @@ export default function RecommendedSection({ showDayAtAGlance = false, onPeopleC
       {/* 3-col grid */}
       <div className="widget-grid-3col recommended-grid">
 
-        {/* ── Left: Event Card or Day at a Glance widget ── */}
+        {/* ── Left: Event Card ── */}
         <div style={{
           borderRadius: '24px', overflow: 'hidden', position: 'relative',
           boxShadow: shadow, cursor: 'not-allowed',
           transition: 'opacity 0.4s ease',
         }}>
-          {showDayAtAGlance ? (
-            <DayBriefWidget homeMode />
-          ) : (
-            <>
-              <div style={{ position: 'absolute', inset: -32, backgroundImage: `url("${imgEventBg}")`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(225.832deg, rgba(255,0,135,0.2) 1.7136%, rgba(68,38,127,0.9) 92.1%)' }} />
-              <CalendarBadge />
-              <div style={{ position: 'absolute', bottom: 25, left: 28, width: 218, display: 'flex', flexDirection: 'column', gap: 8, color: '#fff' }}>
-                <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: '16px', fontWeight: 600, lineHeight: '22px', fontVariationSettings: "'opsz' 10.5" }}>
-                  From Production To Precision: How AI Is Reshaping Manufacturing
-                </p>
-                <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: '14px', fontWeight: 400, lineHeight: '20px' }}>
-                  Upcoming event · Nov 14, 2026
-                </p>
-              </div>
-            </>
-          )}
+          <div style={{ position: 'absolute', inset: -32, backgroundImage: `url("${imgEventBg}")`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(225.832deg, rgba(255,0,135,0.2) 1.7136%, rgba(68,38,127,0.9) 92.1%)' }} />
+          <CalendarBadge />
+          <div style={{ position: 'absolute', bottom: 25, left: 28, width: 218, display: 'flex', flexDirection: 'column', gap: 8, color: '#fff' }}>
+            <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: '16px', fontWeight: 600, lineHeight: '22px', fontVariationSettings: "'opsz' 10.5" }}>
+              From Production To Precision: How AI Is Reshaping Manufacturing
+            </p>
+            <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: '14px', fontWeight: 400, lineHeight: '20px' }}>
+              Upcoming event · Nov 14, 2026
+            </p>
+          </div>
         </div>
 
         {/* ── Middle: 2 Prompt Cards ── */}
@@ -168,19 +162,25 @@ export default function RecommendedSection({ showDayAtAGlance = false, onPeopleC
             </div>
           </div>
 
-          {/* Card 2 – Attention */}
-          <div style={{ position: 'relative', height: 133, borderRadius: 24, flexShrink: 0 }}>
-            <div style={{ position: 'absolute', inset: 0, backgroundColor: '#fff', border: '0.5px solid #f0f0f0', boxShadow: shadow, borderRadius: 24, padding: '12px 16px', display: 'flex', flexDirection: 'column', gap: 13, cursor: 'not-allowed' }}>
-              <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: 16, fontWeight: 600, lineHeight: '22px', color: 'rgba(0,0,0,0.86)', whiteSpace: 'pre-wrap' }}>
-                {'Highlight what needs \nmy attention today'}
-              </p>
-              <div style={{ display: 'flex', gap: 8 }}>
-                <StatPill icon={iconComment}   count="12" label="Comments" iconOffsetY="calc(50% + 0.5px)" />
-                <StatPill icon={iconMention}   count="3"  label="Mentions"  />
-                <StatPill icon={iconCheckmark} count="8"  label="Tasks"     />
+          {/* Card 2 – Attention or Day at a Glance widget */}
+          {showDayAtAGlance ? (
+            <div style={{ height: 133, borderRadius: 24, flexShrink: 0, overflow: 'hidden' }}>
+              <DayBriefWidget homeMode />
+            </div>
+          ) : (
+            <div style={{ position: 'relative', height: 133, borderRadius: 24, flexShrink: 0 }}>
+              <div style={{ position: 'absolute', inset: 0, backgroundColor: '#fff', border: '0.5px solid #f0f0f0', boxShadow: shadow, borderRadius: 24, padding: '12px 16px', display: 'flex', flexDirection: 'column', gap: 13, cursor: 'not-allowed' }}>
+                <p style={{ margin: 0, fontFamily: '"Segoe UI", sans-serif', fontSize: 16, fontWeight: 600, lineHeight: '22px', color: 'rgba(0,0,0,0.86)', whiteSpace: 'pre-wrap' }}>
+                  {'Highlight what needs \nmy attention today'}
+                </p>
+                <div style={{ display: 'flex', gap: 8 }}>
+                  <StatPill icon={iconComment}   count="12" label="Comments" iconOffsetY="calc(50% + 0.5px)" />
+                  <StatPill icon={iconMention}   count="3"  label="Mentions"  />
+                  <StatPill icon={iconCheckmark} count="8"  label="Tasks"     />
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
         </div>
 

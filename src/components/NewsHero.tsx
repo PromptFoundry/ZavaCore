@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ChevronLeft24Regular, ChevronRight24Regular, Comment24Regular, Mention24Regular, CheckmarkCircle24Regular } from '@fluentui/react-icons';
+import DayBriefWidget from './DayBriefWidget';
 import soundWaveIcon from '../assets/icons/Sound Wave Circle Sparkle.svg';
 import sliderImg1 from '../assets/images/Slider image 1.png';
 import carouselBg1 from '../assets/images/Carousel-Background-1.png';
@@ -68,9 +69,10 @@ interface NewsHeroProps {
   onEngageClick?: () => void;
   onPlanMyDay?: () => void;
   shimmerTarget?: string | null;
+  showDayAtAGlance?: boolean;
 }
 
-export default function NewsHero({ onSummarizeNews, onEngageClick: _onEngageClick, onPlanMyDay, shimmerTarget }: NewsHeroProps = {}) {
+export default function NewsHero({ onSummarizeNews, onEngageClick: _onEngageClick, onPlanMyDay, shimmerTarget, showDayAtAGlance = false }: NewsHeroProps = {}) {
   const [current, setCurrent] = useState(0);
 
   const prev = () => setCurrent(i => (i - 1 + slides.length) % slides.length);
@@ -287,53 +289,59 @@ export default function NewsHero({ onSummarizeNews, onEngageClick: _onEngageClic
             </div>
           </div>
 
-          {/* Card 2 — Suggested Prompt */}
-          <div
-            onClick={onPlanMyDay}
-            style={{
-            borderRadius: 24,
-            border: '1px solid #e0e0e0',
-            boxShadow: '0px 2px 4px 0px rgba(0,0,0,0.14), 0px 0px 2px 0px rgba(0,0,0,0.12)',
-            backgroundColor: '#fff',
-            display: 'flex', flexDirection: 'column', justifyContent: 'center',
-            padding: 16, gap: 26, cursor: onPlanMyDay ? 'pointer' : 'not-allowed', overflow: 'hidden',
-          }}
-            onMouseEnter={onPlanMyDay ? e => (e.currentTarget.style.backgroundColor = '#fafafa') : undefined}
-            onMouseLeave={onPlanMyDay ? e => (e.currentTarget.style.backgroundColor = '#fff') : undefined}
-          >
-            {/* Top: label + title */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              <span style={{ ...segoe, fontSize: 10, fontWeight: 400, lineHeight: '14px', color: '#424242' }}>
-                Awaiting your action
-              </span>
-              <p style={{ ...segoe, margin: 0, fontSize: 20, fontWeight: 600, lineHeight: '28px', color: '#242424', overflow: 'hidden' }}>
-                {'Summarize today\'s '}
-                <span style={{ color: '#4f59f4' }}>priorities</span>
-                {' and\nwhat needs my attention…'}
-              </p>
+          {/* Card 2 — Suggested Prompt or Day at a Glance widget */}
+          {showDayAtAGlance ? (
+            <div style={{ borderRadius: 24, overflow: 'hidden', boxShadow: cardShadow }}>
+              <DayBriefWidget homeMode />
             </div>
+          ) : (
+            <div
+              onClick={onPlanMyDay}
+              style={{
+              borderRadius: 24,
+              border: '1px solid #e0e0e0',
+              boxShadow: '0px 2px 4px 0px rgba(0,0,0,0.14), 0px 0px 2px 0px rgba(0,0,0,0.12)',
+              backgroundColor: '#fff',
+              display: 'flex', flexDirection: 'column', justifyContent: 'center',
+              padding: 16, gap: 26, cursor: onPlanMyDay ? 'pointer' : 'not-allowed', overflow: 'hidden',
+            }}
+              onMouseEnter={onPlanMyDay ? e => (e.currentTarget.style.backgroundColor = '#fafafa') : undefined}
+              onMouseLeave={onPlanMyDay ? e => (e.currentTarget.style.backgroundColor = '#fff') : undefined}
+            >
+              {/* Top: label + title */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                <span style={{ ...segoe, fontSize: 10, fontWeight: 400, lineHeight: '14px', color: '#424242' }}>
+                  Awaiting your action
+                </span>
+                <p style={{ ...segoe, margin: 0, fontSize: 20, fontWeight: 600, lineHeight: '28px', color: '#242424', overflow: 'hidden' }}>
+                  {'Summarize today\'s '}
+                  <span style={{ color: '#4f59f4' }}>priorities</span>
+                  {' and\nwhat needs my attention…'}
+                </p>
+              </div>
 
-            {/* Stat tiles */}
-            <div style={{ display: 'flex', gap: 9 }}>
-              {statTiles.map(({ Icon, label, value }) => (
-                <div key={label} style={{
-                  flex: 1, display: 'flex', alignItems: 'center', gap: 9,
-                  padding: 9, borderRadius: 8,
-                  border: '0.787px solid #c8c8c8', overflow: 'hidden',
-                }}>
-                  <Icon style={{ width: 24, height: 24, flexShrink: 0, color: '#4f59f4' }} />
-                  <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <span style={{ ...segoe, fontSize: 10, fontWeight: 400, lineHeight: '15.75px', color: '#616161' }}>
-                      {label}
-                    </span>
-                    <span style={{ ...segoe, fontSize: 20, fontWeight: 700, lineHeight: '22.5px', color: '#242424' }}>
-                      {value}
-                    </span>
+              {/* Stat tiles */}
+              <div style={{ display: 'flex', gap: 9 }}>
+                {statTiles.map(({ Icon, label, value }) => (
+                  <div key={label} style={{
+                    flex: 1, display: 'flex', alignItems: 'center', gap: 9,
+                    padding: 9, borderRadius: 8,
+                    border: '0.787px solid #c8c8c8', overflow: 'hidden',
+                  }}>
+                    <Icon style={{ width: 24, height: 24, flexShrink: 0, color: '#4f59f4' }} />
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                      <span style={{ ...segoe, fontSize: 10, fontWeight: 400, lineHeight: '15.75px', color: '#616161' }}>
+                        {label}
+                      </span>
+                      <span style={{ ...segoe, fontSize: 20, fontWeight: 700, lineHeight: '22.5px', color: '#242424' }}>
+                        {value}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
         </div>
 

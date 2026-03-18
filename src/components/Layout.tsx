@@ -116,7 +116,7 @@ export default function Layout() {
   const [showAgentCapabilities, setShowAgentCapabilities] = useState(false);
   const [isAgentCapabilitiesLoading, setIsAgentCapabilitiesLoading] = useState(false);
   const [orderTracker, setOrderTracker] = useState<{ dish: string; emoji: string } | null>(null);
-  const [_showDayAtAGlance, setShowDayAtAGlance] = useState(false);
+  const [showDayAtAGlance, setShowDayAtAGlance] = useState(false);
   const [showAddedToast, setShowAddedToast] = useState(false);
   const [toastVisible, setToastVisible] = useState(false);
   const [activeShimmer, _setActiveShimmer] = useState<string | null>(null);
@@ -554,7 +554,7 @@ export default function Layout() {
                   onDismiss={() => setOrderTracker(null)}
                 />
               )}
-              <div data-name="news-hero"><NewsHero onSummarizeNews={handleSummarizeNews} onEngageClick={handleEngageSummarize} onPlanMyDay={handlePlanMyDay} shimmerTarget={activeShimmer} /></div>
+              <div data-name="news-hero"><NewsHero onSummarizeNews={handleSummarizeNews} onEngageClick={handleEngageSummarize} onPlanMyDay={handlePlanMyDay} shimmerTarget={activeShimmer} showDayAtAGlance={showDayAtAGlance} /></div>
               <div data-name="quick-actions"><QuickActions onOrderLunch={handleOrderLunch} shimmerTarget={activeShimmer} /></div>
               <div data-name="recent-activity"><RecentActivitySection onEngageClick={handleEngageSummarize} shimmerTarget={activeShimmer} /></div>
             </div>
