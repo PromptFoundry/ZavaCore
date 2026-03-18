@@ -7,6 +7,22 @@ import {
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import chatIcon from '../assets/icons/Chat icon.svg';
+import chatIconColor from '../assets/icons/Chat icon color.svg';
+import searchIcon from '../assets/icons/Search icon.svg';
+import searchIconColor from '../assets/icons/Search icon color.svg';
+import libraryIcon from '../assets/icons/Library icon.svg';
+import libraryIconColor from '../assets/icons/Library icon color.svg';
+import createIcon from '../assets/icons/Create icon.svg';
+import createIconColor from '../assets/icons/Create icon color.svg';
+import frontierIcon from '../assets/icons/Frontier icon.svg';
+import frontierIconColor from '../assets/icons/Frontier icon color.svg';
+import zavcoreLogo from '../assets/images/ZavaCore_logo.svg';
+import carolePng from '../assets/images/Carole Poland.png';
+import copilotIcon from '../assets/icons/Copilot.svg';
+import researcherIcon from '../assets/icons/Researcher icon.svg';
+import agentIcon from '../assets/icons/Agent icon.svg';
+import addAgentIcon from '../assets/icons/Add new agent icon.svg';
 
 interface LeftNavProps {
   onMobileItemClick?: () => void;
@@ -32,11 +48,11 @@ export default function LeftNav({ onMobileItemClick, onMobileClose, forceCollaps
 
   // Icon rail items for collapsed state
   const railItems = [
-    { id: 'newchat', iconSrc: '/assets/icons/Chat icon.svg', iconColorSrc: '/assets/icons/Chat icon color.svg', alt: 'New chat' },
-    { id: 'search', iconSrc: '/assets/icons/Search icon.svg', iconColorSrc: '/assets/icons/Search icon color.svg', alt: 'Search' },
-    { id: 'library', iconSrc: '/assets/icons/Library icon.svg', iconColorSrc: '/assets/icons/Library icon color.svg', alt: 'Library' },
-    { id: 'create', iconSrc: '/assets/icons/Create icon.svg', iconColorSrc: '/assets/icons/Create icon color.svg', alt: 'Create' },
-    { id: 'frontier', iconSrc: '/assets/icons/Frontier icon.svg', iconColorSrc: '/assets/icons/Frontier icon color.svg', alt: 'Frontier' },
+    { id: 'newchat', iconSrc: chatIcon, iconColorSrc: chatIconColor, alt: 'New chat' },
+    { id: 'search', iconSrc: searchIcon, iconColorSrc: searchIconColor, alt: 'Search' },
+    { id: 'library', iconSrc: libraryIcon, iconColorSrc: libraryIconColor, alt: 'Library' },
+    { id: 'create', iconSrc: createIcon, iconColorSrc: createIconColor, alt: 'Create' },
+    { id: 'frontier', iconSrc: frontierIcon, iconColorSrc: frontierIconColor, alt: 'Frontier' },
   ];
 
   return (
@@ -96,7 +112,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose, forceCollaps
             onClick={() => handleItemClick('zavacore')}
             aria-label="ZavaCore"
           >
-            <img src="/assets/images/ZavaCore_logo.svg" alt="" className="w-5 h-5" />
+            <img src={zavcoreLogo} alt="" className="w-5 h-5" />
           </button>
 
           {/* Spacer */}
@@ -105,7 +121,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose, forceCollaps
           {/* User avatar */}
           <div className="mb-3">
             <img
-              src="/assets/images/Carole Poland.png"
+              src={carolePng}
               alt="User avatar"
               className="w-8 h-8 rounded-full object-cover"
             />
@@ -116,8 +132,8 @@ export default function LeftNav({ onMobileItemClick, onMobileClose, forceCollaps
           {/* Top bar */}
           <div className="flex items-center justify-between px-3 py-3 shrink-0">
             <div className="flex items-center gap-2">
-              <img src="/assets/icons/Copilot.svg" alt="ZavaCore Agent" className="w-5 h-5 shrink-0" />
-              <span className="text-sm font-semibold text-[#242424]">ZavaCore Agent</span>
+              <img src={copilotIcon} alt="ZavaCore Agent" className="w-5 h-5 shrink-0" />
+              <span className="text-sm font-semibold text-[#242424]">Copilot</span>
             </div>
             {/* Collapse button - hidden on mobile */}
             <button
@@ -146,7 +162,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose, forceCollaps
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
                   <img
-                    src={selectedItem === 'newchat' ? "/assets/icons/Chat icon color.svg" : "/assets/icons/Chat icon.svg"}
+                    src={selectedItem === 'newchat' ? chatIconColor : chatIcon}
                     alt=""
                     className="w-5 h-5 mr-[9px]"
                   />
@@ -168,7 +184,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose, forceCollaps
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
                   <img
-                    src={selectedItem === 'search' ? "/assets/icons/Search icon color.svg" : "/assets/icons/Search icon.svg"}
+                    src={selectedItem === 'search' ? searchIconColor : searchIcon}
                     alt=""
                     className="w-5 h-5 mr-[9px]"
                   />
@@ -190,7 +206,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose, forceCollaps
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
                   <img
-                    src={selectedItem === 'library' ? "/assets/icons/Library icon color.svg" : "/assets/icons/Library icon.svg"}
+                    src={selectedItem === 'library' ? libraryIconColor : libraryIcon}
                     alt=""
                     className="w-5 h-5 mr-[9px]"
                   />
@@ -212,7 +228,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose, forceCollaps
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
                   <img
-                    src={selectedItem === 'create' ? "/assets/icons/Create icon color.svg" : "/assets/icons/Create icon.svg"}
+                    src={selectedItem === 'create' ? createIconColor : createIcon}
                     alt=""
                     className="w-5 h-5 mr-[9px]"
                   />
@@ -234,7 +250,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose, forceCollaps
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
                   <img
-                    src={selectedItem === 'frontier' ? "/assets/icons/Frontier icon color.svg" : "/assets/icons/Frontier icon.svg"}
+                    src={selectedItem === 'frontier' ? frontierIconColor : frontierIcon}
                     alt=""
                     className="w-5 h-5 mr-[9px]"
                   />
@@ -262,7 +278,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose, forceCollaps
                     ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
-                  <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore" className="w-5 h-5 mr-[9px] shrink-0" />
+                  <img src={zavcoreLogo} alt="ZavaCore" className="w-5 h-5 mr-[9px] shrink-0" />
                   <span className="text-sm text-[#242424]">ZavaCore</span>
                 </div>
               </div>
@@ -280,7 +296,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose, forceCollaps
                     ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
-                  <img src="/assets/icons/Researcher icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
+                  <img src={researcherIcon} alt="" className="w-5 h-5 mr-[9px]" />
                   <span className="text-sm text-[#242424]">Researcher</span>
                 </div>
               </div>
@@ -298,7 +314,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose, forceCollaps
                     ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
-                  <img src="/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
+                  <img src={agentIcon} alt="" className="w-5 h-5 mr-[9px]" />
                   <span className="text-sm text-[#242424]">Agent</span>
                 </div>
               </div>
@@ -316,7 +332,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose, forceCollaps
                     ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
-                  <img src="/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
+                  <img src={agentIcon} alt="" className="w-5 h-5 mr-[9px]" />
                   <span className="text-sm text-[#242424]">Agent</span>
                 </div>
               </div>
@@ -334,7 +350,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose, forceCollaps
                     ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
-                  <img src="/assets/icons/Agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
+                  <img src={agentIcon} alt="" className="w-5 h-5 mr-[9px]" />
                   <span className="text-sm text-[#242424]">Agent</span>
                 </div>
               </div>
@@ -352,7 +368,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose, forceCollaps
                     ? 'bg-[#fafafa] border border-[#F2F2F2] pl-4'
                     : 'hover:bg-[#e6e6e6] pl-5'
                 } pr-3`}>
-                  <img src="/assets/icons/Add new agent icon.svg" alt="" className="w-5 h-5 mr-[9px]" />
+                  <img src={addAgentIcon} alt="" className="w-5 h-5 mr-[9px]" />
                   <span className="text-sm text-[#242424]">New agent</span>
                 </div>
               </div>
@@ -488,7 +504,7 @@ export default function LeftNav({ onMobileItemClick, onMobileClose, forceCollaps
             <div className="flex items-center justify-between h-9 px-1">
               <div className="flex items-center gap-2">
                 <div className="relative w-8 h-8 shrink-0">
-                  <img src="/assets/images/Carole Poland.png" alt="User avatar" className="w-full h-full object-cover rounded-full" />
+                  <img src={carolePng} alt="User avatar" className="w-full h-full object-cover rounded-full" />
                 </div>
                 <span className="text-sm text-[#424242]">Carole Poland</span>
               </div>

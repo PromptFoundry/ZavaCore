@@ -4,6 +4,7 @@ import {
   ArrowMaximize20Regular,
   ArrowMinimize20Regular,
 } from '@fluentui/react-icons';
+import powerpointIcon from '../assets/icons/PowerPoint.svg';
 const imgPowerPointPreview = `${import.meta.env.BASE_URL}assets/images/Slide1.jpg`;
 
 const seg = { fontFamily: '"Segoe UI", -apple-system, sans-serif' } as React.CSSProperties;
@@ -46,7 +47,7 @@ export default function EntityCard({
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           flexShrink: 0,
         }}>
-          {icon || <img src="/assets/icons/PowerPoint.svg" alt="PowerPoint" style={{ width: 24, height: 24 }} />}
+          {icon || <img src={powerpointIcon} alt="PowerPoint" style={{ width: 24, height: 24 }} />}
         </div>
 
         {/* Text */}

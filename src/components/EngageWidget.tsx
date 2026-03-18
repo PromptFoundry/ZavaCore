@@ -1,4 +1,6 @@
 import { Settings20Regular, MoreHorizontal16Regular } from '@fluentui/react-icons';
+import avatarSvg from '../assets/images/Avatar.svg';
+import avatarPie from '../assets/images/Avatar pie.png';
 
 export default function EngageWidget({ onSummarize }: { onSummarize?: () => void }) {
   return (
@@ -32,7 +34,7 @@ export default function EngageWidget({ onSummarize }: { onSummarize?: () => void
           {/* Avatar */}
           <div className="w-14 h-14 shrink-0 rounded-[16px] overflow-hidden">
             <img
-              src="/assets/images/Avatar.svg"
+              src={avatarSvg}
               alt="Q&A avatar"
               className="w-full h-full object-cover"
             />
@@ -68,7 +70,7 @@ export default function EngageWidget({ onSummarize }: { onSummarize?: () => void
           {/* Avatar Pie */}
           <div className="w-14 h-14 shrink-0 rounded-[16px] overflow-hidden">
             <img
-              src="/assets/images/Avatar pie.png"
+              src={avatarPie}
               alt="Leadership updates avatars"
               className="w-full h-full object-cover"
               key="avatar-pie-updated"

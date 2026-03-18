@@ -16,7 +16,7 @@ const actions = [
   { icon: savingsIcon,      title: 'View recent paystub', description: 'Check my most recent paystub to see earnings, deductions, and take‑home pay.' },
   { icon: rocketIcon,       title: 'Book a shuttle',      description: 'Find the next available campus shuttle and reserve a seat to my destination.' },
   { icon: chatQuestionIcon, title: 'Ask a question',      description: 'Get quick answers about company tools, policies, or workplace resources.' },
-  { icon: premiumIcon,      title: 'Navigate my benefits', description: 'Review my benefits to understand what\'s included, what I\'m enrolled in, and how it applies to me.' },
+  { icon: premiumIcon,      title: 'Plan my career check-in', description: 'Help me prepare for a career conversation with my manager.' },
 ];
 
 interface QuickActionsProps {

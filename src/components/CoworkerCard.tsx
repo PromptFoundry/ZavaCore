@@ -1,8 +1,13 @@
+import coworker1 from '../assets/images/Coworker-1.png';
+import coworker2 from '../assets/images/Coworker-2.png';
+import coworker3 from '../assets/images/Coworker-3.png';
+import coworker4 from '../assets/images/Coworker-4.png';
+
 const coworkers = [
-  { firstName: 'Serena', lastName: 'Davis', image: '/assets/images/Coworker-1.png' },
-  { firstName: 'Dalaya', lastName: 'Buxton', image: '/assets/images/Coworker-2.png' },
-  { firstName: 'Noih', lastName: 'Atkins', image: '/assets/images/Coworker-3.png' },
-  { firstName: 'Kevin', lastName: 'Powers', image: '/assets/images/Coworker-4.png' },
+  { firstName: 'Serena', lastName: 'Davis', image: coworker1 },
+  { firstName: 'Dalaya', lastName: 'Buxton', image: coworker2 },
+  { firstName: 'Noih', lastName: 'Atkins', image: coworker3 },
+  { firstName: 'Kevin', lastName: 'Powers', image: coworker4 },
 ];
 
 export default function CoworkerCard() {

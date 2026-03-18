@@ -1,3 +1,10 @@
+import quickLink0 from '../assets/icons/QuickLink.svg';
+import quickLink1 from '../assets/icons/QuickLink-1.svg';
+import quickLink2 from '../assets/icons/QuickLink-2.svg';
+import quickLink3 from '../assets/icons/QuickLink-3.svg';
+import quickLink4 from '../assets/icons/QuickLink-4.svg';
+import quickLink5 from '../assets/icons/QuickLink-5.svg';
+
 export interface QuickLink {
   id: string;
   icon: string;
@@ -10,12 +17,12 @@ export interface QuickLinksSectionProps {
 }
 
 const quickLinks: QuickLink[] = [
-  { id: 'travel', icon: '/assets/icons/QuickLink.svg', label: 'BOOK TRAVEL' },
-  { id: 'career', icon: '/assets/icons/QuickLink-1.svg', label: 'CAREER & DEVELOPMENT' },
-  { id: 'glossary', icon: '/assets/icons/QuickLink-2.svg', label: 'GLOSSARY' },
-  { id: 'expenses', icon: '/assets/icons/QuickLink-3.svg', label: 'EXPENSES' },
-  { id: 'training', icon: '/assets/icons/QuickLink-4.svg', label: 'TRAINING' },
-  { id: 'security', icon: '/assets/icons/QuickLink-5.svg', label: 'SECURITY' },
+  { id: 'travel', icon: quickLink0, label: 'BOOK TRAVEL' },
+  { id: 'career', icon: quickLink1, label: 'CAREER & DEVELOPMENT' },
+  { id: 'glossary', icon: quickLink2, label: 'GLOSSARY' },
+  { id: 'expenses', icon: quickLink3, label: 'EXPENSES' },
+  { id: 'training', icon: quickLink4, label: 'TRAINING' },
+  { id: 'security', icon: quickLink5, label: 'SECURITY' },
 ];
 
 /**

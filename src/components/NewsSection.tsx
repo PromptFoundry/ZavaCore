@@ -1,3 +1,8 @@
+import thumb0 from '../assets/images/Thumbnail.png';
+import thumb1 from '../assets/images/Thumbnail-1.png';
+import thumb2 from '../assets/images/Thumbnail-2.png';
+import thumb3 from '../assets/images/Thumbnail-3.png';
+
 export default function NewsSection() {
   return (
     <div
@@ -53,7 +58,7 @@ export default function NewsSection() {
             }}
           >
             <img
-              src="/assets/images/Thumbnail.png"
+              src={thumb0}
               alt=""
               style={{
                 position: 'absolute',
@@ -145,7 +150,7 @@ export default function NewsSection() {
           {/* News Item 1 */}
           <div style={{ display: 'flex', gap: '16px' }}>
             <img
-              src="/assets/images/Thumbnail-1.png"
+              src={thumb1}
               alt=""
               style={{
                 width: '160px',
@@ -195,7 +200,7 @@ export default function NewsSection() {
           {/* News Item 2 */}
           <div style={{ display: 'flex', gap: '16px' }}>
             <img
-              src="/assets/images/Thumbnail-2.png"
+              src={thumb2}
               alt=""
               style={{
                 width: '160px',
@@ -245,7 +250,7 @@ export default function NewsSection() {
           {/* News Item 3 */}
           <div style={{ display: 'flex', gap: '16px' }}>
             <img
-              src="/assets/images/Thumbnail-3.png"
+              src={thumb3}
               alt=""
               style={{
                 width: '160px',

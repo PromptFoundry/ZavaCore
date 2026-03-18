@@ -4,6 +4,9 @@ import {
   MoreHorizontal20Regular,
   PanelLeft20Regular,
 } from '@fluentui/react-icons';
+import zavcoreLogo from '../assets/images/ZavaCore_logo.svg';
+import composeIcon from '../assets/icons/Compose.svg';
+import shieldTaskIcon from '../assets/icons/Shield Task.svg';
 
 interface HeaderProps {
   onToggleNav: () => void;
@@ -34,7 +37,7 @@ export default function Header({ onToggleNav, isNavOpen, onReset, breadcrumbLabe
               className="flex items-center gap-1.5 px-2 h-8 rounded hover:bg-[#e6e6e6] transition-colors shrink-0"
               onClick={onReset}
             >
-              <img src="/assets/images/ZavaCore_logo.svg" alt="ZavaCore" className="w-4 h-4 md:w-5 md:h-5 shrink-0" />
+              <img src={zavcoreLogo} alt="ZavaCore" className="w-4 h-4 md:w-5 md:h-5 shrink-0" />
               <span className="text-sm font-semibold text-[#242424]">ZavaCore</span>
             </button>
 
@@ -56,7 +59,7 @@ export default function Header({ onToggleNav, isNavOpen, onReset, breadcrumbLabe
           <div className="flex items-center h-8 rounded">
             {/* Primary action */}
             <button className="flex items-center justify-center h-8 px-1.5 bg-[#464FEB] rounded-l border-r border-white hover:bg-[#3d42c7] transition-colors">
-              <img src="/assets/icons/Compose.svg" alt="New chat" className="w-5 h-5" />
+              <img src={composeIcon} alt="New chat" className="w-5 h-5" />
             </button>
 
             {/* Secondary action (dropdown) */}
@@ -67,7 +70,7 @@ export default function Header({ onToggleNav, isNavOpen, onReset, breadcrumbLabe
 
           {/* Protection Button */}
           <button className="flex items-center justify-center w-8 h-8 rounded hover:bg-[#e6e6e6] transition-colors">
-            <img src="/assets/icons/Shield Task.svg" alt="Protection" className="w-5 h-5" />
+            <img src={shieldTaskIcon} alt="Protection" className="w-5 h-5" />
           </button>
 
           {/* More Options Button */}

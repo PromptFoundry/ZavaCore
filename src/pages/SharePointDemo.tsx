@@ -1,5 +1,18 @@
 import { useNavigate } from 'react-router-dom';
 import { SharePointShell } from '../lib';
+import gridDotsIcon from '../assets/icons/Grid Dots.svg';
+import zavaFull from '../assets/images/Zava-Full.svg';
+import copilotOutlineIcon from '../assets/icons/CopilotOutline.svg';
+import personFeedbackIcon from '../assets/icons/Person Feedback.svg';
+import megaphoneIcon from '../assets/icons/Megaphone.svg';
+import settingsIcon from '../assets/icons/Settings.svg';
+import questionIcon from '../assets/icons/Question.svg';
+import carolePng from '../assets/images/Carole Poland.png';
+import zavcoreLogo from '../assets/images/ZavaCore_logo.svg';
+import compassIcon from '../assets/icons/Compass Northwest.svg';
+import penIcon from '../assets/icons/Pen.svg';
+import broadActivityIcon from '../assets/icons/Broad Activity Feed.svg';
+import onedriveIcon from '../assets/icons/OneDrive.svg';
 import SiteHeader from '../components/SiteHeader';
 import HeroSection from '../components/HeroSection';
 import NewsSection from '../components/NewsSection';
@@ -13,43 +26,43 @@ export default function SharePointDemo() {
 
   const sharePointConfig = {
     header: {
-      gridIcon: <img src="/assets/icons/Grid Dots.svg" alt="Grid" style={{ width: '24px', height: '24px' }} />,
-      logo: '/assets/images/Zava-Full.svg',
+      gridIcon: <img src={gridDotsIcon} alt="Grid" style={{ width: '24px', height: '24px' }} />,
+      logo: zavaFull,
       siteName: 'SharePoint',
       onGridClick: () => navigate('/'),
       actions: [
         {
           id: 'copilot',
-          icon: <img src="/assets/icons/CopilotOutline.svg" alt="ZavaCore Agent" style={{ width: '24px', height: '24px' }} />
+          icon: <img src={copilotOutlineIcon} alt="ZavaCore Agent" style={{ width: '24px', height: '24px' }} />
         },
         {
           id: 'feedback',
-          icon: <img src="/assets/icons/Person Feedback.svg" alt="Feedback" style={{ width: '24px', height: '24px' }} />
+          icon: <img src={personFeedbackIcon} alt="Feedback" style={{ width: '24px', height: '24px' }} />
         },
         {
           id: 'megaphone',
-          icon: <img src="/assets/icons/Megaphone.svg" alt="Announcements" style={{ width: '24px', height: '24px' }} />
+          icon: <img src={megaphoneIcon} alt="Announcements" style={{ width: '24px', height: '24px' }} />
         },
         {
           id: 'settings',
-          icon: <img src="/assets/icons/Settings.svg" alt="Settings" style={{ width: '24px', height: '24px' }} />
+          icon: <img src={settingsIcon} alt="Settings" style={{ width: '24px', height: '24px' }} />
         },
         {
           id: 'help',
-          icon: <img src="/assets/icons/Question.svg" alt="Help" style={{ width: '24px', height: '24px' }} />
+          icon: <img src={questionIcon} alt="Help" style={{ width: '24px', height: '24px' }} />
         }
       ],
       userAvatar: (
-        <img src="/assets/images/Carole Poland.png" alt="User Avatar" style={{ width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover' }} />
+        <img src={carolePng} alt="User Avatar" style={{ width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover' }} />
       ),
     },
     appRail: {
       items: [
-        { id: 'zava', label: 'Zava', icon: '/assets/images/ZavaCore_logo.svg' },
-        { id: 'discover', label: 'Discover', icon: '/assets/icons/Compass Northwest.svg' },
-        { id: 'publish', label: 'Publish', icon: '/assets/icons/Pen.svg' },
-        { id: 'build', label: 'Build', icon: '/assets/icons/Broad Activity Feed.svg' },
-        { id: 'onedrive', label: 'OneDrive', icon: '/assets/icons/OneDrive.svg' },
+        { id: 'zava', label: 'Zava', icon: zavcoreLogo },
+        { id: 'discover', label: 'Discover', icon: compassIcon },
+        { id: 'publish', label: 'Publish', icon: penIcon },
+        { id: 'build', label: 'Build', icon: broadActivityIcon },
+        { id: 'onedrive', label: 'OneDrive', icon: onedriveIcon },
       ],
       defaultSelectedId: 'zava',
     },

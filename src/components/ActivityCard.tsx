@@ -1,16 +1,20 @@
+import iconComment from '../assets/images/activity icon - comment.svg';
+import iconMention from '../assets/images/activity icon - mention.svg';
+import iconTask from '../assets/images/activity icon - task.svg';
+
 const activities = [
   {
-    icon: '/assets/images/activity icon - comment.svg',
+    icon: iconComment,
     count: '12 comments',
     description: 'in Manufacturin...',
   },
   {
-    icon: '/assets/images/activity icon - mention.svg',
+    icon: iconMention,
     count: '3 mentions',
     description: 'across several files',
   },
   {
-    icon: '/assets/images/activity icon - task.svg',
+    icon: iconTask,
     count: '8 tasks',
     description: 'action items',
   },

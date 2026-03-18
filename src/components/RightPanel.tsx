@@ -1,22 +1,24 @@
 import { Dismiss20Regular, ChevronLeft20Regular, ChevronRight20Regular } from '@fluentui/react-icons';
 import { useState } from 'react';
+import React from 'react';
 import SidexSidePanel from './SidexSidePanel';
+import powerPointIcon from '../assets/icons/PowerPoint.svg';
 
 const seg = { fontFamily: '"Segoe UI", -apple-system, sans-serif' } as React.CSSProperties;
 
 const slides = [
-  { num: 1,  src: '/assets/images/Slide1.jpg' },
-  { num: 2,  src: '/assets/images/Slide2.jpg' },
-  { num: 3,  src: '/assets/images/Slide3.jpg' },
-  { num: 4,  src: '/assets/images/Slide4.jpg' },
-  { num: 5,  src: '/assets/images/Slide5.jpg' },
-  { num: 6,  src: '/assets/images/Slide6.jpg' },
-  { num: 7,  src: '/assets/images/Slide7.jpg' },
-  { num: 8,  src: '/assets/images/Slide8.jpg' },
-  { num: 9,  src: '/assets/images/Slide9.jpg' },
-  { num: 10, src: '/assets/images/Slide10.jpg' },
-  { num: 11, src: '/assets/images/Slide11.jpg' },
-  { num: 12, src: '/assets/images/Slide12.jpg' },
+  { num: 1,  src: `${import.meta.env.BASE_URL}assets/images/Slide1.jpg` },
+  { num: 2,  src: `${import.meta.env.BASE_URL}assets/images/Slide2.jpg` },
+  { num: 3,  src: `${import.meta.env.BASE_URL}assets/images/Slide3.jpg` },
+  { num: 4,  src: `${import.meta.env.BASE_URL}assets/images/Slide4.jpg` },
+  { num: 5,  src: `${import.meta.env.BASE_URL}assets/images/Slide5.jpg` },
+  { num: 6,  src: `${import.meta.env.BASE_URL}assets/images/Slide6.jpg` },
+  { num: 7,  src: `${import.meta.env.BASE_URL}assets/images/Slide7.jpg` },
+  { num: 8,  src: `${import.meta.env.BASE_URL}assets/images/Slide8.jpg` },
+  { num: 9,  src: `${import.meta.env.BASE_URL}assets/images/Slide9.jpg` },
+  { num: 10, src: `${import.meta.env.BASE_URL}assets/images/Slide10.jpg` },
+  { num: 11, src: `${import.meta.env.BASE_URL}assets/images/Slide11.jpg` },
+  { num: 12, src: `${import.meta.env.BASE_URL}assets/images/Slide12.jpg` },
 ];
 
 interface RightPanelProps {
@@ -48,7 +50,7 @@ export default function RightPanel({
             width: 36, height: 36, borderRadius: 8, backgroundColor: '#f5f5f5',
             display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
           }}>
-            <img src="/assets/icons/PowerPoint.svg" alt="PowerPoint" style={{ width: 24, height: 24 }} />
+            <img src={powerPointIcon} alt="PowerPoint" style={{ width: 24, height: 24 }} />
           </div>
           <div style={{ minWidth: 0 }}>
             <p style={{ ...seg, fontSize: 16, fontWeight: 600, color: '#242424', margin: 0, lineHeight: '22px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>

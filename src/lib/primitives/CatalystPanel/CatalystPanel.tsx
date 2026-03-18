@@ -7,7 +7,7 @@ import {
 import { CheckBadgeIcon, ChatBubbleLeftIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import ChatInput from '../../../components/ChatInput';
 import PromptStarter from '../../../components/PromptStarter';
-import AnimatedLoader from '../../../components/AnimatedLoader';
+import LatencyLoader from '../../../components/LatencyLoader';
 import EntityCard from '../../../components/EntityCard';
 import NewsHero from '../../../components/NewsHero';
 import RecommendedSection from '../../../components/RecommendedSection';
@@ -255,7 +255,7 @@ export default function CatalystPanel({
                       <span style={{ fontWeight: 600, fontSize: '16px', color: '#616161' }}>ZavaCore Agent</span>
                     </div>
                     <p style={{ margin: 0, fontSize: '16px', lineHeight: '24px', color: '#808080' }}>Creating a day at a glance…</p>
-                    <AnimatedLoader />
+                    <LatencyLoader />
                   </div>
                 )}
               </div>

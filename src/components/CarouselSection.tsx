@@ -1,4 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
+import carouselCenter from '../assets/images/Carousel-Background-center.png';
+import carousel1 from '../assets/images/Carousel-Background-1.png';
+import carousel2 from '../assets/images/Carousel-Background-2.png';
+import carousel3 from '../assets/images/Carousel-Background-3.png';
+import carousel4 from '../assets/images/Carousel-Background-4.png';
 
 export interface CarouselItem {
   id: string;
@@ -19,7 +24,7 @@ const carouselItems: CarouselItem[] = [
     id: 'item-1',
     title: 'ZavaCore Smart Mesh',
     description: 'Adaptive fabric technology that responds to performance needs in real-time',
-    image: '/assets/images/Carousel-Background-center.png', // Center slide on load
+    image: carouselCenter, // Center slide on load
     backgroundColor: '#ff9d47',
     overlayType: 'solid',
   },
@@ -27,7 +32,7 @@ const carouselItems: CarouselItem[] = [
     id: 'item-2',
     title: 'Smart Mesh Technology',
     description: 'Experience the future of athletic performance with our intelligent footwear system. Dynamic sensors adjust traction in real-time while collecting valuable performance data.',
-    image: '/assets/images/Carousel-Background-1.png',
+    image: carousel1,
     backgroundColor: 'linear-gradient(90deg, #fa8500 0%, #01b9f3 100%)',
     overlayType: 'gradient',
   },
@@ -35,7 +40,7 @@ const carouselItems: CarouselItem[] = [
     id: 'item-3',
     title: 'Zava Systems',
     description: 'Integrated platform for monitoring and optimizing athletic performance',
-    image: '/assets/images/Carousel-Background-2.png',
+    image: carousel2,
     backgroundColor: '#008fb1',
     overlayType: 'solid',
   },
@@ -43,7 +48,7 @@ const carouselItems: CarouselItem[] = [
     id: 'item-4',
     title: 'Advanced Analytics',
     description: 'Comprehensive data insights to track progress and optimize training outcomes',
-    image: '/assets/images/Carousel-Background-3.png',
+    image: carousel3,
     backgroundColor: '#03787C',
     overlayType: 'solid',
   },
@@ -51,7 +56,7 @@ const carouselItems: CarouselItem[] = [
     id: 'item-5',
     title: 'Performance Optimization',
     description: 'AI-powered recommendations to enhance athlete performance and recovery',
-    image: '/assets/images/Carousel-Background-4.png',
+    image: carousel4,
     backgroundColor: '#ff6b35',
     overlayType: 'solid',
   },

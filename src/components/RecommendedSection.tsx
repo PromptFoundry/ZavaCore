@@ -4,30 +4,20 @@ import avatar1 from '../assets/images/Avatar/People Card-Avatar/Avatar.png';
 import avatar2 from '../assets/images/Avatar/People Card-Avatar/Avatar-1.png';
 import avatar3 from '../assets/images/Avatar/People Card-Avatar/Avatar-2.png';
 import avatar4 from '../assets/images/Avatar/People Card-Avatar/Avatar-3.png';
-
-// Background images
-const imgEventBg   = '/assets/icons/figma/e776d7414b99a26f2356a45d9e181619111ef9c6.png';
-
-// Calendar badge layers (Color 1–4)
-const calColor4 = '/assets/icons/figma/bbff3dc4db695d3eaf095f248db7693dbc4d7d46.svg';
-const calColor3 = '/assets/icons/figma/7fb8dcb6b502cf15a02fa123914454702679b8fb.svg';
-const calColor2 = '/assets/icons/figma/edc7a7b96970afce06e2f5e95f23e9a48c5b2d6e.svg';
-const calColor1 = '/assets/icons/figma/9d45cab8a9f224b16aaae0f9454c04f4c3e54844.svg';
-
-// Video badge layers
-const videoOuter  = '/assets/icons/figma/edd2c69eed243e24460e30ac2edf8f793fff704d.svg';
-const videoInner  = '/assets/icons/figma/7a9eeba63e6922c727dd3321de35d7952d5b221a.svg';
-const videoPlay   = '/assets/icons/figma/1599e9f02367ebeb26343196b1b748f3f54ca9ee.svg';
-
-// Stat pill icons (white SVGs rendered on gradient bg)
-const iconComment   = '/assets/icons/figma/619f7b899755b728d879306d9053b95b76758acc.svg';
-const iconMention   = '/assets/icons/figma/9b871106d8237288482f9ee451ced2bd86feea39.svg';
-const iconCheckmark = '/assets/icons/figma/03ee87a362f889ede11223975659c6bf78734da2.svg';
-
-// Video clip & play icons
-const iconVideoClip = '/assets/icons/figma/2214b597637ab0d899b58040545efa0647269f39.svg';
-const iconPlayCircle = '/assets/icons/figma/73f1e30c6c4edfba1a7ba1cf72014347a8fae915.svg';
-const iconPlayArrow = '/assets/icons/figma/b355400a76e91767768126c8b2eabf46bede511b.svg';
+import imgEventBg from '../assets/icons/figma/e776d7414b99a26f2356a45d9e181619111ef9c6.png';
+import calColor4 from '../assets/icons/figma/bbff3dc4db695d3eaf095f248db7693dbc4d7d46.svg';
+import calColor3 from '../assets/icons/figma/7fb8dcb6b502cf15a02fa123914454702679b8fb.svg';
+import calColor2 from '../assets/icons/figma/edc7a7b96970afce06e2f5e95f23e9a48c5b2d6e.svg';
+import calColor1 from '../assets/icons/figma/9d45cab8a9f224b16aaae0f9454c04f4c3e54844.svg';
+import videoOuter from '../assets/icons/figma/edd2c69eed243e24460e30ac2edf8f793fff704d.svg';
+import videoInner from '../assets/icons/figma/7a9eeba63e6922c727dd3321de35d7952d5b221a.svg';
+import videoPlay from '../assets/icons/figma/1599e9f02367ebeb26343196b1b748f3f54ca9ee.svg';
+import iconComment from '../assets/icons/figma/619f7b899755b728d879306d9053b95b76758acc.svg';
+import iconMention from '../assets/icons/figma/9b871106d8237288482f9ee451ced2bd86feea39.svg';
+import iconCheckmark from '../assets/icons/figma/03ee87a362f889ede11223975659c6bf78734da2.svg';
+import iconVideoClip from '../assets/icons/figma/2214b597637ab0d899b58040545efa0647269f39.svg';
+import iconPlayCircle from '../assets/icons/figma/73f1e30c6c4edfba1a7ba1cf72014347a8fae915.svg';
+import iconPlayArrow from '../assets/icons/figma/b355400a76e91767768126c8b2eabf46bede511b.svg';
 
 // Avatars
 const avatars = [avatar1, avatar2, avatar3, avatar4];

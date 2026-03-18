@@ -1,3 +1,11 @@
+import thumb0 from '../assets/images/Thumbnail.png';
+import thumb1 from '../assets/images/Thumbnail-1.png';
+import thumb2 from '../assets/images/Thumbnail-2.png';
+import thumb3 from '../assets/images/Thumbnail-3.png';
+import avatarSP from '../assets/images/Avatar (SP).png';
+import avatarPie from '../assets/images/Avatar pie.png';
+import avatarSvg from '../assets/images/Avatar.svg';
+
 export interface EventItem {
   id: string;
   image: string;
@@ -15,49 +23,49 @@ export interface EventsSectionProps {
 const events: EventItem[] = [
   {
     id: 'event-1',
-    image: '/assets/images/Thumbnail.png',
+    image: thumb0,
     date: 'THU, MAR 14, 2:00 PM',
     title: 'New Employee Orientation',
     organizer: 'Organized by HR Team',
     avatars: [
-      '/assets/images/Avatar (SP).png',
-      '/assets/images/Avatar pie.png',
-      '/assets/images/Avatar.svg',
+      avatarSP,
+      avatarPie,
+      avatarSvg,
     ],
   },
   {
     id: 'event-2',
-    image: '/assets/images/Thumbnail-1.png',
+    image: thumb1,
     date: 'FRI, MAR 15, 10:00 AM',
     title: 'Q1 Strategy Review',
     organizer: 'Organized by Executive Team',
     avatars: [
-      '/assets/images/Avatar pie.png',
-      '/assets/images/Avatar (SP).png',
+      avatarPie,
+      avatarSP,
     ],
   },
   {
     id: 'event-3',
-    image: '/assets/images/Thumbnail-2.png',
+    image: thumb2,
     date: 'MON, MAR 18, 3:00 PM',
     title: 'Product Launch Planning',
     organizer: 'Organized by Product Team',
     avatars: [
-      '/assets/images/Avatar.svg',
-      '/assets/images/Avatar (SP).png',
-      '/assets/images/Avatar pie.png',
-      '/assets/images/Avatar (SP).png',
+      avatarSvg,
+      avatarSP,
+      avatarPie,
+      avatarSP,
     ],
   },
   {
     id: 'event-4',
-    image: '/assets/images/Thumbnail-3.png',
+    image: thumb3,
     date: 'TUE, MAR 19, 1:00 PM',
     title: 'Team Building Workshop',
     organizer: 'Organized by Culture Committee',
     avatars: [
-      '/assets/images/Avatar (SP).png',
-      '/assets/images/Avatar.svg',
+      avatarSP,
+      avatarSvg,
     ],
   },
 ];
