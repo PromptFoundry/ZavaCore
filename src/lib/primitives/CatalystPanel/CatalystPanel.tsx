@@ -175,6 +175,7 @@ export default function CatalystPanel({
         style={{
           flex: 1,
           overflowY: 'auto',
+          overflowX: 'hidden',
           position: 'relative',
           display: 'flex',
           flexDirection: 'column',

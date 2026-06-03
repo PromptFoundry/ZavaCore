@@ -33,7 +33,7 @@ export default function SharePointDemo() {
       actions: [
         {
           id: 'copilot',
-          icon: <img src={copilotOutlineIcon} alt="ZavaCore Agent" style={{ width: '24px', height: '24px' }} />
+          icon: <img src={copilotOutlineIcon} alt="ZavaCore Agent" style={{ width: '24px', height: '24px' }} />,
         },
         {
           id: 'feedback',

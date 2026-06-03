@@ -149,7 +149,10 @@ button, div[role="button"], [onclick] {
   height: 200px;
   flex-direction: row;
 }
+/* Override the column-based calc(50% - 7.25px) height — in row layout children must fill the container height */
 .catalyst-news-hero .news-hero-right > * {
+  height: 100% !important;
+  flex: 1 !important;
   min-height: 0;
 }
 
